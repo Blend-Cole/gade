@@ -1,0 +1,430 @@
+{% assign settings_ = section.settings %}
+{% if customer and settings_.user_vs %}
+    {% assign if_customer = true %}
+{% else %}
+    {% assign if_customer = false %}
+{% endif %}
+
+{% assign if_g = settings_.guest_vs %}
+{% if customer %}
+    {% if if_g and customer and settings_.user_vs %}
+        {% assign if_g = true %}
+    {% elsif if_g and customer and settings_.user_vs == false %}
+        {% assign if_g = false %}
+    {% endif %}
+{% endif %}
+
+{% if if_g or if_customer %}
+    <style>
+    .ll-rewards-section {
+        order: {{ settings_.order }};
+    }
+    {% for block in section.blocks %}
+        {% if block.settings.show_box %}
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] .lion-reward-item__content { 
+                border-color: {{block.settings.border_color}};
+            }
+
+            {% if block.settings.text_icon != '' %}
+                .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] .lion-reward-item__content:before { 
+                    content: "{{ block.settings.text_icon }}"; 
+                }
+            {% endif %}
+            {% if block.settings.icon %}
+                {% if block.settings.bg_img %}
+                    .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] .lion-reward-item__content{ position: relative;padding: 0;}
+                    .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] .lion-reward-item__content:before { 
+                        content: '';
+                        width: 100%;
+                        height: 316px;
+                        background-image: url({{ block.settings.icon |  img_url: '420x' }}) !important; 
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        position: relative;
+                        top: 0;
+                        left: 0;
+                    }
+                    .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] .lion-reward-item__content { 
+                        background-color: {{block.settings.bg_color}}75;
+                    }
+                    {% if block.settings.bg_color == 'rgba(0,0,0,0)' %}
+                        .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] .lion-reward-item__content { 
+                            background-color: transparent !important;
+                        }
+                    {% endif %}
+                {% else %}
+                    .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] .lion-reward-item__content:before { 
+                        content: '';
+                        margin: 20px auto 10px;
+                        content: url({{ block.settings.icon |  img_url: '100x' }}) !important; 
+                    }
+                    .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] .lion-reward-item__content { 
+                        background-color: {{block.settings.bg_color}};
+                    }
+                    {% if block.settings.bg_color == 'rgba(0,0,0,0)' %}
+                        .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] .lion-reward-item__content { 
+                            background-color: transparent !important;
+                        }
+                    {% endif %}
+                {% endif %}
+                {% else %}
+                    .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] .lion-reward-item__content { 
+                        background-color: {{block.settings.bg_color}};
+                    }
+                    {% if block.settings.bg_color == 'rgba(0,0,0,0)' %}
+                        .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] .lion-reward-item__content { 
+                            background-color: transparent !important;
+                        }
+                    {% endif %}
+            {% endif %}
+            {% if  block.settings.display_title == false %}
+                .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"]  .lion-reward-item__content .lion-reward-item__title { display: none;}
+            {% endif %}
+            {% if block.settings.display_desc == false %}
+                .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"]  .lion-reward-item__content .lion-reward-item__meta { display: none;}
+            {% endif %}
+        {% else %}
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"]  { display: none; }
+        {% endif %}
+        {% if block.settings.reward_title != '' %}
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"]  .lion-reward-item__content .lion-reward-item__title {
+                visibility: hidden;
+                position: relative;
+            }
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"]  .lion-reward-item__content .lion-reward-item__title:after {
+                content: {{block.settings.reward_title|strip_html|json}};
+                visibility: initial;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+            }
+        {% endif %}
+        {% if block.settings.desc != '' %}
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"]  .lion-reward-item__content .lion-reward-item__meta:before {
+                content: {{block.settings.desc |strip_html|json}};
+                display: block;
+                margin-bottom: 12px;
+            }
+        {% endif %}
+        {% if block.settings.btn_txt != '' %}
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"]  .lion-reward-item__content .lion-action-button { 
+                visibility: hidden;
+                position: relative;
+            }
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"]  .lion-reward-item__content .lion-action-button:after { 
+                content: {{block.settings.btn_txt |strip_html |json}};
+                visibility: initial;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                color: rgba(0, 0, 0, 0.5);
+            }
+        {% endif %}
+        {% assign color_check = block.settings.txt_color | color_to_hex %}
+        {% if color_check !=  '#0e2d5a' %}
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"]  .lion-reward-item__content:before,
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"]  .lion-reward-item__content .lion-reward-item__meta > span,
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"]  .lion-reward-item__content .lion-reward-item__meta:after,
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"]  .lion-reward-item__content .lion-reward-item__links,
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"]  .lion-reward-item__content .lion-reward-item__links a,
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"]  .lion-reward-item__content .lion-reward-item__title { 
+                color: {{ block.settings.txt_color }};
+            }
+            .ll-rewards-section .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] .lion-reward-item__content .lion-reward-item__meta .lion-reward-item__cost.claim {
+                background: #0E2D5A;
+            }
+        {% endif %}
+        {% if block.settings.width == '1' %}
+        {% elsif block.settings.width == '2' and settings_.row == '4' %}
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] {
+                flex: 1 0 50%;
+            }
+        {% elsif block.settings.width == '2' and settings_.row == '3' %}
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] {
+                flex: 1 0 66%;
+            }
+        {% elsif block.settings.width == '3'  and settings_.row == '4' %}
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] {
+                flex: 1 0 75%;
+            }
+        
+        {% elsif block.settings.width == '3'  and settings_.row == '4' %}
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] {
+                flex: 1 0 100%;
+            }
+        {% elsif block.settings.width == '4' %}
+            .lion-rewards-list .lion-reward-item[data-reward-id="{{block.settings.id}}"] {
+                flex: 1 0 100%;
+            }
+        {% endif %}
+    {% endfor %}
+    </style>
+    <h2 class="rewards-title">{{ settings_.header }}</h2>
+    {% if settings_.subheading != '' %}<div class="rewards-subheading">{{ settings_.subheading }}</div>{% endif %}
+    <div class="items-{{ settings_.row }}" data-lion-rewards-list></div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function (event) {
+        var load_rewards = function (num){
+        }
+      load_rewards(0);
+    });
+    </script>
+{% endif %}
+
+{% schema %}
+
+{
+  "name": "Rewards",
+  "class": "ll-rewards-section page-width",
+  "settings": [
+    {
+        "type": "text",
+        "id": "header",
+        "label": "Header",
+        "default": "Claim rewards"
+    },
+    {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "Subheading"
+    },
+    {
+        "type":      "select",
+        "id":        "order",
+        "label":     "Order",
+        "options": [
+            {
+                "value": "1",
+                "label": "1"
+            },
+            {
+                "value": "2",
+                "label": "2"
+            },
+            {
+                "value": "3",
+                "label": "3"
+            },
+            {
+                "value": "4",
+                "label": "4"
+            },
+            {
+                "value": "5",
+                "label": "5"
+            },
+            {
+                "value": "6",
+                "label": "6"
+            },
+            {
+                "value": "7",
+                "label": "7"
+            },
+            {
+                "value": "8",
+                "label": "8"
+            },
+            {
+                "value": "9",
+                "label": "9"
+            },
+            {
+                "value": "10",
+                "label": "10"
+            },
+            {
+                "value": "11",
+                "label": "11"
+            },
+            {
+                "value": "12",
+                "label": "12"
+            },
+            {
+                "value": "13",
+                "label": "13"
+            },
+            {
+                "value": "14",
+                "label": "14"
+            }
+        ],
+        "default":   "3"
+    },
+    {
+      "type": "header",
+      "content": "Visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "guest_vs",
+      "label": "Guest",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "user_vs",
+      "label": "Logged in",
+      "default": true
+    },
+    {
+        "type":      "select",
+        "id":        "row",
+        "label":     "Rewards in the row",
+        "options": [
+            {
+                "value": "1",
+                "label": "1"
+            },
+            {
+                "value": "2",
+                "label": "2"
+            },
+            {
+                "value": "3",
+                "label": "3"
+            },
+            {
+                "value": "4",
+                "label": "4"
+            }
+        ],
+        "default":   "4"
+    }
+  ],
+  "blocks": [
+    {
+        "type": "custom",
+        "name": "Reward",
+        "settings": [
+            {
+                "type":      "text",
+                "id":        "id",
+                "label":     "Reward ID",
+                "info":      "You can find id in URL on edit reward in the app."
+            },
+            {
+              "type": "paragraph",
+              "content": "To remove reward you have to delete it from the app."
+            },
+            {
+                "type": "checkbox",
+                "id": "show_box",
+                "label": "Show reward",
+                "default": true
+            },
+            {
+                "type":      "select",
+                "id":        "width",
+                "label":     "Tile width",
+                "options": [
+                    {
+                        "value": "1",
+                        "label": "1"
+                    },
+                    {
+                        "value": "2",
+                        "label": "2"
+                    },
+                    {
+                        "value": "3",
+                        "label": "3"
+                    },
+                    {
+                        "value": "4",
+                        "label": "4"
+                    }
+                ],
+                "default":   "1"
+            },
+            {
+              "type": "header",
+              "content": "Icon / Image"
+            },
+            {
+                "type": "checkbox",
+                "id": "bg_img",
+                "label": "Background image",
+                "default": true,
+                "info": "Image will have overlay with color below. Opacity 75%."
+            },
+            {
+                "type": "color",
+                "id": "bg_color",
+                "label": "Background color",
+                "default": "#ffffff"
+            },
+            {
+                "type": "color",
+                "id": "border_color",
+                "label": "Border color",
+                "default": "#d8d8d8"
+            },
+            {
+              "type": "image_picker",
+              "id": "icon",
+              "label": "Image/Icon"
+            },
+            {
+                "type": "text",
+                "id": "text_icon",
+                "label": "Text icon"
+            },
+            {
+              "type": "header",
+              "content": "Title"
+            },
+            {
+                "type": "color",
+                "id": "txt_color",
+                "label": "Text color",
+                "default": "#0E2D5A"
+            },
+            {
+                "type": "checkbox",
+                "id": "display_title",
+                "label": "Display title",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "reward_title",
+                "label": "Reward title",
+                "info": "Leave this field empty to use settings from Loyalty Lion app."
+            },
+            {
+              "type": "header",
+              "content": "Description"
+            },
+            {
+                "type": "checkbox",
+                "id": "display_desc",
+                "label": "Display description",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "desc",
+                "label": "Description",
+                "info": "Leave this field empty to use settings from Loyalty Lion app."
+            },
+            {
+              "type": "header",
+              "content": "Button"
+            },
+            {
+                "type": "text",
+                "id": "btn_txt",
+                "label": "Button text",
+                "info": "Leave this field empty to use settings from Loyalty Lion app."
+            }
+        ]
+    }
+  ]
+}
+
+{% endschema %}

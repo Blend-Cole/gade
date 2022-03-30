@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/ga-de-cosmetics-israel.myshopify.com/pages/configure/98907/edit
+{% endcomment %}
+{% if page.metafields.custom_fields["cover_photo"] != blank %}
+  <div class="custom-field custom-field__cover-photo custom-field__type--image">
+    <h3 class="custom-field--title">Cover Photo</h3>
+    <div class="custom-field--value">  
+      {% include 'cf-image' with image: page.metafields.custom_fields["cover_photo"] %}
+    </div>
+  </div>
+{% endif %}

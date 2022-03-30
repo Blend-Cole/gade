@@ -1,0 +1,47 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/ga-de-cosmetics-israel.myshopify.com/articles/configure/139702/edit
+{% endcomment %}
+{% if article.metafields.custom_fields["how_to"] != blank %}
+  <div class="custom-field custom-field__how-to custom-field__type--field-collection">
+    <h3 class="custom-field--title">how to</h3>
+    <div class="custom-field--value">
+      {% assign separator = "|###|" %}
+      {% assign title_array = article.metafields.custom_fields["title"] | split: separator %}
+      {% assign image_array = article.metafields.custom_fields["image"] | split: separator %}
+      {% assign video_array = article.metafields.custom_fields["video"] | split: separator %}
+      {% assign step_description_array = article.metafields.custom_fields["step_description"] | split: separator %}
+      {% assign open_carusel_array = article.metafields.custom_fields["open_carusel"] | split: separator %}
+      {% assign collection_array = article.metafields.custom_fields["collection"] | split: separator %}
+      {% assign product_array = article.metafields.custom_fields["product"] | split: separator %}
+      {% assign fc_keys = article.metafields.custom_fields["how_to"] | split: "," %}
+      {% for i in fc_keys %}
+        {% assign index = i | plus: 0 %}
+        <div class="fc-item fc-item-- fc-index--{{ index }}">
+          <div class="fc-field field__title">
+            {{ title_array[index] }}
+          </div>
+          <div class="fc-field field__image">
+            {{ image_array[index] }}
+          </div>
+          <div class="fc-field field__video">
+            {{ video_array[index] }}
+          </div>
+          <div class="fc-field field__step-description">
+            {{ step_description_array[index] }}
+          </div>
+          <div class="fc-field field__open-carusel">
+            {{ open_carusel_array[index] }}
+          </div>
+          <div class="fc-field field__collection">
+            {{ collection_array[index] }}
+          </div>
+          <div class="fc-field field__product">
+            {{ product_array[index] }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

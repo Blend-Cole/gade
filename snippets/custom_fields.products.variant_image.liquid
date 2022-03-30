@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/ga-de-cosmetics-israel.myshopify.com/products/configure/84811/edit
+{% endcomment %}
+{% if product.metafields.custom_fields["variant_image"] != blank %}
+  <div class="custom-field custom-field__variant-image custom-field__type--image">
+    <h3 class="custom-field--title">Variant Image</h3>
+    <div class="custom-field--value">  
+      {% include 'cf-image' with image: product.metafields.custom_fields["variant_image"] %}
+    </div>
+  </div>
+{% endif %}

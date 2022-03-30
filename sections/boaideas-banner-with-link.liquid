@@ -1,0 +1,283 @@
+{% if section.settings.url != blank %}<a href="{{ section.settings.url }}">{%endif%}
+  <div id="banner_{{section.id}}">
+    <div class="banner-content">
+      <div class="banner-text">
+        {% unless section.settings.heading == blank %}
+        <h2 class="banner-heading">{{ section.settings.heading }}</h2>
+        {% endunless %}
+        
+        {% unless section.settings.subheading == blank %}
+        <div class="banner-subheading">{{ section.settings.subheading }}</div>
+        {%- endunless -%}
+        
+        {% unless section.settings.overlay_text == blank %}
+        <div class="banner-text text-center">{{ section.settings.overlay_text }}</div>
+        {% endunless %}
+        
+        {% unless section.settings.button == blank %}
+        <div class="btn btn-hollow">{{ section.settings.button }}</div>
+        {% endunless %}
+        
+      </div>
+    </div>
+    <div>
+      <img class="lazyload background-image d-block sm-d-none" data-src="{{ section.settings.image | img_url: 'master' }}">
+      <img class="lazyload background-image sm-d-block" data-src="{{ section.settings.image_mobile | img_url: 'master' }}">
+    </div> 
+  </div>
+{% if section.settings.url != blank %}</a>{%endif%}
+<style>
+  .boaideas-Parallax-banner { margin-bottom: -16px; }
+  #banner_{{section.id}}{
+    height: {{ section.settings.image_height}}px;
+    overflow:scroll;
+  }
+  #banner_{{section.id}}::-webkit-scrollbar { width: 0 !important }
+  .background-image { background-repeat: no-repeat; background-position: center; object-fit: cover; }
+  #banner_{{section.id}} .banner-content{ position: relative; top: 50%; right: 0; transform: translate(0,-50%);}
+  #banner_{{section.id}} .banner-text  .banner-heading{
+    font-size: {{section.settings.heading_font_size}}px;
+    color: {{section.settings.heading_color}};
+    font-weight: {{section.settings.heading_font_weight}};
+    margin: 0 0 24px 0;
+  }
+  
+  #banner_{{section.id}} .banner-text .banner-subheading {
+    font-size: {{section.settings.subheading_font_size}}px;
+    color: {{section.settings.subheading_color}};
+    font-weight: {{section.settings.subheading_font_weight}};
+    margin: 0 0 24px 0;
+  }
+  
+  #banner_{{section.id}} .banner-text .banner-text {
+    font-size: {{section.settings.overlay_text_font_size}}px;
+    color: {{section.settings.overlay_text_color}};
+    font-weight: {{section.settings.overlay_text_font_weight}};
+  }
+  
+  #banner_{{section.id}} .btn.btn-hollow { border:1px solid #000; width:180px; height:40px; text-align:center; font-size: 1rem; padding: 0.5rem; margin-top: 1.2rem;}
+  
+  
+  {% if section.settings.add_cover %}
+  #banner_{{section.id}}:after { background-size: cover; background: rgba(0, 0, 0, 0.2) center; content: ""; position: absolute; bottom: 0; left: 0; right: 0; top: 0; }
+  {% endif %}
+  @media screen and (max-width: 990px ){
+    
+    #banner_{{section.id}}{ height: {{ section.settings.mobile_image_height}}px; }
+	#banner_{{section.id}} .banner-content{ position: relative; top: 50%; right: 10px; transform: translate(10px, -50%); text-align: center; padding: 0 25px;}
+    #banner_{{section.id}} .btn.btn-hollow { margin:1.2rem auto 0; }
+  
+  }
+  @media screen and (max-width: 767px ){
+    .boaideas-Parallax-banner { margin-bottom: 0;}
+    #banner_{{section.id}} {height: auto; overflow: hidden; }
+  }
+
+</style>
+
+
+{% schema %}
+  {
+    "name": "Boaideas-Parallax Banner",
+	"class":"boaideas-Parallax-banner",
+    "settings": [
+	  
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image for desktop"
+      },
+	  {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Image for mobile"
+      },
+      {
+        "type": "range",
+        "id": "image_height",
+        "min": 200,
+        "max": 1000,
+        "step": 100,
+        "label": "Image height",
+        "default": 400
+      },
+	  {
+        "type": "range",
+        "id": "mobile_image_height",
+        "min": 200,
+        "max": 1000,
+        "step": 100,
+        "label": "Image height",
+        "default": 400
+      },
+	  {
+        "type": "url",
+        "id": "url",
+        "label": "insert link"
+      },
+	  {
+        "type": "checkbox",
+        "id": "add_cover",
+        "label": "Add image black cover"
+      },
+      {
+        "type": "header",
+        "content": "Overlay Header"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Header",
+        "default": "Boaideas header"
+      },
+      {
+        "type": "range",
+        "id": "heading_font_size",
+        "min": 12,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Header font size",
+        "default": 26
+      },
+      {
+        "type": "range",
+        "id": "heading_distance_top",
+        "min": 12,
+        "max": 101,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading distance from top",
+        "default": 26
+      },
+      {
+        "type": "select",
+        "id": "heading_font_weight",
+        "label": "Header font weight",
+        "options": [
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Header font color",
+        "default": "#000"
+      },
+      {
+        "type": "header",
+        "content": "Subheader"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheader",
+        "default": "Sub-Heading"
+      },
+      {
+        "type": "range",
+        "id": "subheading_font_size",
+        "min": 12,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Subheader font size",
+        "default": 16
+      },
+      {
+        "type": "select",
+        "id": "subheading_font_weight",
+        "label": "Subheader font weight",
+        "options": [
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "subheading_color",
+        "label": "Subheader font color",
+        "default": "#000"
+      },
+	  {
+        "type": "header",
+        "content": "Overlay Text"
+      },
+      {
+        "type": "textarea",
+        "id": "overlay_text",
+        "label": "Text",
+        "default": "Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story."
+      },
+      {
+        "type": "range",
+        "id": "overlay_text_font_size",
+        "min": 12,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Textarea font size",
+        "default": 16
+      },
+      {
+        "type": "select",
+        "id": "overlay_text_font_weight",
+        "label": "Textarea font weight",
+        "options": [
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "overlay_text_color",
+        "label": "Textarea font color",
+        "default": "#000"
+      },
+	  {
+        "type": "text",
+        "id": "button",
+        "label": "Button text",
+        "default": "See More"
+      }
+	],
+  "presets": [
+      {
+        "name": "Boaideas-Parallax Banner",
+        "category": "Image"
+      }
+    ]
+}
+{% endschema %}
+

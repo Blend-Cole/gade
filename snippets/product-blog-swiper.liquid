@@ -1,0 +1,385 @@
+<div class="streched-background"></div>
+<div id="ProductBlogSlideshow">
+  <!-- Slider main container -->
+  <h1 class="swiper-title">בלוג שלנו</h1> 	
+  <div class="swiper-container" id="productBlog"> 
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+          <!-- Slides -->
+        {% for link in linklists.blogs.links %}
+          {% assign blog = link.object %}
+          {% for article in blog.articles %}
+        	{% assign  product_collection_name = product.collections[0].title | downcase %}
+        
+            {% if article.tags contains product_collection_name %}
+                <div class="swiper-slide"> 
+                    <div class="blog-image" style="background:url('{{ article.image | img_url: 'master' }}'); background-size:cover;background-position:top center;"></div>
+                    <div class="blog-text">
+                      <h1>{{ article.title }}</h1>
+                      {% assign published_at = article.published_at | date: "%b %d, %Y" %}
+                      <h2>פורסם ב {{ article.published_at | date: "%b %d, %Y" }}</h2>
+                      <div class="blog-excerpt"> {{ article.excerpt_or_content }} </div>
+                      <div class="blog-products-section">
+                        {% assign product_collection = collections[article.metafields.custom_fields["upsell_collection"]] %}
+                        <div class="blog-products-carousel">
+                          {% for product in product_collection.products limit: 3 %}
+                          {% include 'sca_freegift_price' with product %}
+                          <div class="lazyOwl desktop-4 tablet-2 mobile-half" data-alpha="{{ product.title }}" data-price="{{ sca_price }}">
+                            <a href="{{ product.url | within: collection }}" title="{{ prod.title | escape }}">
+                              <img class=""
+                                   src="{{ featured_image | product_img_url: '200x' }}"
+                                   data-src="{{ img_link }}"
+                                   data-sizes="auto"
+                                   data-image-id="{{ image.id }}"
+                                   alt="{{ product.title | escape }}">
+
+                              <noscript>
+                                <img
+                                     src="{{ featured_image | product_img_url: 'large' }}"
+                                     alt='{{ product.title | escape }}'
+                                     data-image-id="{{ image.id }}" />
+                              </noscript>
+                            </a>
+                            <div class="product-details">
+                              <a href="{{ product.url | within: collection }}">
+                                <h3>{{ product.title }}</h3>
+                                {% if settings.vendor %}
+                                <h4>{{ product.vendor }}</h4>
+                                {% endif %}
+                              </a>
+                              <div class="price">
+                                {% if sca_price < sca_compare_at_price %}
+                                <div class="onsale">
+                                  <span class="money">{{ sca_price | money }}</span>
+                                </div>
+                                <div class="was">
+                                  <span class="money">{{ sca_compare_at_price | money }}</span>
+                                </div>
+                                {% else %}
+                                <div class="prod-price">
+                                  {% if sca_price_varies %}
+                                  {{ 'products.general.from' | t }} <span class="money">{{ sca_price_min | money }}</span> - <span class="money">{{ sca_price_max | money }}</span>
+                                  {% else %}
+                                  <span class="money">{{ sca_price | money }}</span>
+                                  {% endif %}
+                                </div>
+                                {% endif %}
+
+                              </div>
+                              {% form 'product', product, data-product-form:product_form_config, id: form_id %}
+                              <script class="product-json" type="application/json">
+    							{{ product | json }}
+                              </script>
+                              <input type="hidden" id="{{ product.id }}" name="id" data-sku="{{ product.sku }}" value="{{ product.variants[0].id }}" />
+                              <input type="submit" name="button" class="add-to-cart" value="{{ 'products.product.add_to_cart' | t }}" />
+                              {% endform %}
+
+                            </div>
+                          </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            {% endif %}
+          {% endfor %} 
+        {% endfor %}
+      </div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev">&#10094;</div>
+      <div class="swiper-button-next">&#10095;</div>
+  </div>
+</div>
+
+
+
+
+
+<style>
+  .blog-products-carousel .lazyOwl { padding: 0 0.9rem; } 
+  .blog-products-carousel .lazyOwl  .price { padding-bottom: 0.2rem; padding-top: 0; font-size: 0.8rem; }
+  .streched-background{
+    height: 640px;
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    background: #f3f0f1;
+  }
+  
+  
+  .slider-background{
+    left: 0; 
+    position: absolute; 
+    background-color: #f3f0f1;
+  }
+  
+  .swiper-container {
+    width: 100%;
+    height: 505px;
+    text-align: center;
+  }
+  
+  .swiper-slide {
+    width: 1295px;
+    height: 505px;
+    font-size: 18px;
+    background: #f3f0f1;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+  
+  #productBlog{
+  	background: #f3f0f1;
+  }
+    
+  #ProductBlogSlideshow h1.swiper-title{
+    position: relative;
+    color: black;
+    margin: 39px 0px 40px 0px;
+  	font-size: 28px;
+    text-align: center;
+    line-height: unset;
+  }
+  
+  #ProductBlogSlideshow h1.swiper-title:before {
+    width: 25%;
+    background-color: #d1d1d1;
+    height: 1px;
+    content: '';
+    position: absolute;
+    left: 199px;
+    top: 13px;
+    margin: 0px auto;
+	}
+  
+  #ProductBlogSlideshow h1.swiper-title:after {
+    width: 25%;
+    background-color: #d1d1d1;
+    height: 1px;
+    content: '';
+    position: absolute;
+    right: 199px;
+    top: 13px;
+    margin: 0px auto;
+   }
+  
+  
+  #productBlog .blog-body{
+  	display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 70%;
+    height: 50%;
+    margin-right: 14.5%;
+    background: white;
+    
+  }
+  
+  #productBlog .blog-image{
+     width: 651px;
+	 height: 505px;
+    
+  }
+  
+  #productBlog .blog-text{
+    width: 644px;
+	height: 505px;
+    padding: 25px 35px 0;
+    background: white;
+    text-align: right;
+  }
+  
+  #productBlog .blog-text h1{
+    font-size: 25px;   
+  }
+  
+  #productBlog .blog-text h2{
+    font-size: 1.2rem;
+    font-weight:bold;
+  }
+  
+  #productBlog .blog-products-section .owl-item{
+    width: 118px;  
+    margin: 0 7.5px;
+  }
+  
+  #productBlog .blog-products-section .reveal{
+      width: 87px;
+      height: 110px;
+      margin: 0 auto;
+  }
+  
+  
+  #productBlog .blog-products-section h3{
+  	font-size: 13px;
+    min-height:40px;
+  }
+  
+  #productBlog .blog-products-section .product-description-car{
+  	display:none;
+  }
+  
+  #productBlog .blog-products-section .so.icn{
+    padding-top: 15px;
+    width: 41px;
+    height: 46px;
+    top: 0px;
+  }
+  
+  #ProductBlogSlideshow .blog-products-section .add-to-cart{
+    padding: 0;
+    height: 31px;
+  }
+  
+  #ProductBlogSlideshow .swiper-button-prev {
+    background-image: none;
+    font-size: 18px;
+    background: #fff;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+  }
+  
+  #ProductBlogSlideshow .swiper-button-next {
+    background-image: none;
+    font-size: 18px;
+    background: #fff;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+  }
+  
+  #productBlog .blog-text .blog-excerpt{
+      font-size: 16px;
+      margin: 0 0 28px 0;
+    }
+  
+  @media screen and (max-width: 1220px ){
+    #ProductBlogSlideshow{
+      height: fit-content;
+      background: #f3f0f1;
+      padding: 1rem;
+    }
+    
+    ProductBlogSlideshow{ padding:1rem;}
+
+    .blog-products-carousel .lazyOwl {
+      padding: 0 0.5rem;
+    }
+
+    #ProductBlogSlideshow .swiper-container {
+      width: 100%;
+      height: 653pt;
+      text-align: center;
+    }
+    
+    #ProductBlogSlideshow .swiper-wrapper {
+    	max-height: 653pt;
+    }
+    
+    #productBlog .swiper-slide{
+      height: 653pt;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    
+    }
+
+    #productBlog .blog-image{
+      width: 100%;
+      min-height: 500px;
+
+    }
+
+    #productBlog .blog-text{
+      width: 100%;
+      height: 100%;
+      padding: 30px 40px;
+      background: white;
+      text-align: right;
+
+    }
+
+    #productBlog .blog-text h1{
+      font-size: 25px;
+
+    }
+
+    #productBlog .blog-text h2{
+      font-size: 16.5px;
+      font-weight:bold;
+    }
+
+    #productBlog .blog-products-section .reveal{
+      width: 87px;
+      height: 110px;
+      margin: 0 auto;
+    }
+
+
+    #productBlog .blog-products-section .so.icn{
+      padding-top: 15px;
+      width: 41px;
+      height: 46px;
+      top: 0px;
+    }
+
+    #productBlog .blog-products-section .add-to-cart{
+      padding: 0;
+      height: 40px;
+    }
+
+    #ProductBlogSlideshow h1.swiper-title:before { width: 22%; left: 80px; top: 50%; }
+    #ProductBlogSlideshow h1.swiper-title:after { width: 22%; right: 80px; top: 50%; }
+
+  }
+  
+  @media screen and (max-width: 767px ){
+    #ProductBlogSlideshow h1.swiper-title:before { display:none; } 
+    #ProductBlogSlideshow h1.swiper-title:after { display:none; }
+    #ProductBlogSlideshow { padding: 0.75rem; }
+    #productBlog .blog-text { padding:2rem; }
+    .product .yotpo.yotpo-small { padding:1rem; }
+    .blog-products-carousel .lazyOwl { padding: 0 0.3rem; }
+    .blog-products-carousel .lazyOwl:nth-child(3) { display:none;}
+    #productBlog .blog-products-section h3 { min-height: 40px; }
+  }
+</style>
+
+{{ 'swiper.min.css' | asset_url | stylesheet_tag }}
+{{ 'swiper.min.js' | asset_url | script_tag }}
+  
+<script>
+
+  r(function(){
+    //initialize swiper when document ready
+    var mySwiper = new Swiper ('.swiper-container', {
+      // Optional parameters
+      direction: 'horizontal',
+      loop: true,
+      speed: 500,
+
+
+      //Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+    
+  });
+  function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+</script>

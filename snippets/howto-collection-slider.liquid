@@ -1,0 +1,74 @@
+<div class="collection-carousel-wrap desktop-12 mobile-3">
+  
+  <div class="product-collection-carousel">
+    {% for prod in c.products %}
+    {% include 'sca_freegift_price' with prod %}
+        {% unless prod.handle == product.handle %}
+		  {% assign form_id = prod.id | downcase %}
+          {% assign featured_image = prod.featured_image %}
+          {% assign img_link = featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+
+          <div class="lazyOwl" data-alpha="{{ prod.title }}" data-price="{{ sca_price }}">
+            <div class="product-wrapper">
+              <a href="{{ prod.url | within: collection }}" title="{{ prod.title | escape }}">
+                <img class=""
+                     src="{{ featured_image | product_img_url: '300x' }}"
+                     data-src="{{ img_link }}"
+                     data-sizes="auto"
+                     data-image-id="{{ image.id }}"
+                     alt="{{ prod.title | escape }}">
+
+                <noscript>
+                  <img
+                       src="{{ featured_image | product_img_url: '300x' }}"
+                       alt='{{ prod.title | escape }}'
+                       data-image-id="{{ image.id }}" />
+                </noscript>
+              </a>
+              <div class="product-details">
+                <a href="{{ prod.url | within: collection }}">
+                  <h3>{{ prod.title }}</h3>
+                  {% if settings.vendor %}
+                  <h4>{{ prod.vendor }}</h4>
+                  {% endif %}
+                </a>
+                <div class="product-desc">
+                {% if prod.metafields.custom_fields["mini_description"] != blank %}
+					{{ prod.metafields.custom_fields["mini_description"] | remove: '<div>' | truncate: 40 }}
+				{% else %}
+					{{ prod.description | truncate: 40 }}
+				{% endif %}
+                </div>
+                <div class="price">
+                  {% if sca_price < sca_compare_at_price %}
+                  <div class="onsale">
+                    <span class="money">{{ sca_price | money }}</span>
+                  </div>
+                  <div class="was">
+                    <span class="money">{{ sca_compare_at_price | money }}</span>
+                  </div>
+                  {% else %}
+                  <div class="prod-price">
+                    {% if sca_price_varies %}
+                    {{ 'products.general.from' | t }} <span class="money">{{ sca_price_min | money }}</span> - <span class="money">{{ sca_price_max | money }}</span>
+                    {% else %}
+                    <span class="money">{{ sca_price | money }}</span>
+                    {% endif %}
+                  </div>
+                  {% endif %}
+                  {% render 'product-weight-boa', product: prod %}
+                </div>
+                {% include 'yotpo-product-reviews'%}
+
+              </div>
+            </div>
+            <a class="fancybox.ajax product-modal" rel="nofollow" href="{{ prod.url }}?view=quick">
+              {{ 'products.product.add_to_cart' | t }}
+            </a>
+          </div>
+        {% endunless %}
+    {% endfor %}
+  </div>
+
+</div>
+

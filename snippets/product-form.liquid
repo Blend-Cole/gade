@@ -1,0 +1,434 @@
+{% include 'sca_freegift_price' with product %}
+  {% form 'product', product, data-product-form:product_form_config %}
+
+  <script class="product-json" type="application/json">
+    {{ product | json }}
+  </script>
+
+  <div class="product-description">
+
+    {% if section.settings.show_vendor %}
+      <h3>{{ 'products.product.designer' | t }}: {{ product.vendor }}</h3>
+      <div class="clear"></div>
+    {% endif %}
+
+    {%- if settings.show_multiple_currencies -%}
+      {% assign price = current_variant.price | money_with_currency %}
+      {% assign compare_price = current_variant.compare_at_price | money_with_currency %}
+    {%- else -%}
+      {% assign price = current_variant.price | money %}
+      {% assign compare_price = current_variant.compare_at_price | money %}
+    {%- endif -%}
+    {%- if current_variant.compare_at_price > current_variant.price -%}
+      {% assign onsale = true %}
+    {%- endif -%}
+
+    {% if section.settings.product_note != blank %}
+    {% unless product.type == 'Gift Card' %}
+      <p class="product-note">
+        {{ section.settings.product_note | escape }}
+      </p><div class="clear"></div>
+    {% endunless %}
+    {% endif %}
+
+    {% if product.options.size > 1 %}
+     <div class="select" {% if sca_product_variantCount == 1 %}style="display: none;"{% endif %}>
+       <select id="product-select-{{ product.id }}" name='id'>
+         {% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
+           <option value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
+             {{ variant.title }} - {{ variant.price | money }}
+           </option>
+
+{%endunless%}
+{%endunless%}
+         {% endfor %}
+       </select>
+     </div>
+    {% elsif product.options.size == 1 and sca_product_variantCount > 1 %}
+     <div class="select">
+       <label>{{ product.options[0] }}</label>
+       <select id="product-select-{{ product.id }}" name='id'>
+         {% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
+           <option data-sku="{{ variant.sku }}" value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
+             {{ variant.title }} - {{ variant.price | money }}
+           </option>
+
+{%endunless%}
+{%endunless%}
+         {% endfor %}
+       </select>
+     </div>
+    {% elsif sca_product_variantCount == 1 %}
+     <select id="product-select-{{ product.id }}" name="id" {% if sca_product_variantCount == 1 %}style="display: none;"{% endif %}>
+       {% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
+         <option value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
+           {{ variant.title }} - {{ variant.price | money }}
+         </option>
+
+{%endunless%}
+{%endunless%}
+       {% endfor %}
+     </select>
+    {% else %}
+     <div class="what-is-it">
+       {% if product.options.first != 'Title' %}
+         <label>{{ product.options.first }}:</label>
+         {% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
+           <span class="it-is">{{ variant.option1 | escape }}</span>
+
+{%endunless%}
+{%endunless%}
+         {% endfor %}
+       {% endif %}
+     </div>
+     <div class="product-variants"></div><!-- product variants -->
+     <input  type="hidden" id="{{ variant.id }}" name="id" data-sku="{{ variant.sku }}" value="{{ product.variants[0].id }}" />
+    {% endif %}
+
+    {% if section.settings.show_sku %}
+      <div class="sku">
+        <label style="display: inline-block; line-height: 1.6em;">{{ 'customer.order.details.sku' | t }}:</label> <span class="variant_sku">{{ current_variant.sku }}</span>
+      </div><div class="clear"></div>
+    {% endif %}
+    <div id="productPriceAndPoints">
+      <div class="productPoints">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 45 28.1" style="enable-background:new 0 0 45 28.1;" xml:space="preserve">
+        <g>
+          <rect x="16.9" y="0" width="1.9" height="1.9"/>
+          <path d="M0,25.3L0,2.8C0,1.3,1.3,0,2.8,0L15,0v1.9H2.8c-0.5,0-0.9,0.4-0.9,0.9v22.5c0,0.5,0.4,0.9,0.9,0.9h39.4
+            c0.5,0,0.9-0.4,0.9-0.9V2.8c0-0.5-0.4-0.9-0.9-0.9H20.6V0l21.6,0C43.7,0,45,1.3,45,2.8v22.5c0,1.6-1.3,2.8-2.8,2.8H2.8
+            C1.3,28.1,0,26.9,0,25.3z"/>
+          <rect x="32.8" y="0.9" width="1.9" height="6.6"/>
+          <path d="M29.1,27.2V11.2h1.9v15h1.9v-15h1.9v15.9c0,0.5-0.4,0.9-0.9,0.9H30C29.5,28.1,29.1,27.7,29.1,27.2z"/>
+          <rect x="29.1" y="0.9" width="1.9" height="6.6"/>
+          <rect x="0.9" y="22.5" width="26.2" height="1.9"/>
+          <path d="M29.1,11.2V7.5c0-0.5,0.4-0.9,0.9-0.9h3.8c0.5,0,0.9,0.4,0.9,0.9v3.8c0,0.5-0.4,0.9-0.9,0.9H30
+            C29.5,12.2,29.1,11.8,29.1,11.2z M32.8,8.4h-1.9v1.9h1.9V8.4z"/>
+          <rect x="36.6" y="22.5" width="7.5" height="1.9"/>
+          <rect x="3.8" y="18.7" width="4.5" height="1.9"/>
+          <rect x="10.1" y="18.7" width="4.5" height="1.9"/>
+          <rect x="16.4" y="18.7" width="4.5" height="1.9"/>
+          <rect x="22.7" y="18.7" width="4.5" height="1.9"/>
+          <path d="M21.9,13.5c-0.5-0.9-0.4-1.9,0.1-2.8l0.9-1.3L22,8c-0.5-0.8-0.6-1.9-0.1-2.8c0.5-0.9,1.5-1.5,2.6-1.5h0.8
+            c0.6,0,1.2,0.2,1.7,0.6l3.5,2.4l-1.1,1.5l-3.5-2.4c-0.2-0.1-0.4-0.2-0.6-0.2h-0.8c-0.4,0-0.8,0.2-1,0.5c-0.2,0.3-0.1,0.6,0,0.9
+            l1.2,1.8c0.2,0.3,0.2,0.7,0,1l-1.2,1.8c-0.2,0.3-0.2,0.6,0,0.9c0.2,0.3,0.6,0.6,1,0.5h0.8c0.2,0,0.5-0.1,0.7-0.3l3.5-2.4l1.1,1.5
+            l-3.4,2.4C26.6,14.8,26,15,25.3,15h-0.8C23.4,15,22.4,14.4,21.9,13.5z"/>
+          <path d="M36.7,14.4L33.2,12l1.1-1.5l3.5,2.4c0.2,0.1,0.4,0.2,0.6,0.2h0.8c0.4,0,0.8-0.2,1-0.5c0.2-0.3,0.1-0.6,0-0.9L39,9.9
+            c-0.2-0.3-0.2-0.7,0-1L40.2,7c0.2-0.3,0.2-0.6,0-0.9c-0.2-0.3-0.6-0.6-1-0.5h-0.8c-0.2,0-0.5,0.1-0.7,0.3l-3.5,2.4l-1.1-1.5
+            l3.4-2.4c0.5-0.4,1.1-0.6,1.8-0.6h0.8c1.1,0,2.1,0.6,2.6,1.5c0.5,0.9,0.4,1.9-0.1,2.8l-0.9,1.3l0.9,1.3c0.5,0.8,0.6,1.9,0.1,2.8
+            c-0.5,0.9-1.5,1.5-2.6,1.5h-0.8C37.8,15,37.2,14.8,36.7,14.4z"/>
+          <rect x="23.4" y="8.4" width="6.6" height="1.9"/>
+          <rect x="33.8" y="8.4" width="6.6" height="1.9"/>
+          <path d="M0,11.2l0-3.8C0,7,0.4,6.6,0.9,6.6h19.7v1.9H1.9v1.9h18.8v1.9H0.9C0.4,12.2,0,11.8,0,11.2z"/>
+        </g>
+        </svg>
+        <div class="productPointsText">
+        <p><strong>צבר <span data-lion-points-for-product-id="{{ product.id }}"></span> נקודות</strong></p>
+        {% unless customer %}{{section.settings.product_points_text}}{% endunless %}
+        </div>
+      </div>
+      <div id="product-price">
+        <span class="product-old-price " itemprop="price" >
+          <span class="money onsale">{{ compare_price  }}</span>
+        </span>
+        <span class="was"></span>
+        <span class="product-price" itemprop="price">
+          <span class="money" data-lion-price-for-product-id="{{ product.id }}">{{ price }}</span>
+        </span>
+        {% render 'product-weight-boa', product: product %}
+      </div>
+	  </div>
+
+    {% if product.url contains "products/gift-card" %}
+    	<div id="skt-fields">
+          <p style="text-align:right">פנק/י את אהובך עם ברכה</p>
+        <div>
+            <input id="sktcgc_to" style="width:100%;margin-bottom:10px;" type="text" name="properties[To]" value="" placeholder="מקבל המתנה
+        " />
+        </div>
+        <div>
+            <input id="sktcgc_from" style="width:100%;margin-bottom:10px;" type="text" name="properties[_From]" value="" placeholder="שם השולח"/>
+        </div>
+        <div>
+            <textarea id="sktcgc_msg" style="height:80px;width:100%;margin-bottom:10px;" placeholder="ברכה"></textarea>
+        <input type="hidden" id="sktcgc_msgprop" name="properties[_Msg]" value="" />
+        </div>
+        </div>
+    {% endif %}
+    
+    
+{% comment %} extra add to cart button {% endcomment %}
+    <div class="product-add-to-cart">
+      <input id="AddToCart" type="submit" name="button" class="{% if section.settings.show_payment_button %} secondary-button{% endif %}" value="{{ 'products.product.add_to_cart' | t }}" />
+      <script data-app="esc-out-of-stock" type="text/json">[{% for variant in product.variants %}{"id":{{ variant.id }},"title":"{{ variant.title | escape }}","option1":{% if variant.option1 %}"{{ variant.option1 | escape }}"{% else %}null{% endif %},"option2":{% if variant.option2 %}"{{ variant.option2 | escape }}"{% else %}null{% endif %},"option3":{% if variant.option3 %}"{{ variant.option3 | escape }}"{% else %}null{% endif %},"sku":{% if variant.sku %}"{{ variant.sku | escape }}"{% else %}null{% endif %},"requires_shipping":{{ variant.requires_shipping }},"taxable":{{ variant.taxable }},"featured_image":{% if variant.featured_image %}"{{ variant.featured_image }}"{% else %}null{% endif %},"available":{{ variant.available }},"name":"{{ variant.name }} | escape","public_title":"{{ variant.public_title }} | escape","options":{{ variant.options | json }},"price":{{ variant.price }},"weight":{% if variant.weight %}{{ variant.weight }}{% else %}0{% endif %},"compare_at_price":{% if variant.compare_at_price %}{{ variant.compare_at_price }}{% else %}null{% endif %},"inventory_quantity":{{ variant.inventory_quantity }},"inventory_management":{% if variant.inventory_management %}"{{ variant.inventory_management }}"{% else %}null{% endif %},"inventory_policy":{% if variant.inventory_policy %}"{{ variant.inventory_policy }}"{% else %}null{% endif %},"barcode":{% if variant.barcode %}"{{ variant.barcode }}"{% else %}null{% endif %}}{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
+    </div>
+
+	<div id="productAdd">
+      <div class="product-adder">
+          <input id="AddToCart" type="submit" name="button" class="{% if section.settings.show_payment_button %} secondary-button{% endif %}" value="{{ 'products.product.add_to_cart' | t }}" />
+      </div>
+
+      {%- if section.settings.show_quantity_selector -%}
+      <div class="product-qty">
+        <input type='button' value='-' class='qtyminus' field='updates_{{ item.id }}' />
+        <input type="text" name="quantity" class="product-quantity field" id="updates_{{ item.id }}" value="1">
+        <input type='button' value='+' class='qtyplus' field='updates_{{ item.id }}' />
+      </div>
+      {%- else -%}
+      <input type="hidden" name="quantity" value="1">
+
+      {%- endif -%}
+	</div>
+    {% if section.settings.show_payment_button %}
+    {{ form | payment_button }}
+    {% endif %}
+
+  </div>
+{% endform %}
+
+<style>
+
+  span.product-old-price{
+    color: #000000;
+  }
+  
+  
+  #productPriceAndPoints{
+   	margin: 25px 0 5px;
+  }
+  
+  #product-price span.product-old-price span.money.onsale{
+    opacity: 0.7;
+    font-size: 13px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.85;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+    text-decoration: line-through;
+  }
+  #productAdd  input#AddToCart{
+	height: 50px;
+    font-weight: bold;
+    float: left;
+    display: inline;
+    font-size: 16px;
+    margin-bottom: 0;
+    min-height: 47px;
+    padding: 0 0 0 0;
+  }
+
+  #productAdd{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    max-height: 67px;
+  }
+  
+  
+  .product-qty {
+    max-width: 35%;
+    width: 100%;
+    display: flex;
+    margin-left: 0.8rem;
+    height:50px;
+    border: 1px solid #000;
+  }
+  .product-qty input { margin-bottom: 0; background: #fff; border: 0; color: #000; }
+  
+  #productAdd .product-adder{
+    order: 1;
+    margin: 0;
+    width: 100%;
+  }
+  
+  
+  input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+
+  
+  @media screen and (max-width: 1450px ){
+  #productQuantity{
+    max-width: 40%; }
+  }
+  
+  
+  @media screen and (max-width: 1220px ){
+    #productsRight .product-title{
+	    margin: 0 0 40pt 0;
+    }
+    
+    #productsRight .product-title h1{
+	    text-align: right;
+    }
+
+    #productsRight .rte{
+    	margin-bottom: 30px;
+    }
+    
+    
+    #productPriceAndPoints{
+      margin: 0 0 0 0;
+      display: flex;
+      flex-direction: column-reverse;
+  	}
+    
+    #getPoints{
+      display: flex;
+      margin: 0 0 17pt 0;
+    }
+    
+    .register-get-points{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-right: 15px;
+    
+    }
+    
+    #getPoints img.get-points-img{
+      width:41px;
+      height: 29px;
+      padding-top: 0px;
+      margin-top 6px;
+    }
+    
+   
+    #productPriceAndPoints #getPoints span.get-points{
+      padding-right: 0px;
+      font-size: 16px;
+    }
+    
+    #productPriceAndPoints #getPoints span.register{
+      padding-right: 0px;
+      font-size: 13px;
+    }
+    
+    #productsRight .product-description{
+    margin-top: 0px;
+      
+    }
+    
+    
+    #productPriceAndPoints div#product-price{
+    	margin: 0 0 0 0;	
+      	text-align: right;
+    }
+    
+    #product-price .product-price{
+    	font-size: 25px;
+    }
+    
+    #product-price .product-old-price{
+    	font-size: 17px;
+    }
+  
+    .product-description #productAdd {
+	 	position: fixed;
+      	bottom: 0;
+  		width: 100%;
+      	max-height: 57px;
+        z-index: 10;
+	    right: 0;
+    }  
+    #productAdd .product-adder{
+      	max-height: 50px;
+    }
+    
+    .product-description #productAdd input#AddToCart{
+      height: 57px;
+      font-size: 23px;
+      border-top: 1px solid #a7a7a7;
+      border-right: 1px solid #a7a7a7;
+    }
+    
+  }
+</style>
+
+<script>
+    // This button will increment the value
+    $('.qtyplus').click(function(e){
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        let fieldName = $(this).attr('field');
+        // Get its current value
+        //let currentVal = parseInt($('input[id='+fieldName+']').val());
+      	let currentVal = parseInt(($(this).siblings('.field')).val());
+
+        // If is not undefined
+        if (!isNaN(currentVal)) {
+            // Increment
+            //$('input[id='+fieldName+']').val(currentVal + 1);
+          	$(this).siblings('.field').val(currentVal + 1);
+        } else {
+            // Otherwise put a 0 there
+            //$('input[id='+fieldName+']').val(0);
+            $(this).siblings('.field').val(0);
+
+        }
+    });
+    // This button will decrement the value till 0
+    $(".qtyminus").click(function(e) {
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        fieldName = $(this).attr('field');
+        // Get its current value
+        //var currentVal = parseInt($('input[id='+fieldName+']').val());
+        let currentVal = parseInt(($(this).siblings('.field')).val());
+
+        // If it isn't undefined or its greater than 0
+        if (!isNaN(currentVal) && currentVal > 1) {
+            // Decrement one
+            //$('input[id='+fieldName+']').val(currentVal - 1);
+          	$(this).siblings('.field').val(currentVal - 1);
+        } else {
+            // Otherwise put a 0 there
+			//$('input[id='+fieldName+']').val(0);
+               $(this).siblings('.field').val(1);
+
+        }
+    });
+
+  
+  r(function(){
+    if( $(window).width() < 1220 ){
+      $('.thumbnail-slider').bxSlider({
+        mode: 'vertical',
+        minSlides: 5,
+        slideMargin: 20,
+        infiniteLoop: false,
+        pager: false,
+        prevText: "",
+        nextText: "",
+        hideControlOnEnd: false
+      });
+      $('.product-thumbnail').css('margin-bottom', '10px' );
+      $('.bx-viewport').css('height', '331px' );    
+    };
+    
+  });
+
+  function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+  
+  
+
+</script>

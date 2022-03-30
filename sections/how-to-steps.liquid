@@ -1,0 +1,196 @@
+<div class="how-to-steps">
+  {% for block in section.blocks %}
+  <div class="how-to-step" {{ block.shopify_attributes }}>
+    {% case block.type %}
+
+    {% when 'how-to-step-1' %}
+    {% include 'how-to-step-1' %}
+
+    {% when 'how-to-step-2' %}
+    {% include 'how-to-step-2' %}
+
+    {% when 'how-to-step-3' %}
+    {% include 'how-to-step-3' %}
+
+    {% when 'how-to-step-4' %}
+    {% include 'how-to-step-4' %}
+
+    {% endcase %}
+  </div>
+  {% endfor %}
+</div>
+
+
+
+{% schema %}
+  {
+  "blocks": [
+    {
+      "type": "how-to-step-1",
+      "name": "How To Step 1",
+      "settings": [
+	      {
+        "label": "Show step",
+        "type": "radio",
+        "id": "display",
+        "options": [
+          {
+            "value": "flex",
+            "label": "Show"
+          },
+          {
+            "value": "none",
+            "label": "Hide"
+          }
+        ]
+      		},
+        {
+          "label": "Image for desktop",
+          "type": "image_picker",
+          "id": "image"
+        },
+        {
+          "label": "Step heading",
+          "type": "text",
+          "id": "title"
+        },
+        {
+          "label": "Step text",
+          "type": "textarea",
+          "id": "text"
+        },
+        {
+          "label": "Step product collection",
+          "type": "collection",
+          "id": "step_product_collection"
+        }
+      ]
+    
+	},
+	{
+      "type": "how-to-step-2",
+      "name": "How To Step 2",
+      "settings": [
+	      {
+            "label": "Show step",
+            "type": "radio",
+            "id": "display",
+            "options": [
+              {
+                "value": "flex",
+                "label": "Show"
+              },
+              {
+                "value": "none",
+                "label": "Hide"
+              }
+            ]
+                },
+            {
+              "label": "Image for desktop",
+              "type": "image_picker",
+              "id": "image"
+            },
+            {
+              "label": "Step heading",
+              "type": "text",
+              "id": "title"
+            },
+            {
+              "label": "Step text",
+              "type": "textarea",
+              "id": "text"
+            },
+            {
+              "label": "Step product collection",
+              "type": "collection",
+              "id": "step_product_collection"
+            }
+      	]
+	},
+	{
+      "type": "how-to-step-3",
+      "name": "How To Step 3",
+      "settings": [
+	      {
+            "label": "Show step",
+            "type": "radio",
+            "id": "display",
+            "options": [
+              {
+                "value": "flex",
+                "label": "Show"
+              },
+              {
+                "value": "none",
+                "label": "Hide"
+              }
+            ]
+                },
+            {
+              "label": "Image for desktop",
+              "type": "image_picker",
+              "id": "image"
+            },
+            {
+              "label": "Step heading",
+              "type": "text",
+              "id": "title"
+            },
+            {
+              "label": "Step text",
+              "type": "textarea",
+              "id": "text"
+            },
+            {
+              "label": "Step product collection",
+              "type": "collection",
+              "id": "step_product_collection"
+            }
+      	]
+	},
+	{
+      "type": "how-to-step-4",
+      "name": "How To Step 4",
+      "settings": [
+	      {
+            "label": "Show step",
+            "type": "radio",
+            "id": "display",
+            "options": [
+              {
+                "value": "flex",
+                "label": "Show"
+              },
+              {
+                "value": "none",
+                "label": "Hide"
+              }
+            ]
+                },
+            {
+              "label": "Image for desktop",
+              "type": "image_picker",
+              "id": "image"
+            },
+            {
+              "label": "Step heading",
+              "type": "text",
+              "id": "title"
+            },
+            {
+              "label": "Step text",
+              "type": "textarea",
+              "id": "text"
+            },
+            {
+              "label": "Step product collection",
+              "type": "collection",
+              "id": "step_product_collection"
+            }
+      	]
+	}
+
+]
+}
+{% endschema %}

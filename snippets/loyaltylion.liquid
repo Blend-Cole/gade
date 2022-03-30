@@ -1,0 +1,60 @@
+<script>
+  !function(t,n){function o(n){var o=t.getElementsByTagName("script")[0],i=t.createElement("script");i.src=n,i.crossOrigin="",o.parentNode.insertBefore(i,o)}if(!n.isLoyaltyLion){window.loyaltylion=n,void 0===window.lion&&(window.lion=n),n.version=2,n.isLoyaltyLion=!0;var i=new Date,e=i.getFullYear().toString()+i.getMonth().toString()+i.getDate().toString();o("https://sdk.loyaltylion.net/static/2/loader.js?t="+e);var r=!1;n.init=function(t){if(r)throw new Error("Cannot call lion.init more than once");r=!0;var a=n._token=t.token;if(!a)throw new Error("Token must be supplied to lion.init");for(var l=[],s="_push configure bootstrap shutdown on removeListener authenticateCustomer".split(" "),c=0;c<s.length;c+=1)!function(t,n){t[n]=function(){l.push([n,Array.prototype.slice.call(arguments,0)])}}(n,s[c]);o("https://sdk.loyaltylion.net/sdk/start/"+a+".js?t="+e+i.getHours().toString()),n._initData=t,n._buffer=l}}}(document,window.loyaltylion||[]);
+
+  {% if shop.metafields.loyaltylion.token != nil %}
+    {% if customer != nil and customer.has_account %}
+      {% assign date = 'now' | date: "%Y-%m-%d %H:%M:%S%z" %}
+      {% assign auth_token =
+        customer.id | append: date | append: customer.email | append: shop.metafields.loyaltylion.secret | sha1 %}
+
+      loyaltylion.init({
+        token: "{{ shop.metafields.loyaltylion.token }}",
+        customer: {
+          id: "{{ customer.id }}",
+          email: "{{ customer.email }}",
+          name: "{{ customer.name }}",
+          rechargeHash: "{{ customer.metafields.subscriptions.customer_string | if: customer.metafields.subscriptions.customer_string }}"
+        },
+        auth: {
+          date: "{{ date }}",
+          token: "{{ auth_token }}"
+        },
+      });
+    {% else %}
+      loyaltylion.init({ token: "{{ shop.metafields.loyaltylion.token }}" });
+    {% endif %}
+  {% endif %}
+  // loyaltylion.configure({
+  //   disableBundledCSS: true,
+  //   disableBundledFonts: true,
+  // })
+
+  {% if template contains 'loyaltylion' %}
+    document.addEventListener('DOMContentLoaded', function (event) {
+      var load_html = function (num){
+        if ($('.lion-rule-item').length == 0 && num < 20) {
+          setTimeout(function () {
+            load_html(num + 1)
+          }, 500) 
+        } else {
+          var panel_html = $('[data-lion-account]').html();
+          var all_rules = $('[data-lion-rules-list]').html();
+          var all_rewards = $('[data-lion-rewards-list]').html();
+          var claimed_rewards = $('[data-lion-claimed-rewards-list]').html();
+          var full_history = $('[data-lion-history-table]').html();
+          var all_tiers = $('[data-lion-tier-overview]').html();
+          $(document)
+            .on('shopify:section:load', function(e){
+              $('[data-lion-account]').html(panel_html);
+              $('[data-lion-rules-list]').html(all_rules);
+              $('[data-lion-rewards-list]').html(all_rewards);
+              $('[data-lion-claimed-rewards-list]').html(claimed_rewards);
+              $('[data-lion-history-table]').html(full_history);
+              $('[data-lion-tier-overview]').html(all_tiers);
+            });
+        }
+      }
+      load_html(0);
+    });
+  {% endif %}
+</script>

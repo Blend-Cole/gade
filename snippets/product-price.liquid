@@ -1,0 +1,41 @@
+{%- if settings.show_multiple_currencies -%}
+  {% assign price = current_variant.price | money_with_currency %}
+  {% assign compare_price = current_variant.compare_at_price | money_with_currency %}
+{%- else -%}
+  {% assign price = current_variant.price | money %}
+  {% assign compare_price = current_variant.compare_at_price | money %}
+{%- endif -%}
+{%- if current_variant.compare_at_price > current_variant.price -%}
+  {% assign onsale = true %}
+{%- endif -%}
+
+
+<div class="product-price-snippet">
+  <span class="product-old-price " itemprop="price" >
+    <span class="money was">{{ compare_price  }}</span>
+  </span>
+  <span class="product-price" itemprop="price">
+    <span class="money">{{ price }}</span>
+  </span>
+</div>
+
+
+<style>
+  .product-price-snippet{
+    display: flex;
+	flex-direction: row;
+    align-items: baseline;
+    font-family:   open_sans_hebrewbold;
+    letter-spacing: normal;
+    text-align: right;
+
+  }
+  .product-price-snippet .product-price{
+    font-size: 19px;
+  }
+
+  .product-price-snippet .product-old-price{
+    font-family: open_sans_hebrewlight;
+    font-size: 15.5px;
+  }  
+</style>

@@ -1,0 +1,34 @@
+<!-- Yotpo Star Rating - Category Page -->  
+<!-- EMPTY STAR RATING -->
+<div style="text-align: center">
+  <div class="yotpo bottomLine" style="display:inline-block"
+       data-product-id="{{ prod.id }}">
+  </div>
+</div>
+<style>
+  @keyframes nodeInserted {
+    from { opacity: 0.99; }
+    to { opacity: 1; }
+  }
+  div.yotpo.bottomLine .yotpo-display-wrapper {
+    animation-duration: 0.01s;
+    animation-name: nodeInserted;
+  }
+</style>
+<script type="text/javascript">
+  var emptyStarsInserted = false;
+  document.addEventListener('animationstart', function(event) {
+    if (event.animationName == 'nodeInserted') {
+      if (!emptyStarsInserted){
+        var wrappers = jQuery('div.yotpo.bottomLine > span.yotpo-display-wrapper:not(:has(div.star-clickable))');
+        var emptyStars = jQuery('<div class="standalone-bottomline"><div class="yotpo-bottomline pull-left star-clickable"><span class="yotpo-stars"><span class="yotpo-icon yotpo-icon-empty-star pull-left"></span><span class="yotpo-icon yotpo-icon-empty-star pull-left"></span><span class="yotpo-icon yotpo-icon-empty-star pull-left"></span><span class="yotpo-icon yotpo-icon-empty-star pull-left"></span><span class="yotpo-icon yotpo-icon-empty-star pull-left"></span></span><div class="yotpo-clr"></div></div></div>');
+        wrappers.append(emptyStars);
+        emptyStarsInserted = true;
+      }
+    }
+  }, false);
+</script>
+<style>
+  .yotpo .text-m { display: none; } 
+</style>
+<!-- End of Yotpo Star Rating - Category Page -->

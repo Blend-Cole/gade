@@ -1,0 +1,27 @@
+<div class="unit_price">
+  {% if product.selected_or_first_available_variant.weight_unit != blank %}
+    {% assign weight_unit = product.selected_or_first_available_variant.weight_unit %}
+    {% assign weight_in_unit = product.selected_or_first_available_variant.weight_in_unit %}
+    {% if weight_unit == 'oz' or weight_unit == 'g' %}
+      {% if product.selected_or_first_available_variant.compare_at_price != blank %}
+        {% assign unit_price = 100 | divided_by: weight_in_unit | times: product.selected_or_first_available_variant.compare_at_price %}
+      {% else %}
+        {% assign unit_price = 100 | divided_by: weight_in_unit | times: product.selected_or_first_available_variant.price %}
+      {% endif %}
+      {{ unit_price | money }} / ל-100 {% if weight_unit == 'g' %}{{ 'products.general.unit_weight_g' | t }}{% elsif weight_unit == 'oz' %}{{ 'products.general.unit_weight_oz' | t }}{% endif %}
+    {% endif %}
+  {% endif %}
+</div>
+
+<style>
+  .unit_price { font-size: 10px !important; } 
+  body.product .unit_price { margin-bottom: 10px; }
+  body:not(.product) .unit_price { min-height: 22px; } 
+  @media screen and (min-width: 768px){
+    body.product .product-price { margin-bottom: 0; }
+  }
+  @media screen and (max-width: 1200px){
+    body.product .product-price { padding-bottom: 0; }
+    body.product .unit_price { padding-right: 8px; }
+  }
+</style>

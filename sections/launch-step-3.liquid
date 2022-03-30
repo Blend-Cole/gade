@@ -1,0 +1,372 @@
+<section class="launch-blog-3" style="display:{{section.settings.display}}">
+  <div class="step">
+    <div class="step-content">
+      <img class="step-image lazyload" data-src="{{section.settings.image | img_url: '531x531'}}">
+      <div class="step-text">
+        <h2>{{section.settings.title}}</h2>
+        <p>{{section.settings.text}}</p>
+        {% if section.settings.step_product_collection != ''  %}
+        	
+        	<button onclick="toggle(this);"> הוסיפי לעגלה </button>
+        {% endif %}
+      </div>
+    </div>
+    {% if section.settings.step_product_collection != ''  %}
+      <div class='step-products'>
+          <div class="launch-owl-carousel">
+            {% assign product_collection_handle = section.settings.step_product_collection | downcase %}
+            {% assign product_collection = collections[product_collection_handle] %}
+            {% for product in product_collection.products limit: 6%}
+            <div class="lazyOwl product" data-alpha="{{ product.title }}" data-price="{{ product.price }}">
+              {% include 'product-listing-buy' %}
+            </div>
+            {% endfor %}
+          </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  
+  .launch-blog-3 .step{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 95px 0 62px 0;
+
+  }
+
+  .launch-blog-3 .step .step-content{
+      display: flex;
+      flex-direction: row;
+  }
+
+  .launch-blog-3 .step .step-content .step-image{
+      height: 531px;
+      width: 531px;
+    order: {{ section.settings.image_side }}
+
+  }
+
+  .launch-blog-3 .step .step-content .step-text{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      order: 5;
+  }
+
+  .launch-blog-3 .step .step-content .step-text h2{
+      font-family:  lato;
+      font-weight: bold;
+      font-size: 26.5px;
+      margin: 95px 0 44px 0;
+  }
+
+  .launch-blog-3 .step .step-content .step-text p{
+      height: 200px;
+      font-family:  open_sans_hebrewregular;
+      font-size: 17px;
+      text-align: center;
+    	padding: 0 50px 0 50px;
+      margin: 0 0 56px 0;
+  }
+
+  .launch-blog-3 .step .step-content .step-text button{
+      width: 291px;
+      height: 62px;
+      margin: 0 0 0 0;
+      font-family:  open_sans_hebrewbold;
+      font-size: 21.5px;
+  }
+
+
+
+  .launch-blog-3 .step .step-products{
+      display: none;
+      width: 100%;
+      height: 606px;
+      margin: 60px 0 0 0;
+
+  }
+
+  .launch-blog-3 .step .step-products .owl-wrapper-outer{
+      width: 105%;
+  }
+
+  .launch-blog-3 .step .step-products .owl-controls.clickable {
+    width: 110%;
+    position: absolute;
+    top: 31%;
+    right: -30px;
+    left:-30px;
+
+  }
+
+  .launch-blog-3 .step .step-products .owl-buttons > div {
+      font-size: 35px;
+      color: #000;
+      background-color: transparent;
+  }
+
+
+  .launch-blog-3 .step .step-products .owl-controls.clickable .owl-next {
+      float: right;
+  }
+
+  .launch-blog-3 .step .step-products .owl-item{
+    margin: 0 20px 0 0;
+  }
+
+  .launch-blog-3 .step .step-products .owl-item .product{
+    margin: 0 0 17px 0;
+  }
+
+  .launch-blog-3 .step .step-products .owl-item .product-description-car{
+      color: #878787;
+
+  }
+
+
+  .launch-blog-3 .step .step-products .item-border{
+    border: 1px solid #e1e1e1;
+    margin-bottom: 17px;
+  } 
+
+
+  .launch-blog-3 .step .step-products .add-to-cart{
+      height: 50px;
+      font-weight: bold;
+      display: inline;
+      font-family: OpenSansHebrew-Bold;
+      font-size: 16px;
+      margin-bottom: 0;
+      min-height: 47px;
+      padding: 0 0 0 0;
+    }
+  
+  
+  
+  @media screen and (max-width: 1220px){
+
+  
+
+  
+  
+  
+  .launch-text-section p.text-section{
+      font-size: 10pt;
+      font-family:  open_sans_hebrewregular;
+      text-align: center;
+      padding: 28pt 0 28pt 0;
+
+  }
+
+
+
+
+  .launch-blog-3{
+      width: 100%;
+  }
+
+  .launch-blog-3 .step{
+      padding: 18.7pt 0 18.7pt 0;
+
+  }
+
+.launch-blog-3 .step .step-content{
+	display: flex;
+  	flex-direction: column;
+    align-items: center;
+}
+
+.launch-blog-3 .step .step-content .step-image{
+	height: 236pt;
+  	width: 236pt;
+    order: 0;
+
+}
+
+.launch-blog-3 .step .step-content .step-text{
+	display: flex;
+  	flex-direction: column;
+    justify-content: space-between;
+  	margin-right: 0px;
+  	align-self: flex-start;
+	padding: 25pt 0 0 0;
+}
+
+.launch-blog-3 .step .step-content .step-text h2{
+	font-family:  OpenSansHebrew-Light;
+	font-size: 13.3pt;
+    margin: 0 0 26pt 0;
+}
+
+.launch-blog-3 .step .step-content .step-text p{
+   	height: fit-content;
+	font-family:  open_sans_hebrewregular;
+	font-size: 11pt;
+  	margin: 0 0 22.5pt 0;
+}
+
+.launch-blog-3 .step .step-content .step-text button{
+    width: 145.5pt;
+    height: 31pt;
+    margin: 0 0 0 0;
+  	padding: 0 0 0 0;
+	font-family:  open_sans_hebrewbold;
+	font-size: 10.8pt;
+}
+
+
+
+.launch-blog-3 .step .step-products{
+  	display: none;
+	width: 220px;
+  	height: 500px;
+    margin: 60px 0 0 0;
+
+}
+
+.launch-blog-3 .step .step-products .owl-wrapper-outer{
+	width: 105%;
+
+
+
+}
+
+.launch-blog-3 .step .step-products .owl-controls.clickable {
+  width: 110%;
+  position: absolute;
+  top: 31%;
+  right: -30px;
+  left:-30px;
+  
+}
+
+.launch-blog-3 .step .step-products .owl-buttons > div {
+    font-size: 35px;
+    color: #000;
+    background-color: transparent;
+}
+
+
+.launch-blog-3 .step .step-products .owl-controls .owl-next {
+    float: right;
+}
+
+.launch-blog-3 .step .step-products .owl-item{
+  margin: 0 10pt 0 0;
+}
+
+.launch-blog-3 .step .step-products .owl-item .product{
+  margin: 0 0 17px 0;
+}
+  
+  .launch-blog-3 .step .step-products .owl-item h3{
+      margin: 0 0 18.5pt 0;
+
+  }
+
+  .launch-blog-3 .step .step-products .owl-item .product-description-car{
+      margin: 0 0 22pt 0;
+
+  }
+  
+  .launch-blog-3 .step .step-products .owl-item .price{
+      margin: 0 0 15.5pt 0;
+
+  }
+  
+
+
+.launch-blog-3 .step .step-products .item-border{
+  border: 1px solid #e1e1e1;
+  margin-bottom: 17px;
+} 
+
+
+.launch-blog-3 .step .step-products .add-to-cart{
+	height: 31.5pt;
+    font-weight: bold;
+    display: inline;
+    font-family: OpenSansHebrew-Bold;
+    font-size: 11pt;
+    margin-bottom: 0;
+    padding: 0 0 0 0;
+  }
+
+  
+</style>
+
+
+{% schema %}
+  {
+    "name": "Launch 3",
+    "settings": [
+	 {
+        "label": "Show step",
+        "type": "radio",
+        "id": "display",
+        "options": [
+          {
+            "value": "flex",
+            "label": "Show"
+          },
+          {
+            "value": "none",
+            "label": "Hide"
+          }
+        ]
+      },
+      {
+        "label": "Image for desktop",
+        "type": "image_picker",
+        "id": "image"
+      },
+	  {
+        "label": "Image side",
+        "type": "radio",
+        "id": "image_side",
+        "options": [
+          {
+            "value": "1",
+            "label": "Right"
+          },
+          {
+            "value": "10",
+            "label": "Left"
+          }
+        ]
+      },
+	  {
+        "label": "Step heading",
+        "type": "text",
+        "id": "title"
+      },
+	  {
+        "label": "Step text",
+        "type": "textarea",
+        "id": "text"
+      },
+	  {
+        "label": "Step product collection",
+        "type": "collection",
+        "id": "step_product_collection"
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+
+
+
+
+

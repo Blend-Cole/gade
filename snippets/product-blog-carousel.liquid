@@ -1,0 +1,256 @@
+{% comment %} made by BOA Ideas {% endcomment%}
+<div class="product-blog-slideshow">
+  <!-- Slider main container -->
+  <h4><span>{{ section.settings.blog-title}}</span></h1>  	
+  <div class="product-blog-carousel">
+    <!-- Slides -->
+    {% for link in linklists.blogs.links %}
+    {% assign blog = link.object %}
+    
+    {% for article in blog.articles %}
+    	{% assign is_there_article_2 = false %}
+    	{% for tag in article.tags %}
+    		{% assign tagName = tag | downcase %}
+            {% if tagName == product_collection_name %}
+                {% assign is_there_article_2 = true %}
+            {% endif %}
+    	{% endfor %}
+    
+    {% if is_there_article_2 %}
+    <div class="item">
+      <div class="desktop-6 tablet-6 mobile-3">
+        <a href="{{ article.url }}">
+          <div class="blog-image" style="background:url('{{ article.image | img_url: 'master' }}'); background-size:cover;background-position:top center;"></div>
+        </a>
+      </div>
+      <div class="desktop-6 tablet-6 mobile-3">
+        <div class="blog-text">
+          <a href="{{ article.url }}">
+            <span class="h1">{{ article.title }}</span>
+            <span class="h2"> {{ article.published_at | date: "%b %d, %Y"}} פורסם ב</span>
+          </a>
+          <div class="blog-excerpt"> 
+            {% if article.excerpt == blank %}
+            {{ article.content | strip_html | truncatewords: 50 }}
+            {% else %}
+            {{ article.excerpt }}
+            {% endif %}
+          </div>
+          <div class="blog-products-section">
+            {% assign product_collection = collections[article.metafields.custom_fields["upsell_collection"]] %}
+
+            <div class="blog-products-carousel">
+              {% for product in product_collection.products limit: 3 %}
+              {% include 'sca_freegift_price' with product %}
+              <div class="lazyOwl desktop-4 tablet-2 mobile-half" data-alpha="{{ product.title }}" data-price="{{ sca_price }}">
+                <a href="{{ product.url | within: collection }}" title="{{ prod.title | escape }}">
+                  <img class=""
+                       src="{{ product.featured_image | product_img_url: '200x' }}"
+                       data-src="{{ product.featured_image | product_img_url: '200x' }}"
+                       data-sizes="auto"
+                       data-image-id="{{ image.id }}"
+                       alt="{{ product.title | escape }}">
+
+                  <noscript>
+                    <img
+                         src="{{ product.featured_image | product_img_url: '200x' }}"
+                         alt='{{ product.title | escape }}'
+                         data-image-id="{{ image.id }}" />
+                  </noscript>
+                </a>
+                <div class="product-details">
+                  <a href="{{ product.url | within: collection }}">
+                    <h3>{{ product.title }}</h3>
+                    {% if settings.vendor %}
+                    <h4>{{ product.vendor }}</h4>
+                    {% endif %}
+                  </a>
+                  <div class="price">
+                    {% if sca_price < sca_compare_at_price %}
+                    <div class="onsale">
+                      <span class="money">{{ sca_price | money }}</span>
+                    </div>
+                    <div class="was">
+                      <span class="money">{{ sca_compare_at_price | money }}</span>
+                    </div>
+                    {% else %}
+                    <div class="prod-price">
+                      {% if sca_price_varies %}
+                      {{ 'products.general.from' | t }} <span class="money">{{ sca_price_min | money }}</span> - <span class="money">{{ sca_price_max | money }}</span>
+                      {% else %}
+                      <span class="money">{{ sca_price | money }}</span>
+                      {% endif %}
+                    </div>
+                    {% endif %}
+
+                  </div>
+                  {% form 'product', product, data-product-form:product_form_config, id: form_id %}
+                  <script class="product-json" type="application/json">
+    							{{ product | json }}
+                  </script>
+                  <input type="hidden" id="{{ product.id }}" name="id" data-sku="{{ product.sku }}" value="{{ product.variants[0].id }}" />
+                  <input type="submit" name="button" class="add-to-cart" value="{{ 'products.product.add_to_cart' | t }}" />
+                  {% endform %}
+
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %} 
+    {% endfor %}
+  </div>
+</div>
+
+
+
+
+
+<style>
+  .product-blog-carousel { display:none; }
+  .product-blog-slideshow { text-align:right; background-color: #f3f0f1; padding: 1.5rem 1.5rem 2rem; }
+  .product-blog-slideshow h4 { position:relative; font-size: 1.2rem; font-weight: 600;width: 97%; text-align: center; border-bottom: 1px solid #DDDDDD; line-height: 0.1em; margin: 20px auto 20px; }
+  .product-blog-slideshow h4 span { background:#f3f0f1; padding:0 20px; }
+  .blog-products-carousel .lazyOwl { padding: 0 0.5rem; } 
+  .blog-products-carousel .lazyOwl  .price { padding-bottom: 0.2rem; padding-top: 0; font-size: 0.8rem; }
+  .product-blog-carousel .owl-next { position:absolute; top:calc(50% - 21px); right:-1rem; } 
+  .product-blog-carousel .owl-prev { position:absolute; top:calc(50% - 21px); left:-1rem; }
+  .product-blog-carousel .owl-buttons > div { padding: 5px 10px; background: transparent; color: #000;}
+
+  .product-blog-slideshow .owl-carousel .owl-wrapper-outer { padding-top:1rem; }
+
+  .product-blog-carousel{
+    background: #f3f0f1;
+  }
+
+  .product-blog-carousel .item {display: flex; flex-wrap: wrap; flex-direction: row-reverse; }
+
+  .product-blog-carousel .blog-image{
+    height: 100%;
+    min-height:510px;
+  }
+
+  .product-blog-carousel .blog-text{
+    height: 100%;
+    padding: 25px 35px 0;
+    background: white;
+    text-align: right;
+  }
+
+  .product-blog-carousel .blog-text .h1{
+    font-size: 1.5rem; 
+    font-weight:bold;
+  }
+
+  .product-blog-carousel .blog-text .h2{
+    font-size: 0.9rem;
+    display:block;
+  }
+
+  .product-blog-carousel .blog-text .blog-excerpt{
+    padding:1rem 0;
+  }
+
+
+  .product-blog-carousel .blog-products-section h3{
+    font-size: 13px;
+    min-height:40px;
+  }
+
+  .product-blog-carousel .blog-products-section .product-description-car{
+    display:none;
+  }
+
+  .product-blog-carousel .blog-products-section .so.icn{
+    padding-top: 15px;
+    width: 41px;
+    height: 46px;
+    top: 0px;
+  }
+
+  .product-blog-slideshow .blog-products-section .add-to-cart{
+    padding: 0;
+    height: 31px;
+  }
+
+  .blog-products-carousel .blog-text .blog-excerpt{
+    font-size: 16px;
+    margin: 0 0 28px 0;
+  }
+
+  @media screen and (max-width: 1220px ){
+
+    .product-blog-carousel .blog-image { min-height:450px; }
+
+    .product-blog-carousel .blog-text{
+      width: 100%;
+      height: 100%;
+      padding: 30px 40px;
+      background: white;
+      text-align: right;
+    }
+
+    .product-blog-carousel .blog-text h1{
+      font-size: 25px;
+    }
+
+    .product-blog-carousel .blog-text h2{
+      font-size: 1rem;
+      font-weight:bold;
+    }
+
+    .product-blog-carousel .blog-products-section .so.icn{
+      padding-top: 15px;
+      width: 41px;
+      height: 46px;
+      top: 0px;
+    }
+
+    .product-blog-carousel .blog-products-section .add-to-cart{
+      padding: 0;
+      height: 40px;
+    }
+
+  }
+
+  @media screen and (max-width: 767px ){
+    .product-blog-carousel .blog-text { padding:2rem; }
+    .product .yotpo.yotpo-small { padding:1rem; }
+    .blog-products-carousel .lazyOwl { padding: 0 0.3rem; }
+    .blog-products-carousel .lazyOwl:nth-child(3) { display:none;}
+    .product-blog-carousel .blog-products-section h3 { min-height: 40px; }
+    .product-blog-carousel .blog-image { min-height:300px; }
+    .product-blog-carousel .owl-next { right:-1.5rem; } 
+    .product-blog-carousel .owl-prev { left:-1.5rem; }
+  }
+</style>
+
+<script>
+
+  r(function(){
+
+    $('.product-blog-carousel').owlCarousel({
+      itemsCustom : [],
+      lazyLoad : false,
+      rtl:true,
+      loop:true,
+      items:1,
+      margin:0,
+      pagination : true,
+      navigation: true,
+      navigationText : false,
+      autoPlay : false,
+      stopOnHover : true
+    });
+
+
+  });
+
+  function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+
+
+</script>

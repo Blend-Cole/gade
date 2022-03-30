@@ -1,0 +1,343 @@
+<footer data-section-id="{{ section.id }}">
+  <div id="footer-wrapper" class="footer-sec">
+    <div id="footer" class="row no-fouc">
+
+
+    {% case section.blocks.size %}
+      {% when 0 %}
+      {% when 1 %}
+        {% assign column_width = 'desktop-12 tablet-6 mobile-3' %}
+      {% when 2 %}
+        {% assign column_width = 'desktop-6 tablet-3 mobile-3' %}
+      {% when 3 %}
+        {% assign column_width = 'desktop-4 tablet-3 mobile-3' %}
+      {% when 4 %}
+        {% assign column_width = 'desktop-3 tablet-3 mobile-3' %}
+    {% endcase %}
+
+      {% for block in section.blocks %}
+      {% case block.type %}
+      {% when 'menu' %}
+      <div class="footer-logo">
+        <a href="#">
+        	<img class="lazyload" data-src="{{ section.settings.logo | img_url: '200x' }}">
+        </a>
+      </div>
+      <div class="{{ column_width }}">
+        <div class="desktop-4 tablet-3 mobile-3">
+          	<figure class="israel-logo">
+        	<img class="lazyload" data-src="{{'israel-brand.png' | asset_img_url:'master'}}">
+          </figure>
+        </div>
+        <div  class="desktop-8 tablet-6 mobile-3 followus">
+          <h5>Follow Us</h5>
+          <ul id="footer-icons ">
+            {% if settings.facebook_url != blank %}
+            <li>
+              <a href="{{ settings.facebook_url }}" target="_blank">
+                <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.instagram-id != blank %}
+            <li>
+              <a href="//instagram.com/{{ settings.instagram-id }}" target="_blank">
+                <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.twittername != blank %}
+            <li>
+              <a href="{{ settings.twittername }}" target="_blank">
+                <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.pinterest_url != blank %}
+            <li>
+              <a href="{{ settings.pinterest_url }}" target="_blank">
+                <i class="fa fa-pinterest fa-2x" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.tumblr_url != blank %}
+            <li>
+              <a href="{{ settings.tumblr_url }}" target="_blank">
+                <i class="fa fa-tumblr fa-2x" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.youtube_url != blank %}
+            <li>
+              <a href="{{ settings.youtube_url }}" target="_blank">
+                <i class="fa fa-youtube fa-2x" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.googleplus_url != blank %}
+            <li>
+              <a href="{{ settings.googleplus_url }}" target="_blank">
+                <i class="fa fa-google-plus-official fa-2x" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.snapchat-id != blank %}
+            <li>
+              <a href="//snapchat.com/add/{{ settings.snapchat-id }}" target="_blank">
+                <i class="fa fa-snapchat-ghost fa-2x" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.weibo-id != blank %}
+            <li>
+              <a href="//weibo.com/{{ settings.weibo-id }}" target="_blank">
+                <i class="fa fa-weibo fa-2x" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+      {% when 'newsletter' %}
+      <div class="{{ column_width }} footer-newsletter-form">
+        <h4>{{ block.settings.title | escape }}</h4>
+        {{ block.settings.mailing_subheading }}
+        <div id="footer_signup">
+          <p>{{ settings.footer_signup_text | escape }}</p>
+          {% form 'customer' , id:'newsletter-boa' %}
+          {{ form.errors | default_errors }}
+          {% if form.posted_successfully? %}
+          <p class="success">{{ 'password.general.thanks' | t }}</p>
+          {% else %}
+          <input type="hidden" name="contact[tags]" value="prospect, password page">
+          <input type="email" name="contact[email]" id="footer-EMAIL" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}">
+          <input type="text" id="footer-Telephone" name="contact[note][Phone]" placeholder="{{ 'general.newsletter_form..phone_placeholder' | t }}">
+          <input type="submit" id="footer-subscribe" value="{{ 'general.newsletter_form.submit' | t }}">
+          <p class="footer-newsletter-agree">
+            <input type="checkbox" id="newsletter-agree" style="display:inline-block;" name="contact[note][AcceptTerms]" checked> 
+            <label style="display:inline-block;">{{ 'general.newsletter_form.terms_agree' | t  }}</label>
+          </p>
+          {% endif %}
+          {% endform %}
+        </div>
+      </div>
+      <script>
+        document.querySelector("#newsletter-boa").addEventListener("submit", function(e){
+          if (document.getElementById("newsletter-agree").checked){
+            this.submit();
+          }
+          else{
+            e.preventDefault();    //stop form from submitting
+            alert('יש לאשר את התנאים לפני ההרשמה לניוזלטר');
+          }
+          
+        });
+      </script>
+      {% when 'text' %}
+      <div class="{{ column_width }}">
+        <h4>{{ block.settings.title | escape }}</h4>
+        <div class="rte">{{ block.settings.footer_text }}</div>
+      </div>
+      {% endcase %}
+      {% endfor %}
+
+      <div class="clear"></div>     
+      
+    </div>
+    <div class="gridlock copyright-sec">
+      <div class="row">
+    	<div class="desktop-4 tablet-6 mobile-3">
+          <div id="payment" class="text-left">
+            <img class="lazyload" data-src="{{'payment-img.jpg' | asset_img_url:'master'}}">
+            <p>
+              &copy; GA-DE Cosmetics By Danya Cosmetics Inc. All Right Reserved.
+          </p>
+          </div>
+      </div>
+        <div class="desktop-8 tablet-6 mobile-3 footer-menu">
+           <p>
+             {% for link in linklists[section.settings.nav_menu].links %}
+                <a href="{{ link.url }}">{{ link.title }}</a>
+             {% if forloop.last == true %}
+             {% else %}l{% endif %}
+                {% endfor %}            
+          </p>
+          <p>
+            {% for link in linklists[section.settings.nav_menu2].links %}
+                <a href="{{ link.url }}">{{ link.title }}</a>
+             {% if forloop.last == true %}
+             {% else %}l{% endif %}
+                {% endfor %}
+            </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  #footer-wrapper {
+    text-align: {{ section.settings.footer_text_align }};
+  }
+
+  #footer-wrapper h4 {
+    text-transform: {{ section.settings.footer_title_transform }};
+    font-size: {{ section.settings.footer_title_size }}px;
+    line-height:1.2;
+  }
+</style>
+
+{% schema %}
+{
+    "name": "Footer",
+	"max_blocks": 4,
+    "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+	  "label": "footer_logo"
+    },
+	{
+        "type": "select",
+        "id": "footer_text_align",
+        "label": "Footer text align",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "footer_title_weight",
+        "label": "Footer title weight",
+        "options": [
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "500",
+            "label": "Normal"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "footer_title_transform",
+        "label": "Footer title case",
+        "options": [
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "inherit",
+            "label": "regular"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "footer_title_size",
+        "min": 12,
+        "max": 36,
+        "step": 1,
+        "unit": "px",
+        "label": "Footer title size",
+        "default": 14
+      },
+      {
+        "type": "checkbox",
+        "id": "show_credit_cards",
+        "label": "Show credit card icons",
+        "default": true,
+        "info": "The icons that show are determined by your store's payment settings."
+      },
+	   {
+      "type": "header",
+      "content": "Footer Bottom Mmenu"
+    },
+    {
+      "type": "link_list",
+      "id": "nav_menu",
+      "label": "Footer Menu"
+    },	
+	{
+      "type": "link_list",
+      "id": "nav_menu2",
+      "label": "Footer Menu2"
+    }
+    ],
+   "blocks":[
+      {
+         "type":"menu",
+         "name":"Menu",
+         "settings":[
+            {
+               "type": "link_list",
+               "id": "footer_nav",
+               "label": "Sidebar menu",
+               "info": "This menu won't show dropdown items"
+            },
+           {
+            "type": "text",
+            "id": "title",
+            "label": "Menu title",
+            "default": "Explore"
+           }
+         ]
+      },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings":[
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Text title",
+          "default": "About"
+        },
+      {
+          "id": "footer_text",
+          "type": "richtext",
+          "label": "Text",
+          "default": "<p>Adding text to your footer helps introduce your business to new customers.</p>"
+       }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter signup",
+      "limit": 1,
+	    "settings":[
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Mailing list section title",
+          "default": "connect"
+        },
+        {
+         "type": "richtext",
+         "id": "mailing_subheading",
+         "label": "Mailing list subheading",
+         "default": "<p>Join our mailing list for updates</p>"
+        }
+	    ]
+	  }
+   ]
+  }
+{% endschema %}

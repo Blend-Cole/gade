@@ -1,0 +1,342 @@
+{% layout none %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gade Virtual Makeup</title>
+    <script type='text/javascript' src='https://code.jquery.com/jquery-2.0.2.min.js'></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js'></script>
+</head>
+<body>
+<footer>
+    <div class="categories"></div>
+    <div class="products"></div>
+    <div class="shades"></div>
+</footer>
+<div class="iframe-box">
+<iframe id="memomi" allow="camera"></iframe>
+</div>
+</body>
+<style>
+    body{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .iframe-box{
+        display: flex;
+        justify-content: center;
+    }
+
+    #memomi{
+        width: 100vw;
+        height: 100vw;
+        display: none;
+    }
+
+    footer{
+        height: 30vh;
+        width: 100vw;
+        background: white;
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .categories{
+        width: 100vw;
+        white-space: nowrap;
+        overflow: auto;
+        text-align: center;
+        height: 6vh;
+        font-size: 3.2vw;
+    }
+
+    .categories::-webkit-scrollbar {
+        display: none;
+    }
+
+    .category{
+        display: inline-block;
+        padding: 10px;
+        border-right: 1px solid #E8E8E8;
+        border-top: 1px solid #E8E8E8;
+        border-bottom: 1px solid #E8E8E8;
+        width: 28vw;
+        letter-spacing: 0.1vw;
+        text-transform: uppercase;
+    }
+
+    .products{
+        width: 100vw;
+        white-space: nowrap;
+        overflow: auto;
+        overflow-y: hidden;
+        padding-left: 0.3vw;
+    }
+
+    .products::-webkit-scrollbar {
+        display: none;
+    }
+
+    .product{
+        display: inline-block;
+        width: 20vw;
+        margin: 1px 1vw 1vh 1vw;
+        vertical-align: top;
+    }
+
+    .product-image{
+        max-height: 9vh;
+        max-width: 15vw;
+        margin: auto;
+        display: block;
+    }
+
+    .product-text{
+        font-size: 2.5vw;
+        text-align: center;
+        white-space: pre-wrap;
+    }
+
+    .shades{
+        width: 100vw;
+        white-space: nowrap;
+        overflow: auto;
+        overflow-y: hidden;
+        padding-left: 0.3vw;
+    }
+
+    .shades::-webkit-scrollbar {
+        display: none;
+    }
+
+    .shade{
+        display: inline-block;
+        width: 5vw;
+        height: 5vw;
+        border-radius: 5vw;
+        border: 1px solid transparent;
+        margin: 1vh 1vw 1vh 1vw;
+        vertical-align: top;
+    }
+
+    @media only screen
+    and (min-device-width : 1150px){
+
+        #memomi{
+            width: 100vh;
+            height: 100vh;
+            display: none;
+        }
+
+        .categories{
+            display: flex;
+            font-size: 24px;
+        }
+
+        .product{
+            width: 13vw;
+        }
+
+        .product-text{
+            font-size: 20px;
+        }
+
+        .shades{
+            display: flex;
+            justify-content: center;
+        }
+
+        .shade{
+            display: inline-block;
+            width: 3vw;
+            height: 3vw;
+            border-radius: 2vw;
+            border: 1px solid transparent;
+            margin: 1vh 0.2vw 1vh 0.2vw;
+            vertical-align: top;
+        }
+    }
+
+    /*Mobile*/
+    @media only screen
+    and (max-device-width: 480px){
+        .shade{
+            width: 12vw;
+            height: 12vw;
+            border-radius: 12vw;
+        }
+    }
+</style>
+<script type="text/javascript">
+    var ws;
+
+    $.get("https://mmweb.westus.cloudapp.azure.com/MemomiWebAR/api/Makeup?mirror=5dfb46ca79cad1883e6bfd9a", function(iData){
+        data = iData.Data;
+        createCategoryList(data);
+    });
+
+    function sendData(iProductId) {
+        var newData = {brandId:'5dfb46ca79cad1883e6bfd9a',productId:iProductId};
+            ws.send(JSON.stringify(newData));
+    }
+
+    window.onload = function () {
+        ws = new WebSocket('wss://ar.memomi.co/MemomiWSServer/ws.ashx');
+        ws.onopen = function (e) {
+            console.log('Client connected');
+        };
+        ws.onmessage = function (e) {
+            var data = JSON.parse(e.data);
+            if(data.Token){
+                var iFrame =  document.getElementById('memomi');
+                iFrame.src = 'https://ar.memomi.com/web-mirror/index.html?token='+data.Token;
+                iFrame.style.display = 'initial';
+            }
+        };
+    };
+
+    var data;
+    var sessionId;
+    var categories = [];
+    var categoryNames = ['Lipstick','Eyeliner','Eyeshadow','EyePencil','EyeLashes','EyeLashes','Mascara','Blush','Foundation'];
+    var selectedCategory;
+    var selectedProduct;
+    var selectedShade;
+    var enableCompare = false;
+
+    function selectCategory(iEvent){
+        if(!selectedCategory || selectedCategory.Name != iEvent.currentTarget.id){
+            selectedCategory = categories.find(function(iCategory){
+                return iCategory.Name == iEvent.currentTarget.id
+            });
+            var categoriesView = document.getElementsByClassName('category');
+            Array.prototype.forEach.call(categoriesView, function(iCategory){
+                if(selectedCategory.Name==iCategory.id){
+                    iCategory.style.boxShadow = 'inset 0px 0px 5px #c1c1c1';
+                    iCategory.style.border =  '1px rgb(193,193,193) solid';
+                }else{
+                    iCategory.style.boxShadow = 'initial';
+                    iCategory.style.border =  '1px transparent solid';
+                }
+            });
+            createProductsView(selectedCategory.Products)
+        }
+    }
+
+    function selectProduct(iEvent) {
+        if (!selectedProduct || selectedProduct.Name != iEvent.currentTarget.id) {
+            selectedProduct = selectedCategory.Products.find(function (iProduct) {
+                return iProduct.Name == iEvent.currentTarget.id
+            });
+
+            var productsView = document.getElementsByClassName('product');
+            Array.prototype.forEach.call(productsView, function(iProduct){
+                if(selectedProduct.Name==iProduct.id){
+                    iProduct.style.border =  '1px black solid';
+                }else{
+                    iProduct.style.border =  '1px transparent solid';
+                }
+            });
+
+            createShadesView(selectedProduct.Shades)
+        }
+    }
+
+    function selectShade(iEvent){
+        if (!selectedShade || selectedShade.Code != iEvent.currentTarget.id) {
+            selectedShade = selectedProduct.Shades.find(function (iShade) {
+                return iShade.Code == iEvent.currentTarget.id
+            });
+
+            var shadesView = document.getElementsByClassName('shade');
+            Array.prototype.forEach.call(shadesView, function(iShade){
+                if(selectedShade.Code==iShade.id){
+                    iShade.style.border =  '1px black solid';
+                }else{
+                    iShade.style.border =  '1px solid transparent';
+                }
+            });
+
+            sendData(iEvent.currentTarget.id)
+        }
+    }
+
+    function createCategoryList(iData){
+        var rawCategories = _.groupBy(iData,'VirtualCategory');
+        _.forEach(rawCategories, function(iCategory){
+            if(iCategory[0].VirtualCategory != -1){
+                var newCategory = {};
+                newCategory.Id  = iCategory[0].VirtualCategory;
+                newCategory.Name = categoryNames[newCategory.Id];
+                newCategory.Products = [];
+                var rawProducts =  _.groupBy(iCategory,'Name');
+                createProductList(rawProducts, newCategory.Products);
+                categories.push(newCategory);
+                createCategoryView(newCategory)
+            }
+        });
+    }
+
+    function createProductList(iRawProducts,iCategoryProducts){
+        _.forEach(iRawProducts,function (iProduct) {
+            var newProduct = {};
+            newProduct.Name = iProduct[0].Name;
+            newProduct.Shades = iProduct;
+            iCategoryProducts.push(newProduct)
+        })
+    }
+
+    function createProductsView(iProducts) {
+        var productsView =  document.getElementsByClassName('products')[0];
+        productsView.innerHTML = '';
+        var shadesView =  document.getElementsByClassName('shades')[0];
+        shadesView.innerHTML = '';
+        _.forEach(iProducts,function (iProduct) {
+            var node = document.createElement("DIV");
+            var image = document.createElement("IMG");
+            image.src = iProduct.Shades[0].Image;
+            image.classList.add("product-image");
+            node.appendChild(image);
+            var textNode = document.createElement("DIV");
+            textNode.innerText = iProduct.Name;
+            textNode.classList.add("product-text");
+            node.appendChild(textNode);
+            node.classList.add("product");
+            node.id = iProduct.Name
+            node.addEventListener("click", selectProduct);
+            productsView.appendChild(node);
+        });
+    }
+
+    function createShadesView(iShades){
+        var shadesView =  document.getElementsByClassName('shades')[0];
+        shadesView.innerHTML = '';
+        _.forEach(iShades,function (iShade) {
+            var node = document.createElement("DIV");
+            node.classList.add("shade");
+            node.id = iShade.Code;
+            node.style.backgroundColor = 'rgba('+iShade.R+','+iShade.G+','+iShade.B+','+iShade.Alpha/255+')';
+            node.addEventListener("click", selectShade);
+            shadesView.appendChild(node);
+        });
+    }
+
+    function createCategoryView(iCategory) {
+        var node = document.createElement("DIV");
+        var textNode = document.createTextNode(iCategory.Name);
+        node.appendChild(textNode);
+        node.id = iCategory.Name;
+        node.classList.add("category");
+        node.addEventListener("click", selectCategory);
+        document.getElementsByClassName("categories")[0].appendChild(node);
+        /*   if(iCategory.products.length>1 && document.getElementsByClassName("area-name")[0].innerHTML == ''){
+               hairDesign.EffectAreas.forEach(addArea)
+           }*/
+    }
+</script>
+</html>

@@ -1,0 +1,135 @@
+{% if settings.breadcrumb %}
+<div class="row">
+  {% include 'breadcrumb' %}
+</div>
+{% endif %}
+<!-- made by boaideas -->
+<div class="how-to-article how-to-article-centerd">
+  <div class="article-hero text-center"></div>
+  {% if article.metafields.custom_fields["description"] != blank %}
+  <div class="article-description text-center">
+    <div class="row">
+      <div class="desktop-10 tablet-6 mobile-3 text-center">
+        <h1>{{ article.title }}</h1>
+        {{ article.metafields.custom_fields["description"] }}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  
+  {% if article.metafields.custom_fields["how_to"] != blank %}
+  {% assign separator = "|###|" %}
+  {% assign title_array = article.metafields.custom_fields["title"] | split: separator %}
+  {% assign image_array = article.metafields.custom_fields["image"] | split: separator %}
+  {% assign video_array = article.metafields.custom_fields["video"] | split: separator %}
+  {% assign step_description_array = article.metafields.custom_fields["step_description"] | split: separator %}
+  {% assign collection_array = article.metafields.custom_fields["collection"] | split: separator %}
+  {% assign single_product = article.metafields.custom_fields["product"] | split: separator %}
+  {% assign fc_keys = article.metafields.custom_fields["how_to"] | split: "," %}
+  {% assign show_carousel = article.metafields.custom_fields["open_carusel"] | split: separator %}
+  <div class="article-blocks">
+    <div class="row">
+      {% for i in fc_keys %}
+      {% assign index = i | plus: 0 %}
+      <div class="single-block desktop-10 tablet-6 mobile-3 text-center" id="connectors">
+        <div class="row">
+          <div class="desktop-6 tablet-6 mobile-3">
+            {% if video_array[index] != blank %}
+            <iframe src="https://www.youtube-nocookie.com/embed/{{ video_array[index] }}?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
+			{% else %}
+            {{ image_array[index] }}
+            {% endif %}
+          </div>
+          {% assign c = collections[collection_array[index]] %}
+          <div class="desktop-6 tablet-6 mobile-3 text-area">
+            <div class="h2 d-block">{{ title_array[index] }}</div>
+            <div class="desc d-block">{{ step_description_array[index] }}</div>
+            
+            {% if c.products.size > 0 %}
+            	{% unless show_carousel[index] == '1' %}
+            		<div class="open-model" data-connected-item="i{{i}}">הוסיפי לעגלה</div>
+            	{% endunless %}
+            {% else %}
+            	{% assign product_handle = single_product[index] %}
+            
+            	{% if product_handle != '' %}
+            	  {% assign add_product = all_products[product_handle] %}
+                  <a class="fancybox.ajax product-modal" rel="nofollow" href="{{ add_product.url }}?view=quick">הוסיפי לעגלה</a>
+            	{% endif %}
+            {% endif %}
+          </div>
+          <div class="checkbox-carousel" hidden>{{ show_carousel[index] }}</div>
+          {% if c.products.size > 0 %}
+          <div class="single-block-slider desktop-12 tablet-6 mobile-3{% if show_carousel[index] == '1' %} show-products{% endif %}" id="i{{i}}">
+            {% include 'howto-collection-slider'%}
+          </div>         
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<style>
+ .article-hero { background: url({{ article.image | img_url: 'master' }}) no-repeat; background-size: cover; } 
+</style>
+
+<script>
+  var slider = document.getElementsByClassName('open-model');
+
+  for (var i=0; i < slider.length; i++) {
+    slider[i].onclick = function(){
+      document.getElementById(event.target.dataset.connectedItem).classList.toggle('show-products');
+      if (this.innerHTML === "הוסיפי לעגלה") {
+        this.innerHTML = "הסתירי את המוצרים";
+      } else {
+        this.innerHTML = "הוסיפי לעגלה";
+      }
+    }
+  };
+  
+
+  r(function(){
+    
+     $('.product-collection-carousel').owlCarousel({
+       itemsCustom : [
+         [300, 2],
+         [450, 2],
+         [600, 2],
+         [700, 2],
+         [1000, 3],
+         [1200, 3],
+         [1400, 4],
+         [1600, 4]
+       ],
+        lazyLoad : false,
+        rtl:true,
+        loop:true,
+        margin:0,
+        pagination : false,
+        navigation: true,
+        navigationText : false,
+        autoPlay : false,
+        stopOnHover : true
+      }); 
+      
+      
+      $(".box-ratio").css({'padding-bottom': '0'});
+      
+      if( $(window).width() < 1221 ){
+        $(".owl-item").css({'padding': '0 0.2rem'});
+      }else{
+        $(".owl-item").css({'padding': '0 0.5rem'});
+      }
+      
+      
+    });
+
+  function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+
+
+</script>
+
+{% section 'article-howto-insta-boa' %}

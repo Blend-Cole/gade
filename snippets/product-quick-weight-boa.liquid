@@ -1,0 +1,15 @@
+<div class="unit_price">
+  {% if product.selected_or_first_available_variant.weight_unit != blank %}
+    {% assign weight_unit = product.selected_or_first_available_variant.weight_unit %}
+    {% assign weight_in_unit = product.selected_or_first_available_variant.weight_in_unit %}
+    {% if weight_unit == 'oz' or weight_unit == 'g' %}
+  		כמות: {{ weight_in_unit }} {% if weight_unit == 'g' %}{{ 'products.general.unit_weight_g' | t }}{% elsif weight_unit == 'oz' %}{{ 'products.general.unit_weight_oz' | t }}{% endif %}
+  	{% endif %}  
+  {% endif %}
+</div>
+
+<style>
+  .unit_price { font-size: 10px !important; } 
+  body:not(.product) .unit_price { min-height: 22px; } 
+  .fancybox-wrap .product-price { margin-bottom: 0; }
+</style>

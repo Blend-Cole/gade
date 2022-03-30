@@ -1,0 +1,7 @@
+<div class="owl-carousel">
+  {% for product in product_collection.products limit: 6%}
+  <div class="lazyOwl product" data-alpha="{{ product.title }}" data-price="{{ product.price }}">
+    {% include 'product-listing' %}
+  </div>
+  {% endfor %}
+</div>

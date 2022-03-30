@@ -1,0 +1,58 @@
+{%- if enabled -%}
+
+  <style>
+    .field--error-plus-dynamic {
+      border-color: {{ settings.checkout_error_color }}!important;
+      -webkit-box-shadow: 0 0 0 1px {{ settings.checkout_error_color }}!important;
+      box-shadow: 0 0 0 1px {{ settings.checkout_error_color }}!important;
+    }
+    .field__message--error-plus-dynamic {
+      display: block;
+      color: {{ settings.checkout_error_color }};
+    }
+  </style>
+  <script>
+    (function($) {
+      $(document).on('page:load page:change', function() {
+        var $phoneField;
+        var errorClass = 'field--error-plus-dynamic';
+        var errorMessageSelector = '.field__message--error-plus-dynamic';
+
+        // Check input for character limit and remove letters
+        var validatePhoneNumber = function(phoneField) {
+          var errorMessage = "{{ 'plus.checkout.phone_field_error' | t }}";
+          //added by Boaideas
+          var checkNumbers = phoneField.val().match(/^(?:(?:(\+?972|\(\+?972\)|\+?\(972\))(?:\s|\.|-)?([5]\d?))|(0[5]{1}[0-9]))(?:\s|\.|-)?([^0\D]{1}\d{2}(?:\s|\.|-)?\d{4})$/); // Check for dashes, number and space
+          if (checkNumbers) {
+          // Phone number is valid. Remove errors and continue.
+            phoneField.removeClass(errorClass);
+            phoneField.nextAll(errorMessageSelector).remove();
+            return true;
+          } else {
+          // Does not contain only number, dashes, or space. Throw error.
+            if (!phoneField.hasClass(errorClass)) {
+            phoneField.addClass(errorClass);
+            phoneField.after("<p class='field__message field__message--error-plus-dynamic'>"+ errorMessage +"</p>");
+            }
+            return false;
+          }
+        }
+        if (Shopify.Checkout.step === 'contact_information') { //added by Boaideas
+          // Use the appropriate field labels depending on if we're looking at the shipping or billing address
+          $phoneField = $('[name="checkout[shipping_address][phone]"]:not([aria-hidden="true"])');
+          // Validate phone number field before submitting form
+          $(document).on('click', '[data-step] form button[type="submit"]', function(event) {
+            if (validatePhoneNumber($phoneField) == false){
+              event.preventDefault();
+            }
+          });
+          // Validate phone number when modified
+          $phoneField.on('keyup blur', function() {
+          validatePhoneNumber($(this));
+          });
+          }
+        });
+      })(Checkout.$);
+  </script>
+
+{%- endif -%}

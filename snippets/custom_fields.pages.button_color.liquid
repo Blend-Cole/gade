@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/ga-de-cosmetics-israel.myshopify.com/pages/configure/122709/edit
+{% endcomment %}
+{% if page.metafields.custom_fields["button_color"] != blank %}
+  <div class="custom-field custom-field__button-color custom-field__type--text">
+    <h3 class="custom-field--title">Button color</h3>
+    <div class="custom-field--value">
+      {{ page.metafields.custom_fields["button_color"] }}
+    </div>
+  </div>
+{% endif %}

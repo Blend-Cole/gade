@@ -1,0 +1,327 @@
+{% assign meganav = false %}
+{% for block in section.blocks %}
+  {% if block.settings.menu_item == link.title %}
+{%- assign image_size = '300x' -%}
+    {% capture megalink %}
+{%- assign prod_limit = 8 -%}
+{%- assign collection1 = collections[block.settings.collection1] -%}
+{%- assign collection2 = collections[block.settings.collection2] -%}
+{%- assign collection3 = collections[block.settings.collection3] -%}
+{%- assign collection4 = collections[block.settings.collection4] -%}
+{%- assign collection5 = collections[block.settings.collection5] -%}
+<li> 
+  <a class="parent-link" href="javascript:void(0);" js-parent-link=""> 
+    <span class="parent-link__title">{{link.title}}</span>
+    {% if link.object.image %}
+    	<div class="parent-link__img"><img src="{{ link.object.image.src | collection_img_url: 'original' }}" alt="{{ collection.image.alt }}" /> </div>
+    {% endif %}     
+    </a> 
+</li>
+	<div class="child">
+    <div class="child-header" js-action="back">
+      <div id="mobileHeadDrawer" class="back"></div>
+      <span class="child-header__title">{{ link.title }}</span>
+      {% if link.object.image %}
+		<div class="child-header__img"><img src="{{ link.object.image.src | collection_img_url: 'original' }}" alt="{{ collection.image.alt }}" /> </div>
+	  {% endif %}         
+    </div>
+    {% if collections[block.settings.collection1] != blank %}
+      {% if linklists[block.settings.menu1].links == blank %}
+        <a class="child-link-new link1" rel="prefetch" href="{{collection1.url}}">
+        {% if collection1.image %}
+        <div class="child-link__img"><img src="{{ collection1.image | img_url: 'medium' }}" alt="{{ collection1.title }}"></div>  
+        {% else%}
+        <div class="child-link__img"><img src="{{ collection1.products.first | img_url: 'medium' }}" alt="{{ collection1.title }}"></div>    				  
+        {% endif %}  
+          <span class="child-link__title">{{collection1.title}}</span>
+      </a>
+      {% else %}
+        <a class="child-link link1" rel="prefetch" href="{{collection1.url}}" js-child-link="">
+          {% if collection1.image %}
+          <div class="child-link__img"><img src="{{ collection1.image | img_url: 'medium' }}" alt="{{ collection1.title }}"></div>  
+          {% else%}
+          <div class="child-link__img"><img src="{{ collection1.products.first | img_url: 'medium' }}" alt="{{ collection1.title }}"></div>    				  
+          {% endif %}    
+        <span class="child-link__title">{{collection1.title}}</span> 
+          <span class="child-link-icon">
+        <svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+        <g transform="matrix(1,0,0,1,0,1)">
+          <rect class="plus-vertical-line" x="4" y="-1" width="1.667" height="10" style="fill:#000000;"></rect>
+          <rect class="plus-horizontal-line" x="0" y="3" width="10" height="1.667" style="fill:#000000;"></rect>
+        </g>
+        </svg> 
+          </span> 
+      </a>
+        <div class="grandchild">
+        {% if linklists[block.settings.menu1].links != blank %}
+        {% for sublink in linklists[block.settings.menu1].links %} 
+        <a class="grandchild-link" rel="prefetch" href="{{sublink.url}}">{{sublink.title}}</a>
+        {% endfor %}
+        {% endif%}      
+      </div>
+      {% endif %}
+    {% else %} 
+       {% if linklists[block.settings.menu1].links == blank %}
+      	<a class="child-link-new link1" rel="prefetch" href="{{block.settings.collection1_other}}">      
+          <div class="child-link__img"><img src="{{ block.settings.collection1_image | img_url: 'medium' }}" alt="{{ block.settings.collection1_title }}"></div>  
+        <span class="child-link__title">{{block.settings.collection1_title}}</span>
+    </a>
+        {% else %}
+          <a class="child-link link1" rel="prefetch" href="{{block.settings.collection1_other}}" js-child-link="">
+          <div class="child-link__img"><img src="{{ block.settings.collection1_image | img_url: 'medium' }}" alt="{{ block.settings.collection1_title }}"></div>  
+          <span class="child-link__title">{{block.settings.collection1_title}}</span> <span class="child-link-icon">
+          <svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+          <g transform="matrix(1,0,0,1,0,1)">
+            <rect class="plus-vertical-line" x="4" y="-1" width="1.667" height="10" style="fill:#000000;"></rect>
+            <rect class="plus-horizontal-line" x="0" y="3" width="10" height="1.667" style="fill:#000000;"></rect>
+          </g>
+          </svg> </span> </a>
+          <div class="grandchild">
+          {% if linklists[block.settings.menu1].links != blank %}
+          {% for sublink in linklists[block.settings.menu1].links %} 
+          <a class="grandchild-link" rel="prefetch" href="{{sublink.url}}">{{sublink.title}}</a>
+          {% endfor %}
+          {% endif%}      
+        </div>
+        {% endif %}
+    {% endif %} 
+    {% if collections[block.settings.collection2] != blank %}
+      {% if linklists[block.settings.menu2].links == blank %}
+		<a class="child-link-new link2" rel="prefetch" href="{{collection2.url}}">
+        {% if collection2.image %}
+        <div class="child-link__img"><img src="{{ collection2.image | img_url: 'medium' }}" alt="{{ collection2.title }}"></div>  
+        {% else%}
+        <div class="child-link__img"><img src="{{ collection2.products.first | img_url: 'medium' }}" alt="{{ collection2.title }}"></div>    				  
+        {% endif %}    
+    	<span class="child-link__title">{{collection2.title}}</span></a>
+      {% else %}
+        <a class="child-link link2" rel="prefetch" href="{{collection2.url}}" js-child-link="">
+          {% if collection2.image %}
+          <div class="child-link__img collectionimag1"><img src="{{ collection2.image | img_url: 'medium' }}" alt="{{ collection1.title }}"></div>  
+          {% else%}
+          <div class="child-link__img productimag1"><img src="{{ collection2.products.first | img_url: 'medium' }}" alt="{{ collection1.title }}"></div>    				  
+          {% endif %}    
+          <span class="child-link__title">{{collection2.title}}</span> <span class="child-link-icon">
+          <svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+            <g transform="matrix(1,0,0,1,0,1)">
+              <rect class="plus-vertical-line" x="4" y="-1" width="1.667" height="10" style="fill:#000000;"></rect>
+              <rect class="plus-horizontal-line" x="0" y="3" width="10" height="1.667" style="fill:#000000;"></rect>
+            </g>
+          </svg> </span> </a>
+        <div class="grandchild">
+      {% if linklists[block.settings.menu2].links != blank %}
+      {% for sublink in linklists[block.settings.menu2].links %} 
+      <a class="grandchild-link" rel="prefetch" href="{{sublink.url}}">{{sublink.title}}</a>
+      {% endfor %}
+      {% endif%}      
+    </div>
+      {% endif %}
+    {% else %} 
+       {% if linklists[block.settings.menu2].links == blank %}
+      	<a class="child-link-new link2" rel="prefetch" href="{{block.settings.collection2_other}}">      
+          <div class="child-link__img"><img src="{{ block.settings.collection2_image | img_url: 'medium' }}" alt="{{ block.settings.collection2_title }}"></div>  
+        <span class="child-link__title">{{block.settings.collection2_title}}</span>
+    </a>
+        {% else %}
+          <a class="child-link link2" rel="prefetch" href="{{block.settings.collection2_other}}" js-child-link="">
+          <div class="child-link__img"><img src="{{ block.settings.collection2_image | img_url: 'medium' }}" alt="{{ block.settings.collection1_title }}"></div>  
+          <span class="child-link__title">{{block.settings.collection2_title}}</span> <span class="child-link-icon">
+          <svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+          <g transform="matrix(1,0,0,1,0,1)">
+            <rect class="plus-vertical-line" x="4" y="-1" width="1.667" height="10" style="fill:#000000;"></rect>
+            <rect class="plus-horizontal-line" x="0" y="3" width="10" height="1.667" style="fill:#000000;"></rect>
+          </g>
+          </svg> </span> </a>
+          <div class="grandchild">
+          {% if linklists[block.settings.menu2].links != blank %}
+          {% for sublink in linklists[block.settings.menu2].links %} 
+          <a class="grandchild-link" rel="prefetch" href="{{sublink.url}}">{{sublink.title}}</a>
+          {% endfor %}
+          {% endif%}      
+        </div>
+        {% endif %}
+    {% endif %} 
+    {% if collections[block.settings.collection3] != blank %}
+      {% if linklists[block.settings.menu3].links == blank %}
+      	<a class="child-link-new link3" rel="prefetch" href="{{collection3.url}}">
+      {% if collection3.image %}
+      <div class="child-link__img"><img src="{{ collection3.image | img_url: 'medium' }}" alt="{{ collection3.title }}"></div>  
+      {% else%}
+      <div class="child-link__img"><img src="{{ collection3.products.first | img_url: 'medium' }}" alt="{{ collection3.title }}"></div>    				  
+      {% endif %}    
+    	<span class="child-link__title">{{collection3.title}}</span></a>
+      {% else %}
+    	<a class="child-link link3" rel="prefetch" href="{{collection3.url}}" js-child-link="">
+      {% if collection3.image %}
+      <div class="child-link__img"><img src="{{ collection3.image | img_url: 'medium' }}" alt="{{ collection3.title }}"></div>  
+      {% else%}
+      <div class="child-link__img"><img src="{{ collection3.products.first | img_url: 'medium' }}" alt="{{ collection3.title }}"></div>    				  
+      {% endif %}    
+    <span class="child-link__title">{{collection3.title}}</span> <span class="child-link-icon">
+    <svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,0,1)">
+      <rect class="plus-vertical-line" x="4" y="-1" width="1.667" height="10" style="fill:#000000;"></rect>
+      <rect class="plus-horizontal-line" x="0" y="3" width="10" height="1.667" style="fill:#000000;"></rect>
+    </g>
+    </svg> </span> </a>
+    	<div class="grandchild">
+      {% if linklists[block.settings.menu3].links != blank %}
+      {% for sublink in linklists[block.settings.menu3].links %} 
+      <a class="grandchild-link" rel="prefetch" href="{{sublink.url}}">{{sublink.title}}</a>
+      {% endfor %}
+      {% endif%}      
+    </div>
+      {% endif %}
+      {% else %} 
+       {% if linklists[block.settings.menu3].links == blank %}
+      	<a class="child-link-new link3 123" rel="prefetch" href="{{block.settings.collection3_other}}">      
+          <div class="child-link__img"><img src="{{ block.settings.collection3_image | img_url: 'medium' }}" alt="{{ block.settings.collection3_title }}"></div>  
+        <span class="child-link__title">{{block.settings.collection3_title}}</span>
+    </a>
+        {% else %}
+          <a class="child-link link3" rel="prefetch" href="{{block.settings.collection3_other}}" js-child-link="">
+          <div class="child-link__img"><img src="{{ block.settings.collection3_image | img_url: 'medium' }}" alt="{{ block.settings.collection3_title }}"></div>  
+          <span class="child-link__title">{{block.settings.collection3_title}}</span> <span class="child-link-icon">
+          <svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+          <g transform="matrix(1,0,0,1,0,1)">
+            <rect class="plus-vertical-line" x="4" y="-1" width="1.667" height="10" style="fill:#000000;"></rect>
+            <rect class="plus-horizontal-line" x="0" y="3" width="10" height="1.667" style="fill:#000000;"></rect>
+          </g>
+          </svg> </span> </a>
+          <div class="grandchild">
+          {% if linklists[block.settings.menu3].links != blank %}
+          {% for sublink in linklists[block.settings.menu3].links %} 
+          <a class="grandchild-link" rel="prefetch" href="{{sublink.url}}">{{sublink.title}}</a>
+          {% endfor %}
+          {% endif%}      
+        </div>
+        {% endif %}
+    {% endif %} 
+    {% if collections[block.settings.collection4] != blank %}
+      {% if linklists[block.settings.menu4].links == blank %}
+      	<a class="child-link-new link4" rel="prefetch" href="{{collection4.url}}">
+      {% if collection4.image %}
+      <div class="child-link__img"><img src="{{ collection4.image | img_url: 'medium' }}" alt="{{ collection4.title }}"></div>  
+      {% else%}
+      <div class="child-link__img"><img src="{{ collection4.products.first | img_url: 'medium' }}" alt="{{ collection4.title }}"></div>    				  
+      {% endif %}    
+    	<span class="child-link__title">{{collection4.title}}</span></a>
+      {% else %}
+    	<a class="child-link link4" rel="prefetch" href="{{collection4.url}}" js-child-link="">
+      {% if collection4.image %}
+      <div class="child-link__img"><img src="{{ collection4.image | img_url: 'medium' }}" alt="{{ collection4.title }}"></div>  
+      {% else%}
+      <div class="child-link__img"><img src="{{ collection4.products.first | img_url: 'medium' }}" alt="{{ collection4.title }}"></div>    				  
+      {% endif %}    
+    <span class="child-link__title">{{collection4.title}}</span> <span class="child-link-icon">
+    <svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,0,1)">
+      <rect class="plus-vertical-line" x="4" y="-1" width="1.667" height="10" style="fill:#000000;"></rect>
+      <rect class="plus-horizontal-line" x="0" y="3" width="10" height="1.667" style="fill:#000000;"></rect>
+    </g>
+    </svg> </span> </a>
+    	<div class="grandchild">
+      {% if linklists[block.settings.menu4].links != blank %}
+      {% for sublink in linklists[block.settings.menu4].links %} 
+      <a class="grandchild-link" rel="prefetch" href="{{sublink.url}}">{{sublink.title}}</a>
+      {% endfor %}
+      {% endif%}      
+    </div>
+      {% endif %}
+      {% else %} 
+       {% if linklists[block.settings.menu4].links == blank %}
+      	<a class="child-link-new link4" rel="prefetch" href="{{block.settings.collection4_other}}">      
+          <div class="child-link__img"><img src="{{ block.settings.collection4_image | img_url: 'medium' }}" alt="{{ block.settings.collection4_title }}"></div>  
+        <span class="child-link__title">{{block.settings.collection4_title}}</span>
+    </a>
+        {% else %}
+          <a class="child-link link4" rel="prefetch" href="{{block.settings.collection4_other}}" js-child-link="">
+          <div class="child-link__img"><img src="{{ block.settings.collection4_image | img_url: 'medium' }}" alt="{{ block.settings.collection4_title }}"></div>  
+          <span class="child-link__title">{{block.settings.collection4_title}}</span> <span class="child-link-icon">
+          <svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+          <g transform="matrix(1,0,0,1,0,1)">
+            <rect class="plus-vertical-line" x="4" y="-1" width="1.667" height="10" style="fill:#000000;"></rect>
+            <rect class="plus-horizontal-line" x="0" y="3" width="10" height="1.667" style="fill:#000000;"></rect>
+          </g>
+          </svg> </span> </a>
+          <div class="grandchild">
+          {% if linklists[block.settings.menu4].links != blank %}
+          {% for sublink in linklists[block.settings.menu4].links %} 
+          <a class="grandchild-link" rel="prefetch" href="{{sublink.url}}">{{sublink.title}}</a>
+          {% endfor %}
+          {% endif%}      
+        </div>
+        {% endif %}
+    {% endif %} 
+    {% if collections[block.settings.collection5] != blank %}
+      {% if linklists[block.settings.menu5].links == blank %}
+      	<a class="child-link-new link5" rel="prefetch" href="{{collection5.url}}">
+      {% if collection5.image %}
+      <div class="child-link__img"><img src="{{ collection5.image | img_url: 'medium' }}" alt="{{ collection5.title }}"></div>  
+      {% else%}
+      <div class="child-link__img"><img src="{{ collection5.products.first | img_url: 'medium' }}" alt="{{ collection5.title }}"></div>    				  
+      {% endif %}    
+    	<span class="child-link__title">{{collection5.title}}</span></a>
+      {% else %}
+    	<a class="child-link link5" rel="prefetch" href="{{collection5.url}}" js-child-link="">
+      {% if collection5.image %}
+      <div class="child-link__img"><img src="{{ collection5.image | img_url: 'medium' }}" alt="{{ collection5.title }}"></div>  
+      {% else%}
+      <div class="child-link__img"><img src="{{ collection5.products.first | img_url: 'medium' }}" alt="{{ collection5.title }}"></div>    				  
+      {% endif %}    
+    <span class="child-link__title">{{collection5.title}}</span> <span class="child-link-icon">
+    <svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,0,1)">
+      <rect class="plus-vertical-line" x="4" y="-1" width="1.667" height="10" style="fill:#000000;"></rect>
+      <rect class="plus-horizontal-line" x="0" y="3" width="10" height="1.667" style="fill:#000000;"></rect>
+    </g>
+    </svg> </span> </a>
+    	<div class="grandchild">
+      {% if linklists[block.settings.menu5].links != blank %}
+      {% for sublink in linklists[block.settings.menu5].links %} 
+      <a class="grandchild-link" rel="prefetch" href="{{sublink.url}}">{{sublink.title}}</a>
+      {% endfor %}
+      {% endif%}      
+    </div>
+      {% endif %}
+      {% else %} 
+       {% if linklists[block.settings.menu5].links == blank %}
+      	<a class="child-link-new link5" rel="prefetch" href="{{block.settings.collection5_other}}">      
+          <div class="child-link__img"><img src="{{ block.settings.collection5_image | img_url: 'medium' }}" alt="{{ block.settings.collection5_title }}"></div>  
+        <span class="child-link__title">{{block.settings.collection5_title}}</span>
+    </a>
+        {% else %}
+          <a class="child-link link5" rel="prefetch" href="{{block.settings.collection5_other}}" js-child-link="">
+          <div class="child-link__img"><img src="{{ block.settings.collection5_image | img_url: 'medium' }}" alt="{{ block.settings.collection5_title }}"></div>  
+          <span class="child-link__title">{{block.settings.collection5_title}}</span> <span class="child-link-icon">
+          <svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+          <g transform="matrix(1,0,0,1,0,1)">
+            <rect class="plus-vertical-line" x="4" y="-1" width="1.667" height="10" style="fill:#000000;"></rect>
+            <rect class="plus-horizontal-line" x="0" y="3" width="10" height="1.667" style="fill:#000000;"></rect>
+          </g>
+          </svg> </span> </a>
+          <div class="grandchild">
+          {% if linklists[block.settings.menu5].links != blank %}
+          {% for sublink in linklists[block.settings.menu5].links %} 
+          <a class="grandchild-link" rel="prefetch" href="{{sublink.url}}">{{sublink.title}}</a>
+          {% endfor %}
+          {% endif%}      
+        </div>
+        {% endif %}
+    {% endif %} 
+    </div>
+    {% endcapture %}
+  {% assign meganav = true %}
+  {% endif %}
+{% endfor %}
+
+{% if meganav %}
+  {{ megalink }}
+{% else %}
+    <li> <a  class="parent-link-custom" href="{{ link.url }}"> 
+      <span class="parent-link__title">{{link.title}}</span>
+    {% if link.object.image %}
+    	<div class="parent-link__img"><img src="{{ link.object.image.src | collection_img_url: 'original' }}" alt="{{ collection.image.alt }}" /> </div>
+    {% endif %}     
+    </a> </li>
+    {% endif %} 

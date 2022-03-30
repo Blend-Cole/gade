@@ -1,0 +1,37 @@
+<div id="customer-wrapper" class="desktop-12 mobile-3">
+
+  <!-- Left Side -->
+
+
+  <!-- Create Account -->
+
+
+  <!-- Create Customer -->
+  <div id="create-customer" class="boaideas desktop-push-3 desktop-6 mobile-3">
+    <div class="template_header">
+      <h2 class="title">{{ 'customer.register.title' | t }}</h2>
+    </div>
+    {% include 'customer-registration'%}
+    
+  </div>
+
+
+  <!-- End Create Account -->
+
+
+</div>
+
+<script type="text/javascript">
+  function showRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'inline-block';
+    document.getElementById('customer').style.display='none';
+  }
+
+  function hideRecoverPasswordForm() {
+    document.getElementById('recover-password').style.display = 'none';
+    document.getElementById('customer').style.display = 'inline-block';
+  }
+
+  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+  
+</script>

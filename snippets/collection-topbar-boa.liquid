@@ -1,0 +1,9 @@
+{% if linklists[collection.handle].links != blank %}
+<div id="collection-topbar" class="row">
+  <ul class="topbar{% if section.settings.show_collection_sidebar %} desktop-8{% else %} desktop-12 {% endif %} tablet-6 mobile-3">
+    {% for childlink in linklists[collection.handle].links %}   
+    	<li><a href="{{ childlink.url }}">{{ childlink.title }}</a></li>	
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}

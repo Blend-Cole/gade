@@ -1,0 +1,55 @@
+      {% comment %}
+        Ignore if tag category is empty
+      {% endcomment %}
+      {% unless cat_item == '' %}
+      <h4 class="advanced-filter-heading" data-control="{{ cat_item | replace: ' ', '-' | downcase }}">{{ cat_item | replace: '-', '' }}{% if settings.closed_widgets %} <span class="expand"><i class="fa fa-plus icon-plus" aria-hidden="true"></i></span><span class="collapse"><i class="fa fa-minus icon-minus" aria-hidden="true"></i></span>{% endif %}</h4>
+      <ul class="advanced-filters" data-name="{{ cat_item | replace: ' ', '-' | downcase }}"{% if cat_item == 'Color' and settings.enable_color_filter_images == true %} data-skip-handles{% endif %}{% if cat_item == 'Size' and settings.enable_size_filter_images == true %} data-skip-handles{% endif %}>
+        {% comment %}
+          Loop through collection tags
+        {% endcomment %}
+        {% for custom_tag in collection.tags %}
+          {% capture tag_compare %}{{ cat_item | append: '_' }}{% endcapture %}
+          {% if custom_tag contains tag_compare %}
+            {% comment %}
+              Strip out tag category prefix and add/remove link for tag filtering
+            {% endcomment %}
+
+            {% if current_tags contains custom_tag %}
+
+              {% assign words = custom_tag | replace: '_', '#' | split: '#' %}
+
+              {% if cat_item == settings.color_label_default_title and settings.enable_color_filter_images == true %}
+              {% capture filename %}{{ words[1] | downcase }}.{{settings.swatches_extension}}{% endcapture %}
+              {% capture file_image %}<span style="background-color: {{words[1]}}; background-image: url('{{ filename | asset_url }}');"></span>{% endcapture %}
+            <li class="advanced-filter custom-filter color-filter active-filter{% if settings.enable_color_filter_images %} cfi{% endif %}" data-group="{{ cat_item }}" data-handle="{{ custom_tag | handleize }}">{{ file_image | link_to_remove_tag: custom_tag }}</li>
+              {% elsif cat_item == settings.size_label_default_title and settings.enable_size_filter_images == true %}
+            <li class="advanced-filter custom-filter size-filter active-filter" data-group="{{ cat_item }}" data-handle="{{ custom_tag | handleize }}">{{ words[1] | link_to_remove_tag: custom_tag }}</li>
+              {% else %}
+            <li class="advanced-filter active-filter" data-group="{{ cat_item }}" data-handle="{{ custom_tag | handleize }}"><span class="order {% if words[2] != blank %}{{ cat_item | handleize }}{% endif %}">{{ words[1] | link_to_remove_tag: custom_tag }}</span> {% if words[2] != blank %}{{ words[2] | link_to_remove_tag: custom_tag }}{% endif %}</li>
+              {% endif %}
+
+            {% else %}
+
+              {% assign words = custom_tag | replace: '_', '#' | split: '#' %}
+
+              {% if cat_item == settings.color_label_default_title and settings.enable_color_filter_images == true %}
+              {% capture filename %}{{ words[1] | downcase }}.{{settings.swatches_extension}}{% endcapture %}
+              {% capture file_image %}<span style="background-color: {{words[1]}}; background-image: url('{{ filename | asset_url }}');"></span>{% endcapture %}
+            <li class="advanced-filter custom-filter color-filter{% if settings.enable_color_filter_images %} cfi{% endif %}" data-group="{{ cat_item }}">{{ file_image | link_to_add_tag: custom_tag }}</li>
+              {% elsif cat_item == settings.size_label_default_title and settings.enable_size_filter_images == true %}
+            <li class="advanced-filter custom-filter size-filter" data-group="{{ cat_item }}">{{ words[1] | link_to_add_tag: custom_tag }}</li>
+              {% else %}
+            <li class="advanced-filter" data-group="{{ cat_item }}"><span class="order {% if words[2] != blank %}{{ cat_item | handleize }}{% endif %}">{{ words[1] | link_to_add_tag: custom_tag }}</span> {% if words[2] != blank %}{{ words[2] | link_to_add_tag: custom_tag }}{% endif %}</li>
+              {% endif %}
+
+            {% endif %}
+
+          {% endif %}
+        {% endfor %}
+        
+        {% if settings.limit_filters_heights == 'see_more' %}
+        <li class="expander exp-more"><a href="#" class="exp">{{ 'collections.filter.more' | t }} &hellip;</a></li>
+        <li class="expander exp-less hidden"><a href="#" class="exp">{{ 'collections.filter.less' | t }} &hellip;</a></li>
+        {% endif %}
+      </ul>
+      {% endunless %}

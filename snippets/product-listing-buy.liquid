@@ -1,0 +1,117 @@
+{% include 'sca_freegift_price' with product %}
+{% assign form_id = product.id | downcase %}
+{% form 'product', product, data-product-form:product_form_config, id: form_id %}
+  <script class="product-json" type="application/json">
+    {{ product | json }}
+  </script>
+<div class="item-border">
+  <div class="ci">
+    {% if product.available %}
+      {% for col in product.collections %}
+        {% if col.handle == 'new' %}
+          <div class="new icn">חדש</div>
+        {% endif %}
+        
+      {% endfor %}
+
+      {% if sca_price < sca_compare_at_price %}
+        <div class="sale-item icn">SALE</div>
+      {% endif %}
+
+    {% else %}
+      <div class="so icn">{{ 'products.general.sold' | t }}</div>
+    {% endif %}
+
+      {% if product.featured_image %}
+        <a href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">
+          <div class="reveal">
+            {% include "basic-responsive-image", type: product.featured_image %}
+            <noscript>
+              <img src="{{ product.featured_image | img_url: '1024x' }}" alt="{{ product.featured_image.alt | escape }}">
+            </noscript>
+            {% if settings.image_flip and product.images.size > 1 %}
+              <div class="hidden">
+                {% include "basic-responsive-image", type: product.images[1] %}
+                <noscript>
+                  <img src="{{ product.images[1] | img_url: '1024x' }}" alt="{{ product.images[1].alt | escape }}">
+                </noscript>
+              </div>
+            {% endif %}
+          </div>
+        </a>
+      {%- else -%}
+        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+        {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+
+  <div class="product-details">
+    <a href="{{ product.url | within: collection }}">
+      <h3>{{ product.title }}</h3>
+      <div class="product-description-car">{{ product.metafields.custom_fields.mini_description | strip_html | truncate:110 }}</div>
+      {% if settings.vendor %}
+        <h4>{{ product.vendor }}</h4>
+      {% endif %}
+    </a>
+
+    <div class="price">
+      {% if sca_price < sca_compare_at_price %}
+        <div class="onsale">
+          <span class="money">{{ sca_price | money }}</span>
+        </div>
+        <div class="was-listing">
+          <span class="money">{{ sca_compare_at_price | money }}</span>
+        </div>
+      {% else %}
+        <div class="prod-price">
+          {% if sca_price_varies %}
+            {{ 'products.general.from' | t }} <span class="money">{{ sca_price_min | money }}</span> - <span class="money">{{ sca_price_max | money }}</span>
+          {% else %}
+            <span class="money">{{ sca_price | money }}</span>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% render 'product-weight-boa', product: product %}
+    </div>
+  </div>
+</div>
+  <input  type="hidden" id="{{ product.id }}" name="id" data-sku="{{ product.sku }}" value="{{ product.variants[0].id }}" />
+  <input  type="submit" name="button" class="add-to-cart{% if section.settings.show_payment_button %} secondary-button{% endif %}" value="{{ 'products.product.add_to_cart' | t }}" />
+{% endform %}
+
+
+
+{{ 'handlebars.min.js' | asset_url | script_tag }}
+{% include 'ajax-cart-template' %}
+{{ 'ajax-cart.js' | asset_url | script_tag }}
+
+
+<script>
+  
+  r(function(){
+    if( $(window).width() < 1220 ){
+      $('.product-thumbnail').css('margin-bottom', '10px' );
+      $('.bx-viewport').css('height', '331px' );    
+    };
+    
+    ajaxCart.init({
+        formSelector: '[data-product-form]',
+        cartContainer: '#CartContainer',
+        addToCartSelector: '.add-to-cart',
+        cartCountSelector: '.CartCount',
+        cartCostSelector: '.CartCost',
+        moneyFormat: {{ shop.money_format | json }}
+     });
+    
+    jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
+      $.fancybox.close(true);
+      // Bind to 'ajaxCart.afterCartLoad' to run any javascript after the cart has loaded in the DOM
+      timber.RightDrawer.open();
+    });
+    
+  });
+    
+
+  function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+  
+</script>

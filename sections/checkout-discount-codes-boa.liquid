@@ -1,0 +1,182 @@
+{% if section.settings.checkout_footer_icons %}
+  {% for block in section.blocks %}
+    <div class="icon-row">
+      {% assign img_url = block.settings.icon | img_url: 'master' %}
+      <div class="icon-image" style="background-image: url({{ img_url}})"></div>
+      <div class="icon-text">{{ block.settings.text }}</div>
+    </div>
+  {% endfor %}
+{% endif %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  //create discount codes array from liquid blocks
+  var discount_codes_array = [];
+  {% for block in section.blocks %}
+    {% if block.settings.display_discount_code %} //check if discount enabled
+      var discount = {};
+  	  //create discount object
+      {% if block.settings.discount_code != blank %}
+          discount.discount_code = '{{ block.settings.discount_code }}';
+      {% endif %}
+      {% if block.settings.variant_id != blank %}
+          discount.variant_id = {{ block.settings.variant_id }};
+      {% endif %}
+      {% if block.settings.start_date != blank %}
+          discount.start_date = '{{ block.settings.start_date }}';
+      {% endif %}
+      {% if block.settings.end_date != blank %}
+          discount.end_date = '{{ block.settings.end_date }}';
+      {% endif %}
+      {% if block.settings.min_amount != blank %}
+          discount.min_amount = {{ block.settings.min_amount }};
+      {% endif %}
+
+      discount_codes_array.push(discount); //push each discount object to array
+    {% endif %}
+  {% endfor %}
+   console.log(discount_codes_array);  
+  
+  
+  $(document).on(`page:load page:change`, function() {
+    $('.tags-list .tag').each(function(){ //run on each discount code added
+      var discount_code = $(this).find('.reduction-code__text').text();
+
+      discount_codes_array.forEach(function(discount) {
+        if(discount.variant_id){
+          if(discount_code.toUpperCase() == discount.discount_code.toUpperCase()){ //check if discount exists in discounts array
+            //check if variant id exist in line items
+            var variant_exist = false;
+            var variant_quantity = '';
+            $('.product-table .product').each(function(){
+              if($(this).attr('data-variant-id') == discount.variant_id){
+                variant_exist = true;
+                variant_quantity = $(this).find('.product-thumbnail__quantity').text();
+              }
+            });
+
+            if(variant_exist == false){ //if variant id doesn't exist in cart's line items
+              var variantId = discount.variant_id;
+              //check if discount is valid
+              if(discount.start_date && discount.end_date){
+                var discountValid = compareDates(discount.start_date, discount.end_date) || '';
+                if(discountValid){
+                  //check if minimum amount declared
+                  var min_amount = '';
+                  if(discount.min_amount){
+                    var min_amount = discount.min_amount;
+                    var totalPrice = $('.sidebar .payment-due__price').text().replace('$','');
+                    if(totalPrice >= min_amount){
+                      addVariantToCart(variantId);
+                    }
+                  }
+                  else{
+                    addVariantToCart(variantId);
+                  }
+                }
+              }
+            }
+            else{
+              if(variant_quantity != '1'){
+                var variantId = discount.variant_id;
+                changeVariantQuantity(variantId);
+              }
+            }
+          }
+        }
+      });
+    });
+  });
+  
+  function compareDates(startDate, endDate) { 
+    var currentDate = new Date();
+    var startDate = new Date(startDate);
+    var endDate = new Date(endDate);
+
+    if(currentDate.setHours(0,0,0,0) <= endDate.setHours(0,0,0,0) && currentDate.setHours(0,0,0,0) >= startDate.setHours(0,0,0,0)){
+      return true;
+    }
+  }
+
+  function addVariantToCart(variantId){
+    jQuery.post('/cart/add.js', {
+      quantity: 1,
+      id: variantId
+    });
+    setTimeout( 
+      function() {
+        window.location.reload(true);
+      }, 1000);    
+  }
+  
+  function changeVariantQuantity(variantId){
+    jQuery.post('/cart/change.js', {
+      quantity: 1,
+      id: variantId
+    });
+    setTimeout( 
+      function() {
+        window.location.reload(true);
+      }, 1000);    
+  }
+</script>
+
+
+{% schema %}
+{
+  "name": "Checkout discount codes",
+  "class": "index-section checkout-discount-codes",
+  "settings": [
+            {
+              "type": "text",
+              "id": "min_amount_without_code",
+              "label": "Minimum amount",
+			  "info": "Works only if checkout codes don't exist"
+            }
+  ],
+  "blocks": [
+	{
+          "type": "discount_code",
+          "name": "Discount code",
+          "settings": [
+            {
+              "type": "checkbox",
+              "id": "display_discount_code",
+              "label": "Display discount code"
+            },
+            {
+              "type": "text",
+              "id": "discount_code",
+              "label": "Discount code"
+            },
+            {
+              "type": "text",
+              "id": "variant_id",
+              "label": "Variant id"
+            },
+            {
+              "type": "text",
+              "id": "start_date",
+              "label": "Start date",
+			  "info": "Date format: yyyy-mm-dd"
+            },
+            {
+              "type": "text",
+              "id": "end_date",
+              "label": "End date",
+			  "info": "Date format: yyyy-mm-dd"
+            },
+            {
+              "type": "text",
+              "id": "min_amount",
+              "label": "Minimum amount"
+            }
+          ]
+		}
+      ],
+  "presets": [{
+    "name": "Checkout discount codes",
+    "category": "Image"
+  }]
+}
+{% endschema %}

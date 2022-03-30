@@ -1,0 +1,281 @@
+<!-- Start video hero -->
+<div class="video-hero jquery-background-video-wrapper demo-video-wrapper">
+  {% if section.settings.youtubeid == 'blank' %}
+  <video class="jquery-background-video" autoplay="" muted="" loop="" poster="{{ section.settings.image | img_url: '1500x' }}">
+    <source class="mp4" type="video/mp4" data-mobile-path="{{ section.settings.mp4 }}" src="{{ section.settings.mp4 }}">
+    <source class="webm" type="video/webm" data-mobile-path="{{ section.settings.webm }}" data-desktop-path="{{ section.settings.webm }}" src="{{ section.settings.webm }}">
+  </video>
+  {% else %}
+   <iframe frameborder="0" height="100%" width="100%" 
+    src="https://youtube.com/embed/tsjd7xdgfjA?autoplay=1&controls=0&showinfo=0&autohide=1&rel=0&loop=1">
+  </iframe>
+  {% endif %}
+<div class="video-overlay"></div>
+<div class="page-width">
+		    <div class="video-hero--content flex-caption">    
+              {% if section.settings.title != 'blank' %}
+			      <h2 class="slide-title">{{ section.settings.title }}</h2>
+              {% endif %}
+              {% if section.settings.subtitle != 'blank' %}
+			      <span style="line-height: 1.2em;">{{ section.settings.subtitle }}</span>
+              {% endif %}
+              {% if section.settings.button1_label != 'blank' %}
+              <br />              
+              <div class="cta"><a href="{{ section.settings.button1_link }}" tabindex="0">{{ section.settings.button1_label }}</a></div>
+              {% endif %}
+    		</div>
+  	</div>
+</div>
+<!-- End video hero -->
+
+{% schema %}
+  {
+    "name": "Custom Video Section",
+    "settings": [            
+    {
+      "type": "text",
+      "id": "mp4",
+      "label": "HTML5 MP4 File URL"
+    },
+    {
+      "type": "text",
+      "id": "webm",
+      "label": "HTML5 WEBM File URL (optional)"
+    },
+	{
+      "type": "text",
+      "id": "youtubeid",
+      "label": "Add You Tube Video ID"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Poster Image",
+      "info": "1600 x 900px recommended"
+    },   
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subheading"
+    },          
+    {
+      "type": "text",
+      "id": "button1_label",
+      "label": "button label"
+    },
+    {
+      "type": "url",
+      "id": "button1_link",
+      "label": "button link"
+    }	
+  ],
+  "presets": [{
+    "name": "Custom Video Section",
+    "category": "Yuvraj Jain Sections",
+    "settings": {      
+      "button1_label": "GET IT NOW"
+    }
+  }]
+  }
+{% endschema %}
+
+<style>
+
+
+/**
+ * This part should be set separately for each video
+ * if there are multiple videos in your site.
+ * I.e. '.demo-video-wrapper' is the name of this particular video
+ */
+.demo-video-wrapper {
+	background-image: url(https://cdn.shopify.com/s/files/1/0085/3432/7411/files/slider-img1_1944x.jpg?v=1555959810);
+}
+  .video-btn{background-color:#d54d4c;
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: bold;
+    height: 100%;border-radius:0px;
+    justify-content: center;
+    letter-spacing: 1px;
+    line-height: 12px;position: relative;
+    top:50px;
+    text-transform: uppercase;padding:15px 10px;    }
+/* Video overlay and content */
+.video-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	pointer-events: none; /* Allows right click menu on the video */
+	background: url($overlay_pattern) left top repeat;
+  opacity: $overlay_opacity;
+}
+.video-hero--content {
+	position: relative;
+	text-align: center;
+	color: #FFF;
+  margin: 150px 0;
+	text-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+.video-hero--content h2 {
+	    font-size: 50px;
+    margin: 0 0 10px;
+    color: #fff;
+    font-weight: bold;
+}
+.video-hero--content p {
+	font-size: 20px;
+	margin: 0;
+}
+
+/* Other stuff */
+
+}
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+.cf:after {
+    clear: both;
+}
+.cta a {
+    color: #ffffff;
+    background: #000000;
+}
+.page-width {
+	width: 100%;
+	max-width: 1800px;
+	margin: 0 auto;
+}
+
+.title {
+	display: block;
+	font-weight: bold;
+	font-size: 18px;
+}
+.subtitle {
+	display: block;
+	font-weight: normal;
+	font-size: 15px;
+	color: #959699;
+}
+a:hover .subtitle {
+	color: #FFF;
+}
+#site-title {
+	float: left;
+	margin: 0;
+}
+#content {
+	padding: 40px 0;
+}
+
+
+/* CSS from jQuery Background Video plugin */
+/**
+ * Set default positioning as a fallback for if the plugin fails
+ */
+.jquery-background-video-wrapper {
+	position: relative;
+	overflow: hidden;
+	background-position: center center;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	   -moz-background-size: cover;
+	    	background-size: cover;height:700px;
+}
+.jquery-background-video {
+	position: absolute;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	top: 50%;
+	left: 50%;
+	-o-object-fit: contain;
+	   object-fit: contain;
+	-webkit-transform: translate(-50%,-50%);
+	   -moz-transform: translate(-50%,-50%);
+	    -ms-transform: translate(-50%,-50%);
+	     -o-transform: translate(-50%,-50%);
+	    	transform: translate(-50%,-50%);
+}
+/**
+ * Fade in videos
+ * Note the .js class - so non js users still
+ * see the video
+ */
+/*.js .jquery-background-video {
+	opacity: 0;
+	-webkit-transition: opacity 300ms linear;
+			transition: opacity 300ms linear;
+}*/
+.js .jquery-background-video.is-visible {
+	opacity: 1;
+}
+
+/**
+ * Pause/play button
+ */ 
+.jquery-background-video-pauseplay {
+	position: absolute;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	width: 20px;
+	height: 20px;
+	top: 15px;
+	right: 15px;
+	padding: 0;
+	cursor: pointer;
+	outline: none !important;
+}
+.jquery-background-video-pauseplay span {
+	display: none;
+}
+.jquery-background-video-pauseplay:after,
+.jquery-background-video-pauseplay:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	-webkit-transition: all .3s ease;
+			transition: all .3s ease;
+}
+.jquery-background-video-pauseplay.play:before {
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 15px solid #FFF;
+}
+.jquery-background-video-pauseplay.pause:before,
+.jquery-background-video-pauseplay.pause:after {
+	border-top: 10px solid #FFF;
+	border-bottom: 10px solid #FFF;
+	border-left: 5px solid #FFF;
+}
+.jquery-background-video-pauseplay.pause:after {
+	left: 10px;
+}
+.video-hero--content span{font-size:22px;}
+@media only screen and (max-width: 800px) {
+  .jquery-background-video-wrapper{height:619px;}
+  .video-hero--content h2 {font-size: 20px;line-height: 22px; }
+  .video-hero--content img{width:40px;}
+  .video-hero--content span {font-size: 16px;}
+  .video-btn{top:30px;padding: 10px 10px;}
+  .index #pagecontent{display:none;}
+  #header{padding:0px;}
+}
+</style>
+<script>//$('.jquery-background-video').bgVideo({fadeIn: 2000});</script>

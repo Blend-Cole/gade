@@ -1,0 +1,52 @@
+<div class="homepage-instagram" data-section-id="{{ section.id }}" data-section-type="covet-pics-feed">
+  <div class="section-title insta-heading">
+    <h4>{{ settings.instagram-title }}</h4>
+    <h5>{{ settings.instagram-subtitle }}</h5>
+    <p>{{ settings.instagram-text }}</p>
+  </div>
+  <div class="covet-pics-wrap">
+    <div class="row covet-pics-gallery" data-id="{{ section.settings.instagram_id }}"></div>
+  </div>
+</div>
+
+<style>
+  /* INSTAGRAM */
+  .homepage-instagram {
+    background: {{ section.settings.instagram_background_color }};
+  }
+  .homepage-instagram .insta-heading h4{
+    color: {{ section.settings.instagram_heading_color}};
+  }
+</style>
+{% schema %}
+{
+    "name": "Instagram feed homepage",
+    "settings": [
+      
+     {
+        "type": "text",
+        "id": "instagram_id",
+        "label": "instagram data id",
+        "default": "66336"
+     }, 
+     {
+        "type": "color",
+        "id": "instagram_heading_color",
+        "label": "Heading color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "instagram_background_color",
+        "label": "Background",
+        "default": "#fff"
+      }
+  ],
+  "presets": [
+    {
+      "name": "Instagram feed homepage",
+      "category": "Social media"
+    }
+  ]
+}
+{% endschema %}

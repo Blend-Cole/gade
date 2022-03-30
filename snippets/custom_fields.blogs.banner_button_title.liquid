@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/ga-de-cosmetics-israel.myshopify.com/blogs/configure/111351/edit
+{% endcomment %}
+{% if blog.metafields.custom_fields["banner_button_title"] != blank %}
+  <div class="custom-field custom-field__banner-button-title custom-field__type--text">
+    <h3 class="custom-field--title">Banner Button Title</h3>
+    <div class="custom-field--value">
+      {{ blog.metafields.custom_fields["banner_button_title"] }}
+    </div>
+  </div>
+{% endif %}

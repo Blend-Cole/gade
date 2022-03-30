@@ -1,0 +1,482 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<div id="product-{{ product.id }}"
+     class="product-page product-template" data-section-type="product-section" data-section-id="{{ section.id }}">
+  <div id="product-id-hidden" hidden>{{ product.id }}</div>
+
+ 
+  <div itemscope itemtype="https://schema.org/Product">
+    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}"/>
+    <meta itemprop="name" content="{{ product.title }}" />
+    <meta itemprop="sku" content="{{ product.variants.first.sku }}"/>
+    <meta itemprop="gtin14" content="{{ product.variants.first.barcode }}"/>
+    <meta itemprop="brand" content="{{ product.vendor }}"/>
+    <meta itemprop="description" content="{{ product.description | strip_html | escape }}"/>
+    <meta itemprop="image" content="https:{{ product.featured_image.src | img_url: 'grande' }}"/>
+    <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+      <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+      <meta itemprop="price" content="{{ product.price |money_without_currency  |strip_html }}"/>
+      <meta itemprop="itemCondition" itemtype="http://schema.org/OfferItemCondition" content="http://schema.org/NewCondition" />
+      {% if product.available == true %}<meta itemprop="availability" content="http://schema.org/InStock"/>{% else %}<meta itemprop="availability" content="http://schema.org/OutOfStock"/>{% endif %}
+      <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+    </div>
+    {% if product.metafields.yotpo.reviews_count and product.metafields.yotpo.reviews_count != "0" %}
+    <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+    <meta itemprop="itemReviewed" content="{{ product.title }}"/>
+    <meta itemprop="ratingValue" content="{{ product.metafields.yotpo.reviews_average }}"/>
+    <meta itemprop="ratingCount" content="{{ product.metafields.yotpo.reviews_count }}"/>
+    </div>
+    {% endif %}
+  	</div>
+  
+  <div id="photosAndDesc">
+    <div id="productsRight" class="product-right desktop-4 tablet-6 mobile-3">
+      <div class="product-title">
+        <div style="position:relative;">
+          <h1>{{ product.title }}</h1>
+          <span id="secomapp-fg-image-{{ product.id }}" style="display: none;"> {{ "icon-freegift.png" | asset_url | img_tag: "", "sca-fg-img-collect" }} </span>
+          {% if product.tags contains 'SELFIE FULL COLOR LIPSTICK' or product.tags contains 'crystal lights' or product.tags contains 'TRUE COLOR SATIN LIPSTICK' or product.tags contains 'IDYLLIC MATTE LIP COLOR' or product.tags contains 'VELVETEEN MATTE LIP COLOR' or product.tags contains 'VELVETEEN PURE MATTE LIPSTICK' or product.tags contains 'VELVETEEN ULTRA SHINE LIP GEL' or product.tags contains 'EVERLASTING LIP COLOR' %}
+          	<button class="show-ar-btn" style="visibility:hidden;">תראי איך זה נראה עלייך</button>
+          {% endif %}
+        </div>
+      </div>
+      <div class="mini-desc">
+        {{ product.metafields.custom_fields.mini_description }}
+      </div>
+       <!-- Yotpo Star Rating - Product Page --> 
+      <div class="yotpo bottomLine" data-product-id="{{ product.id }}">
+        {%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
+        {%- assign time_now = 'now' | date: '%s' %}
+        {%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: '%s' %}
+        {%- assign diff_seconds_from_live = time_now | minus: yotpo_live_time %}
+        {%- assign yotpo_bottomline_last_updated = product.metafields.yotpo.bottomline_update_time | date: '%s' %}
+        {%- assign diff_seconds_from_last_bottomline_update = time_now | minus: yotpo_bottomline_last_updated %}
+        {%- if yotpo_live_time and diff_seconds_from_live < 86400 or yotpo_bottomline_last_updated and diff_seconds_from_last_bottomline_update < 86400 -%}
+        {%- assign yotpo_bottomline_obsolete = false %}
+        {%- else %}
+        {%- assign yotpo_bottomline_obsolete = true %}
+        {%- endif %}
+        {%- if yotpo_offload_content == 'yes' and yotpo_bottomline_obsolete != true -%}
+        {{ product.metafields.yotpo.bottomline }}
+        {%- endif %}
+      </div>
+      <style>
+        .yotpo .text-m {display: none;} 
+      </style>
+      <!-- End of Yotpo Star Rating - Product Page -->
+      
+      <!-- product variants custom fields - boaideas-->
+      {% assign collection_handle = product.metafields.custom_fields.collection_name | replace: ' ', '-' %}
+      {% assign current_collection = collections[collection_handle].products | reverse %}	
+      {% if current_collection.size > 1 %}
+      
+      <div class="variants-swatches sm-d-none">
+        {% for current_variant in current_collection %}
+        <a class="single-variant" rel="nofollow" 
+           href="{{ current_variant.url }}" 
+           style="display: inline-block;" 
+           onmouseover="document.getElementById('{{current_variant.selected_or_first_available_variant.id}}').style.display = 'block';"
+           onmouseout="document.getElementById('{{current_variant.selected_or_first_available_variant.id}}').style.display = 'none';"
+           >
+          <div class="variant-label" id="{{current_variant.selected_or_first_available_variant.id}}">
+          	<div class="label">
+              {{ current_variant.selected_or_first_available_variant.option1 }}
+            </div>
+          </div>
+          <div class="round" {% unless current_variant.metafields.custom_fields.variant_image != blank %} style="background-color: #{{current_variant.metafields.custom_fields.colorhexa}};"{% endunless%}>
+            {% if current_variant.metafields.custom_fields.variant_image != blank %}
+            {{ current_variant.metafields.custom_fields.variant_image }}
+            {% endif %}
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+      <div id="variant-id-hidden" hidden>{{ product.first_available_variant.id }}</div>
+
+      <div class="quickview_variants_dropdown">
+        <div class="product-current-variant pointer d-flex align-items-center">
+          <div class="round" {% unless product.metafields.custom_fields.variant_image != blank %}style="background-color: #{{ product.metafields.custom_fields.colorhexa }};"{% endunless%}> 
+            {% if product.metafields.custom_fields.variant_image != blank %}
+            {{ product.metafields.custom_fields.variant_image}}
+            {% endif %}
+          </div>
+          <span class="current-variant-name">{{ current_variant.option1 }}</span>
+          {% include 'chevron-svg'%}
+        </div>
+
+        <div class="product-variants-dropdown">
+          {% for current_variant in current_collection %}
+          <a class="single-product" rel="nofollow" href="{{ current_variant.url }}" style="display: inline-block;">
+            <div class="round-outer-circle-overlay {% if product.handle == current_variant.handle %}with-border{% endif %}">
+              <div class="round" variant-id={{ current_variant.id }}{% unless current_variant.metafields.custom_fields.variant_image != blank %} style="background-color: #{{current_variant.metafields.custom_fields.colorhexa}};"{% endunless%}>
+                {% if current_variant.metafields.custom_fields.variant_image != blank %}
+                {{ current_variant.metafields.custom_fields.variant_image }}
+                {% endif %}
+              </div>
+              <span class="variant-name">{{ current_variant.selected_or_first_available_variant.option1 }}</span>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+
+      {% endif %}
+     <!-- end product variants custom fields -->
+      
+    {% capture product_form_config %}{ "money_format": {{ shop.money_format | json }}, "enable_history": true, "currency_switcher_enabled": {{ settings.show_multiple_currencies | json }}, "sold_out": {{ "products.product.sold_out" | t | json }}, "button": {{ 'products.product.add_to_cart' | t | json }}, "unavailable": {{ 'products.product.unavailable' | t | json }} }{% endcapture %}
+      {% include 'product-form' %}
+      <span class="sca-fg-cat-list" style="display:none;" id="secomapp-fg-data-{{ product.id }}"> </span>
+      <div class="clear"></div>
+    </div>
+
+    <div id="productPhotos" class="product-photos desktop-7 desktop-push-1 tablet-6 mobile-3" data-product-gallery>
+      {%- if product.featured_image -%}
+        {% include 'product-image-gallery' %}
+      {%- else -%}
+        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+        {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+    <div class="clear"></div>
+  </div>
+ 
+  {% comment %} TRY IT ON {% endcomment %}
+
+  {% if product.tags contains 'SELFIE FULL COLOR LIPSTICK' or product.tags contains 'crystal lights' or product.tags contains 'TRUE COLOR SATIN LIPSTICK' or product.tags contains 'IDYLLIC MATTE LIP COLOR' or product.tags contains 'VELVETEEN MATTE LIP COLOR' or product.tags contains 'VELVETEEN PURE MATTE LIPSTICK' or product.tags contains 'VELVETEEN ULTRA SHINE LIP GEL' or product.tags contains 'EVERLASTING LIP COLOR' %}
+  <div class="ar-wrapper">
+    <iframe id="memomi" frameBorder="0" allow="camera" width="800px" height="800px"></iframe>
+    <h3 class="shade-title text-center"> בחירת גוון: </h3>
+    <div class="shade_label text-center">הגוון שאת רואה הוא: <p class="shade_name"></p></div>
+    <div class="shades">
+      {% for current_variant in current_collection %}   
+        <div variant-id="{{ current_variant.id }}" variant-name="{{ current_variant.selected_or_first_available_variant.option1 }}" class="round {% if forloop.index == 1 %}selected{% endif %}" {% unless current_variant.metafields.custom_fields.variant_image != blank %} 
+             style="background-color: #{{ current_variant.metafields.custom_fields.colorhexa }};"{% endunless%}
+        onclick="sendData('{{ current_variant.selected_or_first_available_variant.sku }}')">
+          {% if current_variant.metafields.custom_fields.variant_image != blank %}
+          {% assign image = current_variant.metafields.custom_fields.variant_image | remove: '<img src="' | remove: '" alt="" typeof="foaf:Image"' | remove: '/>' %}
+          <img src="{{ image }}" alt="{{ current_variant.selected_or_first_available_variant.option1 }}" />
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div> 
+    {% for current_variant in current_collection %}  
+        <div class="shade-form{% if forloop.index == 1 %} selected{% endif %}" variant-id="{{ current_variant.id }}">
+          {% form 'product', current_variant, data-product-form:product_form_config %}
+            <script class="product-json" type="application/json">
+                    {{ product | json }}
+            </script>
+            <input type="hidden" name="id" data-sku="{{ current_variant.sku }}" value="{{ current_variant.variants[0].id }}" />
+            <input type="submit" name="button" class="add-to-cart" value="{{ 'products.product.add_to_cart' | t }}" />
+          {% endform %} 
+        </div>
+    {% endfor %}
+  </div>
+ <script type="text/javascript">
+    var ws;
+    var iFrame = document.getElementById('memomi');
+    var token;
+    
+    function sendData(iProductId) {
+      var newData = {brandId:'5dfb46ca79cad1883e6bfd9a',productId:iProductId};
+      ws.send(JSON.stringify(newData));
+    }
+
+     window.onload = function () {
+    createWS()
+  };
+    
+    function createWS() {
+    if(token){
+      ws = new WebSocket('wss://ar.memomi.co/MemomiWSServer/ws.ashx?token='+token);
+    }else{
+      ws = new WebSocket('wss://ar.memomi.co/MemomiWSServer/ws.ashx');
+    }
+     ws.onopen = function (e) {
+       console.log('Client connected');
+     };
+     ws.onclose = function (e) {
+      createWS();
+      console.log('Client close');
+     };
+     ws.onmessage = function (e) {
+      var message = JSON.parse(e.data);
+      if (message.Token) {
+        token = message.Token;
+        iFrame.src = ' https://ar.memomi.com/web-mirror2/index.html?token=' + message.Token;
+       }
+       if (message.response == "socket-connected") {
+          $('.show-ar-btn').addClass('visible');
+       }
+     };
+  }
+    
+    
+    
+    $('.show-ar-btn').on("click", function(){
+      //choose current variant
+      var currentVariant = '';
+      $('.product-variants-dropdown .single-product').each(function(){
+        if($(this).find('.variant-name').text() == '{{ current_variant.option1 }}'){
+           currentVariant = $(this).find('.round').attr('variant-id');
+      }
+      })
+      
+      $('.shades .round').filter("[variant-id='" + currentVariant + "']").click();
+      
+      $('.ar-wrapper').toggleClass('show');
+      sendData('{{product.selected_or_first_available_variant.sku}}');
+      $(this).fadeOut(function () {
+        $(this).text(($(this).text() == 'תראי איך זה נראה עלייך') ? 'סגירת מצלמה' : 'תראי איך זה נראה עלייך').fadeIn();
+      })
+
+      if($(window).width() <= 767){             
+        //get shades size
+        var shades_height = $('.ar-wrapper .shades').height();
+        var margin_top = shades_height + 50;
+        $('div#productsRight').css('margin-top', margin_top + 'px');
+      }
+      $("#memomi").toggleClass('show');
+
+    });
+    
+    //change variant selected
+    var mainlist = $('.shades .round');
+    var mainlistLength = mainlist.length;
+    var shadeForm = $('.shade-form');
+    console.log( mainlist.length );
+    
+    mainlist.on('click', function(e) {
+      e.preventDefault();
+      mainlist.removeClass('selected');
+      $(this).addClass('selected');
+      var variantId = $(this).attr('variant-id');
+      shadeForm.removeClass('selected');
+      shadeForm.filter("[variant-id='" + variantId + "']").addClass('selected');
+      $('.shade_label').show();
+      var shadeName = $(this).attr('variant-name');
+      $('.shade_name').text(shadeName);
+    });
+  </script>
+   
+  <style>
+    .shade-form { display: none; }
+    .shade-form.selected { display: block; width: 30%; margin: auto; margin-top: 10px; }
+    body.product #tabsAndRelatedProducts { margin-top: 85px; }
+    .shade-form { font-size: 26px; }
+    .shades { display: flex; flex-wrap: wrap; justify-content: center; }
+    p.shade_number { display: inline-block; }
+    .shade-title { margin-top: 10px; }
+    .show-ar-btn { width: 150px; font-size: 12px; padding: 7px 5px; position: absolute; left: 0; top: 0; background: #fff; color: #000; border: 1px solid; transition: all 0.3s ease;}
+    .show-ar-btn.visible { visibility:visible!important;}
+    .ar-wrapper { display: none; width: 56.7%; position: absolute; top: 0; min-height: 550px; background: #fff; }
+    .ar-wrapper.show { display:block; }
+    .ar-wrapper .round { width: 28px; height: 28px; display: inline-block; border-radius: 50%; overflow: hidden; margin-left: 3px; margin-bottom: 4px; transition: all 0.3s ease;}
+    .ar-wrapper .round.selected { width: 31px; height: 31px; box-shadow: 1px 2px 5px #000; }
+    #memomi { display:none; max-height: 620px; height: 800px; border: 0; }
+    #memomi.show { display:block; }
+
+    @media screen and (max-width: 767px){ 
+      .ar-wrapper.show { padding: 0 4px; }
+      .shade-form { width: 100% !important; }
+    }
+
+    @media screen and (max-width: 980px ) {
+      .ar-wrapper { width:100%; min-height: auto;}
+      #memomi { height:350px; }
+    }
+  </style>
+  
+  {% endif %}
+  <div id="tabsAndRelatedProducts">
+    <div class="product-information-tabs desktop-6 desktop-push-1 tablet-6 mobile-3">
+      {% include 'product-information-tabs' %}
+    </div>
+    <div id="productInformationCollapsible" class="desktop-6 desktop-push-1 tablet-6 mobile-3">
+      {% include 'product-information-collapsible' %}
+    </div>
+    <div class="related-products desktop-5 tablet-6 mobile-3">
+      {% if section.settings.show_custom_collection %}
+      	{% include 'custom-collection-for-product-page' %}
+      {% endif %}
+    </div>
+  </div>
+  
+  {% include 'tips-slider' %}
+  {% if section.settings.show_instagram %}
+  {% include 'instagram-product' %}
+  {% endif %}
+  
+  {% assign is_there_article = false %}
+  {% assign product_collection_name = collection.title | downcase %} 
+  
+  {% for link in linklists.blogs.links %}
+  	{% assign blog = link.object %}
+  	{% for article in blog.articles %}
+  		
+  		{% for tag in article.tags %}
+  			{% assign tagName = tag | downcase %}
+  			{% if tagName == product_collection_name %}
+  				{% assign is_there_article = true %}
+  			{% endif %}
+  		{% endfor %}
+  	{% endfor %}
+  {% endfor %}
+  
+  {% if is_there_article %}
+  	{% include 'product-blog-carousel' %}
+  {% endif %}
+
+  {% if collection %}
+  <div id="product-navigation" class="desktop-12 mobile-3">
+    <span class="backto">
+      {{ 'products.product.back_to' | t }} {{ collection.title | link_to: collection.url }}
+    </span>
+  </div>
+  {% endif %}
+
+  {% if section.settings.thumbnails == 'left' %}
+  <style>
+    .product-main-images.desktop-10 { float: right !important; }
+  </style>
+  {% endif %}
+  {% unless section.settings.show_sku %}
+  <style>
+    .variant-sku { display: none; }
+  </style>
+  {% endunless %}
+  {% unless section.settings.enable_zoom %}
+  <style>
+    img.zoomImg { display: none !important; }
+  </style>
+  {% endunless %}
+
+</div>
+
+{% schema %}
+{
+    "name": "Product Page",
+    "settings": [
+      {
+        "type": "select",
+        "id": "thumbnails",
+        "label": "Image thumbnail position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_zoom",
+        "label": "Enable image zoom",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show vendor"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sku",
+        "label": "Show variant SKU",
+        "default": false
+      },
+      {
+         "type": "checkbox",
+         "id": "show_quantity_selector",
+         "label": "Show quantity selector",
+         "default": true
+       },
+       {
+         "type": "checkbox",
+         "id": "show_payment_button",
+         "label": "Show dynamic checkout button",
+         "info": "Lets customers check out directly using a familiar payment method. [Learn more](https:\/\/help.shopify.com\/manual\/using-themes\/change-the-layout\/dynamic-checkout)",
+         "default": false
+       },
+      {
+        "type": "checkbox",
+        "id": "show_social_share",
+        "label": "Show social share icons",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "product_note",
+        "label": "Product page note"
+      },
+	  {
+        "type": "text",
+        "id": "realted_title",
+        "label": "Related Products Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_custom_collection",
+        "label": "Show custom collection"
+      },
+      {
+        "type": "collection",
+        "id": "custom_collection",
+        "label": "choose custom collection"
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_instagram",
+        "label": "Show Instagram"
+      },
+      {
+        "type": "text",
+        "id": "blog-title",
+        "label": "Blog Section Title"
+      },
+      {
+        "type": "richtext",
+        "id": "product_points_text",
+        "label": "Product points text"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+  #photosAndDesc{ display: flex; flex-direction: row-reverse; } 
+  .product-title{ margin-bottom: 20px; } 
+  .product-title h1{ font-weight: bold; } 
+  .mini-desc { margin-bottom: 1rem; font-size: 1rem; } 
+  #tabsAndRelatedProducts{ display: flex; flex-direction: row; margin-bottom: 15px; margin-top: 20px; min-height: 400px; } 
+  #tabsAndRelatedProducts .related-products{ margin-top: -34px; } 
+  #productInformationCollapsible{ display: none; }
+  
+  @media screen and (max-width: 1220px ) {
+    .product-page .product-template{ width: 354px; margin-left: 0px; margin-right: 0px; }
+    .yotpo.yotpo-main-widget { padding-top: 3rem; }
+    #productPhotos{ margin-bottom: 79px; } #tabsAndRelatedProducts{ margin-top: 0; } 
+    .thumbnail-galley{ width : 59px; } 
+    .mini-desc{ display: block; width: 354px; margin: 0 0 22.5px 0; } 
+    .product-information-tabs{ display: none; } 
+    #productInformationCollapsible{ display: block; }
+    .collection-carousel-wrap { margin-top: 4px; }
+  }
+  
+  @media screen and (max-width: 980px ) {
+    #photosAndDesc{ flex-direction: column-reverse; width: 100%; } 
+    #tabsAndRelatedProducts{ flex-direction: column; margin-top: 1rem; }
+    #tabsAndRelatedProducts .related-products { margin-top: 0; }
+    .collection-carousel-wrap { margin-top: 1.3rem; }
+  }
+</style>
+
+<script>
+$('.product-current-variant').on("click", function(){
+    $('.product-variants-dropdown').toggleClass('show');
+    $('#side-arrow').toggleClass('show');
+  });
+</script>

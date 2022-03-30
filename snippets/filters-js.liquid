@@ -1,0 +1,162 @@
+
+    {% if settings.limit_filters_heights == 'scrollbar' %}
+    <script>
+      function setScrollers() {
+        $('.advanced-filters-wrapper .advanced-filters').not('[data-skip-handles]').each(function() {
+          if( $(this).find('li').length > 6 ) {
+            $(this).addClass('scrollable');
+            $(this).css('max-height', $(this).find('li:first-of-type').outerHeight(true) * 4);
+            $('.advanced-filters.scrollable').perfectScrollbar({suppressScrollX: true});
+          }
+        });
+        $('.filter-bar .advanced-filters').not('[data-skip-handles]').each(function() {
+          if( $(this).find('li').length > 6 ) {
+            $(this).addClass('scrollable');
+            //$(this).css('max-height', $(this).find('li:first-of-type').outerHeight(true) * 4);
+            $('.advanced-filters.scrollable').perfectScrollbar({suppressScrollX: true});
+          }
+        });
+      }
+      function refreshScrollers() {
+        $('.advanced-filters.scrollable').perfectScrollbar('destroy').perfectScrollbar({suppressScrollX: true});
+      }
+      jQuery(document).ready(function() {
+        if($(window).width() >= 768) {
+          setScrollers();
+        }
+      });
+    </script>
+    {% endif %}
+
+    <script>
+    $(function() {
+      var currentTags = "{{ current_tags }}",
+          filters = $('.advanced-filter'),
+          activeTag,
+          activeHandle;
+
+      filters.each(function() {
+        var el = $(this),
+            group = el.data('group'),
+            isActive = el.hasClass('active-filter');
+      });
+
+      filters.on('click', function(e) {
+        var el = $(this),
+            group = el.data('group'),
+            url = el.find('a').attr('href');
+
+        // Continue as normal if we're clicking on the active link
+        if ( el.hasClass('active-filter') ) {
+          return;
+        }
+
+        // Get active group link (unidentified if there isn't one)
+        activeTag = $('.active-filter[data-group="'+ group +'"]');
+
+        // If a tag from this group is already selected, remove it from the new tag's URL and continue
+        if ( activeTag && activeTag.data('group') === group ) {
+          e.preventDefault();
+          activeHandle = activeTag.data('handle') + '+';
+
+          // Create new URL without the currently active handle
+          url = url.replace(activeHandle, '');
+          window.location = url;
+        }
+      });
+    });
+
+    function setExpanders() {
+      // Show expanders if there are more than 4 items
+      $('.advanced-filters').not('[data-skip-handles]').each(function() {
+        if( $(this).find('li').length > 6 ) {// extra 2 items are "+" and "-" <li>'s
+          $(this).css( 'max-height', $(this).find('li:first-of-type').outerHeight(true) * 4 );
+          if( $(this).hasClass('opened') ) {
+            $(this).find('.expander').toggleClass('hidden');
+          } else {
+            $(this).find('.exp-more').show();
+          }
+        }
+      });
+    }
+
+    function setExpander(name) {
+      // Show expanders if there are more than 4 items
+      if( $('.advanced-filters[data-name="'+name+'"]').not('[data-skip-handles]').length > 6 ) {
+        $(this).css( 'max-height', $(this).find('li:first-of-type').outerHeight(true) * 4 );
+        if( $(this).hasClass('opened') ) {
+          $(this).find('.expander').toggleClass('hidden');
+        } else {
+          $(this).find('.exp-more').show();
+        }
+      }
+    }
+
+    {% if settings.limit_filters_heights == 'see_more' %}
+    // Show all filters
+    $('.advanced-filters').on('click', '.expander a', function() {
+      $(this).parent().parent().toggleClass('opened');
+      $(this).parent().parent().find('.expander').toggleClass('hidden');
+      if( $(this).parent().hasClass('exp-less') ) {
+        $(this).parent().parent().find('.exp-more').show();
+      }
+      return false;
+    });
+    jQuery(window).load(function() {
+      setExpanders();
+    });
+    {% endif %}
+
+    {% if settings.closed_widgets %}
+      var excludes = '{{ settings.close_excludes }},';
+      excludes = excludes.toLowerCase().split(',');
+      excludes = excludes.filter(function(v){return v!==''});
+      $('.advanced-filters').each(function() {
+        if( $.inArray( $(this).data('name'), excludes ) >= 0 ) {
+          $(this).addClass('whole');
+          $('.advanced-filter-heading[data-control="' + $(this).data('name') + '"]').addClass('expanded');
+        } else {
+          $(this).addClass('shrink');
+        }
+      });
+      // sidebar filters
+      jQuery('.advanced-filter-heading').click(function() {
+        var wW = $(window).width(),
+            controller = $(this).data('control'),
+            element = $('.advanced-filters[data-name="' + controller + '"]');
+
+        $(this).toggleClass('expanded');
+
+        if( element.hasClass('shrink') ) {
+          //if( wW >= 768 ) {
+            {% if settings.limit_filters_heights == 'scrollbar' %}
+            setTimeout(function() {
+              setScrollers();
+              element.stop().animate({scrollTop:1},0);
+              $('.advanced-filters[data-name="' + cntrl + '"]').perfectScrollbar('destroy').perfectScrollbar({suppressScrollX: true});
+          	}, 100);
+            {% elsif settings.limit_filters_heights == 'see_more' %}
+            setTimeout(function() {
+              setExpander(controller);
+            }, 100);
+            {% endif %}
+          //}
+        }
+
+        element.toggleClass('whole shrink');
+      });
+    {% endif %}
+    jQuery('.top-filter-line').click(function() {
+      //if( element.hasClass('shrink') ) {
+      //var wW = $(window).width();
+      //if( wW >= 768 ) {
+      {% if settings.limit_filters_heights == 'scrollbar' %}
+      setTimeout(refreshScrollers, 200);
+      {% elsif settings.limit_filters_heights == 'see_more' %}
+      setTimeout(setExpanders, 200);
+      {% endif %}
+      $('.advanced-filters.scrollable').perfectScrollbar('update');
+      //}
+      //}
+    });
+    </script>

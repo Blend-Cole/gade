@@ -1,0 +1,118 @@
+{% comment %} Boaideas {% endcomment %}
+<div id="shopify-section-mobile-navigation" class="shopify-section">
+  <nav id="mobile-custom-nav" class="shifter-navigation is-menu-slide no-fouc" data-section-id="{{ section.id }}" data-section-type="mobile-navigation">  
+    <ul class="parent">
+      <div class="parent-header">
+        <div id="mobileHeadDrawer" class="close" js-action="close">X</div>
+        <div id="mobileLogo">
+          <img class="lazyload" data-src="{{ 'logo_400x.png' | file_img_url: 'master'}}">
+        </div>
+      </div>    
+      <div class="parent-header-white">
+        <div class="mobilelink">
+          <a href="/account/">החשבון שלי</a>
+        </div>
+        <div class="mobilelink">
+          <a href="/pages/contact-us">צור קשר</a>
+        </div>
+      </div>
+      {% for link in linklists[section.settings.main_nav].links %}
+      <li>
+        {% if link.links != blank %}
+        <a class="parent-link" href="javascript:void(0);" js-parent-link="">
+        {% else %}
+        <a class="parent-link-custom" href="{{ link.object.url }}">
+        {% endif %}
+          <span class="parent-link__title">
+            {{ link.title }}
+          </span>
+          
+          {% comment %} link image {% endcomment %}
+          {% if link.type == 'collection_link'%}
+            {% if link.object.image %}
+             {% assign nav_image = link.object.image.src | collection_img_url: 'original' %}
+            {% else %}
+             {% assign nav_image = link.object.products.first | img_url: 'medium' %}
+            {% endif %}
+          {% else %}
+          	{% assign image_src = link.object.handle | append: '.jpg' %}
+          	{% assign nav_image = image_src | file_img_url: 'master' %}
+		  {% endif %}
+          <div class="parent-link__img">
+            <img class="lazyload" data-src="{{ nav_image }}" alt="{{ link.object.title }}" />
+          </div>    
+        </a> 
+      </li>
+        {% if link.links != blank %}
+          <div class="child">
+            <div class="child-header" js-action="back">
+              <div id="mobileHeadDrawer" class="back"></div>
+              <span class="child-header__title">{{ link.title }}</span>
+              {% if link.object.image %}
+              <div class="child-header__img">
+                <img class="lazyload" data-src="{{ link.object.image.src | collection_img_url: 'original' }}" alt="{{ collection.image.alt }}" />
+              </div>
+              {% endif %}         
+            </div>
+            {% for child_link in link.links %} 
+            	{% if child_link.type == 'collection_link'%}
+                  {% if child_link.object.image %}
+                    {% assign col_image = child_link.object.image.src | collection_img_url: 'medium' %}
+                  {% else %}
+                    {% assign col_image = child_link.object.products.first | img_url: 'medium' %}
+                  {% endif %}
+                  
+            	{% if child_link.links != blank %}
+                  <a class="child-link link1" rel="prefetch" href="{{child_link.object.url}}" js-child-link="">
+            	{% else %}
+                  <a class="child-link-new link1" rel="prefetch" href="{{child_link.object.url}}">
+            	{% endif %}        
+                    <div class="child-link__img">
+                      <img class="lazyload" data-src="{{ col_image }}" alt="{{ child_link.object.title }}">
+                    </div>  
+                    <span class="child-link__title">
+                      {{ child_link.title }}
+                    </span>
+                   {% if child_link.links != blank %}
+                    <span class="child-link-icon">
+                      {% include 'svg-plus' %}
+                    </span>
+                    {% endif %}
+
+                  </a>
+                    {% if child_link.links != blank %}
+                    <div class="grandchild">
+                      {% for grandchild_link in child_link.links %} 
+                      <a class="grandchild-link" rel="prefetch" href="{{ grandchild_link.url }}">
+                        {{ grandchild_link.title }}
+                      </a>
+                      {% endfor %}
+                    </div>
+                    {% endif %}
+            	{% else %}
+                  {% assign child_image = child_link.object.handle | append: '.jpg' %}
+                    <a class="child-link-new link1" rel="prefetch" href="{{child_link.object.url}}">
+                      <div class="child-link__img">
+                        <img class="lazyload" data-src="{{ child_image | file_img_url: 'master' }}" alt="{{ child_link.object.title }}">
+                      </div>
+                      <span class="child-link__title">
+                        {{ child_link.title }}
+                      </span>
+                    </a>
+            	{% endif %}
+            {% endfor %}
+          </div>
+          
+        {% endif %}
+      {% endfor %}
+      <div class="parent-header-search">
+        <div id="mobilesearch" class="nav-srch">
+          <form action="/search" method="get">
+            <i class="fa fa-search"></i>
+            <input type="text" name="q" id="q">
+          </form>
+        </div>
+      </div>
+    </ul>
+  </nav>
+</div>

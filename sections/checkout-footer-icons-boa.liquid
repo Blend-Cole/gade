@@ -1,0 +1,45 @@
+{% if section.settings.checkout_footer_icons %}
+  {% for block in section.blocks %}
+    <div class="icon-row">
+      {% assign img_url = block.settings.icon | img_url: 'master' %}
+      <div class="icon-image" style="background-image: url({{ img_url}})"></div>
+      <div class="icon-text">{{ block.settings.text }}</div>
+    </div>
+  {% endfor %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Checkout footer icons",
+  "class": "index-section checkout-footer-icons",
+  "blocks": [
+	{
+          "type": "image",
+          "name": "Icon",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "icon",
+              "label": "Icon"
+            },
+            {
+              "type": "text",
+              "id": "text",
+              "label": "Text"
+            }
+          ]
+		}
+      ],
+  "settings": [
+            {
+              "type": "checkbox",
+              "id": "checkout_footer_icons",
+              "label": "Show footer icons"
+            }
+  ],
+  "presets": [{
+    "name": "Checkout footer icons",
+    "category": "Image"
+  }]
+}
+{% endschema %}

@@ -1,0 +1,184 @@
+<div class="product-color-variant-inside">  
+  {% assign collection_handle = product.metafields.custom_fields.collection_name | replace: ' ', '-' %}
+  {% assign current_collection = collections[collection_handle].products | reverse %}		
+  {% for current_variant in current_collection %}
+    <a href="{{ shop.url }}/collections/{{collection_handle}}{{ current_variant.url }}" style="display: inline-block;">
+      <div class="tooltip">
+        <div>
+          <div class="{% if product.handle == current_variant.handle %}{% endif %}">
+            <div class="round-outer-circle-overlay {% if product.handle == current_variant.handle %} with-border{% endif %}">
+             <div class="round" {% if current_variant.metafields.custom_fields.variant_image != blank %} {% else %}  style="background-color: #{{current_variant.metafields.custom_fields.colorhexa}};" {% endif%} >
+			  {{current_variant.metafields.custom_fields.variant_image}}
+              <span class="tooltiptext">{{ current_variant.selected_or_first_available_variant.option1 }}</span>
+   		     </div>
+            </div>
+          </div>
+        </div>
+  	  </div>
+    </a>
+  {% endfor %}
+</div>
+
+<style>
+    
+  .product-color-variant-inside{
+  	max-width: 100%; 
+    margin: 20px 2px;
+  }
+  
+  
+.round {
+  height: 23px;
+  width: 23px;
+  background-color: none;
+  border: none;
+  border-radius: 11px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  margin: 2px 2px;
+}
+  
+  
+ .round-outer-circle-overlay .round img {
+  height: 23px;
+  width: 23px;
+  border: none;
+  border-radius: 11px;
+  display: inline-block;
+  margin: 0;
+}
+  
+  
+.round-outer-circle {
+  height: 30px;
+  width: 30px; 
+
+  border-radius: 14px;
+  background-color: #666;
+  
+  padding: 0;
+  margin-top: -1px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
+.round-outer-circle-overlay {
+/*   position: absolute; */
+  height: 27px;
+  width: 27px; 
+
+  border-radius: 14px;
+  background-color: #f3f3f3;
+  
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
+  .round-outer-circle-overlay.with-border {
+      height: 29px;
+      width: 29px; 
+      border: 1px solid black;
+	}
+  
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 134px;
+  background-color: #fff;
+  color: #555;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #999;
+  text-align: center;
+  padding: 0px 0;
+  border-radius: 2px;
+  font-size: 12px;
+  line-height: 22px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 24%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+  
+  
+  
+  @media screen and (max-width: 1220px ){
+    .product-color-variant-inside a{
+    margin: 0 0 0 12px;
+    }
+    
+    .product-color-variant-inside .round-outer-circle-overlay  .round {
+      height: 21px;
+      width: 21px;
+    }
+  
+  
+   .round-outer-circle-overlay .round img {
+      height: 21px;
+      width: 21px;
+      border: none;
+      border-radius: 11px;
+      display: inline-block;
+      margin: 0;
+  	}
+    
+    .round-outer-circle-overlay {
+  		height: 25px;
+        width: 25px; 
+    }
+    	
+    .round-outer-circle-overlay.with-border {
+      height: 27px;
+      width: 27px; 
+      border: 1px solid black;
+	}
+    
+    }
+    
+</style>

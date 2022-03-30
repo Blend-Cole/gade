@@ -1,0 +1,60 @@
+<!-- Shown on Mobile Only -->
+<div class="is-header-top cf">
+<ul id="cart" class="mobile-3 tablet-6 mobile-only">
+  <li class="seeks">
+    <a  href="https://www.gade.co.il/pages/contact">
+      <img src="{{'email-icon.png' | asset_img_url: 'master'}}">
+    </a>
+  </li>
+  
+  {% if shop.customer_accounts_enabled %}
+    <li class="cust">
+      {% if customer  %}
+        <a href="/account">
+          <img class="lazyload" data-src="{{'user-icon.png' | asset_img_url: 'master'}}">
+        </a>        
+      {% else %}
+        <a href="/account/login">
+          <img class="lazyload" data-src="{{'user-icon.png' | asset_img_url: 'master'}}">
+        </a>
+      {% endif %}
+    </li>
+  {% endif %}
+  <li>
+    <a href="/cart" class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
+      <span class="cart-words">{{ 'cart.general.title' | t }}</span>
+      
+      <img class="lazyload" data-src="{{'cart-icon.png' | asset_img_url: 'master'}}">
+      <span class="CartCount">{{ cart.item_count }}</span>
+    </a>
+  </li>
+  <li>
+          <div id="logo" class="desktop-2 tablet-2 mobile-3">
+            {% if section.settings.logo != blank %}
+              {%- assign image_size = '400x' -%}
+              <a href="/">
+                <img class="lazyload" data-src="{{ section.settings.logo | img_url: image_size }}" itemprop="logo">
+              </a>
+            {% else %}
+              <a href="/">{{ shop.name }}</a>
+            {% endif %}
+          </div>
+  </li>
+  <li class="seeks is-mob-srch">
+    <a id="inline" href="#search_popup" class="open_popup">
+      <img class="lazyload" data-src="{{ 'srch-icon.png' | asset_img_url: 'master' }}">
+    </a>
+    {% if settings.show_multiple_currencies %}
+      {% include 'currencies-switcher' %}
+    {% endif %}
+  </li>
+  <li>
+    <span class="shifter-handle is-collapse">
+      <em></em>
+      <em></em>
+      <em></em>
+    </span>
+  </li>
+</ul>
+</div
+

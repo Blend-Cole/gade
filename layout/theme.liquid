@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+  <html class="no-js" lang="{{ shop.locale }}">
+  <!--<![endif]-->
+
+<head>
+ 
+  <meta charset="utf-8" />
+  <meta name="google-site-verification" content="34UC0VT_ZDYwh9mMemlP1YMhhhR8zuPOXXe5UVbZynU" />
+  <meta name="facebook-domain-verification" content="z037qftlzb87muqppjg9agn44w0noi" />
+  <!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#F7E3E3">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#F7E3E3">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#F7E3E3">
+  {% if settings.favicon != blank %}
+  <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}">
+  <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '192x192' }}" sizes="192x192">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ settings.favicon | img_url: '180x180' }}">
+  {% endif %}
+  
+  {% include 'google-fonts' %}
+  {% include 'social-media-meta-tags' %}
+  <!-- SEO
+================================================== -->
+  <title>
+    {% if template == 'index' %}{% if page_title contains 'Welcome' %}{{ shop.name }} &ndash; Welcome{% else %}{{ page_title }}{% endif %}{% elsif template == '404' %}Page Not Found{% elsif page_title contains shop.name %}{{ page_title }}{% else %}{{ page_title }} &ndash; {{ shop.name }}{% endif %}
+  </title>
+  {% if page_description %}
+  <meta name="description" content="{{ page_description }}" />
+  {% endif %}
+  <link rel="canonical" href="{{ canonical_url }}" />
+<meta name="author" content="Avishay Assaf">
+  <!-- CSS
+================================================== -->
+  {{ 'stylesheet.css' | asset_url | stylesheet_tag }}
+  {{ 'queries.css' | asset_url | stylesheet_tag }}
+  {{ 'boaideas.css' | asset_url | stylesheet_tag }}
+  {{ 'loyaltylion.min.css' | asset_url | stylesheet_tag }}  
+  {{ 'custom.min.css' | asset_url | stylesheet_tag }}  
+
+  <!-- JS
+================================================== -->
+
+  {{ "//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" | script_tag }}
+  {{ "//unpkg.com/eventemitter3@latest/umd/eventemitter3.min.js" | script_tag }}
+
+  {% if settings.show_multiple_currencies %}
+    {% include 'currencies' %}
+  {% endif %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  {{ 'theme.js' | asset_url | script_tag }}
+  
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+  {% if template  == 'index'  %}{{ 'instafeed.js' | asset_url | script_tag }}{% endif %}
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  {% if template contains 'customers' %}
+  {{ "shopify_common.js" | shopify_asset_url | script_tag }}
+  {{ "customer_area.js"  | shopify_asset_url | script_tag }}
+  {% endif %}
+  <script src="//www.searchanise.com/widgets/shopify/init.js?a=2r7k7v1N6d"></script>
+  {{ content_for_header }}
+  <link rel="next" href="/next"/>
+  <link rel="prev" href="/prev"/>
+  
+  {% if template == 'index' or template == 'product' template == 'cart'%}
+  <!--YOTPO JAVASCRIPT-->
+  <script type="text/javascript">
+    (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/L4sgIDh0SQsqx27zCCXSjiKvViXWbe1C5knOPgOx/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+  </script>
+  {% endif %}
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WGRJ9TJ');</script>
+  <!-- End Google Tag Manager -->
+
+
+  {%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
+  {%- assign time_now = 'now' | date: '%s' %}
+  {%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: '%s' %}
+  {%- assign diffSeconds = time_now | minus: yotpo_live_time %}
+  {%- if yotpo_offload_content == 'yes' and diffSeconds < 86400 -%}
+  {{ 'yotpo-full-css.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
+
+  {% include 'gsf-conversion-pixels' %}
+  {% include 'sca.freegifts' %}
+
+
+{% render 'gsf-conversion-pixels' %}
+  {% include "loyaltylion" %}
+   <!--   ANIMATED integration 
+   <script src="//d1tpc317bu2xiz.cloudfront.net/Gade/vidsite.min.js" async></script> -->
+    <!--   end ANIMATED integration -->
+  <!--- Poloriz widget --->
+  <script async type="text/javascript" src="https://widget.poloriz.com/prod/poloriz.widget.js"></script>
+
+ 
+  <style>
+    story-title {
+      bottom: 10% !important;
+      top: auto !important;
+      z-index: 2147483633 !important;
+    }
+    story-title span {
+      font-size: 17px !important;
+    }
+    story-category {
+      bottom: 22% !important;
+      top: auto !important;
+    }
+    .plz-guide-container-tag-readmore,
+    .plz-guide-container-tag-fullarticle {
+      display: none !important;
+    }
+    .plz-story-price-sign>sup, .plz-story-sale-price-sign > sup {
+      vertical-align: inherit;
+      font-size: 17px;
+    }
+    
+    .plz-bubbles-container-background-lg {
+      background-color: transparent !important;
+      height: 108px !important;
+    }
+    .plz-bubbles-container-lg>ul {
+      text-align: center !important;
+      margin: 0 auto !important;
+    }
+   
+    .plz-story-label > div {
+     color: #000000 !important;
+}
+
+
+  </style> 
+  <!--- End of Poloriz widget --->
+  
+  {{ 'searchanise-custom.js' | asset_url | script_tag }}
+  {% include 'analyzify-gtm-body-withlog' %}
+
+</head>
+
+<body class="gridlock shifter-left shifter-enabled {{ template }} {% if template contains 'about' %} about{% endif %} {{ page.title | handleize }}">
+  <!--- Poloriz widget --->
+  <poloriz-stories widget-id="6d3ad850-1852-11eb-a1dd-1f66468584f9" mode="2"></poloriz-stories>
+  <!--- End of Poloriz widget --->
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGRJ9TJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  {% if settings.ajax_cart_method == 'drawer' %}
+  {% include 'timber-cart' %}
+  {% endif %}
+  <div class="shifter-page {% if settings.ajax_cart_method == 'drawer' %} is-moved-by-drawer{% endif %}" id="PageContainer">
+    {% section 'header' %}
+    <div class="page-wrap">
+      {% if template == 'index' or template contains 'article' or template contains 'collection' or template contains 'blog' or template contains 'list-collections' or template contains 'page.collection1' or template contains 'page.collection2' or template contains 'rewards' %}
+      {{ content_for_layout }}
+      {% else %}
+      <div id="content" class="row">
+        {% if settings.breadcrumb%}
+        {% include 'breadcrumb' %}
+        {% endif %}
+        {{ content_for_layout }}
+      </div>
+      {% endif %}
+    </div>
+    {% render 'dialogue-index-snippet' %}
+ {% section 'footer' %}
+    {% include 'popup' %}
+    <div id="search_popup_new" style='display:none'>
+      <div id='search_popup' style='padding:30px;'>
+        <!-- BEGIN #subs-container -->
+        <div id="subs-container" class="clearfix">
+          <div id="search">
+            <form action="/search" method="get">
+              <input type="text" name="q" id="q" placeholder="{{ 'general.search.placeholder' | t }}"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#" class="scrollup"><i class="fa fa-chevron-up" aria-hidden="true"></i> TOP</a>
+
+  {{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
+  {{ 'jquery.products.min.js' | asset_url | script_tag }}
+
+  <div id="fb-root"></div>
+
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=127142210767229";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+
+  {% if settings.ajax_cart_method == 'drawer' %}
+    {{ 'handlebars.min.js' | asset_url | script_tag }}
+    {% include 'ajax-cart-template' %}
+    {{ 'ajax-cart.js' | asset_url | script_tag }}
+    <script>
+      jQuery(function($) {
+        ajaxCart.init({
+          formSelector: '[data-product-form]',
+          cartContainer: '#CartContainer',
+          addToCartSelector: '#AddToCart',
+          cartCountSelector: '.CartCount',
+          moneyFormat: {{ shop.money_format | json }}
+       });
+      });
+      jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
+        // Bind to 'ajaxCart.afterCartLoad' to run any javascript after the cart has loaded in the DOM
+        timber.RightDrawer.open();
+      });
+      {% if settings.show_multiple_currencies %}
+        jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
+          // Convert currency when ajaxcart opens
+          Currency.convertAll(shopCurrency, Currency.currentCurrency);
+        });
+      {% endif %}
+    </script>
+  {% endif %}
+
+  <script>
+    function loadJS(u) {
+        var r = document.getElementsByTagName("script")[0],
+            s = document.createElement("script");
+        s.src = u;
+        r.parentNode.insertBefore(s, r);
+    }
+
+    if (!window.HTMLPictureElement) {
+    loadJS("//afarkas.github.io/lazysizes/plugins/respimg/ls.respimg.min.js");
+    }
+  </script>
+
+  <!-- Responsive Images -->
+  {{ 'ls.rias.min.js' | asset_url | script_tag }}
+  {{ 'ls.bgset.min.js' | asset_url | script_tag }}
+  {{ 'lazysizes.min.js' | asset_url | script_tag }}
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace("no-js","js");
+
+    $( "#firsttab" ).click(function() {
+      $('#firsttabcontent').show();
+      $(this).addClass('activetab'); 	
+      $('#secondtabcontent').hide();
+      $('#secondtab').removeClass('activetab'); 	  
+    });
+    $( "#secondtab" ).click(function() {
+      $('#secondtabcontent').show();
+      $(this).addClass('activetab'); 	
+      $('#firsttabcontent').hide();
+      $('#firsttab').removeClass('activetab');
+    });
+    $("#collectionmenu1 > a").hover(function(){
+      //alert('test');
+      $('.collectionmenu1').show();
+      $('.collectionmenu2').hide();
+      $('.collectionmenu3').hide();
+      $('.collectionmenu4').hide();
+      $('.collectionmenu5').hide();
+    });
+    $("#collectionmenu2 > a").hover(function(){
+      $('.collectionmenu2').show();
+      $('.collectionmenu1').hide();
+      $('.collectionmenu3').hide();
+      $('.collectionmenu4').hide();
+      $('.collectionmenu5').hide();
+    });
+    $("#collectionmenu3 > a").hover(function(){
+      $('.collectionmenu3').show();
+      $('.collectionmenu2').hide();
+      $('.collectionmenu1').hide();
+      $('.collectionmenu4').hide();
+      $('.collectionmenu5').hide();
+    });
+    $("#collectionmenu4 > a").hover(function(){
+      $('.collectionmenu4').show();
+      $('.collectionmenu2').hide();
+      $('.collectionmenu3').hide();
+      $('.collectionmenu1').hide();
+      $('.collectionmenu5').hide();
+    });
+    $("#collectionmenu5 > a").hover(function(){
+      $('.collectionmenu5').show();
+      $('.collectionmenu2').hide();
+      $('.collectionmenu3').hide();
+      $('.collectionmenu4').hide();
+      $('.collectionmenu2').hide();
+    });  
+
+    $(".parent-link").click(function(e) {e.preventDefault();$(this).parent().next(".child").toggleClass("is-active");});
+    $("#mobileHeadDrawer").click(function(e) {e.preventDefault();
+      $('#mobile-custom-nav').css('opacity','0');
+      $('#mobile-custom-nav').hide('slow');                                        
+    });
+    $(".child-link").click(function(e) {  
+      e.preventDefault();
+      //alert('te');
+      if($(this).hasClass("is-active"))
+      {
+        $(this).removeClass("is-active");
+        $(this).next(".grandchild").removeClass("is-active");
+        return false;
+      }  	
+      $(this).next(".grandchild").removeClass("is-active")
+      $(".child-link.is-active").removeClass("is-active");
+      $(".grandchild.is-active").removeClass("is-active");
+      $(this).addClass("is-active");
+      $(this).next(".grandchild").addClass("is-active");
+      $(this).css('border-bottom','none');
+    });
+    $(".back").click(function(e) {  
+      e.preventDefault();
+      //alert('te');
+      $('.is-active').removeClass("is-active");
+    });
+    $(".is-collapse").click(function(e) {  
+      e.preventDefault();
+      //alert('te');
+      $('#mobile-custom-nav').css('opacity','1');
+      $('#mobile-custom-nav').show('slow');
+    });
+  </script>
+
+  <!--   nowdialogue integration -->
+  {% include 'nowdialogue-footer'%}
+  <!--   end nowdialogue integration -->
+  
+  <!----- YOU MUST INCLUDE THIS STATMENT WHEN USING A NEW THEME OR CRITEO TAGS WILL BREAK ---------->
+
+  <!-- CRITEO START -->
+{% include 'criteo-tracking' %}
+<!-- CRITEO END -->
+
+
+
+<!----- YOU MUST INCLUDE THIS STATMENT WHEN USING A NEW THEME OR CRITEO TAGS WILL BREAK ---------->
+ 
+ 
+
+
+
+</body>
+
+<!--   Poloriz integration handle negishut icon-->
+ <script>
+    const plz_del_cir = document.getElementById('poloriz-widget-circles');
+    plz_del_cir.addEventListener('selected', (event) => {
+      document.getElementById('enable-toolbar-content').style.display = "none";
+    });
+
+    plz_del_cir.addEventListener('closed', (event) => {
+      document.getElementById('enable-toolbar-content').style.display = "block";
+    });
+  </script>
+<!--   Poloriz integration -->
+
+</html>

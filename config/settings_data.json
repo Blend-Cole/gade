@@ -1,0 +1,3585 @@
+{
+  "presets": {
+    "Dolce": {
+      "announcement_bar_background": "#f8f3f0",
+      "announcement_bar_text_color": "#5a3b21",
+      "pre_scroll_background": "#ffffff",
+      "pre_scroll_navigation": "#000000",
+      "pre_scroll_navigation_hover": "#000000",
+      "scroll_background": "#ffffff",
+      "scroll_navigation_color": "#000000",
+      "scroll_navigation_hover": "#000000",
+      "background": "#ffffff",
+      "header_color": "#000000",
+      "text_color": "#000000",
+      "link_color": "#000000",
+      "sale_color": "#c50000",
+      "dotted_color": "#e5e5e5",
+      "button_color": "#000000",
+      "button_hover": "#000000",
+      "button_text": "#ffffff",
+      "secondary_button_color": "#f8f3f0",
+      "secondary_button_hover": "#c2b6ac",
+      "secondary_button_text": "#000",
+      "new_background": "#ededed",
+      "new_color": "#535353",
+      "sale_icon_background": "#9d0000",
+      "sale_icon_color": "#ffffff",
+      "so_background": "#000000",
+      "so_color": "#ffffff",
+      "product_note_color": "#000000",
+      "product_note_background": "#f8f8f8",
+      "footer_border": "#dddddd",
+      "footer_background": "#ffffff",
+      "footer_text": "#000000",
+      "footer_link_color": "#000000",
+      "footer_icons_color": "#000000",
+      "footer_icons_hover": "#000000",
+      "footer_input": "#ffffff",
+      "footer_input_text": "#000000",
+      "footer_button": "#000000",
+      "footer_button_text": "#ffffff",
+      "main_font": "lato_n4",
+      "heading_font": "open_sans_n4",
+      "nav_font": "montserrat_n4",
+      "font-size": 13,
+      "h1-size": 22,
+      "h2-size": 18,
+      "h3-size": 16,
+      "h4-size": 16,
+      "h5": 14,
+      "nav_size": 14,
+      "section_title_border": 1,
+      "section_title_align": "center",
+      "breadcrumb": true,
+      "image_flip": true,
+      "vendor": false,
+      "quickview": true,
+      "show_payment_button": false,
+      "details_align": "center",
+      "max-height": false,
+      "desktop_image_height": "",
+      "tablet_image_height": "",
+      "mobile_image_height": "",
+      "cart_notes_enable": false,
+      "ajax_cart_method": "drawer",
+      "twittername": "https:\/\/twitter.com\/undergrndmedia",
+      "facebook_url": "https:\/\/www.facebook.com\/ugmedia",
+      "pinterest_url": "",
+      "tumblr_url": "",
+      "youtube_url": "",
+      "googleplus_url": "",
+      "instagram-id": "",
+      "snapchat-id": "",
+      "weibo-id": "",
+      "popup": false,
+      "email_image": "",
+      "favicon": "",
+      "show_multiple_currencies": false,
+      "currency_format": "money_with_currency_format",
+      "supported_currencies": "INR GBP CAD AUD EUR JPY",
+      "default_currency": "USD",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "Helvetica Neue",
+      "checkout_body_font": "Helvetica Neue",
+      "checkout_accent_color": "#f8f3f0",
+      "checkout_button_color": "#5a3b21",
+      "checkout_error_color": "#ff6d6d",
+      "h5-size": "14px",
+      "h6-size": "14px",
+      "heading-transform": "none",
+      "link-decoration": "underline",
+      "navigation-transform": "none",
+      "email_popup_image": false,
+      "main_nav": "main-menu",
+      "megadropdown_link": "",
+      "nav_promo_image": false,
+      "nav_promo": "shopify:\/\/shop_images\/slide2_1a52b8ec-7d4f-4072-9e61-09036ce937cd.jpg",
+      "nav_promo_link": "\/collections\/all",
+      "mega_1_links": "",
+      "mega_2_links": "",
+      "mega_3_links": "",
+      "mega_4_links": "",
+      "mega_1_show": false,
+      "mega_2_show": false,
+      "mega_3_show": false,
+      "mega_4_show": false,
+      "pagelist": "",
+      "page-sidebar-title": "Sidebar title",
+      "show-map": false,
+      "map": "",
+      "password_bg": "yes",
+      "show_twitter": true,
+      "show_facebook": true,
+      "show_pinterest": true,
+      "show_tumblr": false,
+      "show_youtube": false,
+      "show_googleplus": false,
+      "show_instagram": true,
+      "show_snapchat": true,
+      "show_weibo": false,
+      "show_rss": true,
+      "bg": "no_bg",
+      "background-position": "left top",
+      "background-repeat": "no-repeat",
+      "logo-color": "#000000",
+      "homepage-header-pre_scroll_background": "rgba(0,0,0,0)",
+      "homepage-header-background": "#ffffff",
+      "homepage-pre_scroll_navigation-color": "#000000",
+      "homepage-pre_scroll_navigation-color-hover": "#000000",
+      "homepage-navigation-color": "#000000",
+      "homepage-navigation-color-hover": "#000000",
+      "homepage-header-pre_scroll_background-ros": "#ffffff",
+      "homepage-header-background-ros": "#ffffff",
+      "homepage-pre_scroll_navigation-color-ros": "#000000",
+      "homepage-pre_scroll_navigation-color-hover-ros": "#000000",
+      "homepage-pre_scroll_navigation-active-ros": "#000000",
+      "homepage-navigation-color-ros": "#000000",
+      "homepage-navigation-color-hover-ros": "#000000",
+      "link_hover_color": "#000000",
+      "read-more-background": "#000000",
+      "read-more-hover-background": "#000000",
+      "read-more-link-color": "#ffffff",
+      "read-more-link-hover-color": "#ffffff",
+      "icons": "#000000",
+      "icons-hover": "#000000",
+      "prod-qv-background": "#000000",
+      "prod-qv-text": "#ffffff",
+      "prod-qv-background-hover": "#000000",
+      "prod-qv-text-hover": "#ffffff",
+      "footer_title_color": "#000000",
+      "footer_link_hover": "#000000",
+      "footer_icons_hover_color": "#000000",
+      "footer_button_hover": "#000000",
+      "footer_button_text_hover": "#ffffff",
+      "icon-font-size": "12px",
+      "footer_text_align": "left",
+      "footer_title_transform": "uppercase",
+      "footer_title_size": "14px",
+      "promo_text_weight": "normal",
+      "promo_text_size": 18,
+      "announcement_text_size": 12,
+      "logo_size": 20,
+      "logo_transform": "uppercase",
+      "logo_weight": "700",
+      "dropdown-transform": "uppercase",
+      "dropdown-size": "13px",
+      "slide-title-size": 22,
+      "slide-title-weight": "700",
+      "caption-size": 14,
+      "cta_size": 13,
+      "cta_weight": "400",
+      "topbar_font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "logo-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "icon-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "slide-title-font": "'Roboto', sans-serif;",
+      "caption-font": "'Roboto', sans-serif;",
+      "parallax-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "promo-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "mailchimp": "",
+      "show-facebook-like": true,
+      "show_product_sidebar": false,
+      "enable-zoom": true,
+      "thumbnails": "right",
+      "product-vendor": false,
+      "show-sku": true,
+      "product-note": "",
+      "checkout_use_header_image": false,
+      "checkout_logo": "",
+      "checkout_use_body_background_image": false,
+      "checkout_use_sidebar_background_image": false,
+      "all-collections": "",
+      "products_per_row": "4",
+      "products_per_page": "24",
+      "show_collection_sidebar": false,
+      "sticky-sidebar": false,
+      "collection_links_1": false,
+      "collection_side_1": "main-menu",
+      "collection_links_2": false,
+      "collection_side_2": "",
+      "collection_links_3": false,
+      "collection_side_3": "",
+      "collection_links_4": false,
+      "collection_side_4": "",
+      "shop_by_designer": false,
+      "shop_by_designer_title": "Shop by Designer",
+      "show-twitter-feed": "1",
+      "twitter-widget": "",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "full_width_header": true,
+            "header_cover": false,
+            "header_border": false,
+            "show_announcement_text": true,
+            "announcement_text": "Add a message for your customers",
+            "announcement_text_size": 12,
+            "announcement_link": "",
+            "cart_position": "header",
+            "cart_icon": "cart",
+            "logo": "",
+            "logo_max_width": 150,
+            "logo_align": "center",
+            "logo_size": 22,
+            "logo_transform": "uppercase",
+            "logo_weight": "700",
+            "nav_style": "full",
+            "main_nav": "main-menu"
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "1479846461263": {
+              "type": "menu",
+              "settings": {
+                "footer_nav": "footer",
+                "title": "Explore"
+              }
+            },
+            "1479499878046": {
+              "type": "newsletter",
+              "settings": {
+                "title": "Connect"
+              }
+            },
+            "1500907307864": {
+              "type": "text",
+              "settings": {
+                "title": "About",
+                "footer_text": "<p>Adding text to your footer helps introduce your business to new customers.<\/p>"
+              }
+            }
+          },
+          "block_order": [
+            "1479846461263",
+            "1500907307864",
+            "1479499878046"
+          ],
+          "settings": {
+            "footer_text_align": "left",
+            "footer_title_transform": "uppercase",
+            "footer_title_size": 14
+          }
+        },
+        "1478800373635": {
+          "type": "slideshow",
+          "blocks": {
+            "1478800373635-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "heading": "Slide",
+                "subheading": "Tell your brand's story through images",
+                "slide_text_color": "#000000",
+                "link": "",
+                "button_text": "Add a button",
+                "cta_color": "#ffffff",
+                "cta_background": "#000000",
+                "caption_horizontal": "left",
+                "caption_vertical": 50,
+                "caption_background": "rgba(0,0,0,0)",
+                "caption_background_opacity": 20
+              }
+            },
+            "1478800373635-1": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "heading": "Slide",
+                "subheading": "Tell your brand's story through images",
+                "slide_text_color": "#000000",
+                "link": "",
+                "button_text": "Button",
+                "cta_color": "#ffffff",
+                "cta_background": "#000000",
+                "caption_horizontal": "left",
+                "caption_vertical": 50,
+                "caption_background": "rgba(0,0,0,0)",
+                "caption_background_opacity": 20
+              }
+            }
+          },
+          "block_order": [
+            "1478800373635-0",
+            "1478800373635-1"
+          ],
+          "settings": {
+            "slideshow": "content",
+            "slider_speed": 8,
+            "slide_heading_size": 20,
+            "slide_heading_weight": "700",
+            "subheading_size": 13,
+            "cta_size": 13,
+            "cta_weight": "400"
+          }
+        },
+        "1478800447615": {
+          "type": "parallax-image",
+          "settings": {
+            "image": "",
+            "page_height": 500,
+            "heading": "Image with text overlay",
+            "heading_font_size": 26,
+            "heading_font_weight": "700",
+            "heading_color": "#000000",
+            "subheading": "Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.",
+            "subheading_font_size": 16,
+            "subheading_font_weight": "400",
+            "subheading_color": "#000",
+            "button_text": "Add a button",
+            "button_link": "",
+            "button_text_color": "#fff",
+            "button_color": "#000"
+          }
+        },
+        "1478800534081": {
+          "type": "instagram",
+          "settings": {
+            "heading": "Follow us on Instagram",
+            "instagram_access_token": "",
+            "instagram_heading_color": "#000000",
+            "instagram_background_color": "#fff"
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "thumbnails": "left",
+            "enable_zoom": true,
+            "show_vendor": false,
+            "show_sku": true,
+            "show_quantity_selector": true,
+            "show_payment_button": false,
+            "show_social_share": true,
+            "product_note": ""
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "text": "<p>Add some descriptive text to your all collections page.<\/p>",
+            "image": ""
+          }
+        },
+        "1479856147659": {
+          "type": "featured-blog",
+          "settings": {
+            "blog": "",
+            "heading": "From the blog",
+            "heading_color": "#000",
+            "background_color": "#f6f6f6",
+            "post_limit": 2
+          }
+        },
+        "password-template": {
+          "type": "password-template",
+          "settings": {
+            "logo": "",
+            "logo_max_width": "600"
+          }
+        },
+        "1501009425332": {
+          "type": "parallax-image",
+          "settings": {
+            "image": "",
+            "page_height": 500,
+            "heading": "Image with text overlay",
+            "heading_font_size": 26,
+            "heading_font_weight": "700",
+            "heading_color": "#000",
+            "subheading": "Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.",
+            "subheading_font_size": 16,
+            "subheading_font_weight": "400",
+            "subheading_color": "#000",
+            "button_text": "Add a button",
+            "button_link": "",
+            "button_text_color": "#fff",
+            "button_color": "#000"
+          }
+        },
+        "1518209594527": {
+          "type": "gallery",
+          "blocks": {
+            "1518209594527-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "image_width": "33%",
+                "link": "",
+                "heading": "Our collections",
+                "heading_color": "#000000"
+              }
+            },
+            "1518209594527-1": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "image_width": "33%",
+                "link": "",
+                "heading": "Our collections",
+                "heading_color": "#010000"
+              }
+            },
+            "1518209594527-2": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "image_width": "33%",
+                "link": "",
+                "heading": "Our collections",
+                "heading_color": "#000000"
+              }
+            }
+          },
+          "block_order": [
+            "1518209594527-0",
+            "1518209594527-1",
+            "1518209594527-2"
+          ],
+          "settings": {
+            "promo_background_color": "#ffffff",
+            "promo_heading_weight": "light",
+            "promo_heading_size": 24
+          }
+        },
+        "1518209628906": {
+          "type": "featured-collection",
+          "settings": {
+            "heading": "Featured collection",
+            "heading_color": "#000",
+            "background_color": "#fff",
+            "collection": "",
+            "homepage_product_layout": "carousel",
+            "limit": 6,
+            "grid": 4
+          }
+        }
+      },
+      "content_for_index": [
+        "1478800373635",
+        "1518209594527",
+        "1478800447615",
+        "1518209628906",
+        "1501009425332",
+        "1479856147659",
+        "1478800534081"
+      ]
+    },
+    "Christian": {
+      "announcement_bar_background": "#f6f6f6",
+      "announcement_bar_text_color": "#000000",
+      "pre_scroll_background": "rgba(0,0,0,0)",
+      "pre_scroll_navigation": "#c2b592",
+      "pre_scroll_navigation_hover": "#a09167",
+      "scroll_background": "#ffffff",
+      "scroll_navigation_color": "#a09167",
+      "scroll_navigation_hover": "#c2b592",
+      "background": "#ffffff",
+      "header_color": "#000000",
+      "text_color": "#000000",
+      "link_color": "#000000",
+      "sale_color": "#c50000",
+      "dotted_color": "#e5e5e5",
+      "button_color": "#000000",
+      "button_hover": "#000000",
+      "button_text": "#ffffff",
+      "secondary_button_color": "#e3e3e3",
+      "secondary_button_hover": "#b5b5b5",
+      "secondary_button_text": "#000",
+      "new_background": "#000000",
+      "new_color": "#ffffff",
+      "sale_icon_background": "#9d0000",
+      "sale_icon_color": "#ffffff",
+      "so_background": "#000000",
+      "so_color": "#ffffff",
+      "product_note_color": "#000000",
+      "product_note_background": "#f8f8f8",
+      "footer_border": "#4a4a4a",
+      "footer_background": "#000000",
+      "footer_text": "#ffffff",
+      "footer_link_color": "#ebebeb",
+      "footer_icons_color": "#ffffff",
+      "footer_icons_hover": "#aaaaaa",
+      "footer_input": "#ffffff",
+      "footer_input_text": "#000000",
+      "footer_button": "#4a4a4a",
+      "footer_button_text": "#ffffff",
+      "main_font": "open_sans_n4",
+      "heading_font": "montserrat_n4",
+      "nav_font": "montserrat_n4",
+      "font-size": 13,
+      "h1-size": 22,
+      "h2-size": 19,
+      "h3-size": 17,
+      "h4-size": 16,
+      "h5": 15,
+      "nav_size": 14,
+      "section_title_border": 0,
+      "section_title_align": "center",
+      "breadcrumb": true,
+      "image_flip": true,
+      "vendor": true,
+      "quickview": true,
+      "show_payment_button": false,
+      "details_align": "center",
+      "max-height": false,
+      "desktop_image_height": "",
+      "tablet_image_height": "",
+      "mobile_image_height": "",
+      "cart_notes_enable": false,
+      "ajax_cart_method": "drawer",
+      "twittername": "https:\/\/twitter.com\/undergrndmedia",
+      "facebook_url": "https:\/\/www.facebook.com\/ugmedia",
+      "pinterest_url": "",
+      "tumblr_url": "",
+      "youtube_url": "",
+      "googleplus_url": "",
+      "instagram-id": "",
+      "snapchat-id": "",
+      "weibo-id": "",
+      "popup": false,
+      "email_image": "",
+      "favicon": "",
+      "show_multiple_currencies": false,
+      "currency_format": "money_with_currency_format",
+      "supported_currencies": "INR GBP CAD AUD EUR JPY",
+      "default_currency": "USD",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "Helvetica Neue",
+      "checkout_body_font": "Helvetica Neue",
+      "checkout_accent_color": "#c1c1c1",
+      "checkout_button_color": "#000000",
+      "checkout_error_color": "#ff6d6d",
+      "h5-size": "14px",
+      "h6-size": "14px",
+      "heading-transform": "none",
+      "link-decoration": "underline",
+      "navigation-transform": "none",
+      "email_popup_image": false,
+      "main_nav": "main-menu",
+      "megadropdown_link": "",
+      "nav_promo_image": false,
+      "nav_promo": "shopify:\/\/shop_images\/slide2_1a52b8ec-7d4f-4072-9e61-09036ce937cd.jpg",
+      "nav_promo_link": "\/collections\/all",
+      "mega_1_links": "",
+      "mega_2_links": "",
+      "mega_3_links": "",
+      "mega_4_links": "",
+      "mega_1_show": false,
+      "mega_2_show": false,
+      "mega_3_show": false,
+      "mega_4_show": false,
+      "pagelist": "",
+      "page-sidebar-title": "Sidebar title",
+      "show-map": false,
+      "map": "",
+      "password_bg": "yes",
+      "show_twitter": true,
+      "show_facebook": true,
+      "show_pinterest": true,
+      "show_tumblr": false,
+      "show_youtube": false,
+      "show_googleplus": false,
+      "show_instagram": true,
+      "show_snapchat": true,
+      "show_weibo": false,
+      "show_rss": true,
+      "bg": "no_bg",
+      "background-position": "left top",
+      "background-repeat": "no-repeat",
+      "logo-color": "#000000",
+      "homepage-header-pre_scroll_background": "rgba(0,0,0,0)",
+      "homepage-header-background": "#ffffff",
+      "homepage-pre_scroll_navigation-color": "#000000",
+      "homepage-pre_scroll_navigation-color-hover": "#000000",
+      "homepage-navigation-color": "#000000",
+      "homepage-navigation-color-hover": "#000000",
+      "homepage-header-pre_scroll_background-ros": "#ffffff",
+      "homepage-header-background-ros": "#ffffff",
+      "homepage-pre_scroll_navigation-color-ros": "#000000",
+      "homepage-pre_scroll_navigation-color-hover-ros": "#000000",
+      "homepage-pre_scroll_navigation-active-ros": "#000000",
+      "homepage-navigation-color-ros": "#000000",
+      "homepage-navigation-color-hover-ros": "#000000",
+      "link_hover_color": "#000000",
+      "read-more-background": "#000000",
+      "read-more-hover-background": "#000000",
+      "read-more-link-color": "#ffffff",
+      "read-more-link-hover-color": "#ffffff",
+      "icons": "#000000",
+      "icons-hover": "#000000",
+      "prod-qv-background": "#000000",
+      "prod-qv-text": "#ffffff",
+      "prod-qv-background-hover": "#000000",
+      "prod-qv-text-hover": "#ffffff",
+      "footer_title_color": "#000000",
+      "footer_link_hover": "#000000",
+      "footer_icons_hover_color": "#000000",
+      "footer_button_hover": "#000000",
+      "footer_button_text_hover": "#ffffff",
+      "icon-font-size": "12px",
+      "footer_text_align": "left",
+      "footer_title_transform": "uppercase",
+      "footer_title_size": "14px",
+      "promo_text_weight": "normal",
+      "promo_text_size": 18,
+      "announcement_text_size": 12,
+      "logo_size": 20,
+      "logo_transform": "uppercase",
+      "logo_weight": "700",
+      "dropdown-transform": "uppercase",
+      "dropdown-size": "13px",
+      "slide-title-size": 22,
+      "slide-title-weight": "700",
+      "caption-size": 14,
+      "cta_size": 13,
+      "cta_weight": "400",
+      "topbar_font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "logo-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "icon-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "slide-title-font": "'Roboto', sans-serif;",
+      "caption-font": "'Roboto', sans-serif;",
+      "parallax-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "promo-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "mailchimp": "",
+      "show-facebook-like": true,
+      "show_product_sidebar": false,
+      "enable-zoom": true,
+      "thumbnails": "right",
+      "product-vendor": false,
+      "show-sku": true,
+      "product-note": "",
+      "checkout_use_header_image": false,
+      "checkout_logo": "",
+      "checkout_use_body_background_image": false,
+      "checkout_use_sidebar_background_image": false,
+      "all-collections": "",
+      "products_per_row": "4",
+      "products_per_page": "24",
+      "show_collection_sidebar": false,
+      "sticky-sidebar": false,
+      "collection_links_1": false,
+      "collection_side_1": "main-menu",
+      "collection_links_2": false,
+      "collection_side_2": "",
+      "collection_links_3": false,
+      "collection_side_3": "",
+      "collection_links_4": false,
+      "collection_side_4": "",
+      "shop_by_designer": false,
+      "shop_by_designer_title": "Shop by Designer",
+      "show-twitter-feed": "1",
+      "twitter-widget": "",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "full_width_header": true,
+            "header_cover": true,
+            "header_border": false,
+            "show_announcement_text": true,
+            "announcement_text": "Add a message for your customers",
+            "announcement_text_size": 13,
+            "announcement_link": "",
+            "cart_position": "header",
+            "cart_icon": "bag",
+            "logo": "",
+            "logo_max_width": 180,
+            "logo_align": "center",
+            "logo_size": 22,
+            "logo_transform": "uppercase",
+            "logo_weight": "400",
+            "nav_style": "full",
+            "main_nav": "main-menu"
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "1479846461263": {
+              "type": "menu",
+              "settings": {
+                "footer_nav": "footer",
+                "title": "Explore"
+              }
+            },
+            "1479499878046": {
+              "type": "newsletter",
+              "settings": {
+                "title": "Connect"
+              }
+            },
+            "1500907307864": {
+              "type": "text",
+              "settings": {
+                "title": "About",
+                "footer_text": "<p>Adding text to your footer helps introduce your business to new customers.<\/p>"
+              }
+            }
+          },
+          "block_order": [
+            "1479846461263",
+            "1479499878046",
+            "1500907307864"
+          ],
+          "settings": {
+            "footer_text_align": "left",
+            "footer_title_transform": "uppercase",
+            "footer_title_size": 14
+          }
+        },
+        "1478800373635": {
+          "type": "slideshow",
+          "blocks": {
+            "1478800373635-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "heading": "Slide",
+                "subheading": "Tell your brand's story through images",
+                "slide_text_color": "#000000",
+                "link": "",
+                "button_text": "Add a button",
+                "cta_color": "#ffffff",
+                "cta_background": "#000000",
+                "caption_horizontal": "left",
+                "caption_vertical": 50,
+                "caption_background": "rgba(0,0,0,0)",
+                "caption_background_opacity": 20
+              }
+            },
+            "1478800373635-1": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "heading": "Slide",
+                "subheading": "Tell your brand's story through images",
+                "slide_text_color": "#000000",
+                "link": "",
+                "button_text": "Button",
+                "cta_color": "#ffffff",
+                "cta_background": "#000000",
+                "caption_horizontal": "left",
+                "caption_vertical": 50,
+                "caption_background": "rgba(0,0,0,0)",
+                "caption_background_opacity": 20
+              }
+            }
+          },
+          "block_order": [
+            "1478800373635-0",
+            "1478800373635-1"
+          ],
+          "settings": {
+            "slideshow": "content",
+            "slider_speed": 8,
+            "slide_heading_size": 20,
+            "slide_heading_weight": "700",
+            "subheading_size": 13,
+            "cta_size": 13,
+            "cta_weight": "400"
+          }
+        },
+        "1478800447615": {
+          "type": "parallax-image",
+          "settings": {
+            "image": "",
+            "page_height": 500,
+            "heading": "Image with text overlay",
+            "heading_font_size": 26,
+            "heading_font_weight": "700",
+            "heading_color": "#000000",
+            "subheading": "Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.",
+            "subheading_font_size": 16,
+            "subheading_font_weight": "400",
+            "subheading_color": "#000",
+            "button_text": "Add a button",
+            "button_link": "",
+            "button_text_color": "#fff",
+            "button_color": "#000"
+          }
+        },
+        "1478800534081": {
+          "type": "instagram",
+          "settings": {
+            "heading": "Follow us on Instagram",
+            "instagram_access_token": "",
+            "instagram_heading_color": "#000000",
+            "instagram_background_color": "#fff"
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "thumbnails": "left",
+            "enable_zoom": true,
+            "show_vendor": false,
+            "show_sku": true,
+            "show_quantity_selector": true,
+            "show_payment_button": false,
+            "show_social_share": true,
+            "product_note": ""
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "text": "<p>Add some descriptive text to your all collections page.<\/p>",
+            "image": ""
+          }
+        },
+        "1479856147659": {
+          "type": "featured-blog",
+          "settings": {
+            "blog": "",
+            "heading": "From the blog",
+            "heading_color": "#000",
+            "background_color": "#f6f6f6",
+            "post_limit": 2
+          }
+        },
+        "password-template": {
+          "type": "password-template",
+          "settings": {
+            "logo": "",
+            "logo_max_width": "600"
+          }
+        },
+        "1501009425332": {
+          "type": "parallax-image",
+          "settings": {
+            "image": "",
+            "page_height": 500,
+            "heading": "Image with text overlay",
+            "heading_font_size": 26,
+            "heading_font_weight": "700",
+            "heading_color": "#000",
+            "subheading": "Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.",
+            "subheading_font_size": 16,
+            "subheading_font_weight": "400",
+            "subheading_color": "#000",
+            "button_text": "Add a button",
+            "button_link": "",
+            "button_text_color": "#fff",
+            "button_color": "#000"
+          }
+        },
+        "1518209594527": {
+          "type": "gallery",
+          "blocks": {
+            "1518209594527-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "image_width": "33%",
+                "link": "",
+                "heading": "Our collections",
+                "heading_color": "#000000"
+              }
+            },
+            "1518209594527-1": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "image_width": "33%",
+                "link": "",
+                "heading": "Our collections",
+                "heading_color": "#010000"
+              }
+            },
+            "1518209594527-2": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "image_width": "33%",
+                "link": "",
+                "heading": "Our collections",
+                "heading_color": "#000000"
+              }
+            }
+          },
+          "block_order": [
+            "1518209594527-0",
+            "1518209594527-1",
+            "1518209594527-2"
+          ],
+          "settings": {
+            "promo_background_color": "#ffffff",
+            "promo_heading_weight": "light",
+            "promo_heading_size": 24
+          }
+        },
+        "1518209628906": {
+          "type": "featured-collection",
+          "settings": {
+            "heading": "Featured collection",
+            "heading_color": "#000",
+            "background_color": "#fff",
+            "collection": "",
+            "homepage_product_layout": "carousel",
+            "limit": 6,
+            "grid": 4
+          }
+        }
+      },
+      "content_for_index": [
+        "1478800373635",
+        "1518209594527",
+        "1478800447615",
+        "1518209628906",
+        "1501009425332",
+        "1479856147659",
+        "1478800534081"
+      ]
+    },
+    "Yves": {
+      "announcement_bar_background": "#000000",
+      "announcement_bar_text_color": "#ffffff",
+      "pre_scroll_background": "#ffffff",
+      "pre_scroll_navigation": "#000000",
+      "pre_scroll_navigation_hover": "#000000",
+      "scroll_background": "#ffffff",
+      "scroll_navigation_color": "#000000",
+      "scroll_navigation_hover": "#000000",
+      "background": "#ffffff",
+      "header_color": "#000000",
+      "text_color": "#000000",
+      "link_color": "#000000",
+      "sale_color": "#c50000",
+      "dotted_color": "#e5e5e5",
+      "button_color": "#000000",
+      "button_hover": "#000000",
+      "button_text": "#ffffff",
+      "secondary_button_color": "#e3e3e3",
+      "secondary_button_hover": "#b5b5b5",
+      "secondary_button_text": "#000",
+      "new_background": "#000000",
+      "new_color": "#ffffff",
+      "sale_icon_background": "#9d0000",
+      "sale_icon_color": "#ffffff",
+      "so_background": "#000000",
+      "so_color": "#ffffff",
+      "product_note_color": "#000000",
+      "product_note_background": "#f8f8f8",
+      "footer_border": "#dddddd",
+      "footer_background": "#f5f5f5",
+      "footer_text": "#000000",
+      "footer_link_color": "#000000",
+      "footer_icons_color": "#000000",
+      "footer_icons_hover": "#000000",
+      "footer_input": "#ffffff",
+      "footer_input_text": "#000000",
+      "footer_button": "#000000",
+      "footer_button_text": "#ffffff",
+      "main_font": "lato_n4",
+      "heading_font": "open_sans_n4",
+      "nav_font": "montserrat_n4",
+      "font-size": 13,
+      "h1-size": 22,
+      "h2-size": 19,
+      "h3-size": 17,
+      "h4-size": 16,
+      "h5": 15,
+      "nav_size": 14,
+      "section_title_border": 1,
+      "section_title_align": "center",
+      "breadcrumb": true,
+      "image_flip": true,
+      "vendor": true,
+      "quickview": true,
+      "show_payment_button": false,
+      "details_align": "center",
+      "max-height": false,
+      "desktop_image_height": "",
+      "tablet_image_height": "",
+      "mobile_image_height": "",
+      "cart_notes_enable": false,
+      "ajax_cart_method": "drawer",
+      "twittername": "https:\/\/twitter.com\/undergrndmedia",
+      "facebook_url": "https:\/\/www.facebook.com\/ugmedia",
+      "pinterest_url": "",
+      "tumblr_url": "",
+      "youtube_url": "",
+      "googleplus_url": "",
+      "instagram-id": "",
+      "snapchat-id": "",
+      "weibo-id": "",
+      "popup": false,
+      "email_image": "",
+      "favicon": "",
+      "show_multiple_currencies": false,
+      "currency_format": "money_with_currency_format",
+      "supported_currencies": "INR GBP CAD AUD EUR JPY",
+      "default_currency": "USD",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "medium",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#fafafa",
+      "checkout_heading_font": "Helvetica Neue",
+      "checkout_body_font": "Helvetica Neue",
+      "checkout_accent_color": "#c1c1c1",
+      "checkout_button_color": "#000000",
+      "checkout_error_color": "#ff6d6d",
+      "h5-size": "14px",
+      "h6-size": "14px",
+      "heading-transform": "none",
+      "link-decoration": "underline",
+      "navigation-transform": "none",
+      "email_popup_image": false,
+      "main_nav": "main-menu",
+      "megadropdown_link": "",
+      "nav_promo_image": false,
+      "nav_promo": "shopify:\/\/shop_images\/slide2_1a52b8ec-7d4f-4072-9e61-09036ce937cd.jpg",
+      "nav_promo_link": "\/collections\/all",
+      "mega_1_links": "",
+      "mega_2_links": "",
+      "mega_3_links": "",
+      "mega_4_links": "",
+      "mega_1_show": false,
+      "mega_2_show": false,
+      "mega_3_show": false,
+      "mega_4_show": false,
+      "pagelist": "",
+      "page-sidebar-title": "Sidebar title",
+      "show-map": false,
+      "map": "",
+      "password_bg": "yes",
+      "show_twitter": true,
+      "show_facebook": true,
+      "show_pinterest": true,
+      "show_tumblr": false,
+      "show_youtube": false,
+      "show_googleplus": false,
+      "show_instagram": true,
+      "show_snapchat": true,
+      "show_weibo": false,
+      "show_rss": true,
+      "bg": "no_bg",
+      "background-position": "left top",
+      "background-repeat": "no-repeat",
+      "logo-color": "#000000",
+      "homepage-header-pre_scroll_background": "rgba(0,0,0,0)",
+      "homepage-header-background": "#ffffff",
+      "homepage-pre_scroll_navigation-color": "#000000",
+      "homepage-pre_scroll_navigation-color-hover": "#000000",
+      "homepage-navigation-color": "#000000",
+      "homepage-navigation-color-hover": "#000000",
+      "homepage-header-pre_scroll_background-ros": "#ffffff",
+      "homepage-header-background-ros": "#ffffff",
+      "homepage-pre_scroll_navigation-color-ros": "#000000",
+      "homepage-pre_scroll_navigation-color-hover-ros": "#000000",
+      "homepage-pre_scroll_navigation-active-ros": "#000000",
+      "homepage-navigation-color-ros": "#000000",
+      "homepage-navigation-color-hover-ros": "#000000",
+      "link_hover_color": "#000000",
+      "read-more-background": "#000000",
+      "read-more-hover-background": "#000000",
+      "read-more-link-color": "#ffffff",
+      "read-more-link-hover-color": "#ffffff",
+      "icons": "#000000",
+      "icons-hover": "#000000",
+      "prod-qv-background": "#000000",
+      "prod-qv-text": "#ffffff",
+      "prod-qv-background-hover": "#000000",
+      "prod-qv-text-hover": "#ffffff",
+      "footer_title_color": "#000000",
+      "footer_link_hover": "#000000",
+      "footer_icons_hover_color": "#000000",
+      "footer_button_hover": "#000000",
+      "footer_button_text_hover": "#ffffff",
+      "icon-font-size": "12px",
+      "footer_text_align": "left",
+      "footer_title_transform": "uppercase",
+      "footer_title_size": "14px",
+      "promo_text_weight": "normal",
+      "promo_text_size": 18,
+      "announcement_text_size": 12,
+      "logo_size": 20,
+      "logo_transform": "uppercase",
+      "logo_weight": "700",
+      "dropdown-transform": "uppercase",
+      "dropdown-size": "13px",
+      "slide-title-size": 22,
+      "slide-title-weight": "700",
+      "caption-size": 14,
+      "cta_size": 13,
+      "cta_weight": "400",
+      "topbar_font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "logo-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "icon-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "slide-title-font": "'Roboto', sans-serif;",
+      "caption-font": "'Roboto', sans-serif;",
+      "parallax-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "promo-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "mailchimp": "",
+      "show-facebook-like": true,
+      "show_product_sidebar": false,
+      "enable-zoom": true,
+      "thumbnails": "right",
+      "product-vendor": false,
+      "show-sku": true,
+      "product-note": "",
+      "checkout_use_header_image": false,
+      "checkout_logo": "",
+      "checkout_use_body_background_image": false,
+      "checkout_use_sidebar_background_image": false,
+      "all-collections": "",
+      "products_per_row": "4",
+      "products_per_page": "24",
+      "show_collection_sidebar": false,
+      "sticky-sidebar": false,
+      "collection_links_1": false,
+      "collection_side_1": "main-menu",
+      "collection_links_2": false,
+      "collection_side_2": "",
+      "collection_links_3": false,
+      "collection_side_3": "",
+      "collection_links_4": false,
+      "collection_side_4": "",
+      "shop_by_designer": false,
+      "shop_by_designer_title": "Shop by Designer",
+      "show-twitter-feed": "1",
+      "twitter-widget": "",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "full_width_header": false,
+            "header_cover": false,
+            "header_border": false,
+            "show_announcement_text": true,
+            "announcement_text": "Add a message for your customers",
+            "announcement_text_size": 13,
+            "announcement_link": "",
+            "cart_position": "header",
+            "cart_icon": "cart",
+            "logo": "",
+            "logo_max_width": 180,
+            "logo_align": "left",
+            "logo_size": 22,
+            "logo_transform": "uppercase",
+            "logo_weight": "700",
+            "nav_style": "full",
+            "main_nav": "main-menu"
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "1479846461263": {
+              "type": "menu",
+              "settings": {
+                "footer_nav": "footer",
+                "title": "Explore"
+              }
+            },
+            "1500907307864": {
+              "type": "text",
+              "settings": {
+                "title": "About",
+                "footer_text": "<p>Adding text to your footer helps introduce your business to new customers.<\/p>"
+              }
+            },
+            "1479499878046": {
+              "type": "newsletter",
+              "settings": {
+                "title": "Connect"
+              }
+            }
+          },
+          "block_order": [
+            "1479846461263",
+            "1479499878046",
+            "1500907307864"
+          ],
+          "settings": {
+            "footer_text_align": "left",
+            "footer_title_transform": "uppercase",
+            "footer_title_size": 14
+          }
+        },
+        "1478800373635": {
+          "type": "slideshow",
+          "blocks": {
+            "1478800373635-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "heading": "Slide",
+                "subheading": "Tell your brand's story through images",
+                "slide_text_color": "#000000",
+                "link": "",
+                "button_text": "Add a button",
+                "cta_color": "#ffffff",
+                "cta_background": "#000000",
+                "caption_horizontal": "left",
+                "caption_vertical": 50,
+                "caption_background": "rgba(0,0,0,0)",
+                "caption_background_opacity": 20
+              }
+            },
+            "1478800373635-1": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "heading": "Slide",
+                "subheading": "Tell your brand's story through images",
+                "slide_text_color": "#000000",
+                "link": "",
+                "button_text": "Button",
+                "cta_color": "#ffffff",
+                "cta_background": "#000000",
+                "caption_horizontal": "left",
+                "caption_vertical": 50,
+                "caption_background": "rgba(0,0,0,0)",
+                "caption_background_opacity": 20
+              }
+            }
+          },
+          "block_order": [
+            "1478800373635-0",
+            "1478800373635-1"
+          ],
+          "settings": {
+            "slideshow": "content",
+            "slider_speed": 8,
+            "slide_heading_size": 20,
+            "slide_heading_weight": "700",
+            "subheading_size": 13,
+            "cta_size": 13,
+            "cta_weight": "400"
+          }
+        },
+        "1478800447615": {
+          "type": "parallax-image",
+          "settings": {
+            "image": "",
+            "page_height": 500,
+            "heading": "Image with text overlay",
+            "heading_font_size": 26,
+            "heading_font_weight": "700",
+            "heading_color": "#000000",
+            "subheading": "Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.",
+            "subheading_font_size": 16,
+            "subheading_font_weight": "400",
+            "subheading_color": "#000",
+            "button_text": "Add a button",
+            "button_link": "",
+            "button_text_color": "#fff",
+            "button_color": "#000"
+          }
+        },
+        "1478800534081": {
+          "type": "instagram",
+          "settings": {
+            "heading": "Follow us on Instagram",
+            "instagram_access_token": "",
+            "instagram_heading_color": "#000000",
+            "instagram_background_color": "#fff"
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "thumbnails": "left",
+            "enable_zoom": true,
+            "show_vendor": false,
+            "show_sku": true,
+            "show_quantity_selector": true,
+            "show_payment_button": false,
+            "show_social_share": true,
+            "product_note": ""
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "text": "<p>Add some descriptive text to your all collections page.<\/p>",
+            "image": ""
+          }
+        },
+        "1479856147659": {
+          "type": "featured-blog",
+          "settings": {
+            "blog": "",
+            "heading": "From the blog",
+            "heading_color": "#000",
+            "background_color": "#f6f6f6",
+            "post_limit": 2
+          }
+        },
+        "password-template": {
+          "type": "password-template",
+          "settings": {
+            "logo": "",
+            "logo_max_width": "600"
+          }
+        },
+        "1501009425332": {
+          "type": "parallax-image",
+          "settings": {
+            "image": "",
+            "page_height": 500,
+            "heading": "Image with text overlay",
+            "heading_font_size": 26,
+            "heading_font_weight": "700",
+            "heading_color": "#000",
+            "subheading": "Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.",
+            "subheading_font_size": 16,
+            "subheading_font_weight": "400",
+            "subheading_color": "#000",
+            "button_text": "Add a button",
+            "button_link": "",
+            "button_text_color": "#fff",
+            "button_color": "#000"
+          }
+        },
+        "1518209594527": {
+          "type": "gallery",
+          "blocks": {
+            "1518209594527-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "image_width": "33%",
+                "link": "",
+                "heading": "Our collections",
+                "heading_color": "#000000"
+              }
+            },
+            "1518209594527-1": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "image_width": "33%",
+                "link": "",
+                "heading": "Our collections",
+                "heading_color": "#010000"
+              }
+            },
+            "1518209594527-2": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "image_width": "33%",
+                "link": "",
+                "heading": "Our collections",
+                "heading_color": "#000000"
+              }
+            }
+          },
+          "block_order": [
+            "1518209594527-0",
+            "1518209594527-1",
+            "1518209594527-2"
+          ],
+          "settings": {
+            "promo_background_color": "#ffffff",
+            "promo_heading_weight": "light",
+            "promo_heading_size": 24
+          }
+        },
+        "1518209628906": {
+          "type": "featured-collection",
+          "settings": {
+            "heading": "Featured collection",
+            "heading_color": "#000",
+            "background_color": "#fff",
+            "collection": "",
+            "homepage_product_layout": "carousel",
+            "limit": 6,
+            "grid": 4
+          }
+        }
+      },
+      "content_for_index": [
+        "1478800373635",
+        "1518209594527",
+        "1478800447615",
+        "1518209628906",
+        "1501009425332",
+        "1479856147659",
+        "1478800534081"
+      ]
+    }
+  },
+  "current": {
+    "announcement_bar_background": "#f7e3e3",
+    "announcement_bar_text_color": "#070707",
+    "pre_scroll_background": "#070707",
+    "pre_scroll_navigation": "#000000",
+    "pre_scroll_navigation_hover": "#c50000",
+    "scroll_background": "#000000",
+    "scroll_navigation_color": "#000000",
+    "scroll_navigation_hover": "#000000",
+    "background": "#ffffff",
+    "header_color": "#000000",
+    "text_color": "#000000",
+    "link_color": "#000000",
+    "sale_color": "#c50000",
+    "dotted_color": "#e5e5e5",
+    "button_color": "#000000",
+    "button_hover": "#000000",
+    "button_text": "#ffffff",
+    "secondary_button_color": "#f8f3f0",
+    "secondary_button_hover": "#c2b6ac",
+    "secondary_button_text": "#000",
+    "new_background": "#ededed",
+    "new_color": "#535353",
+    "sale_icon_background": "#9d0000",
+    "sale_icon_color": "#ffffff",
+    "so_background": "#000000",
+    "so_color": "#ffffff",
+    "product_note_color": "#000000",
+    "product_note_background": "#f8f8f8",
+    "footer_border": "#fffdfd",
+    "footer_background": "#000000",
+    "footer_text": "#ffffff",
+    "footer_link_color": "#000000",
+    "footer_icons_color": "#fffdfd",
+    "footer_icons_hover": "#000000",
+    "footer_input": "#000000",
+    "footer_input_text": "#ffffff",
+    "footer_button": "#ffffff",
+    "footer_button_text": "#000000",
+    "main_font": "lato_n4",
+    "nav_font": "lato_n4",
+    "heading_font": "lato_n4",
+    "font-size": 14,
+    "h1-size": 22,
+    "h2-size": 18,
+    "h3-size": 16,
+    "h4-size": 16,
+    "h5": 14,
+    "nav_size": 18,
+    "section_title_border": 1,
+    "section_title_align": "center",
+    "breadcrumb": true,
+    "image_flip": true,
+    "vendor": false,
+    "quickview": true,
+    "show_payment_button": false,
+    "details_align": "center",
+    "max-height": false,
+    "desktop_image_height": "",
+    "tablet_image_height": "",
+    "mobile_image_height": "",
+    "cart_notes_enable": false,
+    "ajax_cart_method": "drawer",
+    "cart_coupon_display": "flex",
+    "cart_loyalty_display": "flex",
+    "share_image": "shopify:\/\/shop_images\/gade-logo.jpg",
+    "twittername": "",
+    "facebook_url": "https:\/\/www.facebook.com\/gadeisrael",
+    "pinterest_url": "https:\/\/www.pinterest.com\/gadecosmeticsinternational\/",
+    "tumblr_url": "",
+    "youtube_url": "https:\/\/www.youtube.com\/channel\/UCUN7QZUwKRTen8HIwUvJhSg",
+    "googleplus_url": "",
+    "instagram-id": "gade_israel",
+    "snapchat-id": "",
+    "weibo-id": "",
+    "instagram-title": "You are our favorite",
+    "instagram-subtitle": "THISISGADE#",
+    "instagram-text": "שתפי את הלוק שלך עם gade_israel@ ותישארי תמיד מעודכנת",
+    "popup": false,
+    "email_image": "",
+    "favicon": "shopify:\/\/shop_images\/GD_FAVICON_BLACK-05.png",
+    "show_multiple_currencies": false,
+    "currency_format": "money_format",
+    "supported_currencies": "INR GBP CAD AUD EUR JPY ILS",
+    "default_currency": "ILS",
+    "plus_check_phone_number": true,
+    "plus_enable_char_limits": true,
+    "plus_char_limit_first_name": 0,
+    "plus_char_limit_last_name": 0,
+    "plus_char_limit_address1": 0,
+    "plus_char_limit_address2": 70,
+    "plus_char_limit_city": 0,
+    "checkout_footer_icons": true,
+    "checkout_express_buttons": true,
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/gade-logo_b8152cdc-2d0d-4a2f-b6ad-c343c5d93504.jpg",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#f8f3f0",
+    "checkout_button_color": "#5a3b21",
+    "checkout_error_color": "#ff6d6d",
+    "h5-size": "14px",
+    "h6-size": "14px",
+    "heading-transform": "none",
+    "link-decoration": "underline",
+    "navigation-transform": "none",
+    "email_popup_image": false,
+    "main_nav": "main-menu",
+    "megadropdown_link": "",
+    "nav_promo_image": false,
+    "nav_promo": "shopify:\/\/shop_images\/slide2_1a52b8ec-7d4f-4072-9e61-09036ce937cd.jpg",
+    "nav_promo_link": "\/collections\/all",
+    "mega_1_links": "",
+    "mega_2_links": "",
+    "mega_3_links": "",
+    "mega_4_links": "",
+    "mega_1_show": false,
+    "mega_2_show": false,
+    "mega_3_show": false,
+    "mega_4_show": false,
+    "pagelist": "",
+    "page-sidebar-title": "Sidebar title",
+    "show-map": false,
+    "map": "",
+    "password_bg": "yes",
+    "show_twitter": true,
+    "show_facebook": true,
+    "show_pinterest": true,
+    "show_tumblr": false,
+    "show_youtube": false,
+    "show_googleplus": false,
+    "show_instagram": true,
+    "show_snapchat": true,
+    "show_weibo": false,
+    "show_rss": true,
+    "bg": "no_bg",
+    "background-position": "left top",
+    "background-repeat": "no-repeat",
+    "logo-color": "#000000",
+    "homepage-header-pre_scroll_background": "rgba(0,0,0,0)",
+    "homepage-header-background": "#ffffff",
+    "homepage-pre_scroll_navigation-color": "#000000",
+    "homepage-pre_scroll_navigation-color-hover": "#000000",
+    "homepage-navigation-color": "#000000",
+    "homepage-navigation-color-hover": "#000000",
+    "homepage-header-pre_scroll_background-ros": "#ffffff",
+    "homepage-header-background-ros": "#ffffff",
+    "homepage-pre_scroll_navigation-color-ros": "#000000",
+    "homepage-pre_scroll_navigation-color-hover-ros": "#000000",
+    "homepage-pre_scroll_navigation-active-ros": "#000000",
+    "homepage-navigation-color-ros": "#000000",
+    "homepage-navigation-color-hover-ros": "#000000",
+    "link_hover_color": "#000000",
+    "read-more-background": "#000000",
+    "read-more-hover-background": "#000000",
+    "read-more-link-color": "#ffffff",
+    "read-more-link-hover-color": "#ffffff",
+    "icons": "#000000",
+    "icons-hover": "#000000",
+    "prod-qv-background": "#000000",
+    "prod-qv-text": "#ffffff",
+    "prod-qv-background-hover": "#000000",
+    "prod-qv-text-hover": "#ffffff",
+    "footer_title_color": "#000000",
+    "footer_link_hover": "#000000",
+    "footer_icons_hover_color": "#000000",
+    "footer_button_hover": "#000000",
+    "footer_button_text_hover": "#ffffff",
+    "icon-font-size": "12px",
+    "footer_text_align": "left",
+    "footer_title_transform": "uppercase",
+    "footer_title_size": "14px",
+    "promo_text_weight": "normal",
+    "promo_text_size": 18,
+    "announcement_text_size": 12,
+    "logo_size": 20,
+    "logo_transform": "uppercase",
+    "logo_weight": "700",
+    "dropdown-transform": "uppercase",
+    "dropdown-size": "13px",
+    "slide-title-size": 22,
+    "slide-title-weight": "700",
+    "caption-size": 14,
+    "cta_size": 13,
+    "cta_weight": "400",
+    "topbar_font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+    "logo-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+    "icon-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+    "slide-title-font": "'Roboto', sans-serif;",
+    "caption-font": "'Roboto', sans-serif;",
+    "parallax-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+    "promo-font": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+    "mailchimp": "",
+    "show-facebook-like": true,
+    "show_product_sidebar": false,
+    "enable-zoom": true,
+    "thumbnails": "right",
+    "product-vendor": false,
+    "show-sku": true,
+    "product-note": "",
+    "checkout_use_header_image": false,
+    "checkout_logo": "",
+    "checkout_use_body_background_image": false,
+    "checkout_use_sidebar_background_image": false,
+    "all-collections": "",
+    "products_per_row": "4",
+    "products_per_page": "24",
+    "show_collection_sidebar": false,
+    "sticky-sidebar": false,
+    "collection_links_1": false,
+    "collection_side_1": "main-menu",
+    "collection_links_2": false,
+    "collection_side_2": "",
+    "collection_links_3": false,
+    "collection_side_3": "",
+    "collection_links_4": false,
+    "collection_side_4": "",
+    "shop_by_designer": false,
+    "shop_by_designer_title": "Shop by Designer",
+    "show-twitter-feed": "1",
+    "twitter-widget": "",
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "1557938305205": {
+            "type": "mega_menu",
+            "settings": {
+              "title": "טיפוח",
+              "collection": "skin-care",
+              "main_nav_image": "shopify:\/\/shop_images\/skin-care-website-banners-01.png",
+              "main_nav_image_url": "",
+              "small_nav_image_1": "shopify:\/\/shop_images\/skin-care-website-banners-02.png",
+              "small_nav_image_1_url": "",
+              "small_nav_image_2": "shopify:\/\/shop_images\/skin-care-website-banners-03.png",
+              "small_nav_image_2_url": ""
+            }
+          },
+          "1557938491033": {
+            "type": "mega_menu",
+            "settings": {
+              "title": "איפור",
+              "collection": "makeup",
+              "main_nav_image": "shopify:\/\/shop_images\/banners.jpg",
+              "main_nav_image_url": "",
+              "small_nav_image_1": "shopify:\/\/shop_images\/banners-01.jpg",
+              "small_nav_image_1_url": "",
+              "small_nav_image_2": "shopify:\/\/shop_images\/banners-02.jpg",
+              "small_nav_image_2_url": ""
+            }
+          },
+          "1557937266763": {
+            "type": "mega_menu",
+            "settings": {
+              "title": "בישום",
+              "collection": "fragrance",
+              "main_nav_image": "shopify:\/\/shop_images\/Perfume-banners-01.jpg",
+              "main_nav_image_url": "",
+              "small_nav_image_1": "shopify:\/\/shop_images\/Perfume-banners-02.jpg",
+              "small_nav_image_1_url": "",
+              "small_nav_image_2": "shopify:\/\/shop_images\/Perfume-banners-03.jpg",
+              "small_nav_image_2_url": ""
+            }
+          },
+          "1568819327361": {
+            "type": "mega_menu",
+            "settings": {
+              "title": "ג'ייד סטורי",
+              "collection": "gade-story",
+              "main_nav_image": "shopify:\/\/shop_images\/ONLINE-ONLY-website-page-banners-01.jpg",
+              "main_nav_image_url": "",
+              "small_nav_image_1": "shopify:\/\/shop_images\/ONLINE-ONLY-website-page-banners-02.jpg",
+              "small_nav_image_1_url": "",
+              "small_nav_image_2": "shopify:\/\/shop_images\/ONLINE-ONLY-website-page-banners-03.jpg",
+              "small_nav_image_2_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "1557938305205",
+          "1557938491033",
+          "1557937266763",
+          "1568819327361"
+        ],
+        "settings": {
+          "full_width_header": true,
+          "header_cover": false,
+          "header_border": false,
+          "show_announcement_text": true,
+          "announcement_text": "קבלי ₪50 מתנה על כל קניה ב- ₪150 עם קוד קופון GIFT50 |  משלוח חינם בקניה מעל 150 ש\"ח",
+          "announcement_text_size": 13,
+          "announcement_link": "shopify:\/\/pages\/all-sale",
+          "sales_show": true,
+          "sales": "חדש ! משלוח מהיום להיום",
+          "sales_url": "shopify:\/\/pages\/standard-shipping-and-return-policy",
+          "cart_position": "header",
+          "cart_icon": "cart",
+          "logo": "shopify:\/\/shop_images\/gade-logo-02-02.png",
+          "logo_max_width": 160,
+          "logo_align": "center",
+          "logo_size": 22,
+          "logo_transform": "uppercase",
+          "logo_weight": "700",
+          "nav_style": "full",
+          "main_nav": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1479846461263": {
+            "type": "menu",
+            "settings": {
+              "footer_nav": "main-menu",
+              "title": "Explore"
+            }
+          },
+          "1479499878046": {
+            "type": "newsletter",
+            "settings": {
+              "title": "הרשמי לניוזלטר וקבלי 15% הנחה על ההזמנה הראשונה שלך",
+              "mailing_subheading": ""
+            }
+          }
+        },
+        "block_order": [
+          "1479846461263",
+          "1479499878046"
+        ],
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/gade-logo-02-02.png",
+          "footer_text_align": "left",
+          "footer_title_weight": "300",
+          "footer_title_transform": "uppercase",
+          "footer_title_size": 15,
+          "show_credit_cards": true,
+          "nav_menu": "desktop-footer-1",
+          "nav_menu2": "footer-2"
+        }
+      },
+      "1478800373635": {
+        "type": "slideshow",
+        "blocks": {
+          "b19ababd-2030-474f-9cf8-08d64f481528": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/50_GIFT_1920X578_1.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/50_GIFT_640X781_1.jpg",
+              "heading": "",
+              "subheading": "",
+              "slide_text_color": "#000000",
+              "link": "shopify:\/\/pages\/all-sale",
+              "button_text": "",
+              "cta_color": "#ffffff",
+              "cta_background": "#000000",
+              "caption_horizontal": "left",
+              "caption_vertical": 50,
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_background_opacity": 20
+            }
+          }
+        },
+        "block_order": [
+          "b19ababd-2030-474f-9cf8-08d64f481528"
+        ],
+        "settings": {
+          "slideshow": "content",
+          "slider_speed": 10,
+          "slide_heading_size": 46,
+          "slide_heading_weight": "400",
+          "subheading_size": 36,
+          "cta_size": 26,
+          "cta_weight": "400"
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "thumbnails": "left",
+          "enable_zoom": false,
+          "show_vendor": false,
+          "show_sku": false,
+          "show_quantity_selector": true,
+          "show_payment_button": false,
+          "show_social_share": true,
+          "product_note": "",
+          "realted_title": "במיוחד בשבילך",
+          "show_custom_collection": true,
+          "custom_collection": "last-chance",
+          "show_instagram": true,
+          "blog-title": "הבלוג שלנו"
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "image-main": "shopify:\/\/shop_images\/blog-banner-new_7cf1c880-81a2-4d3c-b1e7-520e1f289936.jpg",
+          "text": "<p><\/p>\n<p><\/p>",
+          "image": "",
+          "image_mobile": "",
+          "page_height": 600,
+          "heading": "",
+          "heading_font_size": 49,
+          "heading_font_weight": "300",
+          "heading_color": "#000000",
+          "sub-heading": "",
+          "subheading": "",
+          "subheading_font_size": 16,
+          "subheading_font_weight": "400",
+          "subheading_color": "#000000",
+          "button_text": "",
+          "button_link": "",
+          "button_text_color": "rgba(0,0,0,0)",
+          "button_color": "#000000",
+          "insta-heading": "",
+          "instagram_access_token": "",
+          "instagram_heading_color": "#000000",
+          "instagram_background_color": "#000000"
+        }
+      },
+      "1479856147659": {
+        "type": "featured-blog",
+        "settings": {
+          "blog": "news",
+          "heading": "הבלוג שלנו",
+          "heading_color": "#000000",
+          "background_color": "#f6f6f6",
+          "post_limit": 2
+        }
+      },
+      "password-template": {
+        "type": "password-template",
+        "settings": {
+          "newsletter_details": "<p>Coming Soon<\/p><p>Signup for our newsletter and get updated when we launch our site <a href=\"https:\/\/example.com\/\">see our newsletter policy.<\/a><\/p>",
+          "text_size": 18,
+          "text_color": "#000000",
+          "logo": "",
+          "logo_max_width": "600",
+          "background_color": "#f5f5f5",
+          "background_image": "",
+          "show_overlay_color": false,
+          "background_overlay_color": "#f5f5f5",
+          "overlay_color_opacity": 80,
+          "border_color": "#000000",
+          "button_color": "#000000",
+          "button_text_color": "#ffffff"
+        }
+      },
+      "1518209594527": {
+        "type": "gallery",
+        "blocks": {
+          "1518209594527-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/800X519_FACE_d2f7a72a-a619-46b0-9fb1-41c903267930.jpg",
+              "imagemobile": "shopify:\/\/shop_images\/800X889_FACE_0ea25d8a-e37e-42aa-9cb2-b15a5250fdd0.jpg",
+              "image_width": "50%",
+              "link": "shopify:\/\/collections\/face",
+              "heading": "",
+              "subheading": "",
+              "heading_color": "#000000"
+            }
+          },
+          "1518209594527-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/800X519_EYE_af204c1a-0786-4583-9033-c3b0df7c5839.jpg",
+              "imagemobile": "shopify:\/\/shop_images\/800X889_EYE_3c2b5eb7-8e04-4ff0-ab5e-a2e1d3779816.jpg",
+              "image_width": "50%",
+              "link": "shopify:\/\/collections\/eyes",
+              "heading": "",
+              "subheading": "",
+              "heading_color": "#010000"
+            }
+          },
+          "1518209594527-2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/800X519_LIP_9ef33d02-0cf6-4273-9529-bc824ebdea76.jpg",
+              "imagemobile": "shopify:\/\/shop_images\/800X889_LIP_a7c4904f-6787-4e6e-adbd-dc4742552be2.jpg",
+              "image_width": "50%",
+              "link": "shopify:\/\/collections\/lips",
+              "heading": "",
+              "subheading": "",
+              "heading_color": "#000000"
+            }
+          },
+          "1555435337427": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/800X519_CARE_f38c7720-8b9b-4a8a-b4fc-1ba76df6187a.jpg",
+              "imagemobile": "shopify:\/\/shop_images\/800X889_CARE_cb1a33c1-b06b-442c-bb66-a5e522d1a27f.jpg",
+              "image_width": "50%",
+              "link": "shopify:\/\/collections\/skin-care",
+              "heading": "",
+              "subheading": "",
+              "heading_color": "#000000"
+            }
+          }
+        },
+        "block_order": [
+          "1518209594527-0",
+          "1518209594527-1",
+          "1518209594527-2",
+          "1555435337427"
+        ],
+        "settings": {
+          "promo_background_color": "#ffffff",
+          "promo_heading_weight": "light",
+          "promo_heading_size": 36
+        }
+      },
+      "1518209628906": {
+        "type": "featured-collection",
+        "settings": {
+          "heading": "מומלץ עבורך",
+          "heading_collection1": "הנמכרים ביותר",
+          "heading_color": "#000000",
+          "background_color": "#ffffff",
+          "collection": "best-sellers",
+          "homepage_product_layout": "carousel",
+          "limit": 30,
+          "grid": 4,
+          "heading1": "חדש באתר",
+          "heading_color1": "#000000",
+          "background_color1": "#ffffff",
+          "collection1": "new-arrivals",
+          "homepage_product_layout1": "carousel",
+          "limit1": 30,
+          "grid1": 3
+        }
+      },
+      "collection-page-template": {
+        "type": "collection-page-template",
+        "settings": {
+          "products_per_row": 4,
+          "products_per_page": 30,
+          "show_collection_sidebar": false,
+          "sticky_sidebar": true,
+          "sort_by": false,
+          "bottom_description_background": "#f7e3e3",
+          "read_more_text": "קרא עוד...",
+          "close_read_more_text": "סגור"
+        }
+      },
+      "1560169711966": {
+        "type": "video-slider",
+        "disabled": true,
+        "settings": {
+          "mp4": "\/\/assets-aem.gopro.com\/content\/dam\/homepage\/v3\/two-billion-video\/Site_Homepage_2B_Video_Desktop.mp4",
+          "webm": "\/\/assets-aem.gopro.com\/content\/dam\/homepage\/v3\/two-billion-video\/Site_Homepage_2B_Video_Desktop.webm",
+          "youtubeid": "tsjd7xdgfjA",
+          "image": "shopify:\/\/shop_images\/slider-banner.jpg",
+          "title": "Mascara",
+          "subtitle": "<p>ENIGMAGE<br\/>PANORAMIC LIFTING<\/p>",
+          "button1_label": "GET IT NOW",
+          "button1_link": "shopify:\/\/collections\/all"
+        }
+      },
+      "collections-list-template": {
+        "type": "collections-list-template",
+        "settings": {
+          "title": "איפור",
+          "text": "<p>.קו רייכה םדיתה ארנש שדה ,קות םיכהש יגרמנ וחאצינ הנאכ ,שבי תמאלד חאפא ץיקבה קנמ התוז .ףששרע שבונ תיאחו ךשלתועש ולשח ורבלתו עשולש טיוחמש שרעש בבשויה בינעוה תילא גניסיפידא ררוטקסנוק ,טמא טיס רולוד םוספיא םרול<\/p>"
+        }
+      },
+      "slideshow": {
+        "type": "slideshow",
+        "blocks": {
+          "1561965670316": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slider-img1_1944x_2655bd98-d85c-463b-91e5-34f4ac016c98.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/slider-banner.jpg",
+              "heading": "איפור",
+              "subheading": "",
+              "slide_text_color": "#000000",
+              "link": "",
+              "button_text": "",
+              "cta_color": "#ffffff",
+              "cta_background": "#000000",
+              "caption_horizontal": "right",
+              "caption_vertical": 50,
+              "caption_background": "#ffffff",
+              "caption_background_opacity": 10
+            }
+          }
+        },
+        "block_order": [
+          "1561965670316"
+        ],
+        "settings": {
+          "slideshow": "none",
+          "slider_speed": 5,
+          "slide_heading_size": 56,
+          "slide_heading_weight": "400",
+          "subheading_size": 20,
+          "cta_size": 20,
+          "cta_weight": "400"
+        }
+      },
+      "parallax-image": {
+        "type": "parallax-image",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/banner-1_f20962ea-d18f-4d3b-8197-2742056be78d.jpg",
+          "image_mobile": "shopify:\/\/shop_images\/banner1.jpg",
+          "page_height": 400,
+          "heading": "CRYISTAL LIPSTICK",
+          "heading_font_size": 39,
+          "heading_font_weight": "400",
+          "heading_color": "#cb928b",
+          "sub-heading": "Lipstick Gloss",
+          "subheading": "מייק אפ עמיד במרקם טבעי של עוד שנ",
+          "subheading_font_size": 16,
+          "subheading_font_weight": "400",
+          "subheading_color": "#ffffff",
+          "button_text": "לרכישה",
+          "button_link": "",
+          "button_text_color": "#fff",
+          "button_color": "#000"
+        }
+      },
+      "featured-collection": {
+        "type": "featured-collection",
+        "settings": {
+          "heading": "המועדפים שלי‎",
+          "heading_collection1": "הנמכרים ביותר‎",
+          "heading_color": "#000",
+          "background_color": "#fff",
+          "collection": "",
+          "homepage_product_layout": "carousel",
+          "limit": 20,
+          "grid": 4,
+          "heading1": "מוצרים חדשים‎",
+          "heading_color1": "#000",
+          "background_color1": "#fff",
+          "collection1": "",
+          "homepage_product_layout1": "grid",
+          "limit1": 16,
+          "grid1": 4
+        }
+      },
+      "parallax-image-1": {
+        "type": "parallax-image-1",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/banner-1_f20962ea-d18f-4d3b-8197-2742056be78d.jpg",
+          "image_mobile": "shopify:\/\/shop_images\/subbanner4_b757c8e7-39c4-4041-9de3-2709ea5c3827.png",
+          "page_height": 700,
+          "heading": "CRYISTAL LIPSTICK",
+          "heading_font_size": 38,
+          "heading_font_weight": "400",
+          "heading_color": "#cb928b",
+          "sub-heading": "LIPSTICK GLOSS",
+          "subheading": "מייק אפ עמיד במרקם טבעי של עוד שנ",
+          "subheading_font_size": 16,
+          "subheading_font_weight": "400",
+          "subheading_color": "#ffffff",
+          "button_text": "לרכישה",
+          "button_link": "",
+          "button_text_color": "#fff",
+          "button_color": "#000"
+        }
+      },
+      "featured-blog": {
+        "type": "featured-blog",
+        "settings": {
+          "blog": "news",
+          "heading": "Blog posts",
+          "heading_color": "#000",
+          "background_color": "#fff",
+          "post_limit": 2
+        }
+      },
+      "instagram": {
+        "type": "instagram",
+        "settings": {
+          "heading": "Follow us on Instagram",
+          "instagram_access_token": "310786376.5ea0515.1bb91333d6694d1fb3767b54a07fed86",
+          "instagram_heading_color": "#000",
+          "instagram_background_color": "#fff"
+        }
+      },
+      "slideshow-1": {
+        "type": "slideshow-1",
+        "blocks": {
+          "1562325778048": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/makeupbanner.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/makeupbanner_mobile.jpg",
+              "heading": "איפור",
+              "subheading": "בדיקה כתיבת טקסט מימין לשמאל",
+              "slide_text_color": "#000000",
+              "link": "",
+              "button_text": "",
+              "cta_color": "#ffffff",
+              "cta_background": "#000000",
+              "caption_horizontal": "right",
+              "caption_vertical": 50,
+              "caption_background": "transparent",
+              "caption_background_opacity": 20
+            }
+          }
+        },
+        "block_order": [
+          "1562325778048"
+        ],
+        "settings": {
+          "slideshow": "content",
+          "slider_speed": 5,
+          "slide_heading_size": 57,
+          "slide_heading_weight": "400",
+          "subheading_size": 20,
+          "cta_size": 20,
+          "cta_weight": "400"
+        }
+      },
+      "featured-collection-1": {
+        "type": "featured-collection-1",
+        "settings": {
+          "heading": "המועדפים שלי‎",
+          "heading_collection1": "הנמכרים ביותר‎",
+          "heading_color": "#000",
+          "background_color": "#fff",
+          "collection": "lips",
+          "homepage_product_layout": "carousel",
+          "limit": 6,
+          "grid": 4,
+          "heading1": "הנמכרים ביותר‎",
+          "heading_color1": "#000",
+          "background_color1": "#fff",
+          "collection1": "last-chance",
+          "homepage_product_layout1": "carousel",
+          "limit1": 6,
+          "grid1": 4
+        }
+      },
+      "featured-blog-1": {
+        "type": "featured-blog-1",
+        "settings": {
+          "blog": "news",
+          "heading": "בלוג שלנו",
+          "heading_color": "#000",
+          "background_color": "#fff",
+          "post_limit": 2
+        }
+      },
+      "instagram-1": {
+        "type": "instagram-1",
+        "settings": {
+        }
+      },
+      "collection-blocks": {
+        "type": "collection-blocks",
+        "blocks": {
+          "1562326801118": {
+            "type": "image",
+            "settings": {
+              "showinmobile": true,
+              "image": "shopify:\/\/shop_images\/banner1_4321c195-faad-4037-ab53-62dd427caa80.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/banner1_4321c195-faad-4037-ab53-62dd427caa80.jpg",
+              "link": "shopify:\/\/collections"
+            }
+          },
+          "1562326828976": {
+            "type": "image",
+            "settings": {
+              "showinmobile": true,
+              "image": "shopify:\/\/shop_images\/banner2_4e1ce3f0-47a7-4775-a1fd-c8715f775d7b.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/banner2_4e1ce3f0-47a7-4775-a1fd-c8715f775d7b.jpg",
+              "link": "shopify:\/\/collections"
+            }
+          },
+          "1562326841788": {
+            "type": "image",
+            "settings": {
+              "showinmobile": true,
+              "image": "shopify:\/\/shop_images\/banner3.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/banner3.jpg",
+              "link": "shopify:\/\/collections"
+            }
+          },
+          "1562326852527": {
+            "type": "image",
+            "settings": {
+              "showinmobile": true,
+              "image": "shopify:\/\/shop_images\/banner4.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/banner4.jpg",
+              "link": "shopify:\/\/collections"
+            }
+          },
+          "1562327934421": {
+            "type": "image",
+            "settings": {
+              "showinmobile": true,
+              "image": "shopify:\/\/shop_images\/banner5.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/banner5.jpg",
+              "link": "shopify:\/\/collections"
+            }
+          },
+          "1562327946504": {
+            "type": "image",
+            "settings": {
+              "showinmobile": true,
+              "image": "shopify:\/\/shop_images\/banner6.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/banner6.jpg",
+              "link": "shopify:\/\/collections"
+            }
+          },
+          "1562327958789": {
+            "type": "image",
+            "settings": {
+              "showinmobile": true,
+              "image": "shopify:\/\/shop_images\/banner7.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/banner7.jpg",
+              "link": "shopify:\/\/collections"
+            }
+          },
+          "1562327974381": {
+            "type": "image",
+            "settings": {
+              "showinmobile": true,
+              "image": "shopify:\/\/shop_images\/banner8.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/banner8.jpg",
+              "link": "shopify:\/\/collections"
+            }
+          },
+          "1562327984936": {
+            "type": "image",
+            "settings": {
+              "showinmobile": true,
+              "image": "shopify:\/\/shop_images\/banner9.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/banner9.jpg",
+              "link": "shopify:\/\/collections"
+            }
+          }
+        },
+        "block_order": [
+          "1562326801118",
+          "1562326828976",
+          "1562326841788",
+          "1562326852527",
+          "1562327934421",
+          "1562327946504",
+          "1562327958789",
+          "1562327974381",
+          "1562327984936"
+        ],
+        "settings": {
+          "heading": "איפור",
+          "collectiondesc": ".קו רייכה םדיתה ארנש שדה ,קות םיכהש יגרמנ וחאצינ הנאכ ,שבי תמאלד חאפא ץיקבה קנמ התוז .ףששרע שבונ תיאחו ךשלתועש ולשח ורבלתו עשולש טיוחמש שרעש בבשויה בינעוה תילא גניסיפידא ררוטקסנוק ,טמא טיס רולוד םוספיא םרול"
+        }
+      },
+      "parallax-image-2": {
+        "type": "parallax-image-2",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/banner2.jpg",
+          "image_mobile": "shopify:\/\/shop_images\/banner1.jpg",
+          "page_height": 700,
+          "heading": "YOUR ESENTIAL",
+          "heading_font_size": 37,
+          "heading_font_weight": "400",
+          "heading_color": "#cb928b",
+          "sub-heading": "NATURAL KIT FOR YOUR NIGHT LIFE",
+          "subheading": "לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית \nקולהע צופעט למרקוח איבן איף ברומץ כלרשט מיחוצים. קלאצי \nקולהע צופעט למרקוח איבן איף, ברומץ כלרשט\n מיחוצים. קלאצי סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט",
+          "subheading_font_size": 16,
+          "subheading_font_weight": "400",
+          "subheading_color": "#070707",
+          "button_text": "לרכישה",
+          "button_link": "",
+          "button_text_color": "#070707",
+          "button_color": "#ffffff"
+        }
+      },
+      "slideshow-2": {
+        "type": "slideshow-2",
+        "blocks": {
+          "1562332199825": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slider-img1_1944x_2655bd98-d85c-463b-91e5-34f4ac016c98.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/slider-banner.jpg",
+              "heading": "Lipstick",
+              "subheading": ".קו רייכה םדיתה ארנש שדה ,קות םיכהש יגרמנ וחאצינ הנאכ ,שבי תמאלד חאפא ץיקבה קנמ התוז .ףששרע שבונ תיאחו ךשלתועש ולשח ורבלתו עשולש טיוחמש שרעש בבשויה בינעוה תילא גניסיפידא ררוטקסנוק ,טמא טיס רולוד םוספיא םרול",
+              "slide_text_color": "#000000",
+              "link": "shopify:\/\/collections",
+              "button_text": "",
+              "cta_color": "#ffffff",
+              "cta_background": "#000000",
+              "caption_horizontal": "right",
+              "caption_vertical": 50,
+              "caption_background": "transparent",
+              "caption_background_opacity": 10
+            }
+          }
+        },
+        "block_order": [
+          "1562332199825"
+        ],
+        "settings": {
+          "slideshow": "content",
+          "slider_speed": 5,
+          "slide_heading_size": 20,
+          "slide_heading_weight": "700",
+          "subheading_size": 13,
+          "cta_size": 20,
+          "cta_weight": "400"
+        }
+      },
+      "collection-blocks-1": {
+        "type": "collection-blocks-1",
+        "blocks": {
+          "1562332281954": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/subbanner3.png",
+              "mobile_image": "shopify:\/\/shop_images\/subbanner3.png",
+              "link": "shopify:\/\/collections"
+            }
+          },
+          "1562332291678": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/subbanner3.png",
+              "mobile_image": "shopify:\/\/shop_images\/subbanner3.png",
+              "link": "shopify:\/\/collections"
+            }
+          },
+          "1562332309721": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/subbanner3.png",
+              "mobile_image": "shopify:\/\/shop_images\/subbanner3.png",
+              "link": "shopify:\/\/collections"
+            }
+          },
+          "1562332321480": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/subbanner3.png",
+              "mobile_image": "shopify:\/\/shop_images\/subbanner3.png",
+              "link": "shopify:\/\/collections"
+            }
+          },
+          "1562332333921": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/subbanner3.png",
+              "mobile_image": "shopify:\/\/shop_images\/subbanner3.png",
+              "link": "shopify:\/\/collections"
+            }
+          },
+          "1562332347233": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/subbanner3.png",
+              "mobile_image": "shopify:\/\/shop_images\/subbanner3.png",
+              "link": "shopify:\/\/collections"
+            }
+          }
+        },
+        "block_order": [
+          "1562332281954",
+          "1562332291678",
+          "1562332309721",
+          "1562332321480",
+          "1562332333921",
+          "1562332347233"
+        ],
+        "settings": {
+          "heading": "Lipstick",
+          "collectiondesc": ".קו רייכה םדיתה ארנש שדה ,קות םיכהש יגרמנ וחאצינ הנאכ ,שבי תמאלד חאפא ץיקבה קנמ התוז .ףששרע שבונ תיאחו ךשלתועש ולשח ורבלתו עשולש טיוחמש שרעש בבשויה בינעוה תילא גניסיפידא ררוטקסנוק ,טמא טיס רולוד םוספיא םרול"
+        }
+      },
+      "parallax-image-3": {
+        "type": "parallax-image-3",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/banner1.jpg",
+          "image_mobile": "shopify:\/\/shop_images\/banner2.jpg",
+          "page_height": 400,
+          "heading": "CRYISTAL LIPSTICK",
+          "heading_font_size": 26,
+          "heading_font_weight": "400",
+          "heading_color": "#f7e3e3",
+          "sub-heading": "LIPSTICK GLOSS",
+          "subheading": "מייק אפ עמיד במרקם טבעי של עוד שנ",
+          "subheading_font_size": 16,
+          "subheading_font_weight": "400",
+          "subheading_color": "#ffffff",
+          "button_text": "לרכישה",
+          "button_link": "",
+          "button_text_color": "#fff",
+          "button_color": "#000"
+        }
+      },
+      "featured-collection-3": {
+        "type": "featured-collection-3",
+        "settings": {
+          "heading": "המועדפים שלי‎",
+          "heading_collection1": "המועדפים שלי‎",
+          "heading_color": "#000",
+          "background_color": "#fff",
+          "collection": "",
+          "homepage_product_layout": "carousel",
+          "limit": 6,
+          "grid": 4,
+          "heading1": "המועדפים שלי‎",
+          "heading_color1": "#000",
+          "background_color1": "#fff",
+          "collection1": "",
+          "homepage_product_layout1": "carousel",
+          "limit1": 6,
+          "grid1": 4
+        }
+      },
+      "parallax-image-4": {
+        "type": "parallax-image-4",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/subbanner4.png",
+          "image_mobile": "shopify:\/\/shop_images\/subbanner4.png",
+          "page_height": 400,
+          "heading": "YOUR ESENTIAL",
+          "heading_font_size": 26,
+          "heading_font_weight": "400",
+          "heading_color": "#f7e3e3",
+          "sub-heading": "NATURAL KIT FOR YOUR NIGHT LIFE",
+          "subheading": "לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית \nקולהע צופעט למרקוח איבן איף ברומץ כלרשט מיחוצים. קלאצי \nקולהע צופעט למרקוח איבן איף, ברומץ כלרשט\n מיחוצים. קלאצי סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט",
+          "subheading_font_size": 16,
+          "subheading_font_weight": "400",
+          "subheading_color": "#000",
+          "button_text": "Add a button",
+          "button_link": "",
+          "button_text_color": "#fff",
+          "button_color": "#000"
+        }
+      },
+      "featured-blog-2": {
+        "type": "featured-blog-2",
+        "settings": {
+          "blog": "news",
+          "heading": "בלוג שלנו",
+          "heading_color": "#000",
+          "background_color": "#fff",
+          "post_limit": 2
+        }
+      },
+      "instagram-2": {
+        "type": "instagram-2",
+        "settings": {
+          "instagram_id": "66336",
+          "instagram_heading_color": "#000",
+          "instagram_background_color": "#fff"
+        }
+      },
+      "contact-page-template": {
+        "type": "contact-page-template",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/contact.png"
+        }
+      },
+      "banner": {
+        "type": "banner",
+        "settings": {
+          "display": "block",
+          "image": "shopify:\/\/shop_images\/model-in-gold-fashion.jpg",
+          "image_mobile": "shopify:\/\/shop_images\/banner6.jpg",
+          "page_height": 400,
+          "heading": "יש המון מתנות",
+          "heading_font_size": 26,
+          "heading_distance_top": 26,
+          "heading_font_weight": "400",
+          "heading_color": "#000",
+          "subheading": "הכניסו קוד וקבלו מתנה",
+          "subheading_font_size": 16,
+          "subheading_font_weight": "400",
+          "subheading_color": "#000",
+          "overlay_text": "הקוד הוא: הכי כדאי לאכול פיצה #34",
+          "overlay_text_font_size": 16,
+          "overlay_text_font_weight": "400",
+          "overlay_text_color": "#000"
+        }
+      },
+      "text": {
+        "type": "text",
+        "settings": {
+          "text": "Since 1985\nFounded in Israel, The brand has many distributors around the world, and operates in the major markets of Europe, Australia and the USA.\n\nGA-DE Cosmetics is a brand that will take care of your every beauty need with timeless makeup, innovative skincare ranges and fragrances to arouse your senses.\n\nGA DE's aim is to provide absolute pleasure in every product: looking good through product efficacy and feeling good thanks to fine textures that offer absolute comfort.\n​\nThe combination of elegance and advanced technology, with comfort, style and luxury will always be a top priority of our brand identity.\n\nWith more than 600+ products that suit all skin types, we believe that every woman can feel her beauty with GA-DE."
+        }
+      },
+      "video": {
+        "type": "video",
+        "settings": {
+          "video_header": "Featured Video",
+          "heading_color": "#000000",
+          "video_url": "https:\/\/www.youtube.com\/watch?v=EBPiFZKPMtY"
+        }
+      },
+      "how-to-step": {
+        "type": "how-to-step",
+        "settings": {
+          "display": "flex",
+          "image": "shopify:\/\/shop_images\/woman-shopping-for-clothes.jpg",
+          "title": "צעד 1",
+          "text": "קרוניק 1",
+          "step_product_collection": "crystal-glow-metallic-collection"
+        }
+      },
+      "how-to-step-2": {
+        "type": "how-to-step-2",
+        "settings": {
+          "display": "flex",
+          "image": "shopify:\/\/shop_images\/woman-watches-waves.jpg",
+          "title": "צעד 2",
+          "text": "2 זה מספר זוגי וראשוני",
+          "step_product_collection": "crystal-glow-nude-collection"
+        }
+      },
+      "how-to-step-3": {
+        "type": "how-to-step-3",
+        "settings": {
+          "display": "none",
+          "image": "",
+          "title": "",
+          "text": "",
+          "step_product_collection": ""
+        }
+      },
+      "how-to-step-4": {
+        "type": "how-to-step-4",
+        "settings": {
+          "display": "none",
+          "image": "",
+          "title": "",
+          "text": "",
+          "step_product_collection": ""
+        }
+      },
+      "how-to-step-5": {
+        "type": "how-to-step-5",
+        "settings": {
+          "display": "flex",
+          "image": "shopify:\/\/shop_images\/confident-young-woman.jpg",
+          "title": "צעד 5",
+          "text": "חמש זה הכי טוב",
+          "step_product_collection": "crystal-glow-landscape-collection"
+        }
+      },
+      "how-to-step-6": {
+        "type": "how-to-step-6",
+        "settings": {
+          "display": "none",
+          "image": "",
+          "title": "",
+          "text": "",
+          "step_product_collection": ""
+        }
+      },
+      "how-to-step-7": {
+        "type": "how-to-step-7",
+        "settings": {
+          "display": "none",
+          "image": "",
+          "title": "",
+          "text": "",
+          "step_product_collection": ""
+        }
+      },
+      "how-to-step-8": {
+        "type": "how-to-step-8",
+        "settings": {
+          "display": "none",
+          "image": "",
+          "title": "",
+          "text": "",
+          "step_product_collection": ""
+        }
+      },
+      "how-to-step-9": {
+        "type": "how-to-step-9",
+        "settings": {
+          "display": "none",
+          "image": "",
+          "title": "",
+          "text": "",
+          "step_product_collection": ""
+        }
+      },
+      "how-to-step-10": {
+        "type": "how-to-step-10",
+        "settings": {
+          "display": "none",
+          "image": "",
+          "title": "",
+          "text": "",
+          "step_product_collection": ""
+        }
+      },
+      "launch-step": {
+        "type": "launch-step",
+        "settings": {
+          "display": "flex",
+          "image": "shopify:\/\/shop_images\/blog4.jpg",
+          "image_side": "1",
+          "title": "צעד1",
+          "text": "ורדה שחף המדריכה הראשית של ג'ייד חוגגת את ההשקה של מסכת הזהב החדשה של ג'ייד שהצטרפה לסדרת המסכות המדוברת והמצליחה REVIVALIST!\nמסכות ביוטי כבר מזמן הפכו לחלק משגרת הטיפוח שלנו, הן מעניקות לנו זמן פינוק וטיפוח אישי. המסכה המוזהבת החדשה של ג'ייד היא מסכה מתקלפת אשר מאירה את העור ומרגיעה אותו בזכות שילוב של פרחים המרגיע ומעניק מראה מלא גלאם לעור הפנים. המסכה מצטרפת לארבעת המסכות האחרות שקיימות בסדרה: מסכת דיטוקס - מסכת פחם המנקה ומטהרת את העור; מסכת פורצלן - מבהירה ומרגיעה את העור ומפחיתה אדמומיות; מסכת מיצוק אנטי אייג'ינג ומסכת יופי לחידוש והארה של העור. כל מסכה נפלאה לחוד, אבל אפשר וגם מומלץ לשלב.",
+          "step_product_collection": "banner"
+        }
+      },
+      "launch-step-2": {
+        "type": "launch-step-2",
+        "settings": {
+          "display": "flex",
+          "image": "shopify:\/\/shop_images\/blog6.jpg",
+          "image_side": "10",
+          "title": "צעד 2",
+          "text": "ורדה שחף המדריכה הראשית של ג'ייד חוגגת את ההשקה של מסכת הזהב החדשה של ג'ייד שהצטרפה לסדרת המסכות המדוברת והמצליחה REVIVALIST!\nמסכות ביוטי כבר מזמן הפכו לחלק משגרת הטיפוח שלנו, הן מעניקות לנו זמן פינוק וטיפוח אישי. המסכה המוזהבת החדשה של ג'ייד היא מסכה מתקלפת אשר מאירה את העור ומרגיעה אותו בזכות שילוב של פרחים המרגיע ומעניק מראה מלא גלאם לעור הפנים. המסכה מצטרפת לארבעת המסכות האחרות שקיימות בסדרה: מסכת דיטוקס - מסכת פחם המנקה ומטהרת את העור; מסכת פורצלן - מבהירה ומרגיעה את העור ומפחיתה אדמומיות; מסכת מיצוק אנטי אייג'ינג ומסכת יופי לחידוש והארה של העור. כל מסכה נפלאה לחוד, אבל אפשר וגם מומלץ לשלב.",
+          "step_product_collection": "crystal-glow-gold-collection"
+        }
+      },
+      "launch-step-3": {
+        "type": "launch-step-3",
+        "settings": {
+          "display": "none",
+          "image_side": "1",
+          "title": "",
+          "text": "",
+          "step_product_collection": ""
+        }
+      },
+      "launch-step-4": {
+        "type": "launch-step-4",
+        "settings": {
+          "display": "none",
+          "image_side": "1",
+          "title": "",
+          "text": "",
+          "step_product_collection": ""
+        }
+      },
+      "launch-step-5": {
+        "type": "launch-step-5",
+        "settings": {
+          "display": "none",
+          "image_side": "1",
+          "title": "",
+          "text": "",
+          "step_product_collection": ""
+        }
+      },
+      "launch-step-6": {
+        "type": "launch-step-6",
+        "settings": {
+          "display": "none",
+          "image_side": "1",
+          "title": "",
+          "text": "",
+          "step_product_collection": ""
+        }
+      },
+      "launch-step-7": {
+        "type": "launch-step-7",
+        "settings": {
+          "display": "none",
+          "image_side": "1",
+          "title": "",
+          "text": "",
+          "step_product_collection": ""
+        }
+      },
+      "launch-step-8": {
+        "type": "launch-step-8",
+        "settings": {
+          "display": "flex",
+          "image": "shopify:\/\/shop_images\/blog7.jpg",
+          "image_side": "1",
+          "title": "צעד 8",
+          "text": "ורדה שחף המדריכה הראשית של ג'ייד חוגגת את ההשקה של מסכת הזהב החדשה של ג'ייד שהצטרפה לסדרת המסכות המדוברת והמצליחה REVIVALIST!\nמסכות ביוטי כבר מזמן הפכו לחלק משגרת הטיפוח שלנו, הן מעניקות לנו זמן פינוק וטיפוח אישי. המסכה המוזהבת החדשה של ג'ייד היא מסכה מתקלפת אשר מאירה את העור ומרגיעה אותו בזכות שילוב של פרחים המרגיע ומעניק מראה מלא גלאם לעור הפנים. המסכה מצטרפת לארבעת המסכות האחרות שקיימות בסדרה: מסכת דיטוקס - מסכת פחם המנקה ומטהרת את העור; מסכת פורצלן - מבהירה ומרגיעה את העור ומפחיתה אדמומיות; מסכת מיצוק אנטי אייג'ינג ומסכת יופי לחידוש והארה של העור. כל מסכה נפלאה לחוד, אבל אפשר וגם מומלץ לשלב.",
+          "step_product_collection": "crystal-glow-metallic-collection"
+        }
+      },
+      "launch-step-9": {
+        "type": "launch-step-9",
+        "settings": {
+          "display": "none",
+          "image_side": "1",
+          "title": "",
+          "text": "",
+          "step_product_collection": ""
+        }
+      },
+      "launch-step-10": {
+        "type": "launch-step-10",
+        "settings": {
+          "display": "none",
+          "image": "shopify:\/\/shop_images\/wooden-table-texture.jpg",
+          "image_side": "10",
+          "title": "צעד 10",
+          "text": "מתחילים בעשר",
+          "step_product_collection": "crystal-glow-nude-collection"
+        }
+      },
+      "banner-how-to": {
+        "type": "banner-how-to",
+        "settings": {
+          "display": "block",
+          "image": "",
+          "image_mobile": "",
+          "page_height": 400,
+          "heading": "Image with text overlay",
+          "heading_font_size": 26,
+          "heading_distance_top": 26,
+          "heading_font_weight": "400",
+          "heading_color": "#000",
+          "subheading": "Sub-Heading",
+          "subheading_font_size": 16,
+          "subheading_font_weight": "400",
+          "subheading_color": "#000",
+          "overlay_text": "Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.",
+          "overlay_text_font_size": 16,
+          "overlay_text_font_weight": "400",
+          "overlay_text_color": "#000"
+        }
+      },
+      "video-how-to": {
+        "type": "video-how-to",
+        "settings": {
+          "video_header": "Featured Video",
+          "heading_color": "#000000",
+          "video_url": ""
+        }
+      },
+      "how-to-steps": {
+        "type": "how-to-steps",
+        "blocks": {
+          "1566285507017": {
+            "type": "how-to-step-1",
+            "settings": {
+              "display": "flex",
+              "image": "shopify:\/\/shop_images\/hiking-above-clouds-at-sunset.jpg",
+              "title": "צעד 1",
+              "text": "פעם אנחנו מתשמשים בבלוקים כדי לגרום לזה לעבוד",
+              "step_product_collection": ""
+            }
+          },
+          "1566285640069": {
+            "type": "how-to-step-1",
+            "settings": {
+              "display": "flex",
+              "image": "shopify:\/\/shop_images\/beach-towel-in-wind.jpg",
+              "title": "צעד 2",
+              "text": "אבל הוא מסוג 1 בוא נרא אם זה עובד",
+              "step_product_collection": "acti-cell"
+            }
+          },
+          "1566285699244": {
+            "type": "how-to-step-3",
+            "settings": {
+              "display": "flex",
+              "image": "shopify:\/\/shop_images\/rooftopper-looking-down.jpg",
+              "title": "צעד 3",
+              "text": "מסוג 3",
+              "step_product_collection": "crystal-glow-bridal-collection"
+            }
+          },
+          "1566286931855": {
+            "type": "how-to-step-1",
+            "settings": {
+              "display": "flex",
+              "image": "shopify:\/\/shop_images\/cool-pool-pineapple.jpg",
+              "title": "צעד 4 מסוג 1",
+              "text": "סוג  1",
+              "step_product_collection": "crystal-glow-gold-collection"
+            }
+          }
+        },
+        "block_order": [
+          "1566285507017",
+          "1566285640069",
+          "1566285699244",
+          "1566286931855"
+        ],
+        "settings": {
+        }
+      },
+      "banner-cart": {
+        "type": "banner-cart",
+        "settings": {
+          "display": "none",
+          "image": "",
+          "image_mobile": "",
+          "page_height": 400,
+          "heading": "כותרת ראשית",
+          "heading_font_size": 26,
+          "heading_distance_top": 26,
+          "heading_font_weight": "400",
+          "heading_color": "#000",
+          "subheading": "כותרת משנית",
+          "subheading_font_size": 16,
+          "subheading_font_weight": "400",
+          "subheading_color": "#000",
+          "overlay_text": "קצת טקסט על מחיר טוב של איפור",
+          "overlay_text_font_size": 16,
+          "overlay_text_font_weight": "400",
+          "overlay_text_color": "#000"
+        }
+      },
+      "cart-collection": {
+        "type": "cart-collection",
+        "settings": {
+          "heading": "הטבות מפנקות - במיוחד עבורך!",
+          "heading_color": "#000",
+          "collection": "last-chance",
+          "limit": 10
+        }
+      },
+      "article-caraousel": {
+        "type": "article-caraousel",
+        "settings": {
+          "heading": "מוצרים מומלצים",
+          "heading_color": "#000",
+          "background_color": "#fff",
+          "homepage_product_layout": "carousel",
+          "limit": 16,
+          "grid": 4
+        }
+      },
+      "article-insta": {
+        "type": "article-insta",
+        "settings": {
+          "instagram_id": "66336",
+          "instagram_heading_color": "#000",
+          "instagram_background_color": "#fff"
+        }
+      },
+      "1568905482449": {
+        "type": "slideshow-1",
+        "blocks": {
+          "1568905482449-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/GLOW_FX_1920X470_a0902386-e440-4328-a5bf-fd38500c9d30.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/GLOW_FX_640X781_4fa97527-ff1f-42d9-a8b0-3f2d725fc623.jpg",
+              "heading": "",
+              "subheading": "",
+              "slide_text_color": "#000000",
+              "link": "shopify:\/\/collections\/hydra-sublime",
+              "button_text": "",
+              "cta_color": "#ffffff",
+              "cta_background": "#000000",
+              "caption_horizontal": "right",
+              "caption_vertical": 50,
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_background_opacity": 0
+            }
+          }
+        },
+        "block_order": [
+          "1568905482449-0"
+        ],
+        "settings": {
+          "slideshow": "content",
+          "slider_speed": 5,
+          "slide_heading_size": 20,
+          "slide_heading_weight": "700",
+          "subheading_size": 13,
+          "cta_size": 20,
+          "cta_weight": "400"
+        }
+      },
+      "1569150785019": {
+        "type": "boaideas-banner-with-link",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/STYLE_YOUR_EYES_1920X1000_1.jpg",
+          "image_mobile": "shopify:\/\/shop_images\/STYLE_YOUR_EYES_638X765_1.jpg",
+          "image_height": 600,
+          "mobile_image_height": 400,
+          "url": "shopify:\/\/products\/velveteen-eyeshadow-palette-49-spice-rack",
+          "add_cover": false,
+          "heading": "",
+          "heading_font_size": 26,
+          "heading_distance_top": 26,
+          "heading_font_weight": "400",
+          "heading_color": "#000000",
+          "subheading": "",
+          "subheading_font_size": 16,
+          "subheading_font_weight": "400",
+          "subheading_color": "#000000",
+          "overlay_text": "",
+          "overlay_text_font_size": 16,
+          "overlay_text_font_weight": "400",
+          "overlay_text_color": "#000000",
+          "button": ""
+        }
+      },
+      "loyalty-box": {
+        "type": "loyalty-box",
+        "settings": {
+          "display": "none",
+          "image": "",
+          "image_mobile": "",
+          "page_height": 400,
+          "heading": "Image with text overlay",
+          "heading_font_size": 26,
+          "heading_distance_top": 26,
+          "heading_font_weight": "400",
+          "heading_color": "#000",
+          "subheading": "Sub-Heading",
+          "subheading_font_size": 16,
+          "subheading_font_weight": "400",
+          "subheading_color": "#000",
+          "overlay_text": "Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.",
+          "overlay_text_font_size": 16,
+          "overlay_text_font_weight": "400",
+          "overlay_text_color": "#000"
+        }
+      },
+      "parallax-image-how-to": {
+        "type": "parallax-image-how-to",
+        "settings": {
+          "image": "",
+          "image_mobile": "",
+          "page_height": 400,
+          "heading": "Image with text overlay",
+          "heading_font_size": 26,
+          "heading_font_weight": "400",
+          "heading_color": "#000",
+          "sub-heading": "",
+          "subheading": "Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.",
+          "subheading_font_size": 16,
+          "subheading_font_weight": "400",
+          "subheading_color": "#000",
+          "button_text": "Add a button",
+          "button_link": "",
+          "button_text_color": "#fff",
+          "button_color": "#000"
+        }
+      },
+      "1571910545824": {
+        "type": "instagram-2",
+        "settings": {
+          "instagram_id": "66336",
+          "instagram_heading_color": "#000000",
+          "instagram_background_color": "#ffffff"
+        }
+      },
+      "1581597828682": {
+        "type": "Yotpo-home-carousel",
+        "disabled": true,
+        "settings": {
+          "title": "Yotpo carousel"
+        }
+      },
+      "checkout-footer-icons-boa": {
+        "type": "checkout-footer-icons-boa",
+        "blocks": {
+          "1592817639798": {
+            "type": "image",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/lock.png",
+              "text": "קניה בטוחה - התשלום באתר מאובטח ומוצפן בטכנולוגיית SSL"
+            }
+          },
+          "1592817650411": {
+            "type": "image",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/truck-icon1222.png",
+              "text": "משלוח מהיר חינם בכל קנייה מעל 150 ₪"
+            }
+          },
+          "1592817672183": {
+            "type": "image",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/easy-returns.png",
+              "text": "התחרטתם? לא נורא החזרות חינם אם לא בוצע שימוש"
+            }
+          },
+          "1592817696368": {
+            "type": "image",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/installments.png",
+              "text": "פריסה נוחה לתשלומים"
+            }
+          },
+          "1592817704120": {
+            "type": "image",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/icons8-gift-24.png",
+              "text": "מגוון מבצעים והטבות בכל רכישה"
+            }
+          }
+        },
+        "block_order": [
+          "1592817639798",
+          "1592817650411",
+          "1592817672183",
+          "1592817696368",
+          "1592817704120"
+        ],
+        "settings": {
+          "checkout_footer_icons": true
+        }
+      },
+      "collection-limited-page-template": {
+        "type": "collection-limited-page-template",
+        "settings": {
+          "limit_products": "30",
+          "products_per_row": 3,
+          "products_per_page": 30,
+          "show_collection_sidebar": true,
+          "sticky_sidebar": true,
+          "sort_by": false
+        }
+      },
+      "checkout-discount-codes-boa": {
+        "type": "checkout-discount-codes-boa",
+        "settings": {
+          "min_amount_without_code": ""
+        }
+      },
+      "1598994144294": {
+        "type": "Yotpo-Home-Reviews-Carousel",
+        "settings": {
+        }
+      },
+      "banner-launch": {
+        "type": "banner-launch",
+        "settings": {
+          "display": "block",
+          "image": "shopify:\/\/shop_images\/1920x578.jpg",
+          "image_mobile": "shopify:\/\/shop_images\/640x781.jpg",
+          "page_height": 800,
+          "heading": "",
+          "heading_font_size": 26,
+          "heading_distance_top": 26,
+          "heading_font_weight": "400",
+          "heading_color": "#000000",
+          "subheading": "",
+          "subheading_font_size": 16,
+          "subheading_font_weight": "400",
+          "subheading_color": "#000000",
+          "overlay_text": "",
+          "overlay_text_font_size": 16,
+          "overlay_text_font_weight": "400",
+          "overlay_text_color": "#000000"
+        }
+      },
+      "loyalty-lion-login": {
+        "type": "loyalty-lion-login",
+        "settings": {
+          "order": "1",
+          "bg_img": "shopify:\/\/shop_images\/Rectangle_5_2.png",
+          "program_header": "my",
+          "long_msg": "<p>ברוכה הבאה למועדוןן החברות שלנו את מוזמנת להרשם ולקבלאת ההטבות הכי שוות בג'ייד<\/p>",
+          "welcome_msg": "ברוך שובך,",
+          "points_msg": "<p>מספר הנקודות הכולל שלך:<\/p>",
+          "btn_shape": "squircle",
+          "register_text": "Sign Up",
+          "login_text": "Log In"
+        }
+      },
+      "loyalty-lion-rules": {
+        "type": "loyalty-lion-rules",
+        "blocks": {
+          "2f782008-b577-462b-ab7f-0799295b2626": {
+            "type": "custom",
+            "settings": {
+              "title": "purchase",
+              "show_box": true,
+              "width": "1",
+              "bg_img": true,
+              "bg_color": "#ffffff",
+              "icon": "shopify:\/\/shop_images\/315x612_6d441527-e7ad-4657-9007-c110b507f6b5.png",
+              "text_icon": "",
+              "display_title": true,
+              "rule_title": "",
+              "txt_color": "#0e2d5a",
+              "display_desc": true,
+              "desc": "",
+              "btn_shape": "pill",
+              "btn_color": "#0e2d5a",
+              "btn_txt": "Shop now",
+              "btn_link": ""
+            }
+          },
+          "2161b7d6-d838-433e-b524-32b881d9bc57": {
+            "type": "custom",
+            "settings": {
+              "title": "signup",
+              "show_box": true,
+              "width": "1",
+              "bg_img": false,
+              "bg_color": "#ffffff",
+              "icon": "shopify:\/\/shop_images\/user.png",
+              "text_icon": "",
+              "display_title": true,
+              "rule_title": "צור חשבון",
+              "txt_color": "#0e2d5a",
+              "display_desc": true,
+              "desc": "",
+              "btn_shape": "pill",
+              "btn_color": "#0e2d5a",
+              "btn_txt": "",
+              "btn_link": ""
+            }
+          },
+          "295fad63-00ea-47b1-85be-2afcc78e7853": {
+            "type": "custom",
+            "settings": {
+              "title": "newsletter-signup",
+              "show_box": true,
+              "width": "1",
+              "bg_img": false,
+              "bg_color": "#ffffff",
+              "icon": "shopify:\/\/shop_images\/newsletter.png",
+              "text_icon": "",
+              "display_title": true,
+              "rule_title": "",
+              "txt_color": "#0e2d5a",
+              "display_desc": true,
+              "desc": "",
+              "btn_shape": "pill",
+              "btn_color": "#0e2d5a",
+              "btn_txt": "",
+              "btn_link": ""
+            }
+          },
+          "c21db577-2e54-471b-a8bb-c492e1ebad53": {
+            "type": "custom",
+            "settings": {
+              "title": "facebook-like",
+              "show_box": true,
+              "width": "1",
+              "bg_img": false,
+              "bg_color": "#ffffff",
+              "icon": "shopify:\/\/shop_images\/facebook.png",
+              "text_icon": "",
+              "display_title": true,
+              "rule_title": "",
+              "txt_color": "#0e2d5a",
+              "display_desc": true,
+              "desc": "",
+              "btn_shape": "pill",
+              "btn_color": "#0e2d5a",
+              "btn_txt": "",
+              "btn_link": ""
+            }
+          },
+          "a498ef08-c118-4561-8746-258b61bbc3ed": {
+            "type": "custom",
+            "settings": {
+              "title": "referral",
+              "show_box": true,
+              "width": "1",
+              "bg_img": false,
+              "bg_color": "#ffffff",
+              "icon": "shopify:\/\/shop_images\/share.png",
+              "text_icon": "",
+              "display_title": true,
+              "rule_title": "לשתף עם חברים",
+              "txt_color": "#0e2d5a",
+              "display_desc": true,
+              "desc": "",
+              "btn_shape": "pill",
+              "btn_color": "#0e2d5a",
+              "btn_txt": "",
+              "btn_link": ""
+            }
+          },
+          "f18cb072-0792-4801-ab19-4366a6d3f5be": {
+            "type": "custom",
+            "settings": {
+              "title": "instagram-follow",
+              "show_box": true,
+              "width": "1",
+              "bg_img": false,
+              "bg_color": "#ffffff",
+              "icon": "shopify:\/\/shop_images\/instagram.png",
+              "text_icon": "",
+              "display_title": true,
+              "rule_title": "עקבו אחרינו באינסטגרם",
+              "txt_color": "#0e2d5a",
+              "display_desc": true,
+              "desc": "",
+              "btn_shape": "pill",
+              "btn_color": "#0e2d5a",
+              "btn_txt": "",
+              "btn_link": ""
+            }
+          },
+          "043e99fd-6e28-472c-95b5-06fa6bc22d67": {
+            "type": "custom",
+            "settings": {
+              "title": "birthday",
+              "show_box": true,
+              "width": "1",
+              "bg_img": true,
+              "bg_color": "#ffffff",
+              "icon": "shopify:\/\/shop_images\/315x612_aa42a102-fa5b-4ee4-9462-bdb798b57801.png",
+              "text_icon": "",
+              "display_title": true,
+              "rule_title": "יום הולדת שמח",
+              "txt_color": "#0e2d5a",
+              "display_desc": true,
+              "desc": "",
+              "btn_shape": "pill",
+              "btn_color": "#0e2d5a",
+              "btn_txt": "",
+              "btn_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "2f782008-b577-462b-ab7f-0799295b2626",
+          "2161b7d6-d838-433e-b524-32b881d9bc57",
+          "295fad63-00ea-47b1-85be-2afcc78e7853",
+          "c21db577-2e54-471b-a8bb-c492e1ebad53",
+          "a498ef08-c118-4561-8746-258b61bbc3ed",
+          "f18cb072-0792-4801-ab19-4366a6d3f5be",
+          "043e99fd-6e28-472c-95b5-06fa6bc22d67"
+        ],
+        "settings": {
+          "header": "איך לצבור נקודות",
+          "subheading": "<p>זהות מורבי אינם וחופש, וייוולד. למרות הצורך בכדורסל של חברת התעופה בקוטר האיחוד האירופי לתואר ראשון ללקוח. קריקטורה בהריון סמי.<\/p>",
+          "completed_text": "הפרס נאסף",
+          "birthday_text": "יום עד יום ההולדת שלך!",
+          "order": "2",
+          "guest_vs": true,
+          "user_vs": true,
+          "row": "3"
+        }
+      },
+      "loyalty-lion-rewards": {
+        "type": "loyalty-lion-rewards",
+        "blocks": {
+          "75840215-820a-4c22-81a4-340d18137407": {
+            "type": "custom",
+            "settings": {
+              "id": "91666",
+              "show_box": true,
+              "width": "1",
+              "bg_img": true,
+              "bg_color": "#ffffff",
+              "border_color": "#d8d8d8",
+              "icon": "shopify:\/\/shop_images\/4_28333299-bfa0-4051-805b-18b263583ab6.jpg",
+              "text_icon": "Text Icon",
+              "txt_color": "#0e2d5a",
+              "display_title": true,
+              "reward_title": "",
+              "display_desc": true,
+              "desc": "Price: $999 המאקרו של ביצועים, כיתת כדורגל. צילום xקxלxxיני, ארגון מחדש של סרטים.",
+              "btn_txt": ""
+            }
+          },
+          "9a206f1f-e8d7-4f8c-82f8-b2848aef3358": {
+            "type": "custom",
+            "settings": {
+              "id": "91665",
+              "show_box": true,
+              "width": "1",
+              "bg_img": true,
+              "bg_color": "#ffffff",
+              "border_color": "#d8d8d8",
+              "icon": "shopify:\/\/shop_images\/rect_1.png",
+              "text_icon": "",
+              "txt_color": "#0e2d5a",
+              "display_title": true,
+              "reward_title": "",
+              "display_desc": true,
+              "desc": "המאקרו של ביצועים, כיתת כדורגל. צילום קליני, ארגון מחדש של סרטים.",
+              "btn_txt": ""
+            }
+          },
+          "06dd8c1d-1fed-4097-a95f-2f336ff97eb0": {
+            "type": "custom",
+            "settings": {
+              "id": "91486",
+              "show_box": true,
+              "width": "1",
+              "bg_img": true,
+              "bg_color": "#ffffff",
+              "border_color": "#d8d8d8",
+              "icon": "shopify:\/\/shop_images\/rect_1.png",
+              "text_icon": "",
+              "txt_color": "#0e2d5a",
+              "display_title": true,
+              "reward_title": "",
+              "display_desc": true,
+              "desc": "המאקרו של ביצועים, כיתת כדורגל. צילום קליני, ארגון מחדש של סרטים.",
+              "btn_txt": ""
+            }
+          },
+          "afc42d98-0cbd-40e2-a94e-a0e2d3ef94df": {
+            "type": "custom",
+            "settings": {
+              "id": "91667",
+              "show_box": true,
+              "width": "1",
+              "bg_img": true,
+              "bg_color": "#ffffff",
+              "border_color": "#d8d8d8",
+              "icon": "shopify:\/\/shop_images\/rect_1.png",
+              "text_icon": "",
+              "txt_color": "#0e2d5a",
+              "display_title": true,
+              "reward_title": "",
+              "display_desc": true,
+              "desc": "המאקרו של ביצועים, כיתת כדורגל. צילום קליני, ארגון מחדש של סרטים.",
+              "btn_txt": ""
+            }
+          }
+        },
+        "block_order": [
+          "75840215-820a-4c22-81a4-340d18137407",
+          "9a206f1f-e8d7-4f8c-82f8-b2848aef3358",
+          "06dd8c1d-1fed-4097-a95f-2f336ff97eb0",
+          "afc42d98-0cbd-40e2-a94e-a0e2d3ef94df"
+        ],
+        "settings": {
+          "header": "תפוס את התגמולים שלך!",
+          "subheading": "<p>זהות מורבי אינם וחופש, וייוולד. למרות הצורך בכדורסל של חברת התעופה בקוטר האיחוד האירופי לתואר ראשון ללקוח. קריקטורה בהריון סמי.<\/p>",
+          "order": "2",
+          "guest_vs": true,
+          "user_vs": true,
+          "row": "3"
+        }
+      },
+      "loyalty-lion-history": {
+        "type": "loyalty-lion-history",
+        "settings": {
+          "header": "היסטוריית התגמולים שלך",
+          "subheading": "",
+          "order": "5",
+          "user_vs": true
+        }
+      },
+      "loyalty-lion-tiers": {
+        "type": "loyalty-lion-tiers",
+        "blocks": {
+          "7f84ebeb-9d3a-4764-a68f-097c333bc550": {
+            "type": "custom",
+            "settings": {
+              "bg_img": true,
+              "icon": "shopify:\/\/shop_images\/1_11347cf1-7352-44fb-a8d9-d8559fce3de6.jpg",
+              "display_title": true,
+              "reward_title": "GIRL",
+              "display_desc": true,
+              "desc": "",
+              "current": "",
+              "display_benifit": true,
+              "benifit": "",
+              "txt_color": "#ffffff"
+            }
+          },
+          "ad2ba72f-190b-46c7-a81a-b546ecf50fd5": {
+            "type": "custom",
+            "settings": {
+              "bg_img": true,
+              "icon": "shopify:\/\/shop_images\/seedology_300x361_cc2210c8-5abf-4607-9d41-797ceb913b2c.jpg",
+              "display_title": true,
+              "reward_title": "ICON",
+              "display_desc": true,
+              "desc": "",
+              "current": "",
+              "display_benifit": true,
+              "benifit": "",
+              "txt_color": "#ffffff"
+            }
+          },
+          "46b866ed-670d-48bf-be81-91e6f4b871f0": {
+            "type": "custom",
+            "settings": {
+              "bg_img": true,
+              "icon": "shopify:\/\/shop_images\/2_4.jpg",
+              "display_title": true,
+              "reward_title": "",
+              "display_desc": true,
+              "desc": "",
+              "current": "",
+              "display_benifit": true,
+              "benifit": "",
+              "txt_color": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "7f84ebeb-9d3a-4764-a68f-097c333bc550",
+          "ad2ba72f-190b-46c7-a81a-b546ecf50fd5",
+          "46b866ed-670d-48bf-be81-91e6f4b871f0"
+        ],
+        "settings": {
+          "header": "שכבות מועדון לקוחות",
+          "subheading": "<p>זהות מורבי אינם וחופש, וייוולד. למרות הצורך בכדורסל של חברת התעופה בקוטר האיחוד האירופי לתואר ראשון ללקוח. קריקטורה בהריון סמי.<\/p>",
+          "order": "3",
+          "guest_vs": true,
+          "user_vs": true,
+          "row": "3"
+        }
+      },
+      "loyalty-lion-text-only": {
+        "type": "loyalty-lion-text-only",
+        "settings": {
+          "header": "Heading just text",
+          "subheading": "Regurlar text",
+          "order": "4",
+          "guest_vs": true,
+          "user_vs": true
+        }
+      },
+      "loyalty-lion-text-with-image": {
+        "type": "loyalty-lion-text-with-image",
+        "settings": {
+          "header": "Header",
+          "subheading": "Text",
+          "order": "1",
+          "img_pos": "left",
+          "image_as": "shopify:\/\/shop_images\/Rectangle_5_2.png",
+          "guest_vs": true,
+          "user_vs": true
+        }
+      },
+      "loyalty-lion-text-with-background": {
+        "type": "loyalty-lion-text-with-background",
+        "settings": {
+          "header": "Text Header",
+          "subheading": "Text copty",
+          "order": "4",
+          "bg_color": "#ffffff",
+          "txt_color": "#000000",
+          "guest_vs": true,
+          "user_vs": true
+        }
+      },
+      "loyalty-lion-faq": {
+        "type": "loyalty-lion-faq",
+        "blocks": {
+          "e783e1a6-0cba-4058-9a34-3bd4bf7fe3da": {
+            "type": "custom",
+            "settings": {
+              "question": "יסמין סרט מכוער לכדור הארץ",
+              "answer": "<p><strong>אתה יכול להרוויח יותר תגמולים.<\/strong>עם זאת, זה מאוד dolor. זקנה היא כיום כלי רכב מדגיש את רשויות אכיפת החוק, עכשיו הגרון. למען האמת, תזונה או טעם המוני חדשניים מצוירים, נכס. At hendrerit est nulla arcu.<\/p>"
+            }
+          },
+          "61ef39eb-ef2f-40cc-a287-117699efadfe": {
+            "type": "custom",
+            "settings": {
+              "question": "בדיקות, אלמנט צלילה, אין קזינו",
+              "answer": "<p><strong>אתה יכול להרוויח יותר תגמולים.<\/strong>עם זאת, זה מאוד dolor. זקנה היא כיום כלי רכב מדגיש את רשויות אכיפת החוק, עכשיו הגרון. למען האמת, תזונה או טעם המוני חדשניים מצוירים, נכס. At hendrerit est nulla arcu.<\/p>"
+            }
+          },
+          "2ae8b0d9-9cdd-4d1c-9e42-965f8ea30cc5": {
+            "type": "custom",
+            "settings": {
+              "question": "או למשוך פלייסטיישן nibh",
+              "answer": "<p><strong>אתה יכול להרוויח יותר תגמולים.<\/strong>עם זאת, זה מאוד dolor. זקנה היא כיום כלי רכב מדגיש את רשויות אכיפת החוק, עכשיו הגרון. למען האמת, תזונה או טעם המוני חדשניים מצוירים, נכס. At hendrerit est nulla arcu.<\/p>"
+            }
+          },
+          "f1ce54c3-cc55-4ad5-a1cb-fab4faa848a9": {
+            "type": "custom",
+            "settings": {
+              "question": "כל תעמולת שנאה מאוריס",
+              "answer": "<p><strong>אתה יכול להרוויח יותר תגמולים.<\/strong>עם זאת, זה מאוד dolor. זקנה היא כיום כלי רכב מדגיש את רשויות אכיפת החוק, עכשיו הגרון. למען האמת, תזונה או טעם המוני חדשניים מצוירים, נכס. At hendrerit est nulla arcu.<\/p>"
+            }
+          },
+          "9502f0d6-024c-4d01-b04b-344ac347e8b6": {
+            "type": "custom",
+            "settings": {
+              "question": "מאקרו, FEMA כעת בהמתנה",
+              "answer": "<p><strong>אתה יכול להרוויח יותר תגמולים.<\/strong>עם זאת, זה מאוד dolor. זקנה היא כיום כלי רכב מדגיש את רשויות אכיפת החוק, עכשיו הגרון. למען האמת, תזונה או טעם המוני חדשניים מצוירים, נכס. At hendrerit est nulla arcu.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "e783e1a6-0cba-4058-9a34-3bd4bf7fe3da",
+          "61ef39eb-ef2f-40cc-a287-117699efadfe",
+          "2ae8b0d9-9cdd-4d1c-9e42-965f8ea30cc5",
+          "f1ce54c3-cc55-4ad5-a1cb-fab4faa848a9",
+          "9502f0d6-024c-4d01-b04b-344ac347e8b6"
+        ],
+        "settings": {
+          "header": "שאלות נפוצות",
+          "subheading": "זהות מורבי אינם וחופש, וייוולד. למרות הצורך בכדורסל של חברת התעופה בקוטר האיחוד האירופי לתואר ראשון ללקוח. קריקטורה בהריון סמי.",
+          "order": "4",
+          "guest_vs": true,
+          "user_vs": true
+        }
+      },
+      "loyalty-lion-benifits": {
+        "type": "loyalty-lion-benifits",
+        "blocks": {
+          "07012e46-fe49-4424-a94d-a9ab680677d1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/news_1.png",
+              "image_width": "33%",
+              "link": "",
+              "heading": "ראשית לדעת",
+              "subheading": "קבל עדכונים חמים על המוצרים החדשים שלנו במהירות האפשרית",
+              "heading_color": "#000000"
+            }
+          },
+          "0764e045-b96c-4a30-a893-b989aa7c7cd9": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/equal_1.png",
+              "image_width": "33%",
+              "link": "",
+              "heading": "יתרונות שווים",
+              "subheading": "תמיד יתייחסו לכל חבר במועדון באותה צורה כמו לאחרים.",
+              "heading_color": "#000000"
+            }
+          },
+          "bc42b4a1-f507-4586-bfc3-9b43d6e2affc": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/gift_1.png",
+              "image_width": "33%",
+              "link": "",
+              "heading": "מתנות בחינם",
+              "subheading": "אתה יכול לאסוף נקודות על ידי קניות בחנות שלנו (ועוד) ולהחליף אותן בתמורה",
+              "heading_color": "#000000"
+            }
+          }
+        },
+        "block_order": [
+          "07012e46-fe49-4424-a94d-a9ab680677d1",
+          "0764e045-b96c-4a30-a893-b989aa7c7cd9",
+          "bc42b4a1-f507-4586-bfc3-9b43d6e2affc"
+        ],
+        "settings": {
+          "header": "היתרונות של מועדון הלקוחות שלנו",
+          "subheading": "מועדון הלקוחות המקוון של ג'יד מפנק אותך על נאמנותך! הצטרפו בחינם וגילו מגוון מתנות והטבות בלעדיות",
+          "order": "2",
+          "guest_vs": true,
+          "user_vs": false
+        }
+      }
+    },
+    "content_for_index": [
+      "1560169711966",
+      "1478800373635",
+      "1518209594527",
+      "1568905482449",
+      "1518209628906",
+      "1569150785019",
+      "1479856147659",
+      "1571910545824",
+      "1581597828682",
+      "1598994144294"
+    ]
+  }
+}

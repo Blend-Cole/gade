@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/ga-de-cosmetics-israel.myshopify.com/pages/configure/122700/edit
+{% endcomment %}
+{% if page.metafields.custom_fields["topbanner"] != blank %}
+  <div class="custom-field custom-field__topbanner custom-field__type--image">
+    <h3 class="custom-field--title">Top Banner Desktop</h3>
+    <div class="custom-field--value">  
+      {% include 'cf-image' with image: page.metafields.custom_fields["topbanner"] %}
+    </div>
+  </div>
+{% endif %}

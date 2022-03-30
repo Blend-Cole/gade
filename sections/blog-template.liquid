@@ -1,0 +1,427 @@
+{% if settings.breadcrumb %}
+<div class="custombreadcrumb">
+  <div class="row">
+  {% include 'breadcrumb' %}
+  </div>
+</div>  
+{% endif %}
+{% include 'blog-top-banner' %}
+{% paginate blog.articles by 50 %}
+<section class="homepage-blog-1479856147659 index-section" data-section-id="1479856147659">  
+  <div class="row d-flex">
+    {% for article in blog.articles  %}
+    {% include 'article-loop' %}
+    {% endfor %}
+  </div>
+  <div class="clear"></div>
+</section>
+{% endpaginate %}
+{% assign img_url = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+{% comment %}
+<section
+  class="showindesktop parallax-{{ section.id }} index-section parallax parallax-window no-fouc lazyload is-lipstic-sec"
+  data-section-type="parallax-section"
+  data-bgset="{% include 'bgset', image: section.settings.image %}"
+  data-sizes="auto"
+  data-section-id="{{ section.id }}" >
+
+  <article class="row">
+    <div class="parallax-content desktop-12 tablet-6 mobile-3">
+
+      <div class="parallax-text lipstick-capture">
+        {% unless section.settings.heading == blank %}
+          <h2>{{ section.settings.heading | escape }}</h2>
+        {% endunless %}
+        {%- unless section.settings.subheading == blank -%}
+          <small>{{ section.settings.sub-heading}}</small>
+          <p>{{ section.settings.subheading }}</p>
+          <a class="button" href="{{ section.settings.button_link }}">
+            {{ section.settings.button_text }}
+          </a>
+        {%- endunless -%}
+        {% unless section.settings.button_link == blank %}
+          <div class="clear"></div>
+          <a class="button" href="{{ section.settings.button_link }}">
+            {{ section.settings.button_text }}
+          </a>
+        {% endunless %}
+      </div>
+
+      {% if section.settings.image == blank %}
+        <div class="onboard plax-placehold">
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {% endif %}
+    </div>
+  </article>
+
+</section>
+<section
+  class="showinmobile parallax-{{ section.id }} index-section parallax parallax-window no-fouc lazyload is-lipstic-sec"
+  data-section-type="parallax-section"
+  data-bgset="{% include 'bgset', image: section.settings.image_mobile %}"
+  data-sizes="auto"
+  data-section-id="{{ section.id }}" >
+
+  <article class="row">
+    <div class="parallax-content desktop-12 tablet-6 mobile-3">
+
+      <div class="parallax-text lipstick-capture">
+        {% unless section.settings.heading == blank %}
+          <h2>{{ section.settings.heading | escape }}</h2>
+        {% endunless %}
+        {%- unless section.settings.subheading == blank -%}
+          <small>{{ section.settings.sub-heading}}</small>
+          <p>{{ section.settings.subheading }}</p>
+          <a class="button" href="{{ section.settings.button_link }}">
+            {{ section.settings.button_text }}
+          </a>
+        {%- endunless -%}       
+      </div>
+
+      {% if section.settings.image == blank %}
+        <div class="onboard plax-placehold">
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {% endif %}
+    </div>
+  </article>
+
+</section>
+{% endcomment %}
+<div class="clear" style="clear:both;float:none;"></div>
+<style>
+  .parallax-{{ section.id }} article {
+    display: table;
+    height: {{ section.settings.page_height }}px;
+    min-height: {{ section.settings.page_height }}px;
+  }
+  .parallax-{{ section.id }} .parallax-text h2 {
+    font-size: {{ section.settings.heading_font_size }}px;
+    font-weight: {{ section.settings.heading_font_weight }};
+    display: block;
+    font-family:'Lato';
+  }
+  @media screen and (max-width: 500px) {
+    .parallax-{{ section.id }} .parallax-text h2 {
+      font-size: 36px;
+    }
+  }
+  section.parallax-{{ section.id }} .parallax-text h2, section.parallax-{{ section.id }} .parallax-text a h2, section.parallax-{{ section.id }} .parallax-text a:visited h2 {
+    color: {{ section.settings.heading_color }};
+    margin-bottom:0px;
+  }
+  section.parallax-{{ section.id }} .parallax-text small, section.parallax-{{ section.id }} .parallax-text a small{
+    display:block;margin-bottom:20px;font-family:'Lato';
+  }
+  @media screen and (max-width: 500px) {
+    .parallax-text.lipstick-capture small {
+    font-size: 24px;
+    color: #fff;
+    text-transform: uppercase;
+}
+  }
+  section.parallax-{{ section.id }} .parallax-text p, section.parallax-{{ section.id }} .parallax-text a p{
+    margin-bottom:30px;direction:rtl;font-family: 'open_sans_hebrewregular';
+  }
+  @media screen and (max-width: 500px) {
+    section.parallax-{{ section.id }} .parallax-text p, section.parallax-{{ section.id }} .parallax-text a p{
+    margin-top:30px;direction:rtl;font-family: 'open_sans_hebrewregular';font-size: 18px;margin-bottom:0px;
+  }
+  }
+  section.parallax-{{ section.id }} .parallax-text a:hover h2 {
+    opacity: 0.8;
+  }
+  .parallax-{{ section.id }} .parallax-text p {
+    font-size: {{ section.settings.subheading_font_size }}px;
+    font-weight: {{ section.settings.subheading_font_weight }};
+    color: {{ section.settings.subheading_color }};
+    max-width: 100%;
+    margin: 0;
+  }
+  @media screen and (max-width: 500px) {
+    .parallax-{{ section.id }} .parallax-text p {
+      font-size: 14px;
+    }
+  }
+  .parallax-{{ section.id }} .parallax-text a.button, .parallax-{{ section.id }} .parallax-text a.button:visited {
+    background: {{ section.settings.button_color }};
+    color: {{ section.settings.button_text_color }};
+  }
+  .parallax-text a.button:hover {
+    opacity: 0.8;
+  }
+  .no-js .parallax-{{ section.id }} {
+    background-image: url('{{ section.settings.image | img_url: '1024x' }}');
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+  }
+  @media screen and ( min-width: 1220px ) {
+    section.parallax-{{ section.id }} {
+      background-size: 100% !important;
+    }
+  }
+  @media screen and ( max-width: 1024px ) {
+    .parallax-{{ section.id }} {
+      background-attachment: scroll !important;
+      background-size: cover !important;
+    }
+  }
+  @media screen and ( max-width: 740px ) {
+    section.parallax-{{ section.id }} article {
+      height: initial;
+      min-height: 200px;
+    }
+  }
+  .parallax-content {width:40% !important;}
+  .is-article-bx h3 { font-size: 24px; line-height: 1.5; min-height: 70px; }
+  .is-article-bx .posted { margin-bottom: 0.5rem; text-align:right!important;}
+  .is-article-bx .rte.blogbutton { font-size: 0.9rem; padding: 0.4rem 0; height:auto;}
+  .is-article-bx p { font-size: 16px;}
+ @media screen and ( max-width: 990px ) { 
+  .is-article-bx h3 { font-size: 20px;}
+   .single-article { min-height: 410px; }
+ }
+ @media screen and ( max-width: 768px ) {
+    .is-article-bx h3 { min-height: auto; }
+   .single-article { min-height: auto; }
+
+ }
+</style>
+<br />
+<div class="covet-pics-wrap">
+      <div class="section-title insta-heading">
+      <h4 id="instagram-covet">You are our favorite</h4>
+      <h5 id="instagram-covet">THISISGADE#</h5>
+      <p>ותישארי תמיד מעודכנת @gade_israel שתפי את הלוק שלך עם </p>
+    </div>
+<div class="row covet-pics-gallery" data-id="66336"></div>
+  
+<style>
+  /* INSTAGRAM */
+  section.homepage-instagram {
+    background: #FFFFFF;
+  }
+  section.homepage-instagram h2,
+  section.homepage-instagram h2 a {
+    color: #000000;
+  }
+  .instagram-image-container {
+    display: block;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+    margin-bottom: 0px;
+  }
+</style>
+<style>
+  /* INSTAGRAM */
+  section.homepage-instagram {
+    background: {{ section.settings.instagram_background_color }};
+  }
+  section.homepage-instagram h2,
+  section.homepage-instagram h2 a {
+    color: {{ section.settings.instagram_heading_color }} !important;
+  }
+  .instagram-image-container {
+    display: block;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+    margin-bottom: 0px;
+  }
+</style>
+</div>
+{% schema %}
+  {
+    "name": "Blog",
+    "settings": [
+        {
+          "type": "image_picker",
+          "id": "image-main",
+          "label": "Image"
+        },
+    {
+        "id": "text",
+        "type": "richtext",
+        "label": "Text",
+        "default": "<p>Add some descriptive text to your all collections page.</p>"
+     },
+	 {
+        "type": "header",
+        "content": "After Blogs parallax image"
+      },
+	 {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image for desktop"
+      },
+	  {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Image for mobile"
+      },
+      {
+        "type": "range",
+        "id": "page_height",
+        "min": 200,
+        "max": 1000,
+        "step": 100,
+        "label": "Image height",
+        "default": 400
+      },
+      {
+        "type": "header",
+        "content": "Overlay Heading"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Image with text overlay"
+      },
+      {
+        "type": "range",
+        "id": "heading_font_size",
+        "min": 12,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading size",
+        "default": 26
+      },
+      {
+        "type": "select",
+        "id": "heading_font_weight",
+        "label": "Heading weight",
+        "options": [
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading",
+        "default": "#000"
+      },
+      {
+        "type": "header",
+        "content": "Overlay Text"
+      },
+	{
+        "type": "text",
+        "id": "sub-heading",
+        "label": "Sub Heading"        
+      },
+      {
+        "type": "textarea",
+        "id": "subheading",
+        "label": "Text",
+        "default": "Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story."
+      },
+      {
+        "type": "range",
+        "id": "subheading_font_size",
+        "min": 12,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Text size",
+        "default": 16
+      },
+      {
+        "type": "select",
+        "id": "subheading_font_weight",
+        "label": "Text weight",
+        "options": [
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "subheading_color",
+        "label": "Text color",
+        "default": "#000"
+      },
+      {
+        "type": "header",
+        "content": "Overlay Button"
+      },
+      {
+       "id": "button_text",
+       "type": "text",
+       "label": "Button text",
+  	   "default": "Add a button",
+  	   "info": "Visible only if a link is chosen"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      },
+      {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button text",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "button_color",
+        "label": "Button background",
+        "default": "#000"
+      },
+	  {
+        "type": "header",
+        "content": "Instagram Section"
+      },
+	  {
+      "type": "text",
+      "id": "insta-heading",
+      "label": "Heading",
+      "default": "Follow us on Instagram"
+    },
+      {
+          "type": "textarea",
+          "id": "instagram_access_token",
+          "label": "Instagram access token",
+          "info": "Required for permission to show your Instagram content [instructions here](http://support.undergroundmedia.co.uk/customer/en/portal/articles/2386318-home-page---instagram-feed) for setup."
+      },
+      {
+        "type": "color",
+        "id": "instagram_heading_color",
+        "label": "Heading color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "instagram_background_color",
+        "label": "Background",
+        "default": "#fff"
+      }
+    ]
+  }
+{% endschema %}

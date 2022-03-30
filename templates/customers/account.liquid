@@ -1,0 +1,80 @@
+<div class="section-title boaideas account desktop-12 mobile-3">
+  <div class="desktop-12">
+    <div class="desktop-7 mobile-3">
+    <img src="{{ 'account-header.png' | file_img_url: 'master'}}" alt="account-header">
+    </div>
+    <div class="desktop-5 mobile-3">
+      <div class="inner_text text-right">
+        <h1>שלום, <br><strong>{{ customer.name }}</strong>
+          </h1>
+        <span class="subtitle">{{ 'customer.account.title' | t }}</span>
+        <p><a href="/account/logout" class="d-n">{{ 'customer.account.disconnect' | t }}</a></p>
+      </div>
+    </div>
+    
+  </div>
+  <div class="desktop-12">
+  <ul class="account-menu">
+    <li><a href="/account" class="active">{{ 'customer.orders.title' | t }}</a></li>
+    <li><a href="/account/addresses">{{ 'customer.addresses.title' | t }}</a></li>
+  </ul>
+  </div>
+</div>
+
+<div id="customer-wrapper" class="customer-wrapper boaideas desktop-12 mobile-3">  
+  <div id="customer_orders" class="desktop-12 mobile-3">
+    {% if customer.orders.size != 0 %}
+    <table class="sm-d-none">
+      <thead>
+        <tr>
+          <th class="order_number">{{ 'customer.orders.order_number' | t }}</th>
+          <th class="date">{{ 'customer.orders.date' | t }}</th>
+          <th class="payment_status">{{ 'customer.orders.payment_status' | t }}</th>
+          <th class="fulfillment_status">{{ 'customer.orders.fulfillment_status' | t }}</th>
+          <th class="total">{{ 'customer.orders.total' | t }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in customer.orders %}
+        <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}">
+          <td>{{ order.name | link_to: order.customer_url }}</td>
+          <td><span class="note">{{ order.created_at | date: "%d-%m-%y" }}</span></td>
+          <td><span class="status_{{ order.financial_status }}">{{ order.financial_status_label }}</span></td>
+          <td><span class="status_{{ order.fulfillment_status }}">{{ order.fulfillment_status_label }}</span></td>
+          <td><span class="total money"><span class="money">{{ order.total_price | money }}</span></span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+    {% for order in customer.orders %}
+    <a href="{{ order.customer_url }}" class="sm-d-block customer-order-single mobile-3">
+      <div class="d-block font-bold text-center fs16">
+        <h5 class="order_number">{{ 'customer.orders.order_number' | t }}</h5>
+        <span>{{ order.name }}</span>
+      </div>
+      <hr>
+      <div class="d-block">
+        <h5 class="date">{{ 'customer.orders.date' | t }}</h5>
+        <span class="note">{{ order.created_at | date: "%b %d, %Y" }}</span>
+      </div>
+      <div class="d-block">
+        <h5 class="payment_status">{{ 'customer.orders.payment_status' | t }}</h5>
+        <span class="status_{{ order.financial_status }}">{{ order.financial_status }}</span>
+      </div>
+      <div class="d-block">
+        <h5 class="fulfillment_status">{{ 'customer.orders.fulfillment_status' | t }}</h5>
+        <span class="status_{{ order.fulfillment_status }}">{{ order.fulfillment_status }}</span>
+      </div>
+      <div class="d-block">
+        <h5 class="total">{{ 'customer.orders.total' | t }}</h5>
+        <span class="total money"><span class="money">{{ order.total_price | money }}</span></span>
+      </div>
+    </a>
+    {% endfor %}
+    
+    {% else %}
+    <h5>{{ 'customer.orders.none' | t }}</h5>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,517 @@
+<header class="scrollheader" data-section-id="{{ section.id }}">
+  <div class="topbar{% if section.settings.full_width_header %} gridlock-fluid{% endif %}">
+    <div class="row" dir="rtl">
+      <div class="{% if section.settings.cart_position == 'announcement-bar' %} desktop-6 tablet-6{% else %} desktop-12 tablet-6{% endif %} mobile-3" id="banner-message">
+        {% if section.settings.announcement_link %}
+          <a href="{{ section.settings.announcement_link }}">
+        {% endif %}
+        {% if section.settings.show_announcement_text %}
+          {{ section.settings.announcement_text | escape }}
+        {% endif %}
+        {% if section.settings.announcement_link %}
+          </a>
+        {% endif %}
+      </div>
+
+      {% if section.settings.cart_position == 'announcement-bar' %}
+        <ul id="cart" class="desktop-6 tablet-3 mobile-hide right testb">
+          <li class="seeks">
+            <a id="inline" href="#search_popup" class="open_popup">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            {% if settings.show_multiple_currencies %}
+              {% include 'currencies-switcher' %}
+            {% endif %}
+          </li>
+
+          {% if shop.customer_accounts_enabled %}
+            <li class="cust">
+              {% if customer  %}
+                  <a href="/account">
+                    <img src="{{ 'user-icon.png' | asset_img_url:'master' }}">
+                  </a>
+                {% else %}
+                  <a href="/account/login">
+                    <img src="{{ 'user-icon.png' | asset_img_url:'master' }}">
+                  </a>
+                {% endif %}
+            </li>
+          {% endif %}
+
+          <li>
+            <a href="/cart" {% if settings.ajax_cart_method == 'drawer' %}class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false"{% endif %}>
+              <span class="cart-words"></span>
+        		&nbsp;{% if section.settings.cart_icon == 'cart' %}<i class="fa fa-shopping-cart" aria-hidden="true"></i>{% elsif section.settings.cart_icon == 'bag' %}<i class="fa fa-shopping-bag" aria-hidden="true"></i>{% endif %}
+              <span class="CartCount">{{ cart.item_count }}</span>
+              &nbsp;<span class="CartCost"><span class="money">{{ cart.total_price | money }}</span></span>
+            </a>
+          </li>
+
+        </ul>
+      {% endif %}
+      
+    </div>
+    {% include 'mobile-cart' %}
+  </div>
+<!--   header.liquid -->
+  <div id="navigation"{% if section.settings.full_width_header %} class="gridlock-fluid is-header-top"{% endif %}>
+    <div class="row">
+      <div class="nav-container desktop-12 tablet-6 mobile-3">
+        {% if section.settings.logo_align == 'left' %}
+          <div id="logo" class="desktop-1 tablet-2 mobile-3">
+            {% if section.settings.logo != blank %}
+              {%- assign image_size = '400x' -%}
+              <a href="/">
+                <img class="lazyload" data-src="{{ section.settings.logo | img_url: image_size }}" itemprop="logo">
+              </a>
+            {% else %}
+              <a href="/">{{ shop.name }}</a>
+            {% endif %}
+          </div>
+        {% endif %}
+
+		<nav class="{% if section.settings.logo_align == 'center' %} desktop-5{% if section.settings.nav_style == 'mobile' %} tablet-1{% endif %} {% elsif section.settings.logo_align == 'left' and section.settings.cart_position == 'announcement-bar' %} desktop-10 tablet-4{% elsif section.settings.logo_align == 'left' and section.settings.cart_position == 'header' %} desktop-7{% endif %} is-card-badge-lft">
+          {% if section.settings.sales_show %}
+          <div class="is-cart-bag">
+            <a href="{{ section.settings.sales_url }}">
+              {{ section.settings.sales }}
+              <figure>
+                  <img class="lazyload" data-src="{{ 'cart-icon1.png' | asset_img_url:'master' }}">
+              </figure>
+            </a>
+          </div>
+          {% endif %}
+        </nav>
+        		
+        {% if section.settings.logo_align == 'center' %}
+          <div id="logo" class="desktop-1 tablet-6 mobile-3">
+            {% if section.settings.logo != blank %}
+              {%- assign image_size = '400x' -%}
+              <a href="/">
+                <img class="lazyload" data-src="{{ section.settings.logo | img_url: image_size }}" itemprop="logo">
+              </a>
+            {% else %}
+              <a href="/">
+                {{ shop.name }}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+		
+        <nav class="{% if section.settings.logo_align == 'center' %} nav-left desktop-9{% if section.settings.nav_style == 'mobile' %} tablet-1{% endif %} {% elsif section.settings.logo_align == 'left' and section.settings.cart_position == 'announcement-bar' %} desktop-10 tablet-4{% elsif section.settings.logo_align == 'left' and section.settings.cart_position == 'header' %} desktop-7{% endif %} is-sticky-menu">
+          {% if section.settings.nav_style == 'full'%}
+            <ul id="main-nav">
+                {% include 'navigation-boa' %}
+            </ul>
+          {% elsif section.settings.nav_style == 'mobile' %}
+            <span class="shifter-handle">
+              <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+            </span>
+          {% endif %}
+        </nav>
+        
+        {% if section.settings.cart_position == 'header' %}
+          <ul id="cart" class="desktop-4 tablet-3 mobile-hide right">
+			<li class="seeks head-srch">
+              <a id="inline" href="#" class="open_popup">
+                <img class="lazyload" data-src="{{ 'srch-icon.png' | asset_img_url:'master'}}">
+              </a>
+              {% if settings.show_multiple_currencies %}
+              {% include 'currencies-switcher' %}
+              {% endif %}
+            </li>
+            <li class="seeks contact">
+              <a href="/pages/contact">
+                <img class="lazyload" data-src="{{ 'email-icon.png' | asset_img_url:'master'}}">
+              </a>
+            </li>
+
+            {% if shop.customer_accounts_enabled %}
+            <li class="cust">
+              {% if customer  %}
+                  <a href="/account">
+                    <img class="lazyload" data-src="{{ 'user-icon.png' | asset_img_url:'master' }}">
+                  </a>
+                {% else %}
+                  <a href="/account/login">
+                    <img class="lazyload" data-src="{{ 'user-icon.png' | asset_img_url:'master' }}">
+                  </a>
+                {% endif %}
+            </li>
+          {% endif %}
+            <li>
+              <a href="/cart" {% if settings.ajax_cart_method == 'drawer' %}class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false"{% endif %}>
+                <span class="cart-words"></span>
+                <img class="lazyload" data-src="{{ 'cart-icon.png' | asset_img_url:'master' }}">
+                <span class="CartCount">{{ cart.item_count }}</span>
+                <span class="CartCost"><span class="money">{{ cart.total_price | money }}</span></span>
+              </a>
+            </li>
+          </ul>
+        {% elsif section.settings.cart_position == 'announcement-bar' and section.settings.logo_align == 'center' %}
+          <div class="desktop-5 tablet-3" id="logo-spacer">
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+  <nav class="gridlock-fluid {% if section.settings.logo_align == 'center' %} nav-left desktop-5{% if section.settings.nav_style == 'mobile' %} tablet-1{% endif %} {% elsif section.settings.logo_align == 'left' and section.settings.cart_position == 'announcement-bar' %} desktop-10 tablet-4{% elsif section.settings.logo_align == 'left' and section.settings.cart_position == 'header' %} desktop-7{% endif %} is-navbar cf">
+    <div class="row is-navbar-container">
+      <div id="search" class="nav-srch">
+            <form action="/search" method="get">
+              <i class="fa fa-search"></i>
+              <input type="text" name="q" id="q" />
+            </form>
+          </div>
+      {% if section.settings.nav_style == 'full'%}
+      <ul id="main-nav">
+        {% include 'navigation-boa' %}
+      </ul>
+      {% elsif section.settings.nav_style == 'mobile' %}
+      <span class="shifter-handle">
+        <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+      </span>
+      {% endif %}
+    </div>
+ </nav> 
+   {% include 'poloriz-widget' %}
+</header>
+<div id="phantom"{% if section.settings.header_cover and template == 'index' %} class="ignore-this"{% endif %}></div>
+<div class="mobilesearchbox">
+  <div id="mobilesearch" class="nav-srch">
+    <form action="/search" method="get">
+      <i class="fa fa-search"></i>
+      <input type="text" name="q" id="q" placeholder="{{ 'general.search.placeholder' | t }}">
+    </form>
+  </div>
+</div>
+{% if template contains 'collection' %}
+  {% if collection.description contains '[banner]' %}
+    {% capture banner %}{{ collection.handle }}.jpg{% endcapture %}
+    <div class="collection-banner">
+      {% include 'collection-banner-image' %}
+    </div>
+  {% endif %}
+{% endif %}
+
+{% include 'mobile-navigation' %}
+
+
+<style>
+  .coverheader .seeks.contact {display: none!important;} 
+  
+  {% if section.settings.logo != blank %}
+  @media screen and ( min-width: 740px ) {
+    #logo img { max-width: 100px; }
+  }
+  {% endif %}
+  {% if section.settings.header_cover and template == 'index' %}
+  @media screen and ( min-width: 981px ) {
+    .scrollheader { position: fixed; }
+  }
+  {% endif %}
+  {% if section.settings.header_border %}
+  header { border-bottom: 1px solid {{ settings.dotted_color }}; }
+  {% endif %}
+  {% if section.settings.logo_align == 'center' %}
+  #logo { text-align: center !important; }
+  #logo a { float: none; }
+  {% endif %}
+  {% unless section.settings.logo_align == 'center' %}
+  #logo { margin-right: 20px; }
+  {% endunless  %}
+
+  {% unless section.settings.cart_position == 'announcement-bar' %}
+  .topbar { text-align: center !important; }
+  {% endunless %}
+  {% if section.settings.logo_align == 'left' and section.settings.nav_style == 'mobile' %}
+  .shifter-handle { margin-left: 20px; }
+  {% endif %}
+
+  .topbar {
+    font-size: {{ section.settings.announcement_text_size }}px;
+  }
+  .topbar,
+  .topbar a {
+    font-size: 16px;
+    font-weight: bold;  
+    text-align: center;
+    color: #000000;
+  }
+  .topbar ul#cart li a, .topbar #banner-message, .topbar #banner-message a {
+    font-size: {{ section.settings.announcement_text_size }}px;
+  }
+  .topbar select.currency-picker {
+    font-size: {{ section.settings.announcement_text_size }}px;
+  }
+  #logo a {
+    font-size: {% if settings.use_logo_image %}inherit{% else %}{{ section.settings.logo_size }}px{% endif %};
+    text-transform: {{ section.settings.logo_transform }};
+    font-weight: {{ section.settings.logo_weight }};
+  }
+  .is-cart-bag a{font-size:14px;font-weight: bold;font-style: normal;font-stretch: normal;line-height: 0.57;letter-spacing: normal;text-align: center;font-family: 'open_sans_hebrewregular';}
+  @media (max-width:767px){
+    #logo { text-align: left !important; }
+  } 
+  .images-area img { padding: 0 5px; }
+</style>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "full_width_header",
+        "label": "Full width header"
+      },
+      {
+        "type": "checkbox",
+        "id": "header_cover",
+        "label": "Float header over slideshow"
+      },
+      {
+        "type": "checkbox",
+        "id": "header_border",
+        "label": "Add bottom border"
+      },
+      {
+        "type": "header",
+        "content": "Announcement Bar"
+      },
+      {
+        "type": "checkbox",
+        "default": true,
+        "id": "show_announcement_text",
+        "label": "Show announcement text"
+      },
+      {
+        "type": "text",
+        "id": "announcement_text",
+        "label": "Announcement text",
+        "default": "Share a shop announcement or message"
+      },
+      {
+        "type": "range",
+        "id": "announcement_text_size",
+        "min": 12,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Announcement text size",
+        "default": 13
+      },
+      {
+        "type": "url",
+        "id": "announcement_link",
+        "label": "Announcement link"
+      },
+      {
+        "type": "checkbox",
+        "default": true,
+        "id": "sales_show",
+        "label": "Show sales text"
+      },
+      {
+        "type": "text",
+        "id": "sales",
+        "label": "Sales text"
+      },
+      {
+        "type": "url",
+        "id": "sales_url",
+        "label": "Sales page URL"
+      },
+      {
+        "type": "header",
+        "content": "Cart Link"
+      },
+      {
+        "type": "select",
+        "id": "cart_position",
+        "label": "Cart link position",
+        "options": [
+          {
+            "value": "announcement-bar",
+            "label": "Announcement Bar"
+          },
+          {
+            "value": "header",
+            "label": "Header"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "cart_icon",
+        "label": "Cart link icon",
+        "options": [
+          {
+            "value": "cart",
+            "label": "Cart"
+          },
+            {
+            "value": "bag",
+            "label": "Bag"
+          }
+        ],
+        "info":"You can change the text in your edit language section"
+      },
+      {
+        "type": "header",
+        "content": "Header Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "min": 100,
+        "max": 250,
+        "step": 5,
+        "unit": "px",
+        "label": "Custom logo width",
+        "default": 200
+      },
+        {
+        "type": "select",
+        "id": "logo_align",
+        "label": "Logo position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "logo_size",
+        "min": 12,
+        "max": 36,
+        "step": 1,
+        "unit": "px",
+        "label": "Logo text size",
+        "default": 22
+      },
+        {
+        "type": "select",
+        "id": "logo_transform",
+        "label": "Logo text case",
+        "options": [
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "none",
+            "label": "Normal"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "logo_weight",
+        "label": "Logo text weight",
+        "options": [
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Navigation"
+      },
+      {
+        "type": "select",
+        "id": "nav_style",
+        "label": "Navigation style",
+        "options": [
+          {
+            "value": "full",
+            "label": "Full Horizontal"
+          },
+          {
+            "value": "mobile",
+            "label": "Slideout Vertical"
+          }
+        ],
+        "info":"Mega menu will only show if using the Full Horizontal style"
+      },
+      {
+        "type": "link_list",
+        "id": "main_nav",
+        "label": "Choose navigation menu",
+        "default":"main-menu"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "mega_menu",
+        "name": "Mega menu",
+        "settings": [
+          {
+            "type":"text",
+            "id":"title",
+            "label":"Menu item title",
+            "info":"Enter a menu item title to apply a mega menu"
+          },
+		  {
+            "type":"collection",
+            "id":"collection",
+            "label":"Menu item collection",
+            "info":"pick a collection"
+          },
+          {
+            "type": "image_picker",
+            "id": "main_nav_image",
+            "label": "Large Featured Image"
+          },
+          {
+            "type": "url",
+            "id": "main_nav_image_url",
+            "label": "Large Featured Image URL"
+          },
+		  {
+            "type": "image_picker",
+            "id": "small_nav_image_1",
+            "label": "Small Featured Image"
+          },
+          {
+            "type": "url",
+            "id": "small_nav_image_1_url",
+            "label": "Small Featured Image URL"
+          },
+		  {
+            "type": "image_picker",
+            "id": "small_nav_image_2",
+            "label": "Small Featured Image 2"
+          },
+          {
+            "type": "url",
+            "id": "small_nav_image_2_url",
+            "label": "Small Featured Image 2 URL"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

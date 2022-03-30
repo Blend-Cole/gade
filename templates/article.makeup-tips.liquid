@@ -1,0 +1,195 @@
+{{ 'makeup-tips.css' | asset_url | stylesheet_tag }}
+
+{% if settings.breadcrumb %}
+<div class="row">
+  {% include 'breadcrumb' %}
+</div>
+{% endif %}
+
+<!--Shimi's New grid-->
+<div class="make-up-article">
+  <div class="row make-up-entry">
+    <div class="entry-head">
+      <div class="make-up-main-img">
+      	<img style="width: 450px" class=" lazyloaded" data-src="//cdn.shopify.com/s/files/1/0085/3432/7411/files/ONLINE-ONLY-website-page-banners-01_300x.jpg?v=1568875820" src="//cdn.shopify.com/s/files/1/0085/3432/7411/files/ONLINE-ONLY-website-page-banners-01_300x.jpg?v=1568875820">
+      </div>
+      <div class="make-up-left-img">
+      	<img style="width: 450px" class=" lazyloaded" data-src="//cdn.shopify.com/s/files/1/0085/3432/7411/files/ONLINE-ONLY-website-page-banners-01_300x.jpg?v=1568875820" src="//cdn.shopify.com/s/files/1/0085/3432/7411/files/ONLINE-ONLY-website-page-banners-01_300x.jpg?v=1568875820">
+      </div>
+      <div class="make-up-right-img">
+      	<img style="width: 450px" class=" lazyloaded" data-src="//cdn.shopify.com/s/files/1/0085/3432/7411/files/ONLINE-ONLY-website-page-banners-01_300x.jpg?v=1568875820" src="//cdn.shopify.com/s/files/1/0085/3432/7411/files/ONLINE-ONLY-website-page-banners-01_300x.jpg?v=1568875820">
+      </div>
+      <div class="make-up-bleft-img">
+      	<img style="width: 450px" class=" lazyloaded" data-src="//cdn.shopify.com/s/files/1/0085/3432/7411/files/ONLINE-ONLY-website-page-banners-01_300x.jpg?v=1568875820" src="//cdn.shopify.com/s/files/1/0085/3432/7411/files/ONLINE-ONLY-website-page-banners-01_300x.jpg?v=1568875820">
+      </div>
+      <div class="make-up-title">
+      	<h1>{{ article.title }}</h1>
+      </div>
+    </div>
+    <div class="entry-description">
+      <p>להסתיר כהויות מתחת לעיניים נשמע פשוט, אבל כל מי שאי פעם ניסתה לעשות את זה יודעת שמדובר בלא פחות מאומנות הדורשת ידע ודיוק, כדי באמת להצליח לכסות אותן ולא לקבל תוצאה חלקית ולפעמים אפילו גרועה יותר, של כהויות אפרוריות שרק מדגישות את כמויות האיפור שהעמסת מתחת לעין.<p>
+      <p>מי שיודעת להחליק את האיזור שמתחת לעיניים הכי טוב זו המלכה האם קים קרדשיאן ומאפר הבית שלה, מריו. קים הייתה הראשונה ללבוש קונסילר בטכניקת המשולש שגם מדגישה את עצמות הלחיים, ואפשר לומר שהיא זו שהביאה למודעות שלנו, הצרכניות הפשוטות, את הקסם הזה, ששמו 'קונסילר'. אבל לפני שנדבר על קונסילר שבתרגום לאנגלית משמע "מכסה", חייבים לדבר על הקורקטור - "המתקן".</p>
+    </div>
+  </div>
+  <!-- Steps -->
+  <div class="make-up-steps">
+    <div class="make-up-steps-header">
+      <h2>{{ title_array[index] }}</h2>
+    </div>
+    <div class="make-up-steps-container">
+      <!-- Step Repeater -->
+      <div class="make-up-steps-content">
+        <div class="make-up-steps-content-img"></div>
+        <div class="make-up-steps-content-text"></div>
+      </div>
+    </div>
+  </div>
+</div> 
+<!--End Shimi's New grid-->
+
+<!-- made by boaideas -->
+<div class="how-to-article">
+  {% if article.metafields.custom_fields["description"] != blank %}
+  <div class="article-description text-center">
+    <div class="row">
+      <div class="desktop-10 tablet-6 mobile-3 text-center">
+        <h1>{{ article.title }}</h1>
+        {{ article.metafields.custom_fields["description"] }}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% if article.metafields.custom_fields["top_video"] != blank %}
+  <div class="article-video pt-5 pb-5">
+    <div class="row">
+      <div class="desktop-10 tablet-6 mobile-3">
+         <iframe src="https://www.youtube-nocookie.com/embed/{{ article.metafields.custom_fields["top_video"] }}"?controls="1" rel="0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
+      </div>
+    </div>
+  </div>
+  {% else %}
+	{% section 'article-howto-show-image-boa' %}
+  {% endif %}
+
+  {% if article.metafields.custom_fields["how_to"] != blank %}
+  {% assign separator = "|###|" %}
+  {% assign title_array = article.metafields.custom_fields["title"] | split: separator %}
+  {% assign image_array = article.metafields.custom_fields["image"] | split: separator %}
+  {% assign video_array = article.metafields.custom_fields["video"] | split: separator %}
+  {% assign step_description_array = article.metafields.custom_fields["step_description"] | split: separator %}
+  {% assign collection_array = article.metafields.custom_fields["collection"] | split: separator %}
+  {% assign single_product = article.metafields.custom_fields["product"] | split: separator %}
+  {% assign fc_keys = article.metafields.custom_fields["how_to"] | split: "," %}
+  {% assign show_carousel = article.metafields.custom_fields["open_carusel"] | split: separator %}
+  
+  <div class="article-blocks">
+    <div class="row">
+      {% for i in fc_keys %}
+      {% assign index = i | plus: 0 %}
+      <div class="single-block desktop-10 tablet-6 mobile-3" id="connectors">
+        <div class="row">
+          <div class="desktop-6 tablet-6 mobile-3">
+            {% if video_array[index] != blank %}
+            <iframe src="https://www.youtube-nocookie.com/embed/{{ video_array[index] }}?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
+			{% else %}
+            {{ image_array[index] }}
+            {% endif %}
+          </div>
+          {% assign c = collections[collection_array[index]] %}
+          <div class="desktop-6 tablet-6 mobile-3 text-area">
+            <div class="h2 d-block">{{ title_array[index] }}</div>
+            <div class="desc d-block">{{ step_description_array[index] }}</div>
+            
+            {% if c.products.size > 0 %}
+            	{% unless show_carousel[index] == '1' %}
+            		<div class="open-model" data-connected-item="i{{i}}">הוסיפי לעגלה</div>
+            	{% endunless %}
+            {% else %}
+            	{% assign product_handle = single_product[index] %}
+            
+            	{% if product_handle != '' %}
+            	  {% assign add_product = all_products[product_handle] %}
+                  <a class="fancybox.ajax product-modal" rel="nofollow" href="{{ add_product.url }}?view=quick">הוסיפי לעגלה</a>
+            	{% endif %}
+            {% endif %}
+          </div>
+          <div class="checkbox-carousel" hidden>{{ show_carousel[index] }}</div>
+          {% if c.products.size > 0 %}
+          <div class="single-block-slider desktop-12 tablet-6 mobile-3{% if show_carousel[index] == '1' %} show-products{% endif %}" id="i{{i}}">
+            {% include 'howto-collection-slider'%}
+          </div>         
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<style>
+ .article-hero { background: url({{ article.image | img_url: 'master' }}) no-repeat; background-size: cover; } 
+</style>
+
+<script>
+  var slider = document.getElementsByClassName('open-model');
+
+  for (var i=0; i < slider.length; i++) {
+    slider[i].onclick = function(){
+      document.getElementById(event.target.dataset.connectedItem).classList.toggle('show-products');
+      if (this.innerHTML === "הוסיפי לעגלה") {
+        this.innerHTML = "הסתירי את המוצר";
+      } else {
+        this.innerHTML = "הוסיפי לעגלה";
+      }
+    }
+  };
+  
+
+  r(function(){
+    
+     $('.product-collection-carousel').owlCarousel({
+       itemsCustom : [
+         [300, 2],
+         [450, 2],
+         [600, 2],
+         [700, 2],
+         [1000, 3],
+         [1200, 3],
+         [1400, 4],
+         [1600, 4]
+       ],
+        lazyLoad : false,
+        rtl:true,
+        loop:true,
+        margin:0,
+        pagination : false,
+        navigation: true,
+        navigationText : false,
+        autoPlay : false,
+        stopOnHover : true
+      }); 
+      
+      
+      $(".box-ratio").css({'padding-bottom': '0'});
+      
+      if( $(window).width() < 1221 ){
+        $(".owl-item").css({'padding': '0 0.2rem'});
+      }else{
+        $(".owl-item").css({'padding': '0 0.5rem'});
+      }
+      
+      
+    });
+
+  function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+
+
+</script>
+
+<div class="poloriz-widget-rectangles">
+
+<poloriz-stories widget-id="f05e9820-446c-11eb-b5f2-41ab0626ecba" id="poloriz-widget-rectangles"></poloriz-stories> 
+</div>
+
+{% section 'article-howto-insta-boa' %}

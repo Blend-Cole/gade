@@ -1,0 +1,24 @@
+
+{% if template == 'index' %}
+<script>
+  WaitJshopScript(function () {
+    JourneyShop.getWidgetPreset(JourneyShopCommerce.userId, 553, JourneyShopCommerce.hostName);
+  });
+</script>
+{% endif %}
+
+{% if template == 'collection' %}
+<script>
+  WaitJshopScript(function () {
+    JourneyShop.getWidgetPreset(JourneyShopCommerce.userId, 555, JourneyShopCommerce.hostName);
+  });
+</script>
+{% endif %}
+
+{% if template == 'product' %}
+<script>
+  WaitJshopScript(function () {
+    JourneyShop.getFeedWidgetPreset(JourneyShopCommerce.userId, 27, JourneyShopCommerce.hostName);
+  });
+</script>
+{% endif %}

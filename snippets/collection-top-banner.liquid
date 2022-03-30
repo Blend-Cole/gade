@@ -1,0 +1,138 @@
+{% if collection.metafields.custom_fields["topbanner"] != blank %}
+<section class="home homepage-section slideshow-section" data-section-id="slideshow-1" data-section-type="slideshow-section">   
+<div class="flexslider showindesktop" id="flexslider--slideshow-customer">
+    <ul class="slides">
+      <li id="slide--1562325778048" class="slide--1562325778048 slide_image lazyload-fade flex-active-slide lazyloaded" data-block-id="1562325778048" data-flexslider-index="0" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;">
+        <div class="box-ratio" style="padding-bottom: 580px;">
+          {% if collection.metafields.custom_fields["banner_button_title"] == blank and collection.metafields.custom_fields["banner_button_url"] != blank %}
+          <a href="{{ collection.metafields.custom_fields["banner_button_url"] }}">
+          {% endif %}
+          {% include 'cf-image' with image: collection.metafields.custom_fields["topbanner"] %}
+            {% if collection.metafields.custom_fields["banner_button_title"] == blank and collection.metafields.custom_fields["banner_button_url"] != blank %}
+          </a>
+          {% endif %}
+          </div>
+        <div class="flex-caption slide-1562325778048">
+          <div class="caption-inners">
+            {% if collection.metafields.custom_fields["banner_title"] != blank %}
+            <h2 class="slide-title"> {{ collection.metafields.custom_fields["banner_title"] }} </h2>
+            {% endif %}
+            {% if collection.metafields.custom_fields["banner_description"] != blank %}
+            <p class="caption"> {{ collection.metafields.custom_fields["banner_description"] }}</p>
+            {% endif %}
+            {% if collection.metafields.custom_fields["banner_button_url"] != blank and collection.metafields.custom_fields["banner_button_title"] != blank %}
+            <div class="cta"><a href="{{ collection.metafields.custom_fields["banner_button_url"] }}">{{ collection.metafields.custom_fields["banner_button_title"] }}</a></div>
+            {% endif %}  
+          </div>
+        </div>
+      </li>      
+    </ul>
+  </div>
+<div class="flexslider showinmobile" id="flexslider--slideshow-customer">
+    <ul class="slides">
+      <li id="slide--1562325778048" class="slide--1562325778048 slide_image lazyload-fade flex-active-slide lazyloaded" data-block-id="1562325778048" data-flexslider-index="0" style="width: 100%; float: left; position: relative; opacity: 1; display: block; z-index: 2;">
+        <div class="box-ratio-new">
+           {% if collection.metafields.custom_fields["banner_button_title"] == blank and collection.metafields.custom_fields["banner_button_url"] != blank %}
+          <a href="{{ collection.metafields.custom_fields["banner_button_url"] }}">
+          {% endif %}
+           {% include 'cf-image' with image: collection.metafields.custom_fields["topbannermobile"] %}
+            {% if collection.metafields.custom_fields["banner_button_title"] == blank and collection.metafields.custom_fields["banner_button_url"] != blank %}
+          </a>
+          {% endif %}
+            </div>
+        <div class="flex-caption slide-1562325778048">
+          <div class="caption-inners">
+            {% if collection.metafields.custom_fields["banner_title"] != blank %}
+            <h2 class="slide-title"> {{ collection.metafields.custom_fields["banner_title"] }} </h2>
+            {% endif %}
+            {% if collection.metafields.custom_fields["banner_description"] != blank %}
+            <p class="caption"> {{ collection.metafields.custom_fields["banner_description"] }}</p>
+            {% endif %}
+            {% if collection.metafields.custom_fields["banner_button_url"] != blank and collection.metafields.custom_fields["banner_button_title"] != blank %}
+            <div class="cta"><a href="{{ collection.metafields.custom_fields["banner_button_url"] }}">{{ collection.metafields.custom_fields["banner_button_title"] }}</a></div>
+            {% endif %}  
+          </div>
+        </div>
+      </li>
+      <style>
+          .slideshow__image--1562325778048 {
+            object-position: top center;
+            font-family: "object-fit: cover; object-position: top center;";
+          }
+          #shopify-section-slideshow-1 .index-section {
+            padding-top: 0;
+            padding-bottom: 0;
+          }
+          
+          .flex-caption.slide-1562325778048 {
+            
+            {% if collection.metafields.custom_fields["caption_position"] != blank %}
+            {% if collection.metafields.custom_fields["caption_position"] == 'left' %}
+            left:0;
+            {% elsif collection.metafields.custom_fields["caption_position"] == 'right' %}
+            right:0;
+            {% elsif collection.metafields.custom_fields["caption_position"] == 'center' %}
+            left:30%;
+            {% endif %}
+            {% else %}
+            right:0px;
+            {% endif %}            
+          }
+          .flex-caption.slide-1562325778048 h2.slide-title {
+            {% if collection.metafields.custom_fields["heading_color"] != blank %}
+            color:{{ collection.metafields.custom_fields["heading_color"] }};
+            {% else %}
+            color: #fff;
+            {% endif %}            
+            text-align:center;
+          }
+          .flex-caption.slide-1562325778048 p {
+            {% if collection.metafields.custom_fields["description_color"] != blank %}
+            color:{{ collection.metafields.custom_fields["description_color"] }};
+            {% else %}
+            color: #fff;
+            {% endif %}           
+            font-family: 'open_sans_hebrewregular', sans-serif;font-size: 20px;text-align: center;
+          }
+          .flex-caption.slide-1562325778048 .cta a {            
+            {% if collection.metafields.custom_fields["button_caption_color"] != blank %}
+            color:{{ collection.metafields.custom_fields["button_caption_color"] }};
+            {% else %}
+            color: #fff;
+            {% endif %} 
+            {% if collection.metafields.custom_fields["button_color"] != blank %}
+            background:{{ collection.metafields.custom_fields["button_color"] }};
+            {% else %}
+            background: #000;
+            {% endif %}              
+          }
+        .flex-caption{width:40%;}
+          #flexslider--slideshow-1 .flex-caption .cta a {
+            font-size: 20px;
+            font-weight: 400;
+          }
+          #flexslider--slideshow-1 .flex-caption h2.slide-title {
+            font-size: 57px;
+            font-family: ;
+            font-weight:400;
+          }
+          #flexslider--slideshow-1 .flex-caption p {
+            font-size: 20px;
+            font-family: 'Lato', sans-serif;text-align:center;
+          }
+          .cta{text-align:center;}
+          .no-js .slide_image {
+            opacity: 1;
+          }
+          .flex-caption h2.slide-title {font-family: 'AntroVectra';font-size:69.5px;font-weight: 400;}
+          @media screen and ( max-width: 980px ) {
+          .flex-caption h2.slide-title{height:40px;}
+          #flexslider--slideshow-1 .flex-caption p{height:70px;overflow:hidden;}
+          .flex-caption h2.slide-title {font-size: 34px !important;}
+          .flex-caption {width: 100% !important;}          
+          }
+        </style>
+    </ul>
+  </div>
+</section>
+{% endif %}

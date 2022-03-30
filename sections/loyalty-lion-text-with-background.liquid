@@ -1,0 +1,147 @@
+{% assign settings_ = section.settings %}
+{% if customer and settings_.user_vs %}
+    {% assign if_customer = true %}
+{% else %}
+    {% assign if_customer = false %}
+{% endif %}
+
+{% assign if_g = settings_.guest_vs %}
+{% if customer %}
+    {% if if_g and customer and settings_.user_vs %}
+        {% assign if_g = true %}
+    {% elsif if_g and customer and settings_.user_vs == false %}
+        {% assign if_g = false %}
+    {% endif %}
+{% endif %}
+
+{% if settings_.subheading != '' %}
+    {% if if_g or if_customer %}
+
+        <style>
+            .ll-text-bg-section {
+                order: {{ settings_.order }};
+                background-color: {{ settings_.bg_color }};
+                color: {{ settings_.txt_color }};
+            }
+        </style>
+        <h2 class="text-title">{{ settings_.header }}</h2>
+        <div class="text-html">{{ settings_.subheading }}</div>
+    {% endif %}
+{% endif %}
+{% schema %}
+
+{
+  "name": "Text with background",
+  "class": "ll-text-bg-section",
+  "settings": [
+    {
+        "type": "text",
+        "id": "header",
+        "label": "Header"
+    },
+    {
+        "type": "html",
+        "id": "subheading",
+        "label": "Text",
+        "info": "Here you can include custom HTML."
+    },
+    {
+        "type":      "select",
+        "id":        "order",
+        "label":     "Order",
+        "options": [
+            {
+                "value": "1",
+                "label": "1"
+            },
+            {
+                "value": "2",
+                "label": "2"
+            },
+            {
+                "value": "3",
+                "label": "3"
+            },
+            {
+                "value": "4",
+                "label": "4"
+            },
+            {
+                "value": "5",
+                "label": "5"
+            },
+            {
+                "value": "6",
+                "label": "6"
+            },
+            {
+                "value": "7",
+                "label": "7"
+            },
+            {
+                "value": "8",
+                "label": "8"
+            },
+            {
+                "value": "9",
+                "label": "9"
+            },
+            {
+                "value": "10",
+                "label": "10"
+            },
+            {
+                "value": "11",
+                "label": "11"
+            },
+            {
+                "value": "12",
+                "label": "12"
+            },
+            {
+                "value": "13",
+                "label": "13"
+            },
+            {
+                "value": "14",
+                "label": "14"
+            }
+        ],
+        "default":   "4"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "txt_color",
+        "label": "Text color",
+        "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "guest_vs",
+      "label": "Guest",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "user_vs",
+      "label": "Logged in",
+      "default": true
+    }
+    ]
+}
+
+{% endschema %}

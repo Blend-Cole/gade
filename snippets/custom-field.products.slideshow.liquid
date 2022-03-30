@@ -1,0 +1,34 @@
+{% if product.metafields.custom_fields["slideshow"] != blank %}
+  <div class="custom-field custom-field__slideshow custom-field__type--field-collection">
+    <h3 class="custom-field--title">Slideshow</h3>
+    <div class="custom-field--value">
+      {% assign separator = "|###|" %}
+      {% assign slide_title_array = product.metafields.custom_fields["slide_title"] | split: separator %}
+      {% assign slide_description_array = product.metafields.custom_fields["slide_description"] | split: separator %}
+      {% assign slide_image_1_array = product.metafields.custom_fields["slide_image_1"] | split: separator %}
+      {% assign slide_movie_array = product.metafields.custom_fields["slide_movie"] | split: separator %}
+      {% assign slide_link_array = product.metafields.custom_fields["slide_link"] | split: separator %}
+      {% assign fc_keys = product.metafields.custom_fields["slideshow"] | split: "," %}
+      {% for i in fc_keys %}
+        {% assign index = i | plus: 0 %}
+        <div class="fc-item fc-item-- fc-index--{{ index }}">
+          <div class="fc-field field__slide-title">
+            {{ slide_title_array[index] }}
+          </div>
+          <div class="fc-field field__slide-description">
+            {{ slide_description_array[index] }}
+          </div>
+          <div class="fc-field field__slide-image-1">
+            {{ slide_image_1_array[index] }}
+          </div>
+          <div class="fc-field field__slide-movie">
+            {{ slide_movie_array[index] }}
+          </div>
+          <div class="fc-field field__slide-link">
+            {{ slide_link_array[index] }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

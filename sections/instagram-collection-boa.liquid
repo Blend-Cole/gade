@@ -1,0 +1,55 @@
+<div class="section-title insta-heading">
+  <h4>{{ settings.instagram-title }}</h4>
+  <h5>{{ settings.instagram-subtitle }}</h5>
+  <p>{{ settings.instagram-text }}</p>
+</div>
+{% if page.metafields.custom_fields["ig-gallery"] != blank %}
+<div class="row covet-pics-gallery" data-id="{{ page.metafields.custom_fields["ig-gallery"] }}"></div>
+{% else %}
+<div class="row covet-pics-gallery" data-id="{{ section.settings.instagram_id }}"></div>
+{% endif %}
+
+<style>
+  /* INSTAGRAM */
+  section.homepage-instagram {
+    background: {{ section.settings.instagram_background_color }};
+  }
+  section.homepage-instagram h2,
+  section.homepage-instagram h2 a {
+    color: {{ section.settings.instagram_heading_color }} !important;
+  }
+  .instagram-image-container {
+    display: block;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+    margin-bottom: 0px;
+  }
+</style>
+
+{% schema %}
+{
+    "name": "Instagram for collection",
+    "settings": [
+      
+     {
+        "type": "text",
+        "id": "instagram_id",
+        "label": "instagram data id",
+        "default": "66336"
+     }, 
+     {
+        "type": "color",
+        "id": "instagram_heading_color",
+        "label": "Heading color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "instagram_background_color",
+        "label": "Background",
+        "default": "#fff"
+      }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,14 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/ga-de-cosmetics-israel.myshopify.com/products/configure/89216/edit
+{% endcomment %}
+{% if product.metafields.custom_fields["collection_name"] != blank %}
+  <div class="custom-field custom-field__collection-name custom-field__type--collection-reference">
+    <h3 class="custom-field--title">collection name</h3>
+    <div class="custom-field--value">  
+      {% assign collection_ref = collections[product.metafields.custom_fields["collection_name"]] %}
+      {{ collection_ref.title | link_to: collection_ref.url }}
+    </div>
+  </div>
+{% endif %}

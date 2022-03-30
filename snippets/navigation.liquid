@@ -1,0 +1,232 @@
+{% assign meganav = false %}
+{% for block in section.blocks %}
+{% if block.settings.menu_item == link.title %}
+{%- assign image_size = '300x' -%}
+{% capture megalink %}
+{%- assign prod_limit = 8 -%}
+{%- assign collection1 = collections[block.settings.collection1] -%}
+{%- assign collection2 = collections[block.settings.collection2] -%}
+{%- assign collection3 = collections[block.settings.collection3] -%}
+{%- assign collection4 = collections[block.settings.collection4] -%}
+{%- assign collection5 = collections[block.settings.collection5] -%}
+<li class="dropdown has_sub_menu" aria-haspopup="true" aria-expanded="false">
+  <a href="{{ link.url }}" class="dlinks">
+    {{ link.title }}
+  </a>
+  <div class="megamenu is-megamenu-sec">
+    <div class="mega-container">
+      <div class="col-menu">
+        <ul>
+          {% if collections[block.settings.collection1] != blank %}
+          <li id="collectionmenu1" class="{{collection1.handle}} {% unless linklists[block.settings.menu1].links != blank %} no-link-list{% endunless %}">
+            <a href="{{collection1.url}}">
+              <em>{{collection1.title}}</em>	
+              {% if collection1.image %}
+              <figure><img src="{{ collection1.image | img_url: 'medium' }}" alt="{{ collection1.title }}"></figure>  
+              {% else%}
+              <figure><img src="{{ collection1.products.first | img_url: 'medium' }}" alt="{{ collection1.title }}"></figure>    				  
+              {% endif %}
+
+            </a>
+          </li>
+          {% elsif block.settings.collection1_other != blank %}
+          <li id="collectionmenu1" class="{{collection1.handle}} {% unless linklists[block.settings.menu1].links != blank %} no-link-list{% endunless %}">
+            <a href="{{block.settings.collection1_other}}">
+              <em>{{block.settings.collection1_title}}</em>	
+              <figure><img src="{{ block.settings.collection1_image | img_url: 'medium' }}" alt="{{ block.settings.collection1_title }}"></figure>  
+            </a>
+          </li>
+          {% endif %}
+          
+          {% if collections[block.settings.collection2] != blank %}
+          <li id="collectionmenu2" class="{{collection2.handle}} {% unless linklists[block.settings.menu2].links != blank  %} no-link-list{% endunless %}">
+            <a href="{{collection2.url}}">
+              <em>{{collection2.title}}</em>	
+              {% if collection2.image %}
+              <figure><img src="{{ collection2.image | img_url: 'medium' }}" alt="{{ collection2.title }}"></figure>  
+              {% else%}
+              <figure><img src="{{ collection2.products.first | img_url: 'medium' }}" alt="{{ collection2.title }}"></figure>    				  
+              {% endif %}  
+            </a>
+          </li>
+          {% elsif block.settings.collection2_other != blank %}
+          <li id="collectionmenu2" class="{{collection2.handle}} {% unless linklists[block.settings.menu2].links != blank  %} no-link-list{% endunless %}">
+            <a href="{{block.settings.collection2_other}}">
+              <em>{{block.settings.collection2_title}}</em>	
+              <figure><img src="{{ block.settings.collection2_image | img_url: 'medium' }}" alt="{{ block.settings.collection2_title }}"></figure>  
+            </a>
+          </li>
+          {% endif %}
+          
+          {% if collections[block.settings.collection3] != blank %}
+          <li id="collectionmenu3" class="{{collection3.handle}} {% unless linklists[block.settings.menu3].links != blank %} no-link-list{% endunless %}">
+            <a href="{{collection3.url}}">
+              <em>{{collection3.title}}</em>	
+              {% if collection3.image %}
+              <figure><img src="{{ collection3.image | img_url: 'medium' }}" alt="{{ collection3.title }}"></figure>  
+              {% else%}
+              <figure><img src="{{ collection3.products.first | img_url: 'medium' }}" alt="{{ collection3.title }}"></figure>    				  
+              {% endif %}
+            </a>
+          </li>
+          {% elsif block.settings.collection3_other != blank %}
+          <li id="collectionmenu3" class="{{collection3.handle}} {% unless linklists[block.settings.menu3].links != blank %} no-link-list{% endunless %}">
+            <a href="{{block.settings.collection3_other}}">
+              <em>{{block.settings.collection3_title}}</em>	
+              <figure><img src="{{ block.settings.collection3_image | img_url: 'medium' }}" alt="{{ block.settings.collection3_title }}"></figure>  
+            </a>
+          </li>
+          {% endif %}
+          
+          {% if collections[block.settings.collection4] != blank %}
+          <li id="collectionmenu4" class="{{collection4.handle}} {% unless linklists[block.settings.menu4].links != blank %} no-link-list{% endunless %}">
+            <a href="{{collection4.url}}">
+              <em>{{collection4.title}}</em>	
+              {% if collection4.image %}
+              <figure><img src="{{ collection4.image | img_url: 'medium' }}" alt="{{ collection4.title }}"></figure>  
+              {% else%}
+              <figure><img src="{{ collection4.products.first | img_url: 'medium' }}" alt="{{ collection4.title }}"></figure>    				  
+              {% endif %}  
+            </a>
+          </li>
+          {% elsif block.settings.collection4_other != blank %}
+          <li id="collectionmenu4" class="{{collection4.handle}} {% unless linklists[block.settings.menu4].links != blank %} no-link-list{% endunless %}">
+            <a href="{{block.settings.collection4_other}}">
+              <em>{{block.settings.collection4_title}}</em>	
+              <figure><img src="{{ block.settings.collection4_image | img_url: 'medium' }}" alt="{{ block.settings.collection4_title }}"></figure>  
+            </a>
+          </li>
+          {% endif %}
+          
+          {% if collections[block.settings.collection5] != blank %}
+          <li id="collectionmenu5" class="{{collection5.handle}} {% unless linklists[block.settings.menu5].links != blank %} no-link-list{% endunless %}">
+            <a href="{{collection5.url}}">
+              <em>{{collection5.title}}</em>	
+              {% if collection5.image %}
+              <figure><img src="{{ collection5.image | img_url: 'medium' }}" alt="{{ collection5.title }}"></figure>  
+              {% else%}
+              <figure><img src="{{ collection5.products.first | img_url: 'medium' }}" alt="{{ collection5.title }}"></figure>    				  
+              {% endif %} 
+            </a>
+          </li>  
+          {% elsif block.settings.collection5_other != blank %}
+          <li id="collectionmenu5" class="{{collection5.handle}} {% unless linklists[block.settings.menu5].links != blank %} no-link-list{% endunless %}">
+            <a href="{{block.settings.collection5_other}}">
+              <em>{{block.settings.collection5_title}}</em>	
+              <figure><img src="{{ block.settings.collection5_image | img_url: 'medium' }}" alt="{{ block.settings.collection5_title }}"></figure>  
+            </a>
+          </li>            
+          {% endif %}            
+        </ul>
+        <div class="sub-showmenu">
+          <div class="col-7 large-img">
+            <ul>
+              <li>
+                {% if block.settings.link1 == blank %}
+                <img src="{{ block.settings.nav_image1 | img_url: image_size }}">
+                {% else %}
+                <a href="{{ block.settings.link1 }}">
+                  <img src="{{ block.settings.nav_image1 | img_url: image_size }}">
+                </a>
+                {% endif %}
+              </li>
+              <li>
+                {% if block.settings.link2 == blank %}
+                <img src="{{ block.settings.nav_image2 | img_url: image_size }}">
+                {% else %}
+                <a href="{{ block.settings.link2 }}">
+                  <img src="{{ block.settings.nav_image2 | img_url: image_size }}">
+                </a>
+                {% endif %}
+                {% if block.settings.link3 == blank %}
+                <img src="{{ block.settings.nav_image3| img_url: image_size }}">
+                {% else %}
+                <a href="{{ block.settings.link3 }}">
+                  <img src="{{ block.settings.nav_image3 | img_url: image_size }}">
+                </a>
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+          <div class="col-5 menu-list">
+            <ul class="collectionmenu1">                
+              {% if linklists[block.settings.menu1].links != blank %}
+                {% for link in linklists[block.settings.menu1].links %}                   
+                <li>
+                  <a href="{{ link.url }}">
+                    <em>{{ link.title }}</em>               
+                  </a>
+                </li>                
+                {% endfor %}                
+              {% endif %}
+            </ul>
+            <ul class="collectionmenu2">
+              {% if linklists[block.settings.menu2].links != blank %}
+                {% for link in linklists[block.settings.menu2].links %}                   
+                <li>
+                  <a href="{{ link.url }}">
+                    <em>{{ link.title }}</em>                   
+                  </a>    
+                </li>                
+                {% endfor %}                
+              {% endif %}             
+            </ul>
+            <ul class="collectionmenu3">
+              {% if linklists[block.settings.menu3].links != blank %}
+                {% for link in linklists[block.settings.menu3].links %}                   
+                <li>
+                  <a href="{{ link.url }}">
+                    <em>{{ link.title }}</em>
+                  </a>  
+                </li>                
+                {% endfor %}                
+              {% endif %}             
+            </ul>
+            <ul class="collectionmenu4">
+              {% if linklists[block.settings.menu4].links != blank %}
+                {% for link in linklists[block.settings.menu4].links %}                   
+                <li>
+                  <a href="{{ link.url }}">
+                    <em>{{ link.title }}</em>
+                  </a>   
+
+                </li>                
+                {% endfor %}                
+              {% endif %}          
+            </ul>
+            <ul class="collectionmenu5">
+              {% if linklists[block.settings.menu5].links != blank %}
+                {% for link in linklists[block.settings.menu5].links %}                   
+                <li>
+                  <a href="{{ link.url }}">
+                    <em>{{ link.title }}</em>
+                  </a>  
+                </li>                
+                {% endfor %}                
+              {% endif %}        
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
+   
+    {% endcapture %}
+  {% assign meganav = true %}
+  {% endif %}
+{% endfor %}
+
+
+{% if meganav %}
+	{{ megalink }}
+{% elsif link.links != blank %}
+  <li>
+    <a href="{{ link.url }}" class="dlinks">
+      {{ link.title }}
+    </a>
+  </li>
+{% else %}
+	<li>{{ link.title | link_to: link.url }}</li>
+{% endif %}
+

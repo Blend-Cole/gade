@@ -1,0 +1,130 @@
+<div id="productInformationTabs">
+  <ul class="tabs">
+    <li><a href="#tab-1">תאור מוצר</a></li>
+    {% if product.metafields.custom_fields.ingridiants != blank %}
+    <li><a href="#tab-2">מרכיבי מוצר</a></li>
+    {% endif %}
+    
+    {% comment %}
+    <li><a href="#tab-3">טיפים</a></li>
+    <li><a href="#tab-4">HOW TO</a></li>
+    {% endcomment %}
+  </ul>
+  <div id="tab-1">
+  	{{ product.description }} 
+    <p>מק"ט : {{ product.variants.first.sku }}</p>
+  </div>
+  {% if product.metafields.custom_fields.ingridiants != blank %}
+  <div id="tab-2">
+    {{ product.metafields.custom_fields.ingridiants }}
+  </div>
+  {% endif %}
+  
+  {% comment %}
+  <div id="tab-3">
+  {{ product.metafields.custom_fields.tips_tab  }}
+  </div>
+  <div id="tab-4">
+    {{ product.metafields.custom_fields.how_to_tab  }}
+  </div>
+  {% endcomment %}
+</div>
+
+
+
+<style>
+  
+ul.tabs {
+  border-bottom: 1px solid #DDDDDD;
+  display: block;
+  margin: 0 0 20px;
+  padding: 0;
+}
+ul.tabs li {
+  display: block;
+  float: right;
+  height: 30px;
+  margin-bottom: 0;
+  padding: 0;
+  width: auto;
+}
+ul.tabs li a {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-bottom: 1px solid #DDDDDD;
+  display: block;
+  font-size: 13px;
+  line-height: 30px;
+  margin: 0;
+  padding: 0 20px;
+  text-decoration: none;
+  width: auto;
+  color: #303030;
+}
+ul.tabs li a.active {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-width: 0px 0px 3px 0px;
+  border-color: black;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  color: #111111;
+  height: 35px;
+  font-weight: bold;
+  margin: 0 0 0 -1px;
+  padding-top: 4px;
+  position: relative;
+  top: -4px;
+}
+ul.tabs li:first-child a.active {
+  margin-left: 0;
+}
+ul.tabs li:first-child a {
+  border-top-left-radius: 2px;
+}
+ul.tabs li:last-child a {
+  border-top-right-radius: 2px;
+}
+ul.tabs:before, ul.tabs:after {
+  content: " ";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+}
+ul.tabs:after {
+  clear: both;
+}
+  
+  #productInformationTabs   ul.tabs p{
+  	line-height: 1.44;
+  
+  
+  }
+  
+  
+</style>
+
+<script>
+  $('ul.tabs').each(function(){
+      var active, content, links = $(this).find('a');
+      active = links.first().addClass('active');
+      content = $(active.attr('href'));
+      links.not(':first').each(function () {
+        $($(this).attr('href')).hide();
+      });
+      $(this).find('a').click(function(e){
+        active.removeClass('active');
+        content.hide();
+        active = $(this);
+        content = $($(this).attr('href'));
+        active.addClass('active');
+        content.show();
+        return false;
+      });
+    });
+</script>

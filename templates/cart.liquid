@@ -1,0 +1,366 @@
+{% render 'dialogue-cart-top-snippet' %}
+<script data-cfasync="false" type="text/javascript">if (typeof Shopify === "undefined") var Shopify = {}; Shopify.cart = {{ cart | json }};</script> 
+<div id="sca-fg-owl-carousel">
+  <div id="freegift_cart_container" class="sca-fg-cart-container" style="display: none;">
+    <div id="freegift_message" class="owl-carousel"></div>
+  </div> 
+  <div id="sca-fg-slider-cart" style="display: none;">
+    <div class="sca-fg-cart-title">
+      <strong>Select your free gift (s)</strong>
+    </div>
+    <div id="sca_freegift_list" class="owl-carousel"></div>
+  </div>
+</div>
+<div id="sca_fg_cart">
+  {% section 'banner-cart' %}
+
+  <div class="cart-heading">
+    <h1>{{ 'cart.general.title' | t }}</h1>
+  </div>
+
+  <div class="clear"></div>
+
+  <div id="shopping-cart">
+    {% if cart.item_count == 0 %}
+    <label class="subtext">{{ 'cart.general.empty' | t }}</label>
+    {% else %}
+    <script type="text/javascript">
+      function remove_item(id) {
+        document.getElementById('updates_'+id).value = 0;
+        document.getElementById('cartform').submit();
+      }
+    </script>
+    <form action="/cart" method="post" id="cartform">
+      <div id="basket-next" class="info-area desktop-3 tablet-6 mobile-3">
+        <input type="submit" name="checkout" id="checkout" value="{{ 'cart.general.checkout' | t }}" class="button" />
+        <div class="discount-area">
+          <h2 class="discount-title">להוספת קוד קופון</h2>
+          <p class="one-discount">קופון אחד לכל רוכש</p>
+        </div>
+        <div class="help-area">
+          <p class="need-help">צריכים עזרה?</p>
+          <p class="happy-to-talk">נשמח לשוחח אתכם בטלפון</p>
+          <p class="phone"><a href="tel:09-7666200">09-7666200</a></p>
+          <p class="or">או</p>
+          <p class="email-us"><a href="/pages/contact">כתבו לנו</a></p>
+          <div class= policies>
+            <p class="shipment-policy"><a class="modal-toggle-shipping">משלוחים והחזרות</a></p>
+            <p class="return-policy"><a class="modal-toggle-terms">תקנון אתר</a></p>  
+          </div>
+        </div>
+      </div>
+      <div class="cart-products-list desktop-9 tablet-6 mobile-3">
+        <div class="cart-header d-flex">
+          <div class="table-column text-center item-image">{{ 'cart.general.product' | t }}</div>
+          <div class="table-column text-center">{{ 'cart.general.price' | t }}</div>
+          <div class="table-column text-center">{{ 'cart.general.qty' | t }}</div>
+          <div class="table-column text-center">{{ 'cart.general.remove' | t }}</div>
+          <div class="table-column text-center">{{ 'cart.general.total' | t }}</div>
+        </div>
+        {% for item in cart.items %}
+        {% include 'bold-cart-item' with item %}
+        {% include 'sca_freegift_price' with item %}
+        <div class="cart-item d-flex" data-id="{{item.id}}">
+          <div class="table-column item-image">
+            <div class="cart-item-inner d-flex align-items-center">
+              <div class="cart-image">
+                <a href="{%if item.variant.metafields.secomapp.freegifts%}{{ item.product.url }}{%else%}{{ item.url }}{%endif%}" title="{{ item.product.title | escape }}">
+                  <img src="{{ item.image | img_url: 'large'}}" alt="{{ item.product.title }}">
+                </a>
+              </div>
+              <div class="cart-title">
+                {% if settings.vendor %}
+                <p>{{ item.vendor }}</p>
+                {% endif %}
+                <p class="item-product-title">{{ item.product.title }}</p>
+                {% unless item.variant.title contains 'Default Title'%}
+                <p class="item-variant-title">{{ item.variant.title | remove: '/ Default Title'| remove: 'Default Title' | remove: '/ Default' | remove: 'Default' | replace: '(Freegifts)', ''  }}</p>
+                {% endunless %}
+                {% assign property_size = item.properties | size %}
+                {% if property_size > 0 %}
+                {% for p in item.properties %}
+                {% unless p.last == blank %}
+                {{ p.first }}:
+                {% comment %}
+                Check if there was an uploaded file associated
+                {% endcomment %}
+                {% if p.last contains '/uploads/' %}
+                <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                {% else %}
+                {{ p.last }}
+                {% endif %}
+                <br>
+                {% endunless %}
+                {% endfor %}
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
+
+          <div class="table-column money-box text-center">
+            <span class="money">{{ sca_price | money }}</span>
+            {% if item.variant.compare_at_price > sca_price %}
+            <br />
+            <del><span class="money">{{ item.variant.compare_at_price | money }}</span></del>
+            {% endif %}
+          </div>
+          <div class="table-column product-quantity-box">
+            <div class="product-title">
+              {{ item.product.title }}
+            </div>
+            <div class="product-qty-selector {%if item.variant.metafields.secomapp.freegifts%}product-qty-selector-gift{%endif%}">
+              <input {%if item.variant.metafields.secomapp.freegifts%}readonly{%endif%} class="cart-qty" min="1" type="number" class="qty" id="updates_{{ item.variant.id }}" name="updates[{{ item.id }}]" value="{{ item.quantity }}" />
+            </div>
+            <div class="money-box-mobile text-center">
+              <span class="money">{{ sca_price | money }}</span>
+              {% if item.variant.compare_at_price > sca_price %}
+              <br />
+              <del><span class="money">{{ item.variant.compare_at_price | money }}</span></del>
+              {% endif %}
+            </div>
+          </div>
+          <div class="table-column text-center remove">
+            <a href="#" class="remove-icon-link" onclick="remove_item({{ item.variant.id }}); return false;">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="total table-column text-center">
+            <span class="money">{{ item.line_price | money }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% if settings.cart_notes_enable %}
+      <div id="cart-notes" class="desktop-12 mobile-3">
+        <label for="note"><strong>{{ 'cart.general.note' | t }}</strong></label>
+        <textarea name="note" id="note" rows="5" cols="60">{{cart.note}}</textarea>
+      </div>
+      {% endif %}
+
+      <!-- Betanet Epost -->
+      <div id="epost-store-pickup"></div>
+      <!-- Betanet Epost -->
+      <div class="under-cart desktop-9 tablet-6 mobile-3"> 
+        <h4 class="subtotal">{{ 'cart.general.subtotal' | t }} <span class="money">{{ cart.total_price | money }}</span></h4>
+        <p class="cartPoints"><strong>{{settings.cart_loyalty_text}}: <span data-lion-points-for="{{ cart.total_price }}"></span></strong></p>
+        <label class="button" for="checkout"   tabindex="0">{{ 'cart.general.checkout' | t }}</label>
+        <a class="back-to-shop" href="/">חזרה לרכישה באתר</a>       
+      </div>
+    </form>
+    <div class="information-collapsible-mobile desktop-12 tablet-6 mobile-3">
+      <button class="collapsible">
+        <p class="button-name need-help">צריכים עזרה?</p>
+        <p class="toggle-indicator">+</p>
+      </button>
+      <div class="content">
+        <div class="help-area">
+          <p class="happy-to-talk">נשמח לשוחח אתכם בטלפון</p>
+          <p class="phone"><a href="tel:09-7666200">09-7666200</a></p>
+          <p class="or">או</p>
+          <p class="email-us"><a href="/pages/contact">כתבו לנו</a></p>
+          <div class= policies>
+            <p class="shipment-policy"><a class="modal-toggle-shipping">משלוחים והחזרות</a></p>
+            <p class="return-policy"><a class="modal-toggle-terms">תקנון אתר</a></p>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <div id="looked-at" class="desktop-12 mobile-half">
+    {% include 'recently-viewed' %}
+  </div>
+
+</div>
+<div class="cart-related-products">
+  {% section 'cart-collection' %}
+</div>
+
+{% section 'Yotpo-cart-carousel' %}
+
+
+<div class="modal modal-shipping">
+  <div class="modal-overlay modal-toggle"></div>
+  <div class="modal-wrapper modal-transition">
+    <div class="modal-header">
+      <a class="modal-close modal-toggle">x</a>
+      {% assign shipping = 'standard-shipping-and-return-policy' %}
+      <h2 class="modal-heading">{{ pages[shipping].title }}</h2>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-content">
+        {{ pages[shipping].content }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal modal-terms">
+  <div class="modal-overlay modal-toggle"></div>
+  <div class="modal-wrapper modal-transition">
+    <div class="modal-header">
+      <a class="modal-close modal-toggle">x</a>
+      <h2 class="modal-heading">{{ pages['terms'].title }}</h2>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-content">
+        {{ pages['terms'].content }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal {
+    position: absolute;
+    z-index: 10000; /* 1 */
+    top: calc(25% - 155px);
+    left: 0;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal.is-visible {
+    visibility: visible;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: hsla(0, 0%, 0%, 0.5);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 0.3s, opacity 0.3s;
+  }
+
+  .modal.is-visible .modal-overlay {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  .modal-wrapper { position: absolute; z-index: 9999; left: 0; right: 0; width: 70%; height: 500px; overflow-y: scroll; margin-right: 10%; background-color: #fff; box-shadow: 0 0 1.5em hsla(0, 0%, 0%, 0.35); }
+
+  .modal-transition {
+    transition: all 0.3s 0.12s;
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+
+  .modal.is-visible .modal-transition {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .modal-header,
+  .modal-content {
+    padding: 1em;
+  }
+
+  .modal-header {
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.06);
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .modal-close { position: absolute; top: 10px; left: 15px; font-size: 1.5rem; color: #000; background: transparent; }
+
+
+  .modal-heading {
+    font-size: 1.125em;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .modal-content > *:first-child {
+    margin-top: 0;
+  }
+
+  .modal-content > *:last-child {
+    margin-bottom: 0;
+  }
+  @media screen and (max-width:768px){
+    .modal-wrapper { width: 90%; overflow: scroll; margin-right: 5%; }
+    .modal { top: 25%; position: fixed;}
+  }
+</style>
+
+<script>
+
+  //   popup-model
+  $('.modal-toggle-shipping').on('click', function(e) {
+    e.preventDefault();
+    $('.modal-shipping').toggleClass('is-visible');
+  });
+
+  $('.modal-toggle-terms').on('click', function(e) {
+    e.preventDefault();
+    $('.modal-terms').toggleClass('is-visible');
+  });
+
+  $('.modal-close').on('click', function(e) {
+    e.preventDefault();
+    $('.modal-terms').removeClass('is-visible');
+    $('.modal-shipping').removeClass('is-visible');
+  });
+
+  $(document).click(function(event) {
+    //if you click on anything except the modal itself or the "open modal" link, close the modal
+    if (!$(event.target).closest(".modal-toggle-shipping, .modal-toggle-terms, .model, .modal-content, .modal-body").length) {
+      $("body").find(".modal").removeClass("is-visible");
+    }
+  });
+
+
+  var buttons = $("button.collapsible");
+
+
+  for (i = 0; i < buttons.length; i++) {
+    $(buttons[i]).click(function(){
+      if($(this).find("p.toggle-indicator").html() == "+"){
+        $(this).find("p.toggle-indicator").html("-");
+        $(this).find("p.button-name").css("font-weight", "bold");
+
+      }
+      else{
+        $(this).find("p.toggle-indicator").html("+");
+      }
+      $(this.nextElementSibling).slideToggle();
+
+      if($(this).hasClass("bottom-content")){
+        $(this).toggleClass("bottom-border");
+        $(this.nextElementSibling).toggleClass("bottom-border");
+      }
+    });
+  }
+
+  r(function(){
+    jQuery(".js-qty__adjust").click(function(){ 
+      jQuery("#cartform").submit(); 
+      // Submit the form
+    });
+
+  });
+
+
+
+
+  function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',5):f()}
+
+</script>
+
+
+</div>{% render 'dialogue-cart-snippet' %}
+ 

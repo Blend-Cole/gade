@@ -1,0 +1,110 @@
+<div class="information-collapsible">
+  <button class="collapsible product-description">
+    <p class="button-name">תיאור מוצר</p>
+    <p class="toggle-indicator">+</p>
+  </button>
+  <div class="content product-description">
+    <p>{{ product.description }}</p>
+    <p>מק"ט : {{ product.variants.first.sku }}  </p>
+  </div>
+  
+  {% if product.metafields.custom_fields.ingridiants != blank %}
+  <button class="collapsible">
+    <p class="button-name">מרכיבי מוצר</p>
+    <p class="toggle-indicator">+</p>
+    </button>
+  <div class="content">
+    <p>{{ product.metafields.custom_fields.ingridiants }}</p>
+  </div>
+  {% endif %}
+  
+  {% comment %}
+  <button class="collapsible">    
+    <p class="button-name">טיפים</p>
+    <p class="toggle-indicator">+</p>
+  </button>
+  <div class="content">
+    <p> {{ product.metafields.custom_fields.tips_tab  }}</p>
+  </div>
+  <button class="collapsible bottom-content bottom-border">    
+    <p class="button-name">HOW TO</p>
+    <p class="toggle-indicator">+</p>
+  </button>
+  <div class="content bottom-content">
+    <p> {{ product.metafields.custom_fields.how_to_tab  }}</p>
+  </div>
+  {% endcomment%}
+</div>
+
+  
+  
+<style>
+  .information-collapsible button.collapsible {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 54px;
+    font-family: OpenSansHebrew-Regular;
+    font-size: 16px;
+    color: black;
+    padding: 17px 0 17px 0;
+    margin: 0 0 0 0;
+    background-color: white;
+    text-align: right;
+    border-top: 2px solid #EEEEEE;
+
+    
+  }
+  
+  .information-collapsible button.collapsible p{
+    font-size: 16px;
+  }
+  
+  .information-collapsible button.collapsible p.button-name{
+    padding-right: 22px;
+  }
+  .information-collapsible button.collapsible p.toggle-indicator{
+    font-weight: bold;
+    padding-left: 10px;
+  }
+  
+  .information-collapsible div.content{
+	display: none;
+    font-size: 15px;
+    padding: 0.7rem 1.3rem;
+    text-align:right;
+  }
+  
+  .information-collapsible .bottom-border{
+	border-bottom: 2px solid #EEEEEE;
+  } 
+  
+  @media screen and (max-width: 980px){
+    .information-collapsible .content.product-description{ display:block; padding-top: 0;}
+  }
+
+</style>
+
+<script>
+  var buttons = $("button.collapsible");
+  
+  for (i = 0; i < buttons.length; i++) {
+    $(buttons[i]).click(function(){
+      if($(this).find("p.toggle-indicator").html() == "+"){
+          $(this).find("p.toggle-indicator").html("-");
+          $(this).find("p.button-name").css("font-weight", "bold"); 
+      }
+      else{
+          $(this).find("p.toggle-indicator").html("+");
+          $(this).find("p.button-name").css("font-weight", "normal");
+      }
+      $(this.nextElementSibling).slideToggle();
+      
+      if($(this).hasClass("bottom-content")){
+        $(this).toggleClass("bottom-border");
+      	$(this.nextElementSibling).toggleClass("bottom-border");
+      }
+  	});
+  }
+  
+</script>

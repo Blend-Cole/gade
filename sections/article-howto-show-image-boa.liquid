@@ -1,0 +1,14 @@
+<div class="article-hero centred desktop-10 tablet-6 mobile-3 text-center{% unless section.settings.show_image %} d-none{% endunless%}"></div>
+
+{% schema %}
+{
+    "name": "Blog image",
+    "settings": [  
+     {
+        "type": "checkbox",
+        "id": "show_image",
+        "label": "Show image"
+     }
+	]
+}
+{% endschema %}

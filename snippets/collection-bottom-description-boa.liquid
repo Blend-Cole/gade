@@ -1,0 +1,44 @@
+{% if collection.description contains '@@@' %}
+  {% assign bottom_description = collection.description | split: '@@@' | last | remove: '<div>' | remove: '</div>' | remove: '<p>' | remove: '</p>' | remove: '<div style="direction: rtl; text-align: center;">' | remove: '<div style="direction: rtl;">' | remove: '<br>'%}
+  <div id="collection-blocks" class="bottom-description">
+    <div class="row">
+      <div class="collectiondescription desktop-12 tablet-6 mobile-3">
+        <div class="description_wrapper">
+        {{ bottom_description }}
+        </div>
+      </div>
+      <div class="read_more">{{ section.settings.read_more_text }}</div>
+    </div>
+  </div>
+{% endif %}
+<style>
+  .bottom-description {background: {{ section.settings.bottom_description_background }}; }
+  .bottom-description .collectiondescription { overflow: hidden; height: 45px; }
+  .bottom-description .collectiondescription.open { height: auto !important; }
+  .description_wrapper { margin: 0 15px; }
+  .bottom-description .collectiondescription * { margin: 0; font-size: 16px; }
+  .bottom-description .read_more { visibility: hidden; margin: 5px 15px 0; cursor: pointer; display: inline-block; font-size: 16px; }
+  .bottom-description .row { margin: auto !important; }
+  
+  @media screen and (max-width: 992px){
+    .bottom-description .read_more { margin: 5px 5px 0; }
+    .bottom-description#collection-blocks { padding: 25px 0 !important; }
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if($('.description_wrapper').height() > 45){
+      $('.read_more').css('visibility', 'visible');
+    }
+    
+    $('.read_more').click(function(){
+      $('.bottom-description .collectiondescription').toggleClass('open');
+        if($('.bottom-description .collectiondescription').hasClass('open')){
+          $('.read_more').text('{{ section.settings.close_read_more_text }}');
+        }
+        else{
+          $('.read_more').text('{{ section.settings.read_more_text }}');                 
+        }
+    })
+  });
+</script>

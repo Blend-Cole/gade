@@ -1,0 +1,39 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/ga-de-cosmetics-israel.myshopify.com/collections/configure/86498/edit
+{% endcomment %}
+{% if collection.metafields.custom_fields["collection_slidshow"] != blank %}
+  <div class="custom-field custom-field__collection-slidshow custom-field__type--field-collection">
+    <h3 class="custom-field--title">collection_slidshow</h3>
+    <div class="custom-field--value">
+      {% assign separator = "|###|" %}
+      {% assign col_title_array = collection.metafields.custom_fields["col_title"] | split: separator %}
+      {% assign col_desc_array = collection.metafields.custom_fields["col_desc"] | split: separator %}
+      {% assign col_image_array = collection.metafields.custom_fields["col_image"] | split: separator %}
+      {% assign col_movie_array = collection.metafields.custom_fields["col_movie"] | split: separator %}
+      {% assign col_link_array = collection.metafields.custom_fields["col_link"] | split: separator %}
+      {% assign fc_keys = collection.metafields.custom_fields["collection_slidshow"] | split: "," %}
+      {% for i in fc_keys %}
+        {% assign index = i | plus: 0 %}
+        <div class="fc-item fc-item-- fc-index--{{ index }}">
+          <div class="fc-field field__col-title">
+            {{ col_title_array[index] }}
+          </div>
+          <div class="fc-field field__col-desc">
+            {{ col_desc_array[index] }}
+          </div>
+          <div class="fc-field field__col-image">
+            {{ col_image_array[index] }}
+          </div>
+          <div class="fc-field field__col-movie">
+            {{ col_movie_array[index] }}
+          </div>
+          <div class="fc-field field__col-link">
+            {{ col_link_array[index] }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

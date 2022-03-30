@@ -1,0 +1,45 @@
+{% if settings.breadcrumb %}
+  <div class="row">
+  {% include 'breadcrumb' %}
+  </div>
+{% endif %}
+
+<div class="row article">
+  <div class="desktop-8 desktop-push-2 tablet-6 mobile-3">
+    <div id="article-body">
+      <div class="title mb-3">
+        <h1>{{ article.title }}</h1>
+         {{ 'blogs.article.posted_on_date_html' | t }} {{ article.published_at | date: "%d-%m-%Y" }}
+      </div>
+      {% if article.image %}
+          <img class="lazyload" data-src="{{ article.image | img_url: 'master' }}" alt="{{ article.image.alt }}">
+      {% endif %}
+      
+      <div class="clear"></div>
+      <div class="rte">
+        {{ article.content }}
+{% include 'articles.custom_fields' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .article {margin-top:40px; margin-bottom:40px;}
+  .article iframe { width:100%; min-height:540px; }
+  #shopify-section-article-caraousel .is-collection-sec h2:before { top: 25px; }
+  #shopify-section-article-caraousel .section-title { border:0; }
+  @media screen and (max-width: 980px){
+  	.article iframe { min-height: 330px; }
+  }
+  @media screen and (max-width: 767px){
+    .article { padding: 0 0.5rem; }
+    .article h2 {text-align: right; }
+    .article iframe { min-height:200px; }
+    #shopify-section-article-caraousel .is-collection-sec h2 { text-align:center; }
+    #shopify-section-article-caraousel .is-collection-sec h2:before { display:none; }
+  }
+
+</style>
+{% section 'article-caraousel' %}
+{% section 'article-insta-boa' %}

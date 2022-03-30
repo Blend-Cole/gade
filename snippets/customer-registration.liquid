@@ -1,0 +1,73 @@
+{% form 'create_customer' %}
+    {{ form.errors | default_errors }}
+     
+    <input type="hidden" name="return_to" value="/account">
+
+    <div id="first_name" class="clearfix large_form">
+      <label for="first_name" class="login">{{ 'customer.register.first_name' | t }}</label>
+      <input type="text" value="" name="customer[first_name]" id="first_name" class="requiredField large" size="30" />
+    </div>
+
+    <div id="last_name" class="clearfix large_form">
+      <label for="last_name" class="login">{{ 'customer.register.last_name' | t }}</label>
+      <input type="text" value="" name="customer[last_name]" id="last_name" class="requiredField large" size="30" />
+    </div>
+
+    <div id="email" class="clearfix large_form">
+      <label for="email" class="login">{{ 'customer.register.email' | t }}</label>
+      <input type="email" value="" name="customer[email]" id="email" class="requiredField large" size="30" />
+    </div>
+
+    <div id="password" class="clearfix large_form">
+      <label for="password" class="login">{{ 'customer.register.password' | t }}</label>
+      <input type="password" value="" name="customer[password]" id="password" class="requiredField large password" size="30" />
+    </div>
+    
+    <div id="CustomerAcceptTerms" class="clearfix large_form">
+      	<span id="AcceptMarketingMessage" class="hide">{{ 'customer.register.conditions_error' | t }}</span>
+      	<input type="checkbox" id="CustomerAcceptTerms" class="accept-conditions" name="customer[note][AcceptTerms]"  style="display:inline-block;"/>
+      	<label for="CustomerAcceptTerms" style="display:inline-block; width: auto;">{{ 'customer.register.conditions_html' | t }}</label>
+    </div>
+    
+    <div id="CustomerAcceptMarketing" class="clearfix large_form">
+      	<input type="checkbox" id="CustomerAcceptMarketing" name="customer[accepts_marketing]"  style="display:inline-block;" checked="checked"/>
+      	<label for="CustomerAcceptMarketing" style="display:inline-block; width: auto;">{{ 'customer.register.marketing' | t }}</label>
+    </div>
+
+    <div class="action_bottom">
+      <input class="secondary button" id="registerNow" type="submit" value="{{ 'customer.register.submit' | t }}"/>
+      <span class="text-center desktop-12 tablet-6 mobile-3">{{ 'customer.register.have_account' | t | customer_login_link }}</span>
+    </div>
+    {% endform %}
+
+<script type="text/javascript">
+  
+  $( '#create-customer' ).on('submit', function(e) {
+    if($( 'input[class^="accept-conditions"]:checked').length === 0) {
+      $('#AcceptMarketingMessage').removeClass('hide').addClass('show');
+      // Remove saved data from sessionStorage from rewards page
+      sessionStorage.removeItem('backToRewards');
+      e.preventDefault();
+    }
+  });
+  
+  document.getElementById("registerNow").addEventListener('click', function (event) {
+    let requiredFields = document.querySelectorAll('.requiredField')
+    requiredFields.forEach(field => {
+        if (field.value === '' || field.value === '---') {
+            event.preventDefault();
+            field.classList.add('invalid')
+            if (field.previousElementSibling.firstElementChild) {
+                return
+            } else {
+              field.previousElementSibling.innerHTML += ` <p style="color:red; display:inline-block;">| שדה חובה</p>`
+            }
+        } else {
+            field.classList.remove('invalid')
+            if (field.previousElementSibling.firstElementChild) {
+                field.previousElementSibling.firstElementChild.remove()
+            }
+        }
+    })
+})
+</script>

@@ -1,0 +1,14 @@
+{% layout none %}
+{% for item in cart.items %}
+{% include 'sca_freegift_price' with item %}
+  <div data-item-id="{{item.id}}" class="item">
+    <div class="mini-desc">
+        {{ item.metafields.custom_fields["mini_description"] }}
+    </div>
+    {% if sca_compare_at_price != blank %}
+      <div class="compare-price">
+        {{ Shopify.formatMoney(sca_compare_at_price, settings.moneyFormat) }}
+      </div>
+    {% endif %}
+  </div>
+{% endfor %}

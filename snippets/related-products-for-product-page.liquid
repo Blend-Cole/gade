@@ -1,0 +1,148 @@
+<div class="collection-carousel-wrap desktop-12 mobile-3">
+  {% if section.settings.realted_title != blank %}
+  <h4><span>{{ section.settings.realted_title }}</span></h4>
+  {% endif %}
+  
+  {% assign current_product_found = false %}
+    {% if collection and collection.all_products_count > 2 %}
+      {% for c in product.collections %}
+          {% if c.handle == collection.handle %}
+              {% assign c = collection %}
+          {% endif%}
+      {% endfor %}
+    {% else %}
+          {% assign c = product.collections.first %}
+    {% endif %}
+  
+  
+  <div class="product-collection-carousel">
+    {% for prod in c.products limit: 5 %}
+    {% include 'sca_freegift_price' with prod %}
+        {% unless prod.handle == product.handle %}
+		  {% assign form_id = prod.id | downcase %}
+          {% assign featured_image = prod.featured_image %}
+          {% assign img_link = featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+
+          <div class="lazyOwl" data-alpha="{{ prod.title }}" data-price="{{ sca_price }}">
+            <a href="{{ prod.url | within: collection }}" title="{{ prod.title | escape }}">
+                <img class="lazyload"
+                  src="{{ featured_image | product_img_url: 'master' }}"
+                  data-src="{{ img_link }}"
+                  data-sizes="auto"
+                  data-image-id="{{ image.id }}"
+                  alt="{{ prod.title | escape }}">
+
+                <noscript>
+                  <img
+                  src="{{ featured_image | product_img_url: 'large' }}"
+                  alt='{{ prod.title | escape }}'
+                  data-image-id="{{ image.id }}" />
+                </noscript>
+            </a>
+            <div class="product-details">
+              <a href="{{ prod.url | within: collection }}">
+                <h3>{{ prod.title }}</h3>
+                {% if settings.vendor %}
+                  <h4>{{ prod.vendor }}</h4>
+                {% endif %}
+              </a>
+              <div class="price">
+                {% if sca_price < sca_compare_at_price %}
+                  <div class="onsale">
+                    <span class="money">{{ sca_price | money }}</span>
+                  </div>
+                  <div class="was">
+                  <span class="money">{{ sca_compare_at_price | money }}</span>
+                  </div>
+                {% else %}
+                  <div class="prod-price">
+                    {% if sca_price_varies %}
+                      {{ 'products.general.from' | t }} <span class="money">{{ sca_price_min | money }}</span> - <span class="money">{{ sca_price_max | money }}</span>
+                    {% else %}
+                      <span class="money">{{ sca_price | money }}</span>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                
+              </div>
+              {% form 'product', product, data-product-form:product_form_config, id: form_id %}
+              <script class="product-json" type="application/json">
+    			{{ product | json }}
+              </script>
+              <input type="hidden" id="{{ prod.id }}" name="id" data-sku="{{ prod.sku }}" value="{{ prod.variants[0].id }}" />
+              <input type="submit" name="button" class="add-to-cart" value="{{ 'products.product.add_to_cart' | t }}" />
+              {% endform %}
+
+            </div>
+          </div>
+        {% endunless %}
+    {% endfor %}
+  </div>
+
+</div>
+
+{{ 'handlebars.min.js' | asset_url | script_tag }}
+{% include 'ajax-cart-template' %}
+{{ 'ajax-cart.js' | asset_url | script_tag }}
+
+<style>
+  .collection-carousel-wrap { margin-top: 30px; padding: 20px 0; text-align: center; }
+  h4 { font-size: 1.2rem; font-weight: 600;width: 100%; text-align: center; border-bottom: 1px solid #DDDDDD; line-height: 0.1em; margin: 10px 0 20px; }
+  h4 span { background:#fff; padding:0 10px; }
+  .price { padding-bottom: 1rem; padding-top: 0.5rem; font-size: 1rem; }
+  .product-collection-carousel { display:none;}
+  .product-collection-carousel .owl-next { position:absolute; top:calc(50% - 21px); right:0; } 
+  .product-collection-carousel .owl-prev { position:absolute; top:calc(50% - 21px); left:0; }
+  .product-collection-carousel .owl-buttons > div { padding: 5px 10px;}
+  .product-collection-carousel .product-details h3 { min-height: 40px; }
+</style>
+<script>
+  
+  r(function(){
+    
+    ajaxCart.init({
+        formSelector: '[data-product-form]',
+        cartContainer: '#CartContainer',
+        addToCartSelector: '.add-to-cart',
+        cartCountSelector: '.CartCount',
+        cartCostSelector: '.CartCost',
+        moneyFormat: {{ shop.money_format | json }}
+     });
+    
+    jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
+      $.fancybox.close(true);
+      // Bind to 'ajaxCart.afterCartLoad' to run any javascript after the cart has loaded in the DOM
+      timber.RightDrawer.open();
+    });
+    
+     $('.product-collection-carousel').owlCarousel({
+        itemsCustom : [],
+        lazyLoad : false,
+        rtl:true,
+        loop:true,
+        items:2,
+        margin:0,
+        pagination : false,
+        navigation: true,
+        navigationText : false,
+        autoPlay : false,
+        stopOnHover : true
+      }); 
+      
+      
+      $(".box-ratio").css({'padding-bottom': '0'});
+      
+      
+      if( $(window).width() < 1221 ){
+        $(".owl-item").css({'margin': '0 0.2rem'});
+      }else{
+        $(".owl-item").css({'margin': '0 0.5rem'});
+      }
+      
+      
+    });
+
+  function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+
+
+</script>

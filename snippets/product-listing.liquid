@@ -1,0 +1,169 @@
+{% include 'sca_freegift_price' with product %}
+<div class="ci">
+  {% if product.available %}
+  {% for col in product.collections %}
+  {% if col.handle == 'new-arrivals' %}
+  <div class="new icn">{{ 'products.general.new' | t }}</div>
+  {% endif %}
+  {% endfor %}
+
+  {% if sca_price < sca_compare_at_price %}
+  <div class="sale-item icn">{{ 'products.general.sale' | t }}</div>
+  {% endif %}
+
+  {% elsif product.variants.first.title == "Default Title"  %}
+  <div class="so sold-out icn">{{ 'products.general.sold' | t }}</div>
+  {% endif %}
+  
+  {%- assign product_tags = product.tags | join: ',' -%}
+  {%- assign has_custom_label = false -%}
+  {%- if product_tags contains '_label_' -%}
+    {%- for tag in product.tags -%}
+      {%- if tag contains '_label_' -%}
+        {%- assign tag_starts_with = tag | slice: 0 -%}
+        {%- if tag_starts_with == '_' -%}
+          {%- assign has_custom_label = true -%}
+          {%- assign custom_label = tag | replace: '_label_', '' -%}
+          {%- assign custom_image = custom_label | append: '.png' -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+  
+  {%- if has_custom_label -%}
+  <div class="custom_icon" style="background: url({{ custom_image | file_url }})"></div>
+  {%- endif -%}
+
+  {% if product.featured_image %}
+  <a href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">
+    <div class="reveal">
+      <img class="lazyload" data-src="{{ product.featured_image | img_url: '200x' }}" alt="{{ product.images[1].alt | escape }}">
+      <noscript>
+        <img src="{{ product.featured_image | img_url: '200x' }}" alt="{{ product.featured_image.alt | escape }}">
+      </noscript>
+      {% if settings.image_flip and product.images.size > 1 %}
+      <div class="hidden">
+        {% include "basic-responsive-image", type: product.images[1] %}
+        <noscript>
+          <img src="{{ product.images[1] | img_url: '200x' }}" alt="{{ product.images[1].alt | escape }}">
+        </noscript>
+      </div>
+      {% endif %}
+    </div>
+  </a>
+  {%- else -%}
+  {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+  {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+  {%- endif -%}
+</div>
+
+{% if settings.quickview %}
+<div class="product-info">
+  <a class="fancybox.ajax product-modal" rel="nofollow" href="{{ product.url }}?view=quick">
+    סקירה מהירה
+  </a>
+</div>
+{% endif %}
+{% if product.metafields.custom_fields["mini_description"] != blank %}
+{% assign desc = product.metafields.custom_fields["mini_description"] %}
+{% else %}
+{% assign desc = product.description %}
+{% endif %}
+<div class="product-details">
+  <a href="{{ product.url | within: collection }}">
+    <h3>{{ product.title }}</h3>
+    <div class="product-description-car">{{ desc | strip_html | truncate:60 }}</div>
+    {% if settings.vendor %}
+    <h4>{{ product.vendor }}</h4>
+    {% endif %}
+  </a>
+
+  <div class="price">
+    {% if sca_price < sca_compare_at_price %}
+    <div class="was-listing">
+      <span class="money">{{ sca_compare_at_price | money }}</span>
+    </div>
+    <div class="onsale">
+      <span class="money">{{ sca_price | money }}</span>
+    </div>      
+    {% else %}
+    <div class="prod-price">
+      {% if sca_price_varies %}
+      {{ 'products.general.from' | t }} <span class="money">{{ sca_price_min | money }}</span> - <span class="money">{{ sca_price_max | money }}</span>
+      {% else %}
+      <span class="money">{{ sca_price | money }}</span>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% render 'product-weight-boa', product: product %}
+  </div>
+  <!-- Yotpo Star Rating - Category Page -->
+ 
+<div class="yotpo-stars">
+    <div class="yotpo bottomLine"
+         data-product-id="{{ product.id }}">
+      {%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
+      {%- assign time_now = 'now' | date: '%s' %}
+      {%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: '%s' %}
+      {%- assign diff_seconds_from_live = time_now | minus: yotpo_live_time %}
+      {%- assign yotpo_bottomline_last_updated = product.metafields.yotpo.catalog_bottomline_update_time | date: '%s' %}
+      {%- assign diff_seconds_from_last_bottomline_update = time_now | minus: yotpo_bottomline_last_updated %}
+      {%- if yotpo_live_time and diff_seconds_from_live < 86400 or yotpo_bottomline_last_updated and diff_seconds_from_last_bottomline_update < 86400 -%}
+          {%- assign yotpo_bottomline_obsolete = false %}
+      {%- else %}
+        {%- assign yotpo_bottomline_obsolete = true %}
+      {%- endif %}
+      {%- if yotpo_offload_content == 'yes' and yotpo_bottomline_obsolete != true -%}
+          {{ product.metafields.yotpo.catalog_bottomline }}
+      {%- endif %}
+      </div>
+</div>
+   
+  <!-- End of Yotpo Star Rating - Category Page -->
+  {% comment %}
+  <!-- Yotpo Star Rating - Category Page -->  
+  <!-- EMPTY STAR RATING -->
+  <div style="text-align: center">
+    <div class="yotpo bottomLine" style="display:inline-block"
+         data-product-id="{{ product.id }}">
+    </div>
+  </div>
+  <style>
+    @keyframes nodeInserted {
+      from { opacity: 0.99; }
+      to { opacity: 1; }
+    }
+    div.yotpo.bottomLine .yotpo-display-wrapper {
+      animation-duration: 0.01s;
+      animation-name: nodeInserted;
+    }
+  </style>
+  <script type="text/javascript">
+    var emptyStarsInserted = false;
+    document.addEventListener('animationstart', function(event) {
+      if (event.animationName == 'nodeInserted') {
+        if (!emptyStarsInserted){
+          var wrappers = jQuery('div.yotpo.bottomLine > span.yotpo-display-wrapper:not(:has(div.star-clickable))');
+          var emptyStars = jQuery('<div class="standalone-bottomline"><div class="yotpo-bottomline pull-left star-clickable"><span class="yotpo-stars"><span class="yotpo-icon yotpo-icon-empty-star pull-left"></span><span class="yotpo-icon yotpo-icon-empty-star pull-left"></span><span class="yotpo-icon yotpo-icon-empty-star pull-left"></span><span class="yotpo-icon yotpo-icon-empty-star pull-left"></span><span class="yotpo-icon yotpo-icon-empty-star pull-left"></span></span><div class="yotpo-clr"></div></div></div>');
+          wrappers.append(emptyStars);
+          emptyStarsInserted = true;
+        }
+      }
+    }, false);
+  </script>
+  <style>
+    .yotpo .text-m {
+      display: none;
+    } </style>
+  {% endcomment %}
+  <!-- End of Yotpo Star Rating - Category Page -->
+
+  <div class="showinmobile addtocartbutton">
+    <a class="fancybox.ajax product-modal" rel="nofollow" href="{{ product.url | within: collection }}?view=quick">
+      {{'products.product.add_to_cart' |t }}
+    </a>
+  </div>
+</div>
+<script type="text/javascript">
+(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/L4sgIDh0SQsqx27zCCXSjiKvViXWbe1C5knOPgOx/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script>

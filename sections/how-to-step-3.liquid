@@ -1,0 +1,73 @@
+<section class="how-to-blog" style="display:{{section.settings.display}}">
+  <div class="step">
+    <div class="step-content">
+      <img class="step-image lazyload" data-src="{{section.settings.image | img_url: '531x531'}}">
+      <div class="step-text">
+        <h2>{{section.settings.title}}</h2>
+        <p>{{section.settings.text}}</p>
+        <button onclick="toggle(this);"> הוסיפי לעגלה </button>
+      </div>
+    </div>
+    <div class='step-products'>
+		<div class="owl-carousel">
+          {% assign product_collection_handle = section.settings.step_product_collection | downcase %}
+          {% assign product_collection = collections[product_collection_handle] %}
+          {% for product in product_collection.products limit: 6%}
+          <div class="lazyOwl product" data-alpha="{{ product.title }}" data-price="{{ product.price }}">
+            {% include 'product-listing-buy' %}
+          </div>
+          {% endfor %}
+        </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "How to step 3",
+    "settings": [
+	      {
+        "label": "Show step",
+        "type": "radio",
+        "id": "display",
+        "options": [
+          {
+            "value": "flex",
+            "label": "Show"
+          },
+          {
+            "value": "none",
+            "label": "Hide"
+          }
+        ]
+      },
+      {
+        "label": "Image for desktop",
+        "type": "image_picker",
+        "id": "image"
+      },
+	  {
+        "label": "Step heading",
+        "type": "text",
+        "id": "title"
+      },
+	  {
+        "label": "Step text",
+        "type": "textarea",
+        "id": "text"
+      },
+	  {
+        "label": "Step product collection",
+        "type": "collection",
+        "id": "step_product_collection"
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

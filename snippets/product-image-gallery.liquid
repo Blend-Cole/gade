@@ -1,0 +1,272 @@
+{%assign num_of_photos = 0%}
+{% if product.collections[0].metafields.custom_fields["product_gallery"] != blank %}
+  {% assign separator = "|###|" %}
+  {% assign gallery_photos_array = product.collections[0].metafields.custom_fields["gallery_photos"] | split: separator %}
+  {% assign alt_array = product.collections[0].metafields.custom_fields["alt"] | split: separator %}
+  {%assign num_of_photos = gallery_photos_array | size %}
+  {% assign num_of_photos = num_of_photos | minus: 1%}
+{% endif %}
+
+{% assign product_image_box_ratio_max = 0 %}
+
+{% for image in product.images %}
+  {% assign image_box_ratio = image.height | append: ".0" | times: 1 | divided_by: image.width | times: 100 %}
+
+  {% if image_box_ratio > product_image_box_ratio_max %}
+    {% assign product_image_box_ratio_max = image_box_ratio %}
+  {% endif %}
+{% endfor %}
+
+{% assign product_image_box_ratio_max = product_image_box_ratio_max | append: "%" %}
+{% assign featured_image = current_variant.image | default: product.featured_image %}
+<div id="productMainImages" class="product-main-images">
+  <div class="product-image-container{% if product.images.size > 1 %} desktop-10{% else %} desktop-12{% endif %}" >
+
+    {% comment %} out of stock {% endcomment %}
+    {% if current_variant.inventory_quantity < 1 %}
+    	<div class="sold-out-icon">חסר במלאי</div>
+    {% endif %}
+    
+    {% comment %} custom label {% endcomment %}
+    {%- assign product_tags = product.tags | join: ',' -%}
+    {%- assign has_custom_label = false -%}
+    {%- if product_tags contains '_label_' -%}
+      {%- for tag in product.tags -%}
+        {%- if tag contains '_label_' -%}
+          {%- assign tag_starts_with = tag | slice: 0 -%}
+          {%- if tag_starts_with == '_' -%}
+            {%- assign has_custom_label = true -%}
+            {%- assign custom_label = tag | replace: '_label_', '' -%}
+            {%- assign custom_image = custom_label | append: '.png' -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  
+  {%- if has_custom_label -%}
+  <div class="custom_icon" style="background: url({{ custom_image | file_url }})"></div>
+  {%- endif -%}
+    
+    {% comment %}video images {% endcomment %}
+    {% for image in product.images %}
+      {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+      <div class="product-main-image {% if image.id == featured_image.id %}selected{% endif %}" data-image-id="{{ image.id }}" style="width: 100%; height: 100%;">
+        {% if image.alt contains 'http' %}
+        <iframe src="{{image.alt}}" class="product-main-video"></iframe>
+        {% else %}
+        <img id="{{ product.id }}" class="product__image lazyload lazyload-fade"
+             data-src="{{ img_url }}"
+             data-sizes="auto"
+             style="width: 100%; height: 100%; object-fit: contain;"
+             alt="{{ image.alt | escape }}">
+        {% endif %}
+        <noscript>
+          <img id="{{ product.id }}" src="{{ image | img_url: '800x' }}" alt='{{ image.alt | escape }}'/>
+        </noscript>
+      </div>
+    {% endfor %}
+    
+    {% if num_of_photos > 0 %}
+      {% for index in (0..num_of_photos) limit: 3%}
+      {% assign img_url = gallery_photos_array[index]%}
+      <div class="product-main-image {% if index == featured_image.id %}selected{% endif %}" 
+           data-image-id="{{ index }}"
+           style="width: 100%; height: 100%;">
+
+        {% if alt_array[index] contains 'http' %}
+        <iframe src="{{alt_array[index]}}" class="product-main-video"></iframe>
+        {% else %}
+        <img id="{{ index }}" class="product__image lazyload lazyload-fade"
+             data-src="{{ img_url }}"
+             data-sizes="auto"
+             alt="{{ alt_array[index] | escape }}">
+        {% endif %}
+        
+        <noscript>
+          <img id="{{ index }}" src="{{ img_url }}" alt='{{ alt_array[index] | escape }}'/>
+        </noscript>
+        
+      </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+    
+    {% if product.images.size > 1 %}
+    <div id="thumbnail-gallery" class="product-thumbnails desktop-2">
+      <div class="thumbnail-slider">
+        {% for image in product.images %}
+        {% assign img_url = image | img_url: '87x87' %}
+        <div class="product-thumbnail product-page-thumbnail {% if image.id == featured_image.id %}selected{% endif %}" data-image-id="{{ image.id }}">
+          <img class="lazyload lazyload-fade"
+               data-src="{{ img_url }}"
+               data-sizes="auto"
+               data-image-id="{{ image.id }}"
+               alt="{{ image.alt | escape }}">
+
+          <noscript>
+            <img class="product-thumbnail" src="{{ image | product_img_url: '100x' }}" alt="{{ image.alt | escape }}" />
+          </noscript>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    
+    {%- if section.settings.show_social_share -%}
+    <div id="socialShare" class="desktop-12">
+      {% include 'social' with product %}
+    </div>
+    {%- endif -%}
+</div>
+
+{% comment %}
+{% if product.images.size > 1 %}
+  <div id="thumbnail-gallery" class="product-thumbnails">
+    <div class="thumbnail-slider">
+      {% for image in product.images %}
+    	{% assign img_url = image | img_url: '87x87' %}
+        <div class="product-thumbnail product-page-thumbnail {% if image.id == featured_image.id %}selected{% endif %}" data-image-id="{{ image.id }}">
+          <img class="lazyload lazyload-fade"
+            data-src="{{ img_url }}"
+            data-sizes="auto"
+            data-image-id="{{ image.id }}"
+            alt="{{ image.alt | escape }}">
+
+          <noscript>
+            <img class="product-thumbnail" src="{{ image | product_img_url: '100x' }}" alt="{{ image.alt | escape }}" />
+          </noscript>
+        </div>
+      {% endfor %}
+	  {%if num_of_photos > 0%}
+        {% for index in (0..num_of_photos) limit: 3 %}
+          {% assign img_url = gallery_photos_array[index] %}
+          <div class="product-thumbnail product-page-thumbnail {% if index == featured_image.id %}selected{% endif %}" data-image-id="{{ index }}">
+            <img class="lazyload lazyload-fade"
+              data-src="{{ img_url }}"
+              data-sizes="auto"
+              data-image-id="{{ index }}"
+              alt="{{ alt_array[index] | escape }}">
+
+            <noscript>
+              <img class="product-thumbnail" src="{{ image | product_img_url: '100x' }}" alt="{{ alt_array[index] | escape }}" />
+            </noscript>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+{% endcomment %}
+
+<style>
+
+  .product-image-container{
+    height: 543px;
+  }
+
+  .product-thumbnail {
+    cursor: pointer;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    height: 87px;
+    width: 87px;
+    margin-bottom: 19px;
+  }
+
+  .product-thumbnail.selected img {
+    border: 1px solid #d5d5d5;
+  }
+
+  #thumbnail-gallery .product-thumbnail.product-page-thumbnail img{
+    height: 87px;
+    width: 87px;
+    object-fit: contain;
+  }
+
+  #productPhotos #thumbnail-gallery {
+    height: 487px;
+  }
+
+  #socialShare{
+    text-align: center;
+    padding-top: 1.5rem;
+  }
+
+  .sold-out-icon {
+    z-index: 4;
+    background: white;
+    line-height: 14px;
+    position: absolute;
+    top: 50px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid black;
+    right: 30px;
+    text-align: center;
+    font-size: 16.5px;
+    font-weight: bold;
+    padding-top: 11px;
+    padding-left: 2px;
+  }
+
+  .product-main-image iframe.product-main-video{
+    width: 100%;
+    height: 100%;
+  }
+
+  #thumbnail-gallery .bx-wrapper .bx-viewport{
+    margin: 0 0 0 0;
+  }
+
+  @media screen and (max-width: 1220px ){
+    #socialShare{
+      display: none;
+    }
+
+    .product-image-container { width: 80%; height: 350px; float: left; }
+
+    #productPhotos #thumbnail-gallery {
+      width: 14.5833333333333333%;
+      height: fit-content;
+      margin-top: 13pt;
+    }
+
+    #thumbnail-gallery .product-thumbnail.product-page-thumbnail{
+      width: 58px;
+      height: 58px;
+      margin-bottom: 13px;
+    }
+
+    #thumbnail-gallery .product-thumbnail.product-page-thumbnail img { height: 58px; width: 58px; object-fit: contain; }
+
+    .thumbnail-slider{
+      height: 339px;
+    }
+
+    div#thumbnail-gallery .product-thumbnails{
+      width: fit-content;
+      padding-right: 8px;
+
+    }
+
+    .sold-out-icon {
+      width: 53px;
+      height: 53px;
+      font-size: 15px;
+      padding: 7px 0px 0 2px;
+    }
+
+
+    #thumbnail-gallery .bx-wrapper a.bx-prev{
+      margin-left: -15px;
+    }
+
+
+    #thumbnail-gallery .bx-wrapper a.bx-next{
+      margin-left: -15px;
+    }
+
+  }
+
+</style>

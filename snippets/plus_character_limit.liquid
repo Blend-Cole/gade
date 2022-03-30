@@ -1,0 +1,89 @@
+{% if enable %}
+  <script type="text/javascript">
+    (function($) {
+      Checkout.$(document).on('page:load page:change', function() {
+        var fieldErrorClass = 'field--error';
+        var fieldErrorMessageSelector = '.field__message--error';
+        
+        // Check the lengths of the given inputs and add error messages where needed
+        var lengthCheckFn = function(arrayElem) {
+          // do not check length if character limit == 0 (ie, no limit set)
+          if (arrayElem.limit == 0) return true;
+        
+          var $current = $(arrayElem.selector);
+          var $currentLength = $current.val().length;
+          var $parent = $current.closest('.field__input-wrapper');
+          var $field = $current.closest('.field');
+          
+          // Check to see if the length of an input is higher than the limit
+          // If it is, set isValid to false and add error classes and message
+          if ($currentLength > arrayElem.limit) {
+            if (!$field.hasClass(fieldErrorClass)) {
+              $field.addClass(fieldErrorClass);
+            }
+            if ($field.find(fieldErrorMessageSelector).length < 1) {
+              $parent.after("<p class='field__message field__message--error'>"+ "{{ 'plus.checkout.length_error' | t }}".replace('{% raw %}{{ limit }}{% endraw %}', arrayElem.limit) + "</p>");          
+            }
+            return false;
+          } else { // otherwise, remove error classes and message
+            if ($field.hasClass(fieldErrorClass)) {
+              $field.removeClass(fieldErrorClass);
+            }
+            if ($field.find(fieldErrorMessageSelector).length > 0) {
+              $field.find(fieldErrorMessageSelector).remove();
+            }
+            return true;
+          }
+        }
+        
+        // Set up the form with max lengths attributes, and check the length of pre filled values from accounts
+        var formLoadFn = function(obj) {
+          var selector = $(obj.selector);
+          selector.attr({ maxLength : obj.limit });
+          lengthCheckFn(obj); 
+          
+          // Add blur event listener to each input to again check lengths
+          selector.on('blur', function(){
+            lengthCheckFn(obj);
+          });
+        }
+        
+        // function to run on submit, to loop through the inputs and limits
+        // if any inputs are too long, isValid will be set to false inside this this call of lengthCheckFn
+        var submitCheckFn = function(arrayObjs) { 
+          Checkout.$(document).on('submit', '[data-step] form', function() {
+            isValid = true;
+            $.each(arrayObjs, function(key, elem) {
+              isValid &= lengthCheckFn(elem); 
+            });
+            // Prevent checkout if any input lengths are too long 
+            return isValid ? true : false;
+          });
+        }
+        
+        // Set up array of input objects to pass into functions
+        // Run formLoadFn and submitCheckFn
+        if (Shopify.Checkout.step === 'contact_information' || Shopify.Checkout.step === 'payment_method') {
+          
+          var addressForm = $('form input[name="checkout[shipping_address][address1]"]').length ? 'shipping_address' : 'billing_address';
+          
+          if (addressForm) {
+            var addressMaxLengthObjArray = [
+              {selector: '.field [name="checkout[' + addressForm + '][first_name]"]:not([tabindex="-1"])', limit: {{ settings.plus_char_limit_first_name }}},
+              {selector: '.field [name="checkout[' + addressForm + '][last_name]"]:not([tabindex="-1"])', limit: {{ settings.plus_char_limit_last_name }}},
+              {selector: '.field [name="checkout[' + addressForm + '][address1]"]:not([tabindex="-1"])', limit: {{ settings.plus_char_limit_address1 }}},
+              {selector: '.field [name="checkout[' + addressForm + '][address2]"]:not([tabindex="-1"])', limit: {{ settings.plus_char_limit_address2 }}},
+              {selector: '.field [name="checkout[' + addressForm + '][city]"]:not([tabindex="-1"])', limit: {{ settings.plus_char_limit_city }}}
+            ];
+            $.each(addressMaxLengthObjArray, function(key, obj) {
+              if (obj.limit == 0) return;
+              formLoadFn(obj);
+            });
+            
+            submitCheckFn(addressMaxLengthObjArray);
+          }
+        } 
+      });
+    })(Checkout.$);
+  </script>
+{% endif %}

@@ -1,0 +1,135 @@
+{% assign show_tips = false %}
+{% assign separator = "|###|" %}
+{% if product.metafields.custom_fields["slideshow"] != blank %}
+  {% assign slide_title_array = product.metafields.custom_fields["slide_title"] | split: separator %}
+  {% assign slide_description_array = product.metafields.custom_fields["slide_description"] | split: separator %}
+  {% assign slide_image_1_array = product.metafields.custom_fields["slide_image_1"] | split: separator %}
+  {% assign slide_movie_array = product.metafields.custom_fields["slide_movie"] | split: separator %}
+  {% assign slide_link_array = product.metafields.custom_fields["slide_link"] | split: separator %}
+  {% assign fc_keys = product.metafields.custom_fields["slideshow"] | split: "," %}
+  {% assign show_tips = true %}
+{% endif %}
+
+{% assign found_collection_tip = false %}
+
+{% for collection in product.collections %}
+	{% if collection.metafields.custom_fields["collection_slidshow"] != blank %}
+		{% assign show_tips = true %}
+		{% assign found_collection_tip = true %}
+		{% assign collection_tip = collection %}
+		{% break %}
+	{% endif %}
+{% endfor %}
+{% if found_collection_tip %}
+  {% assign collection_slide_title_array = collection_tip.metafields.custom_fields["col_title"] | split: separator %}
+  {% assign collection_slide_description_array = collection_tip.metafields.custom_fields["col_desc"] | split: separator %}
+  {% assign collection_slide_image_1_array = collection_tip.metafields.custom_fields["col_image"] | split: separator %}
+  {% assign collection_slide_movie_array = collection_tip.metafields.custom_fields["col_movie"] | split: separator %}
+  {% assign collection_slide_link_array = collection_tip.metafields.custom_fields["col_link"] | split: separator %}
+  {% assign collection_fc_keys = collection_tip.metafields.custom_fields["collection_slidshow"] | split: "," %}
+  {% assign show_tips = true %}
+  {% assign slide_title_array = slide_title_array | concat: collection_slide_title_array %}
+  {% assign slide_description_array = slide_description_array | concat: collection_slide_description_array %}
+  {% assign slide_image_1_array = slide_image_1_array | concat: collection_slide_image_1_array %}
+  {% assign slide_movie_array = slide_movie_array | concat: collection_slide_movie_array %}
+  {% assign slide_link_array = slide_link_array | concat: colletion: slide_link_array %}
+  {% assign fc_keys = fc_keys | concat: collection_fc_keys %}
+{% endif %}
+
+{% assign tips_size = fc_keys | size %}
+{% assign tips_size = tips_size | minus: 1 %}
+
+{% if show_tips %}
+<div class="tipsContainer">
+ {%comment%}{{collection_tip.title}}{%endcomment%}
+  <div class="tips-slide">
+    {% for i in (0..tips_size) limit: 5%}
+    {% assign index = i | plus: 0 %}
+    <div class="item">
+      <div class="tips-video desktop-7 tablet-6 mobile-3 text-left">
+        {% if slide_movie_array[index] != blank %}
+        <iframe src="{{ slide_movie_array[index] }}"></iframe>        
+        {% elsif slide_image_1_array[index] != blank %}
+        <a href="{{ slide_link_array[index] | strip_html }}">
+          {{ slide_image_1_array[index]}}
+        </a>
+        {% endif %}
+      </div>
+      <div class="tips-text-section desktop-5 tablet-6 mobile-3 text-right">
+        <div class="tips-text-area">
+          <div class="snippet-title h1">
+              {{slide_title_array[index]}}
+          </div>
+          <div class="tips-list-items">
+            {{ slide_description_array[index] }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+  
+  
+  
+<style>
+  .tipsContainer { background: #f3f0f1; padding: 1.5rem;}
+  .tips-slide .tips-text-section { height:500px; }
+/*   .tips-slide .tips-text-area {max-width: 100%; max-height: 100%; position: relative; left: 0; top: 50%; transform: translate(0, -50%); padding: 0.625rem;} */
+  .tips-slide .tips-text-area {padding: 0.625rem;}
+  .tips-slide { display: none; }
+  .tips-slide .owl-item { margin:0!important; }
+  .tips-slide .tips-text-section { font-size:1rem; }
+  .tips-slide .snippet-title { color: #ee908f; font-size: 1.7rem; line-height: 1.2; }
+  .tips-slide .tips-list-items h1 { font-size:20px; }
+  .tips-slide .owl-next { position:absolute; top:calc(50% - 21px); right:-1rem; } 
+  .tips-slide .owl-prev { position:absolute; top:calc(50% - 21px); left:-1rem; }
+  .tips-slide .owl-buttons > div { padding: 5px 10px; background: transparent; color: #000;}
+  .tips-slide iframe { min-height: 500px; width:100%;}
+  .tips-list-items { line-height:1.5; }
+  
+  @media screen and (max-width: 1200px){
+  	.tips-video.desktop-7 { width:97%!important; }
+    .tips-slide .tips-text-section.desktop-5 { width:97%!important; }
+    .tips-slide iframe { min-height: 400px; }
+    .tips-slide .tips-text-area { position: relative; transform: none; margin-top: 1rem; top:0; }
+  }
+  
+  @media screen and (max-width: 1023px){
+    .tips-slide .snippet-title { text-align:center; }
+    .tips-slide .owl-next { right:-1.5rem; } 
+  	.tips-slide .owl-prev { left:-1.5rem; }
+
+  }
+  @media screen and (max-width: 767px){
+    .tips-slide iframe { min-height: 300px; }
+    .tips-slide .tips-text-section { height: auto; }
+  }
+</style>
+  
+<script>
+
+ r(function(){
+    
+     $('.tips-slide').owlCarousel({
+        itemsCustom : [],
+        lazyLoad : false,
+        rtl:true,
+        loop:true,
+        items:1,
+        margin:0,
+        pagination : false,
+        navigation: true,
+        navigationText : false,
+        autoPlay : false,
+        stopOnHover : true
+      });
+      
+      
+    });
+
+  function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+
+
+</script>

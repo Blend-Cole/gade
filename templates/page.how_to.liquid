@@ -1,0 +1,90 @@
+<div class="how-to-banner">
+{% section 'banner-how-to' %}
+</div>
+<div class="how-to-text-section">
+{% section 'text' %}
+</div>
+<div class="how-to-video">
+	{% section 'video-how-to' %}
+</div>
+{% section 'how-to-steps' %}
+
+
+
+<script>
+    r(function(){
+    $('.owl-carousel').owlCarousel({
+        responsiveClass:true,
+    	responsive:{
+          0:{
+              items:2,
+              nav:true,
+              pagination : true,
+          },
+          1220:{
+              items:4,
+              nav:true,
+          }
+    	},
+        lazyLoad : true,
+        margin:10,
+        rtl:false,
+        loop:true,
+        pagination : false,
+        navigation: true,
+        navigationText : false,
+        autoPlay : false,
+        stagePadding: 100,
+        stopOnHover : true
+      });  
+    });
+
+  function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+
+  function toggle(button){
+    
+    // Collapse
+  	$(button).parents(".how-to-blog").find(".step-products").slideToggle();
+    if( button.textContent == " הוסיפי לעגלה " ){
+		button.textContent = " הסתירי מוצרים "
+    }
+    else{
+       button.textContent = " הוסיפי לעגלה " 
+    }
+    
+    // Fit mobile display 
+//     if($(window).width() < 1220){
+//       $(".owl-item").css({
+//         'width': '171.5pt'
+//       });
+//     }
+  }
+  
+
+
+</script>
+
+
+
+
+
+
+
+
+
+{% if settings.pagelist != '' %}
+  <div id="page-sidebar" class="desktop-3 tablet-2 mobile-3">
+    <h2>{{ settings.page-sidebar-title }}</h2>
+    <ul>
+      {% for link in linklists[settings.pagelist].links %}
+        <li>{{ link.title | link_to: link.url }}</li>
+      {% endfor %}
+    </ul>
+
+    {% if settings.pagelist == '' %}
+      <p>You are seeing this message as you have yet to pick a linklist in the Pages and contact form section of the theme settings</p>
+      <p>In your admin click on Themes > Customize Theme > Pages and Contact form and choose a Linklist from the dropdown in the area marked Choose a linklist for page sidebar</p>
+    {% endif %}
+
+  </div>
+{% endif %}

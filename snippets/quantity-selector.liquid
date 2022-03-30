@@ -1,0 +1,58 @@
+<div class="product-qty-selector">
+  <input class="qtyminus" type="button" value="-"/>
+  <input min="1" type="number" class="current-quantity" value="1" />
+  <input class="qtyplus" type="button" value="+"/>
+</div>
+
+<style>
+  .product-qty{
+    padding: 0 0 0 0;
+  }
+  .product-qty input.qtyminus{
+    font-size: 18px;
+    margin-bottom: 0px;
+  }
+
+  .product-qty input.current-quantity{
+    font-size: 18px;
+    margin-bottom: 0px;
+  }
+
+  .product-qty input.qtyplus{
+    font-size: 18px;
+    margin-bottom: 0px;
+  }
+</style>
+
+<script>
+  // This button will increment the value
+  $('input.qtyplus').click(function(e){
+    // Stop acting like a button
+    e.preventDefault();
+    // Get its current value
+    var currentVal = parseInt($('input.current-quantity').val());
+    // If is not undefined
+    if (!isNaN(currentVal)) {
+      // Increment
+      $('input.current-quantity').val(currentVal + 1);
+    } else {
+      // Otherwise put a 0 there
+      $('input.current-quantity').val(0);
+    }
+  });
+  // This button will decrement the value till 0
+  $("input.qtyminus").click(function(e) {
+    // Stop acting like a button
+    e.preventDefault();
+    // Get its current value
+    var currentVal = parseInt($('input.current-quantity').val());
+    // If it isn't undefined or its greater than 0
+    if (!isNaN(currentVal) && currentVal > 0) {
+      // Decrement one
+      $('input.current-quantity').val(currentVal - 1);
+    } else {
+      // Otherwise put a 0 there
+      $('input.current-quantity').val(0);
+    }
+  });
+</script>

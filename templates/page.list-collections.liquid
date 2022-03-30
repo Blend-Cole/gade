@@ -1,0 +1,121 @@
+{% if settings.breadcrumb %}
+<div class="custombreadcrumb">
+  <div class="row">
+  {% include 'breadcrumb' %}
+  </div>
+</div>  
+{% endif %}
+{% include 'page-list-top-banner' %}
+{% if linklists[page.handle].links.size > 0 %}    
+  {% assign number_of_links = 0 %}    
+<div class="row collection-page" data-section-id="collection-page-template" data-section-type="collection-section">
+<div id="main-content">
+  <div id="collection-blocks">
+  <div class="row">
+    <br />
+	<div class="collectiondescription desktop-8  tablet-6 mobile-3"><p style="text-align: center;">{{ page.content }}</div>
+  </div>
+</div>
+  <div class="section-title is-collection-sec"></div>
+<div class="{% if page.metafields.custom_fields["menu_on_right"] != blank %}desktop-8{% else %}desktop-12{% endif %} tablet-6 mobile-3" id="aside">
+<div id="collection-blocks" class="row123">  
+    {% for link in linklists[page.handle].links %}
+
+      {% if link.type == 'collection_link' %}
+
+        {% assign collection = link.object %}
+        {% assign number_of_links = number_of_links | plus: 1 %}
+  <div class="section-title is-collection-sec">
+    <h2><b>
+      <a href="{{ collection.url }}">
+        {{ collection.title }}
+      </a>
+      </b>
+    </h2>
+  </div>	
+  
+      <div class="clear"></div>
+    <div class="is-fea-collection-owl listcollectionpages">
+{% for product in collection.products | limit:27 %}
+{% assign isbanner = false %}
+         {% for tag in product.tags %}
+              {% if tag == 'banner' %}
+                  {% assign isbanner = true %}
+              {% endif %}
+            {% endfor %}
+          <div class="product {% if page.metafields.custom_fields["menu_on_right"] != blank %} desktop-4 {% cycle ' first', '', ' last' %} {% else %} desktop-3 {% cycle ' first' , '' , '', ' last' %} {% endif %} tablet-half mobile-half {% cycle ' first' , '' , '' , ' last' %} {% if isbanner == true %} custom-banner-product {% endif %}" id="prod-{{ product.id }}" data-alpha="{{ product.title }}" data-price="{{ product.price }}">
+            {% if isbanner == true %}            
+            {% include 'product-listing-new' %}
+            {% else %}
+            {% include 'product-listing' %}
+            {% endif %}
+          </div>
+{% endfor %}
+</div>        
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% if page.metafields.custom_fields["menu_on_right"] != blank %}
+  <div class="desktop-4 tablet-6 mobile-3" id="bside">
+        {% include 'page-list-sidebar' %}
+      </div>
+  {% endif %}
+  <div class="clear"></div>
+</div>
+</div>
+<style>
+  .section-title{border-bottom:none;}
+  .product {border: 1px solid #a1a1a1;padding: 10px;}
+#collection-blocks {padding:0px 0;}
+.collectiondescription{text-align:center; font-family: 'open_sans_hebrewregular';
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.44;
+  letter-spacing: normal;
+  text-align: center;    width: 70%;
+    margin: 0 auto;
+  color: #000000;}
+  .section-title{border-bottom:none;}
+  .is-collection-sec h2:before{top:20px;width:100%;}
+  .is-fea-collection-owl .product {
+    border: 1px solid #a1a1a1;
+    padding: 10px;
+}
+.product-description-car{min-height:45px;}
+.sidebar__inner{width:60%;}  
+.sidebar-accordion label{font-family: 'open_sans_hebrewregular';
+  font-size: 24.5px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.16;
+  letter-spacing: normal;
+  text-align: right;
+  color: #000000;}
+  .sidebar-accordion a{font-size: 20px;font-family: 'open_sans_hebrewregular';
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.48;
+  letter-spacing: normal;
+  text-align: right;
+  color: #000000;}
+  #sidebar ul{margin-bottom:60px;}
+  #sidebar{margin-top:30px;}
+  @media only screen and (max-width: 600px) {
+    .product.desktop-4 {float: left !important;}
+  }
+  
+  @media screen and (min-width: 768px) { 
+    .collection-page .is-fea-collection-owl .reveal .box-ratio { height: 100% !important; width: auto; }
+    .collection-page .is-fea-collection-owl .reveal img { height: 100%; min-height: 245px; width: auto; margin: auto; }
+  }
+  
+  @media screen and (max-width: 767px) { 
+    .collection-page .reveal .hidden { display: none !important; }
+  }
+</style>

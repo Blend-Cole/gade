@@ -1,0 +1,314 @@
+<section id="banner_{{section.id}}">
+  <article>
+    <div class="banner-content">
+      <div class="banner-text">
+        {% unless section.settings.heading == blank %}
+          <h2 class="banner-heading">{{ section.settings.heading }}</h2>
+        {% endunless %}
+        {%- unless section.settings.subheading == blank -%}
+          <p class="banner-subheading">{{ section.settings.subheading }}</p>
+        {%- endunless -%}
+        {%- unless section.settings.overlay_text == blank -%}
+          <p class="banner-text">{{ section.settings.overlay_text }}</p>
+        {%- endunless -%}
+      </div>
+    </div>
+  </article>
+</section>
+
+
+<style>
+  #banner_{{section.id}}{
+    display: {{section.settings.display}};
+    height: {{ section.settings.page_height}}px;
+    width: 1920px;
+    /*margin: 0 -234px 86px 0;*/
+    padding:  126px 356px 0 0;
+  	background: url("{{ section.settings.image | img_url: '1920x' }}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  
+  }
+  
+  #banner_{{section.id}} .banner-content{
+  	width: fit-content;
+
+  }
+  
+  
+  #banner_{{section.id}} .banner-text  .banner-heading{
+  	font-family: open_sans_hebrewbold;
+    font-size: {{section.settings.heading_font_size}}px;
+    color: {{section.settings.heading_color}};
+    font-weight: {{section.settings.heading_font_weight}};
+    margin: 0 0 24px 0;
+  }
+  
+  #banner_{{section.id}} .banner-text  .banner-subheading{
+  	font-family: open_sans_hebrewbold;
+    font-size: {{section.settings.subheading_font_size}}px;
+    color: {{section.settings.subheading_color}};
+    font-weight: {{section.settings.subheading_font_weight}};
+    margin: 0 0 24px 0;
+  }
+  
+  #banner_{{section.id}} .banner-text  .banner-text{
+    width: fit-content;
+  	font-family: open_sans_hebrewbold;
+    font-size: {{section.settings.overlay_text_font_size}}px;
+    color: {{section.settings.overlay_text_color}};
+    font-weight: {{section.settings.overlay_text_font_weight}};
+  }
+  @media screen and (max-width: 1220px ){
+    #banner_{{section.id}}{
+      display: {{section.settings.display}};
+      height: 391.5pt;
+      width: 320pt;
+      margin: 0 0 0 0;
+      padding:  0 0 0 0;
+      background: url("{{ section.settings.image_mobile | img_url: '521x' }}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+    }
+    #banner_{{section.id}} .banner-content{
+  		width: fit-content;
+		margin: 0 auto;
+  	}
+    
+    #banner_{{section.id}} .banner-text{
+    	text-align: center;
+    
+    }
+    
+
+
+    #banner_{{section.id}} .banner-text  .banner-heading{
+      font-family: open_sans_hebrewbold;
+      font-size: {{section.settings.heading_font_size}}px;
+      color: {{section.settings.heading_color}};
+      font-weight: {{section.settings.heading_font_weight}};
+      margin: 0 0 24px 0;
+      padding-top: {{section.settings.heading_distance_top}}px;
+    }
+
+    #banner_{{section.id}} .banner-text  .banner-subheading{
+      font-family: open_sans_hebrewbold;
+      font-size: {{section.settings.subheading_font_size}}px;
+      color: {{section.settings.subheading_color}};
+      font-weight: {{section.settings.subheading_font_weight}};
+      margin: 0 0 24px 0;
+    }
+
+    #banner_{{section.id}} .banner-text  .banner-text{
+      font-family: open_sans_hebrewbold;
+      font-size: {{section.settings.overlay_text_font_size}}px;
+      color: {{section.settings.overlay_text_color}};
+      font-weight: {{section.settings.overlay_text_font_weight}};
+    }
+  
+  
+  
+  
+  
+  
+  }
+
+</style>
+
+
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+      {
+        "type": "select",
+        "id": "display",
+        "label": "Should display?",
+        "options": [
+          {
+            "value": "block",
+            "label": "Yes"
+          },
+          {
+            "value": "none",
+            "label": "No"
+          }
+        ]
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image for desktop"
+      },
+	  {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Image for mobile"
+      },
+      {
+        "type": "range",
+        "id": "page_height",
+        "min": 200,
+        "max": 1000,
+        "step": 100,
+        "label": "Image height",
+        "default": 400
+      },
+      {
+        "type": "header",
+        "content": "Overlay Heading"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Image with text overlay"
+      },
+      {
+        "type": "range",
+        "id": "heading_font_size",
+        "min": 12,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading size",
+        "default": 26
+      },
+      {
+        "type": "range",
+        "id": "heading_distance_top",
+        "min": 12,
+        "max": 101,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading distance from top",
+        "default": 26
+      },
+      {
+        "type": "select",
+        "id": "heading_font_weight",
+        "label": "Heading weight",
+        "options": [
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading",
+        "default": "#000"
+      },
+      {
+        "type": "header",
+        "content": "Sub heading"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Sub-Heading",
+        "default": "Sub-Heading"
+      },
+      {
+        "type": "range",
+        "id": "subheading_font_size",
+        "min": 12,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Sub heading size",
+        "default": 16
+      },
+      {
+        "type": "select",
+        "id": "subheading_font_weight",
+        "label": "Sub heading weight",
+        "options": [
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "subheading_color",
+        "label": "Text color",
+        "default": "#000"
+      },
+	{
+        "type": "header",
+        "content": "Overlay Text"
+      },
+      {
+        "type": "textarea",
+        "id": "overlay_text",
+        "label": "Text",
+        "default": "Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story."
+      },
+      {
+        "type": "range",
+        "id": "overlay_text_font_size",
+        "min": 12,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Text size",
+        "default": 16
+      },
+      {
+        "type": "select",
+        "id": "overlay_text_font_weight",
+        "label": "Text weight",
+        "options": [
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "overlay_text_color",
+        "label": "Text color",
+        "default": "#000"
+      }
+	],
+  "presets": [
+      {
+        "name": "Banner with text",
+        "category": "Image"
+      }
+    ]
+}
+{% endschema %}
+

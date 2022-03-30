@@ -1,0 +1,90 @@
+<div id="sidebar" class="sidebar">
+  <div class="sidebar__inner">
+    {% assign product_tags_string = collection.all_tags | join: ' ' %}      
+      <div class="advanced-filters-wrapper">     
+        {% include 'color-filter' %}
+      </div>
+      
+        {% include 'filters-js' %}
+    <ul class="sidebar-accordion" {{ block.shopify_attributes }}></ul>
+  
+      {% for block in section.blocks %}
+        {% if block.type == 'vendor_list' %}
+          {% if collection.handle == "all" %}
+            <ul>
+              <label>{{ 'collections.general.shop_by_designer' | t }}</label>
+              {% for product_vendor in shop.vendors %}
+                <li>{{ product_vendor | link_to_vendor  }}</li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <ul>
+              <label>{{ 'collections.general.shop_by_designer' | t }}</label>
+              {% for product_vendor in collection.all_vendors %}
+                <li class="{{ product_vendor | handelize }}">{{ product_vendor | link_to_vendor }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% else %}
+          <ul class="sidebar-accordion" {{ block.shopify_attributes }}>
+            <label>{{ block.settings.title }}</label>
+            {% for link in linklists[block.settings.side_nav].links %}
+              {% if link.links != blank %}
+                <li class="extend has_sub_menu" aria-haspopup="true" aria-expanded="false">
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+                <ul class="extended-submenu">
+                  {% for sub_link in link.links %}
+                    <li>
+                      <a href="{{ sub_link.url }}">{{ sub_link.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% else %}
+                <li>{{ link.title | link_to: link.url }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+      {% endfor %}
+{% if linklists[collection.handle].links != blank %}
+    <ul class="sidebar-accordion">
+      <label>{{ collection.title }}</label>
+      {% for childlink in linklists[collection.handle].links %}   
+      	<li><a href="{{ childlink.url }}">{{ childlink.title }}</a></li>	
+      {% endfor %}
+    </ul>
+    {% endif %}
+    </div>
+  <script>
+    Shopify.queryParams = {};
+    if (location.search.length) {
+      for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
+        aKeyValue = aCouples[i].split('=');
+        if (aKeyValue.length > 1) {
+          Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
+        }
+      }
+    }
+    jQuery('#sort-by')
+    .val('{{ collection.sort_by | default: collection.default_sort_by  }}')
+         .bind('change', function() {
+      Shopify.queryParams.sort_by = jQuery(this).val();
+      location.search = jQuery.param(Shopify.queryParams);
+    });
+  </script>
+
+  {% if section.settings.sticky_sidebar %}
+    <script>
+      if($(window).width() > 980){
+        var sidebar = new StickySidebar('.sidebar', {
+          topSpacing: 160,
+          bottomSpacing: 0,
+         containerSelector: '#main-content',
+         innerWrapperSelector: '.sidebar__inner'
+       });
+      };
+    </script>
+    {% endif %}
+</div>

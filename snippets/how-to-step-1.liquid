@@ -1,0 +1,21 @@
+<div class="step">
+  <div class="step-content">
+    <img class="step-image" src="{{block.settings.image | img_url: '531x531'}}">
+    <div class="step-text">
+      <h2>{{block.settings.title}}</h2>
+      <p>{{block.settings.text}}</p>
+      <button onclick="toggle(this);"> הוסיפי לעגלה </button>
+    </div>
+  </div>
+  <div class='step-products'>
+    <div class="owl-carousel">
+      {% assign product_collection_handle = block.settings.step_product_collection | downcase %}
+      {% assign product_collection = collections[product_collection_handle] %}
+      {% for product in product_collection.products limit: 6%}
+      <div class="lazyOwl product" data-alpha="{{ product.title }}" data-price="{{ product.price }}">
+        {% include 'product-listing-buy' %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

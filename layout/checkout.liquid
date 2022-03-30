@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+
+    <title>{{ page_title }}</title>
+     
+    {{ content_for_header }}
+    
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                                                          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                                })(window,document,'script','dataLayer','GTM-WGRJ9TJ');</script>
+    <!-- End Google Tag Manager -->
+    {% include "loyaltylion" %}
+<script>lion.configure({ checkout: true })</script>
+ <!-- Dialogue-Checkout snippet load --> 
+   {% include 'dialogue-checkout.liquid' %}
+</head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGRJ9TJ"
+              height="0" width="0" style="display:none;visibility:hidden">
+      </iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {{ skip_to_content_link }}
+
+    <div class="banner" data-header>
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </div>
+
+    {{ order_summary_toggle }}
+
+    <div class="content" data-content>
+      <div class="wrap">
+        <div class="main" role="main">
+          <div class="main__header">
+            {{ content_for_logo }}
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </div>
+          <div class="main__content">
+            {{ content_for_layout }}
+            {% comment %} gift message {% endcomment %}
+           {% comment %}
+            <div class="checkbox-container" data-gift-note-html style="display:none;">
+              <h2 class="section__title" style="margin-bottom: 1em">רכשת מתנה?</h2>
+              <input type="checkbox" class="input-checkbox" id="gift-message">
+              <label for="gift-message">
+                <span>הוספת ברכה למתנה</span>
+                <img src="{{ 'gift.png' | asset_img_url: '30x' }}">
+              </label>
+              <div id="msg_text">
+                <textarea class="field__input" name="checkout[note]" placeholder="כתבי כאן את תוכן הברכה"></textarea>
+              </div>
+            </div>
+           {% endcomment %}
+            {% comment %} end gift message {% endcomment %}
+          </div>
+          
+          {% section 'checkout-footer-icons-boa' %}
+          
+          <div class="main__footer">
+            {{ content_for_footer }}
+          </div>
+        </div>
+        <div class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{ tracking_code }}
+    
+    {% comment %}
+    	{% include 'plus_check_phone_number', enabled: settings.plus_check_phone_number %}
+    {% endcomment %}
+    {% render 'plus_character_limit', enable: settings.plus_enable_char_limits %}
+    
+    {% section 'checkout-discount-codes-boa' %}
+    
+  
+  </body>
+</html>
+<style>
+  @import url(//fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+  body, a, .btn { font-family: 'Open Sans Hebrew', sans-serif; }
+  a, .link { color: #000; text-decoration: underline; }
+  a:hover, .link:hover { color:#3f4042;}
+  .main .field__input, .sidebar .field__input, .main .input-checkbox, .content-box { border-radius: 0; }
+  .main .input-checkbox, .main .input-radio { border-color:#000; }
+  .breadcrumb__link { font-size: 1rem; text-decoration: none; font-weight: 600;}
+  .breadcrumb__item--current { font-size: 1rem; }
+  .input-checkbox:checked, .input-radio:checked { border: none; -webkit-box-shadow: 0 0 0 10px #000 inset; box-shadow: 0 0 0 10px #000 inset; }
+  .btn { background: #000; border-radius: 0px; }
+  .btn:hover { background-color: #3f4042; }
+  .icon-svg--color-accent, .step__footer__previous-link:hover .previous-link__icon { color: #000; fill: #000;}
+ /* .total-line--reduction  { display: none!important; }*/
+  #payment-gateway-subfields-17096835187, #payment-gateway-subfields-17096179827 { display: none!important; }
+  label.radio__label__primary.content-box__emphasis { font-size: 20px; }
+  .radio-wrapper.content-box__row.first { border-top:0; }
+  .content-box__row:last-child .radio__label__primary, .content-box__row:last-child .radio__label__accessory { font-size: 16px; font-weight: bold; }
+  .section--shipping-method .content-box__row:last-child { background:#d8d8d8; }
+  .order-summary-toggle__icon,.order-summary-toggle__dropdown, .order-summary-toggle:hover .order-summary-toggle__dropdown, .order-summary-toggle:focus .order-summary-toggle__dropdown, .order-summary-toggle:hover .order-summary-toggle__icon, .order-summary-toggle:focus .order-summary-toggle__icon { fill: #000; }
+  .order-summary-toggle:hover .order-summary-toggle__text, .order-summary-toggle:focus .order-summary-toggle__text, .order-summary-toggle__text { color: #000; }
+  #msg_text { display: none; padding-top: 1.5em; }
+  #msg_text textarea { height: 150px; }
+  #msg_text textarea.note_saved { resize: none; }
+  .checkbox-container { padding-top:1.5rem;  }
+  .checkbox-container label { cursor: pointer; padding-top: 1.5em; }
+  .checkbox-container input[type=checkbox]:checked ~ #msg_text { display: block; }
+    /* footer icons */
+  .checkout-footer-icons { padding: 1em 0; }
+  .checkout-footer-icons .icon-row { display: flex; flex-wrap: wrap; align-items: center; padding: 10px 0; border-top: 1px solid #eeeeee; }
+  .checkout-footer-icons .icon-image { width: 24px; height: 24px; margin-left: 10px; background-repeat: no-repeat; background-size: contain; background-position: center; }
+  .checkout-footer-icons .icon-text {font-size: 14px;}
+  {% if settings.checkout_express_buttons == true %}
+	.main__header .shown-if-js { display: none !important; }
+  {% endif %}
+</style>
+
+{{ '//code.jquery.com/jquery-3.4.1.min.js'| script_tag }}
+<script defer>
+  $( document ).ready(function() {
+      //     add default remember me
+      $("#checkout_remember_me").prop('checked', true);
+      //     remove default shipping method
+      //     $('.section--shipping-method input[type=radio]').each(function(){
+      //       $(this).prop('checked', false).removeAttr('checked');
+      //     })    
+      //     show mobile order summery
+      $('button.order-summary-toggle.order-summary-toggle--show').trigger("click");
+      $('.content-box__row[data-gateway-group="offsite"]').addClass('first');
+      $('.content-box__row[data-gateway-group="express"]').addClass('last');
+      $('.field__input.field__input--zip').addClass('zip-code');
+      $(".last").insertAfter(".first");
+      $(".last .input-radio").attr("aria-expanded","false").prop('checked', false);
+      $(".first .input-radio").attr("aria-expanded","true").prop('checked', true);
+
+//       var zipCode = $('.zip-code').val();
+//       if (zipCode === '-' ) {
+//         $(".zip-code").css("color","#fff");
+//         $(".zip-code").on({click: function(){
+//           $(".zip-code").val('');
+//           $(this).css("color", "#000");
+//         }  
+//                           });
+//       }
+
+//       $(".edit_checkout").submit(function(){
+//         $(".zip-code").val(function(i, v){
+//           return $.trim(v) === '' ? '-' : v;
+//         })
+//       });
+
+      var isGoogleMaps = document.getElementsByClassName('section--shipping-address');
+      if (isGoogleMaps.length > 0) {
+
+        window.onload = function() {
+
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDk31Iq429nuCrGIOEjdargpON8nj_9hx8&libraries=places&language=iw";
+          script.async = "true";
+          script.defer = "defer";
+          document.body.appendChild(script);
+
+          setTimeout(initAutocomplete, 2000);
+
+          var lookup = {
+            "street_number": document.getElementById('checkout_shipping_address_address1'),
+            "route": document.getElementById('checkout_shipping_address_address1'),
+            "fullAddress": document.getElementById('checkout_shipping_address_address1'),
+            "locality": document.getElementById('checkout_shipping_address_city'),
+            "neighborhood": document.getElementById('checkout_shipping_address_city'),
+            "postal_code": document.getElementById('checkout_shipping_address_zip')
+          };
+          var placeSearch;
+          var autocomplete;
+          var componentForm = {
+            street_number: 'short_name',
+            route: 'long_name',
+            locality: 'long_name',
+            neighborhood: 'long_name',
+            postal_code: 'short_name'
+          };
+
+          function initAutocomplete() {
+            document.getElementById('checkout_shipping_address_address1').onFocus = "geolocate()";
+
+            var options = {
+              types: ['geocode'],  // or '(cities)' if that's what you want?
+              componentRestrictions: {country: "il"}
+            };
+            autocomplete = new google.maps.places.Autocomplete(
+              (document.getElementById('checkout_shipping_address_address1')), { options });
+
+            autocomplete.addListener('place_changed', fillInAddress);
+          }
+
+
+          function fillInAddress() {
+            var place = autocomplete.getPlace();
+            for (var component in componentForm) {
+              lookup[component].value = '';
+            }
+            var fullAddress = '';
+            for (var i = 0; i < place.address_components.length; i++) {
+              var addressType = place.address_components[i].types[0];
+              var val = place.address_components[i][componentForm[addressType]];
+              if (componentForm[addressType]) {
+                switch (addressType) {
+                  case 'street_number':
+                    fullAddress = val + fullAddress;
+                    break;
+                  case 'route':
+                    fullAddress = val + ' ' + fullAddress;
+                    break;
+                  case 'neighborhood':
+                    lookup.neighborhood.value = val;
+                    break;
+                  case 'locality':
+                    lookup.locality.value = val;
+                    break;
+                  case 'postal_code':
+                    lookup.postal_code.value = val;
+                    break;
+                }
+              }
+            }
+
+            if (fullAddress === ""){
+              lookup.fullAddress.value = lookup.locality.value;
+            }
+            else {
+              lookup.fullAddress.value = fullAddress;
+            }
+
+          }
+
+          function geolocate() {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function(position) {
+                var geolocation = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle({
+                  center: geolocation,
+                  radius: position.coords.accuracy
+                });
+                autocomplete.setBounds(circle.getBounds());
+              });
+            }
+          }
+
+
+        };
+      }
+
+
+
+
+      //     gift message
+      if ($('.section--shipping-address').length > 0) {
+        $('[data-gift-note-html]').css('display', 'block').appendTo($('.step__sections'));
+      }
+
+      var saveCartNote = function() {
+        var cartNote = $('#msg_text textarea').val();
+        $.post(window.location.origin + '/cart/update.js', {note: cartNote}, function() {
+          $('#msg_text textarea').addClass('note_saved');
+          $('#msg_text textarea').css('cursor', 'not-allowed');
+          $('#msg_text textarea').prop('disabled', 'true');
+        }, 'json');
+      };
+
+      var editCartNote = function() {
+        $('#msg_text textarea').removeClass('note_saved');
+        $('#msg_text textarea').css('cursor', 'default');
+        $('#msg_text textarea').prop('disabled', '');
+      };
+
+      $('#gift-message').on('click', function() {
+        if (!(this).checked) {
+          $('#msg_text textarea').removeClass('note_saved');
+          $('#msg_text textarea').css('cursor', 'default');
+          $('#msg_text textarea').prop('disabled', '');
+          $.post(window.location.origin + '/cart/update.js', {note: ''}, function() {
+            $('#msg_text textarea').val('');
+          }, 'json');
+        }
+      });
+  });
+  
+                 
+</script>
+
+{% comment %}check if shipping is selected 
+<script defer>
+  if (Shopify.Checkout.step === 'shipping_method') {
+    $('input[type=radio]').each(function(){
+      $(this).prop('checked', false).removeAttr('checked');
+    }) 
+    console.log('lital '+$(".content-box").find("input:radio:checked").length)
+    console.log('value '+$("input[name='checkout[shipping_rate][id]']:checked").val());
+    $(".edit_checkout").submit(function(e) {
+      if($(".content-box").find("input:radio:checked").length === 0 ) {
+        e.stopImmediatePropagation();
+        alert("יש לבחור שיטת משלוח");
+      }
+    });
+  }
+</script>
+{% endcomment %}

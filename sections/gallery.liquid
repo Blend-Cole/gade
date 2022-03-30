@@ -1,0 +1,198 @@
+<section class="homepage-gallery-{{ section.id }} index-section no-fouc" data-section-id="{{ section.id }} is-gallery-sec" 
+         {% if section.settings.promo_background_color != blank %}
+         style="background-color: {{ section.settings.promo_background_color }};"
+         {% endif %}
+         >
+  <article id="promo-images lital" class="row">
+
+    {% for block in section.blocks %}
+      {% case block.settings.image_width %}
+      {% when '25%' %}
+        {%- assign image_width = 'desktop-3 tablet-fourth' -%}
+      {% when '33%' %}
+        {%- assign image_width = 'desktop-4 tablet-2' -%}
+      {% when '50%' %}
+        {%- assign image_width = 'desktop-6 tablet-3' -%}
+      {% when '66%' %}
+        {%- assign image_width = 'desktop-8 tablet-4' -%}
+      {% when '75%' %}
+        {%- assign image_width = 'desktop-9 tablet-three-fourths' -%}
+      {% when '100%' %}
+        {%- assign image_width = 'desktop-12 tablet-6' -%}
+      {% endcase %}
+
+      <div class="pimg homepage-promo {{ image_width }} mobile-half promo-{{ block.id }} is-pro" {{ block.shopify_attributes }}>
+        <div class="promo-inner">
+          <a href="{{ block.settings.link }}">
+            {% if block.settings.image != blank %}
+            <img class="lazyload sm-d-none" data-src="{{ block.settings.image | img_url: '800x' }}" alt="{{ block.settings.image.alt }}">
+            <img class="lazyload sm-d-block" data-src="{{ block.settings.imagemobile | img_url: '800x' }}" alt="{{ block.settings.image.alt }}">
+            {% else %}
+            <div class="onboard">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+            {% endif %}
+            <div class="caption">
+              {% if block.settings.heading != blank %}
+                <p style="color: {{ block.settings.heading_color }};">
+                  {{ block.settings.heading | escape }}
+                </p>
+              {% endif %}
+              {% if block.settings.subheading != blank %}
+                <small>{{ block.settings.subheading | escape }}</small>
+              {% endif %}
+              
+            </div>
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+    {% if section.blocks.size == 0 %}
+      {% include 'no-blocks' %}
+    {% endif %}
+  </article>
+</section>
+<style>
+  section.homepage-gallery-{{ section.id }},
+  section.homepage-gallery-{{ section.id }} .caption p {
+    font-size: {{ section.settings.promo_heading_size }}px;
+    font-weight: {{ section.settings.promo_heading_weight }};
+  }
+  @media screen and (min-width: 768px){
+    .homepage-promo { margin-bottom: 20px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Gallery",
+  "max_blocks": 4,
+  "settings": [
+      {
+      "type": "color",
+      "id": "promo_background_color",
+      "label": "Background color",
+      "default": "#fff"
+      },
+      {
+        "type": "select",
+        "id": "promo_heading_weight",
+        "label": "Heading weight",
+        "options": [
+          {
+            "value": "light",
+            "label": "Light"
+          },
+          {
+            "value": "normal",
+            "label": "Normal"
+          },
+          {
+            "value": "bold",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "promo_heading_size",
+        "min": 12,
+        "max": 36,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading size",
+        "default": 24
+      }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image for desktop"
+        },
+		{
+          "type": "image_picker",
+          "id": "imagemobile",
+          "label": "Image for mobile"
+        },
+        {
+          "type": "select",
+          "id": "image_width",
+          "label": "Container width",
+          "default": "33%",
+          "options": [
+			      {
+               "value":"25%",
+               "label":"25%"
+            },
+            {
+               "value":"33%",
+               "label":"33%"
+            },
+            {
+               "value":"50%",
+               "label":"50%"
+            },
+            {
+               "value":"66%",
+               "label":"66%"
+            },
+            {
+               "value":"75%",
+               "label":"75%"
+            },
+            {
+               "value":"100%",
+               "label":"100%"
+            }
+          ]
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        },
+       {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Our collections"
+       },
+	   {
+        "type": "text",
+        "id": "subheading",
+        "label": "Sub Heading"        
+       },
+      {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading color",
+        "default": "#ffffff"
+      }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gallery",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

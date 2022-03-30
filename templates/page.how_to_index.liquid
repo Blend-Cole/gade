@@ -1,0 +1,217 @@
+<div class="top-banner">
+  {% section 'banner-how-to' %}
+</div>
+
+<div class="how-to-index-grid">
+  {% for link in linklists['how-to'].links %}
+  {% assign page = link.object %}
+  <div class="how-to-index-item">
+    <div class="cover-image">
+      {{page.metafields.custom_fields["cover_photo"]}}
+    </div>
+    <div class="text-area">
+      <h2>{{page.title}}</h2>
+      {% assign published_at = page.published_at | date: "%b %d, %Y" %}
+      <h3>{{ 'blogs.article.posted_on_date_html' | t: date: published_at }}</h3>
+      <p>{{page.content}}</p>
+      <a href="{{page.url}}">
+        <button>קראי עוד</button>
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+<div class="bottom-banner">
+  {% section "parallax-image-how-to" %}
+</div>
+
+
+
+
+
+ 
+{% if settings.pagelist != '' %}
+  <div id="page-sidebar" class="desktop-3 tablet-2 mobile-3">
+    <h2>{{ settings.page-sidebar-title }}</h2>
+    <ul>
+      {% for link in linklists[settings.pagelist].links %}
+        <li>{{ link.title | link_to: link.url }}</li>
+      {% endfor %}
+    </ul>
+
+    {% if settings.pagelist == '' %}
+      <p>You are seeing this message as you have yet to pick a linklist in the Pages and contact form section of the theme settings</p>
+      <p>In your admin click on Themes > Customize Theme > Pages and Contact form and choose a Linklist from the dropdown in the area marked Choose a linklist for page sidebar</p>
+    {% endif %}
+
+  </div>
+{% endif %}
+
+
+
+    
+<style>
+  .page-wrap{
+      background-color: #f3f0f1;
+  }
+  
+  .page-wrap #content.row{
+      width: 1920px;
+  }
+  
+  .how-to-index-grid{
+  	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 89px 0 89px 0;
+
+  }
+  
+  .page-wrap #banner_banner{
+      margin: 0 0 0 0;
+  }
+  
+  
+  .how-to-index-item{
+  	display: flex;
+    flex-direction: column;
+    width: 598px;
+    height: 648px;
+    background-color: white;
+    margin: 0 0 0 30px;
+    
+  }
+  
+  .how-to-index-item .cover-image{
+  	width: 598px;
+    height: 410px;
+    margin: 0 0 35px 0;
+    
+  }
+  
+  .how-to-index-item .cover-image img{
+  	width: 100%;
+    height: 100%;
+    
+  }
+  
+  .how-to-index-item .text-area{
+  	padding: 0 45px 0 0;
+  }
+  
+  .how-to-index-item .text-area h2{
+  	font-family: open_sans_hebrewregular;
+    font-size: 25px;
+    margin: 0 0 13px 0;
+  }
+  
+  .how-to-index-item .text-area h3{
+  	font-family: open_sans_hebrewbold;
+    font-size: 16.5px;
+    margin: 0 0 17px 0;
+  }
+  
+  .how-to-index-item .text-area p{
+  	font-family: open_sans_hebrewregular;
+    font-size: 16px;
+    margin: 0 0 27px 0;    
+  }
+  
+  .how-to-index-item .text-area button{
+    width: 151px;
+    height: 41px;
+    border: 2px solid black;
+    background-color: white;
+  	font-family: open_sans_hebrewbold;
+    font-size: 18px;
+    color: black;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+  }
+  
+  @media screen and (max-width: 1220px){
+    .page-wrap #content.row{
+      	width: 100%;
+  	}
+    
+    
+    
+   .how-to-index-grid{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 89px 0 89px 0;
+
+    }
+
+    .page-wrap #banner_banner{
+        margin: 0 0 0 0;
+    }
+
+
+    .how-to-index-item{
+      display: flex;
+      flex-direction: column;
+      width: 294.5pt;
+      height: 383pt;
+      background-color: white;
+      margin: 0 0 24pt 0;
+
+    }
+
+    .how-to-index-item .cover-image{
+      width: 294.5pt;
+      height: 203.5pt;
+      margin: 0 0 16.5pt 0;
+
+    }
+
+    .how-to-index-item .cover-image img{
+      width: 95%;
+      height: 95%;
+
+    }
+
+    .how-to-index-item .text-area{
+      padding: 0 45px 0 0;
+    }
+
+    .how-to-index-item .text-area h2{
+      width: fit-content;
+      font-family: open_sans_hebrewregular;
+      font-size: 18pt;
+      margin: 0 0 12.5pt 0;
+    }
+
+    .how-to-index-item .text-area h3{
+      width: fit-content;
+      font-family: open_sans_hebrewbold;
+      font-size: 12pt;
+      margin: 0 0 16.5pt 0;
+    }
+
+    .how-to-index-item .text-area p{
+      font-family: open_sans_hebrewregular;
+      font-size: 11.5pt;
+      margin: 0 0 19.5pt 0;    
+    }
+
+    .how-to-index-item .text-area button{
+      width: 112.5pt;
+      height: 30pt;
+      border: 2px solid black;
+      background-color: white;
+      font-family: open_sans_hebrewbold;
+      font-size: 13.3pt;
+      color: black;
+      padding: 0 0 0 0;
+      margin: 0 0 0 0;
+    }
+  }
+  
+
+</style>

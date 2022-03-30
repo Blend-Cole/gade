@@ -1,0 +1,17 @@
+<script src="//nowdialogue.com/embed.js"></script>
+<script>
+    function WaitJshopScript(callback) {
+        var JShopInterval = setInterval(function () {
+            if (typeof JourneyShopCommerce !== "undefined") {
+                clearInterval(JShopInterval);
+                callback();
+            }
+        }, 100);
+    }
+    WaitJshopScript(function () {
+      JourneyShopCommerce.construct(531, "//nowdialogue.com");
+      {% if customer %}
+      JourneyShop.username = "{{ customer.first_name }}";
+      {% endif %}
+    });
+</script>

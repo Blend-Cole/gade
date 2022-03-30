@@ -1,0 +1,28 @@
+<div id="sidebar" class="sidebar">
+  <div class="sidebar__inner">
+	{% if page.metafields.custom_fields["menu_on_right"] != blank %}
+    <ul class="sidebar-accordion">    
+       <label></label>
+      {% for childlink in linklists[page.metafields.custom_fields["menu_on_right"]].links %}   
+      	<li><a href="{{ childlink.url }}">{{ childlink.title }}</a></li>	
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% if page.metafields.custom_fields["menu_on_right1"] != blank %}
+    <ul class="sidebar-accordion"> 
+      <label></label>
+      {% for childlink in linklists[page.metafields.custom_fields["menu_on_right1"]].links %}   
+      	<li><a href="{{ childlink.url }}">{{ childlink.title }}</a></li>	
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% if page.metafields.custom_fields["menu_on_right2"] != blank %}
+    <ul class="sidebar-accordion">
+      <label></label>
+      {% for childlink in linklists[page.metafields.custom_fields["menu_on_right2"]].links %}   
+      	<li><a href="{{ childlink.url }}">{{ childlink.title }}</a></li>	
+      {% endfor %}
+    </ul>
+    {% endif %}
+    </div> 
+</div>

@@ -1,0 +1,26 @@
+<div data-section-id="{{ section.id }}" class="contact-page boaideas">
+    <div class="desktop-12 tablet-12 mobile-3">
+      
+      {% if section.settings.image != null %}
+      	<img class="lazyload" data-src="{{ section.settings.image | img_url:'master'}}" alt="contact page">
+      {% endif %}
+     
+      <div class="desktop-6 mobile-3 tablet-6 desktop-push-3">
+        <h1 class="text-center pt-3">{{ page.title }}</h1>
+        {% include 'contact' %}
+      </div>
+  </div>
+</div>
+
+{% schema %}
+{
+    "name": "Contact page",
+    "settings": [
+		{
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+    ]
+  }
+{% endschema %}

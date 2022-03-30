@@ -1,0 +1,268 @@
+{% layout none %}
+<div class="product-quick-view" style="position: relative; z-index: 0" id="product-{{ product.id }}" data-product-id="{{ product.id }}">
+  <div class="product-photos desktop-6 mobile-3" data-product-gallery>
+    {% assign img_link = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+    <a href="{{ product.url }}" title="{{ product.title | escape }}">
+      <img class=""
+           src="{{ product.featured_image | product_img_url: 'master' }}"
+           data-src="{{ img_link }}"
+           data-sizes="auto"
+           data-image-id="{{ image.id }}"
+           alt="{{ prod.title | escape }}">
+      <noscript>
+        <img
+             src="{{ featured_image | product_img_url: 'large' }}"
+             alt='{{ prod.title | escape }}'
+             data-image-id="{{ image.id }}" />
+      </noscript>
+    </a>
+  </div>
+  {% capture product_form_config %}{ "money_format": {{ shop.money_format | json }}, "enable_history": true, "currency_switcher_enabled": {{ settings.show_multiple_currencies | json }}, "sold_out": {{ "products.product.sold_out" | t | json }}, "button": {{ 'products.product.add_to_cart' | t | json }} }{% endcapture %}
+  {% form 'product', product, data-product-form:product_form_config %}
+    <input type="hidden" class="pid" value="{{product.id}}">
+    <input type="hidden" class="ptitle" value="{{product.title | remove: "'" | remove: '"'}}">
+    <input type="hidden" class="pprice" value="{{product.price | times: 0.01}}">
+    <input type="hidden" class="pbrand" value="{{product.vendor | remove: "'" | remove: '"'}}">
+    <input type="hidden" class="ptype" value="{{product.type | remove: "'" | remove: '"'}}">
+    <input type="hidden" class="psku" value="{{product.variants.first.sku | remove: "'" | remove: '"'}}">
+    <input type="hidden" class="pcollection" value="{% for collection in product.collections %}{{ collection.title | remove: "'" | remove: '"' }},{% endfor %}">
+  	<script class="product-json" type="application/json">
+      {{ product | json }}
+    </script>
+    {% assign current_variant = product.selected_or_first_available_variant %}
+    <div id="product-right">
+      <div id="product-description">
+        <h2 class="text-bold">{{ product.title }}</h2>
+        <!-- product vendor -->
+        {% if settings.vendor %}
+          <h3>{{ 'products.product.designer' | t }}: {{ product.vendor }}</h3>
+        {% endif %}
+        <div class="clear"></div>
+        <!-- product description -->
+        <div class="rte">
+          {% if product.metafields.custom_fields.mini_description != blank %}
+          {{ product.metafields.custom_fields.mini_description | strip_html | truncatewords: 40 }}
+          {% else %}
+          {{ product.description | strip_html | truncatewords: 40 }}
+          {% endif %}
+        </div>
+
+        <!-- product price -->
+        {%- if settings.show_multiple_currencies -%}
+          {% assign price = current_variant.price | money_with_currency %}
+          {% assign compare_price = current_variant.compare_at_price | money_with_currency %}
+        {%- else -%}
+          {% assign price = current_variant.price | money %}
+          {% assign compare_price = current_variant.compare_at_price | money %}
+        {%- endif -%}
+        <div class="d-flex mt-4">
+          <div id="product-price" class="w-70">
+            <span class="product-price" itemprop="price">
+              <span class="money text-bold">{{ price }}</span>
+            </span>
+            {% if current_variant.compare_at_price > current_variant.price %}
+              <span class="was">
+                <span class="money">{{ compare_price }}</span>
+              </span>
+            {% endif %}
+            {% render 'product-quick-weight-boa', product: product %}
+          </div>
+          <div class="w-30 text-left">
+            <div class="product-qty">
+              <input type='button' value='-' class='qtyminus' field='updates_{{ item.id }}' />
+              <input type="text" name="quantity" class="product-quantity field" id="updates_{{ item.id }}" value="1">
+              <input type='button' value='+' class='qtyplus' field='updates_{{ item.id }}' />
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      {% if product.options.size > 1 %}
+       <div class="select" {% if product.variants.size == 1 %}style="display: none;"{% endif %}>
+         <select id="product-select-{{ product.id }}" name='id'>
+           {% for variant in product.variants %}
+             <option value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
+               {{ variant.title }} - {{ variant.price | money }}
+             </option>
+           {% endfor %}
+         </select>
+       </div>
+      {% elsif product.options.size == 1 and product.variants.size > 1 %}
+       <div class="select">
+         <label>{{ product.options[0] }}</label>
+         <select id="product-select-{{ product.id }}" name='id'>
+           {% for variant in product.variants %}
+             <option data-sku="{{ variant.sku }}" value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
+               {{ variant.title }} - {{ variant.price | money }}
+             </option>
+           {% endfor %}
+         </select>
+       </div>
+      {% elsif product.variants.size == 1 %}
+       <select id="product-select-{{ product.id }}" name="id" {% if product.variants.size == 1 %}style="display: none;"{% endif %}>
+         {% for variant in product.variants %}
+           <option value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
+             {{ variant.title }} - {{ variant.price | money }}
+           </option>
+         {% endfor %}
+       </select>
+      {% else %}
+         <div class="what-is-it">
+           {% if product.options.first != 'Title' %}
+             <label>{{ product.options.first }}:</label>
+             {% for variant in product.variants %}
+               <span class="it-is">{{ variant.option1 | escape }}</span>
+             {% endfor %}
+           {% endif %}
+         </div>
+         <div class="product-variants"></div><!-- product variants -->
+         <input  type="hidden" id="{{ variant.id }}" name="id" data-sku="{{ variant.sku }}" value="{{ product.variants[0].id }}" />
+      {% endif %}
+
+      <!-- product variants custom fields -->
+      {% assign collection_handle = product.metafields.custom_fields.collection_name | replace: ' ', '-' %}
+      {% assign current_collection = collections[collection_handle].products | reverse %}	
+      {% if current_collection.size > 1 %}    
+        <div class="quickview_variants_dropdown">
+            <div class="product-current-variant pointer d-flex align-items-center">
+              <div class="round" {% unless product.metafields.custom_fields.variant_image != blank %}style="background-color: #{{ product.metafields.custom_fields.colorhexa }};"{% endunless%}> 
+                {% if product.metafields.custom_fields.variant_image != blank %}
+                {{ product.metafields.custom_fields.variant_image}}
+                {% endif %}
+              </div>
+              <span class="current-variant-name">{{ current_variant.option1 }}</span>
+              {% include 'chevron-svg'%}
+            </div>
+          
+               
+            <div class="product-variants-dropdown">
+              {% for current_variant in current_collection %}
+              <a class="quickview-fancybox" rel="nofollow" href="{{ current_variant.url }}?view=quick" style="display: inline-block;">
+                <div class="round-outer-circle-overlay {% if product.handle == current_variant.handle %}with-border{% endif %}">
+                  <div class="round" {% unless current_variant.metafields.custom_fields.variant_image != blank %} style="background-color: #{{current_variant.metafields.custom_fields.colorhexa}};"{% endunless%}>
+                  {% if current_variant.metafields.custom_fields.variant_image != blank %}
+                    {{current_variant.metafields.custom_fields.variant_image}}
+                  {% endif %}
+                  </div>
+                  <span class="variant-name">{{ current_variant.selected_or_first_available_variant.option1 }}</span>
+                </div>
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+     
+      {% endif %}
+     <!-- end product variants custom fields -->
+        
+        
+        {% if current_variant.available %}
+          <div class="product-add">
+            <input id="AddToCart" type="submit" name="button" class="add{% if settings.show_payment_button %} secondary-button{% endif %}" value="{{ 'products.product.add_to_cart' | t }}" />
+          </div>
+        {% else %}
+          <div class="product-add">
+            <input id="AddToCart" type="submit" name="button" class="text-bold add{% if settings.show_payment_button %} secondary-button{% endif %}" value="{{ 'products.product.sold_out' | t }}" />
+          </div>
+        {% endif %}
+        {% if settings.show_payment_button %}
+        {{ form | payment_button }}
+        {% endif %}
+   
+      </div>
+    </div>
+  {% endform %}
+</div>
+
+{% if settings.ajax_cart_method == 'drawer' %}
+{{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+<script>
+  $("#AddToCart").click(function (e) {
+    e.preventDefault();
+    jQuery.post({
+      url: '/cart/add.js',
+      dataType: 'json', 
+      data: $('form[action="/cart/add"]').serialize(),
+      success: function() {
+        $.fancybox.close(true);
+        $( ".js-drawer-open-right" ).trigger( "click" );
+        WaitJshopScript(function () {
+          JourneyShopCommerce.addProduct({{current_variant.selected_or_first_available_variant.sku}});
+          JourneyShopCommerce.addToCart();
+        }); 
+      }
+      // error: addToCartFail
+    });
+  }); 
+</script>
+{% endif %}
+<script>
+// This button will increment the value
+    $('.qtyplus').click(function(e){
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        let fieldName = $(this).attr('field');
+        // Get its current value
+        //let currentVal = parseInt($('input[id='+fieldName+']').val());
+      	let currentVal = parseInt(($(this).siblings('.field')).val());
+
+        // If is not undefined
+        if (!isNaN(currentVal)) {
+            // Increment
+            //$('input[id='+fieldName+']').val(currentVal + 1);
+          	$(this).siblings('.field').val(currentVal + 1);
+        } else {
+            // Otherwise put a 0 there
+            //$('input[id='+fieldName+']').val(0);
+            $(this).siblings('.field').val(0);
+
+        }
+    });
+    // This button will decrement the value till 0
+    $(".qtyminus").click(function(e) {
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        fieldName = $(this).attr('field');
+        // Get its current value
+        //var currentVal = parseInt($('input[id='+fieldName+']').val());
+        let currentVal = parseInt(($(this).siblings('.field')).val());
+
+        // If it isn't undefined or its greater than 0
+        if (!isNaN(currentVal) && currentVal > 1) {
+            // Decrement one
+            //$('input[id='+fieldName+']').val(currentVal - 1);
+          	$(this).siblings('.field').val(currentVal - 1);
+        } else {
+            // Otherwise put a 0 there
+			//$('input[id='+fieldName+']').val(0);
+               $(this).siblings('.field').val(1);
+
+        }
+    });
+  
+  $('.product-current-variant').on("click", function(){
+    $('.product-variants-dropdown').toggleClass('show');
+    $('#side-arrow').toggleClass('show');
+  });
+  r(function(){
+    $(".quickview-fancybox").fancybox({
+      type: 'ajax',
+      width: '350px',
+      height: '1080px',
+      autoSize: false,
+      afterLoad: function() {
+        $(".fancybox-wrap").css({right: '0px', top: '0px'});
+      },
+      afterShow:function() {
+        $(".fancybox-wrap").css({right: 0, top: 0});
+      }
+    });
+
+    $(".fancybox-wrap").css({right: '0px', top: '0px'});
+  });
+
+  function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+{% if settings.show_payment_button %}
+  Shopify.PaymentButton.init()
+{% endif %}
+</script>

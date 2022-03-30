@@ -1,0 +1,69 @@
+{% comment %}
+  The code below relies on the advanced-tag-loop snippet.
+  The snippet is already included in snippets/breadrumbs.liquid
+  because it is needed there too, but if you remove
+  breadcrumbs you need to include this:
+{% endcomment %}
+{% include 'advanced-tag-loop' %}
+{% if collection.all_tags.size > 0 %}
+<div class="grid-uniform">
+      {%- comment -%}
+        Loop through tag categories
+      {%- endcomment -%}
+      {%- for cat_item in cat_array -%}
+  		{% if cat_item contains 'color' %}
+        <div class="grid-item small--one-half medium--one-third">                    
+          <ul class="advanced-filters sidebar-accordion">
+            <label>סינון לפי צבע</label>
+            {%- comment -%}
+              Loop through collection tags
+            {%- endcomment -%}
+            {%- for tag in collection.all_tags -%}
+              {%- assign cat = tag | split: '_' | first -%}
+              {%- if cat != tag and cat_item == cat -%}
+                {%- comment -%}
+                  Strip out tag category prefix and add/remove link for tag filtering
+                {%- endcomment -%}
+                {%- if current_tags contains tag -%}
+            <li class="advanced-filter active-filter" data-group="{{ cat_item }}" data-handle="{{ tag | handle }}"><span class="color_swatch {{ tag | remove_first: cat_item | remove_first: '_'}}"></span>{{ tag | remove_first: cat_item | remove_first: '_' | link_to_remove_tag: tag }}</li>
+                {%- else -%}
+                  <li class="advanced-filter" data-group="{{ cat_item }}" data-handle="{{ tag | handle }}"><span class="color_swatch {{ tag | remove_first: cat_item | remove_first: '_'}}"></span>{{ tag | remove_first: cat_item | remove_first: '_' | link_to_add_tag: tag }}</li>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+  		{% endif %}
+      {%- endfor -%}
+    </div>
+<script>
+    $(function() {
+      var filters = $('.advanced-filter'),
+        el,
+        elGroup,
+        elHandle,
+        activeTagInGroup;
+
+      filters.on('click', function(e) {
+        el = $(this);
+        elGroup = el.data('group');
+        elHandle = el.data('handle');
+        activeTagInGroup = $('.active-filter[data-group="'+ elGroup +'"]');
+        // If the tag clicked is not already active and its group contains an active tag, we will swap tag within the group.
+        if ( !el.hasClass('active-filter')  && activeTagInGroup.size() ) {
+          e.preventDefault();
+          location.href = location.href
+            // swap tag
+            .replace(activeTagInGroup.data('handle'), elHandle)
+            // go back to page 1
+            .replace(/(&page=\d+)|(page=\d+&)|(\?page=\d+$)/, '');
+        }
+      });
+    });
+    </script>
+{% endif %}
+<style>
+  .color_swatch{width:23px;height:23px;border-radius:50%;display:inline-block;margin-left:10px;}
+  .advanced-filter a{position:relative;top:-5px;}
+  .orange{background-color:#f67ea3;}.pink{background-color:#f50707;}.satin{background-color:#851f4c;}
+</style>
