@@ -1,0 +1,30 @@
+/* Look Around Apps */
+
+/* ========== C O M M O N ========== */
+#shopify-section-mobile-navigation #mobilesearch input::placeholder {
+  color: #999;
+}
+#navigation .nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#navigation .nav-container > * {
+  width: auto;
+}
+
+/* ========== C O L L E C T I O N ========== */
+.collection-grid-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.collection-grid-wrap > * {
+  width: 23%;
+  margin: 1%;
+}
+@media only screen and (max-width: 728px) {
+  .collection-grid-wrap > * {
+    width: 48%;
+  }
+}

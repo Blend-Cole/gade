@@ -2,11 +2,9 @@
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-  <html class="no-js" lang="{{ shop.locale }}">
-  <!--<![endif]-->
-
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="he" class="no-js"> <!--<![endif]-->
 <head>
+{% include 'dialogue' %}
  
   <meta charset="utf-8" />
   <meta name="google-site-verification" content="34UC0VT_ZDYwh9mMemlP1YMhhhR8zuPOXXe5UVbZynU" />
@@ -40,8 +38,9 @@
   {{ 'stylesheet.css' | asset_url | stylesheet_tag }}
   {{ 'queries.css' | asset_url | stylesheet_tag }}
   {{ 'boaideas.css' | asset_url | stylesheet_tag }}
-  {{ 'loyaltylion.min.css' | asset_url | stylesheet_tag }}  
-  {{ 'custom.min.css' | asset_url | stylesheet_tag }}  
+  
+  <!-- Look Around Apps -->
+  {{ 'custom.css' | asset_url | stylesheet_tag }}
 
   <!-- JS
 ================================================== -->
@@ -54,7 +53,6 @@
   {% endif %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   {{ 'theme.js' | asset_url | script_tag }}
-  
   {{ 'option_selection.js' | shopify_asset_url | script_tag }}
   {% if template  == 'index'  %}{{ 'instafeed.js' | asset_url | script_tag }}{% endif %}
 
@@ -76,7 +74,9 @@
     (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/L4sgIDh0SQsqx27zCCXSjiKvViXWbe1C5knOPgOx/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
   </script>
   {% endif %}
-
+  <!--HUMANZ JAVASCRIPT-->
+   {% include 'humanz' %}
+  <!--END HUMANZ  JAVASCRIPT-->
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -100,14 +100,28 @@
 
 {% render 'gsf-conversion-pixels' %}
   {% include "loyaltylion" %}
-   <!--   ANIMATED integration 
-   <script src="//d1tpc317bu2xiz.cloudfront.net/Gade/vidsite.min.js" async></script> -->
+   <!--   ANIMATED integration
+   <script src="//d1tpc317bu2xiz.cloudfront.net/Gade/vidsite.min.js" async></script>  -->
     <!--   end ANIMATED integration -->
   <!--- Poloriz widget --->
-  <script async type="text/javascript" src="https://widget.poloriz.com/prod/poloriz.widget.js"></script>
-
+  
+  
+  <!-- Hide on mobile - Look Around Apps -->
+    {% assign hide_on_mobile = false %}
+    {% if canonical_url contains '/pages/foundation-finder' or canonical_url contains '/pages/skin-match' %}
+      {% assign hide_on_mobile = true %}
+    {% endif %}
  
   <style>
+    {% if hide_on_mobile %}
+      @media only screen and (max-width: 728px) {
+        .laa-mobile-hide {
+          display: none
+        }      
+      }
+    {% endif %}
+    
+    
     story-title {
       bottom: 10% !important;
       top: auto !important;
@@ -124,6 +138,14 @@
     .plz-guide-container-tag-fullarticle {
       display: none !important;
     }
+    .plz-story-price, story-sale-price {
+    top: auto !important;
+    bottom: 28% !important;
+    padding: 11px !important;
+}
+  .plz-story-price-text {
+    font-size: 16px !important;
+}
     .plz-story-price-sign>sup, .plz-story-sale-price-sign > sup {
       vertical-align: inherit;
       font-size: 17px;
@@ -141,19 +163,35 @@
     .plz-story-label > div {
      color: #000000 !important;
 }
+    
+.plz-bubbles-container-category-title, .plz-bubbles-container-story-title {
+    text-transform: uppercase !important;
+}
 
 
   </style> 
+
+
   <!--- End of Poloriz widget --->
   
   {{ 'searchanise-custom.js' | asset_url | script_tag }}
   {% include 'analyzify-gtm-body-withlog' %}
 
-</head>
+
+    <!-- poloriz head 202110070816 -->
+        <script type="text/javascript" src="https://widget.poloriz.com/prod/poloriz.widget.js" async></script>
+        <script type="text/javascript" src="https://widget.poloriz.com/prod/shopify.widget.js?v=202110070816" async></script>
+        <script>
+          	var plzProductCollections = {{ product.collections | json }}
+            var plzCollection = plzProductCollections ? plzProductCollections.map(p => p.title) : "";
+           
+        </script>
+    <!-- poloriz head end -->
+    <!-- Poloriz Widgets --></head>
 
 <body class="gridlock shifter-left shifter-enabled {{ template }} {% if template contains 'about' %} about{% endif %} {{ page.title | handleize }}">
   <!--- Poloriz widget --->
-  <poloriz-stories widget-id="6d3ad850-1852-11eb-a1dd-1f66468584f9" mode="2"></poloriz-stories>
+  <poloriz-stories widget-id="4dc02fa0-4acb-11ec-b836-afb10dead4ff" mode="2"></poloriz-stories>
   <!--- End of Poloriz widget --->
   <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGRJ9TJ"
@@ -165,7 +203,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="shifter-page {% if settings.ajax_cart_method == 'drawer' %} is-moved-by-drawer{% endif %}" id="PageContainer">
     {% section 'header' %}
     <div class="page-wrap">
-      {% if template == 'index' or template contains 'article' or template contains 'collection' or template contains 'blog' or template contains 'list-collections' or template contains 'page.collection1' or template contains 'page.collection2' or template contains 'rewards' %}
+      {% if template == 'index' or template contains 'article' or template contains 'collection' or template contains 'blog' or template contains 'list-collections' or template contains 'page.collection1' or template contains 'page.collection2' %}
       {{ content_for_layout }}
       {% else %}
       <div id="content" class="row">
@@ -343,7 +381,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
 
   <!--   nowdialogue integration -->
-  {% include 'nowdialogue-footer'%}
+ 
   <!--   end nowdialogue integration -->
   
   <!----- YOU MUST INCLUDE THIS STATMENT WHEN USING A NEW THEME OR CRITEO TAGS WILL BREAK ---------->

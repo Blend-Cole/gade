@@ -30,7 +30,7 @@
   <div id="main-content">
     <div class="{% if section.settings.show_collection_sidebar %}desktop-8{% else %}desktop-12{% endif %} tablet-6 mobile-3" id="aside">
       <div class="clear"></div>
-      <div class="is-fea-collection-owl">
+      <div class="collection-grid-wrap is-fea-collection-owl">
         {% for product in collection.products %}
         {% assign isbanner = false %}
          {% for tag in product.tags %}
@@ -38,7 +38,7 @@
                   {% assign isbanner = true %}
               {% endif %}
             {% endfor %}
-          <div class="product {% if section.settings.products_per_row  == 2 %}desktop-6{% cycle ' first', ' last' %}{% elsif section.settings.products_per_row  == 3 %}{% if section.settings.show_collection_sidebar %} desktop-4 {% cycle ' first', '', ' last' %} {% else %} desktop-3 {% cycle ' first' , '' , '', ' last' %} {% endif %}{% elsif section.settings.products_per_row == 4 %}desktop-3{% cycle ' first', '', '', ' last' %}{% endif %} tablet-half mobile-half  {% if isbanner == true %} custom-banner-product {% endif %}" id="prod-{{ product.id }}" data-alpha="{{ product.title }}" data-price="{{ product.price }}">
+          <div class="product {% comment %}{% if section.settings.products_per_row  == 2 %}desktop-6{% cycle ' first', ' last' %}{% elsif section.settings.products_per_row  == 3 %}{% if section.settings.show_collection_sidebar %} desktop-4 {% cycle ' first', '', ' last' %} {% else %} desktop-3 {% cycle ' first' , '' , '', ' last' %} {% endif %}{% elsif section.settings.products_per_row == 4 %}desktop-3{% cycle ' first', '', '', ' last' %}{% endif %} tablet-half mobile-half {% endcomment %} {% if isbanner == true %} custom-banner-product {% endif %}" id="prod-{{ product.id }}" data-alpha="{{ product.title }}" data-price="{{ product.price }}">
             <div id="product-id-hidden" hidden>{{ product.id }}</div>
             <div id="variant-id-hidden" style="display:none;">{{ product.first_available_variant.id }}</div>
             {% if isbanner == true %}            

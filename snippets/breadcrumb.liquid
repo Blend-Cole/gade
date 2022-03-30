@@ -1,5 +1,10 @@
+<!-- Hide on mobile - Look Around Apps -->
+{% assign hide_on_mobile = false %}
+{% if canonical_url contains '/pages/foundation-finder' or canonical_url contains '/pages/skin-match' %}
+  {% assign hide_on_mobile = true %}
+{% endif %}
 
-<div id="breadcrumb" class="desktop-12 tablet-6 mobile-3">
+<div id="breadcrumb" class="desktop-12 tablet-6 mobile-3 laa-mobile-hide">
   <a href="/" class="homepage-link" title="{{ 'general.breadcrumbs.home' | t }}">{{ 'general.breadcrumbs.home' | t }}</a>
   {% if template contains "product" %}
   {% if collection %}
