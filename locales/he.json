@@ -87,8 +87,7 @@
       "back_to": "חזרי לקטגוריית",
       "designer": "מעצב",
       "unavailable": "לא זמין",
-      "compare_at": "השווי עם",
-      "monogram": ""
+      "compare_at": "השווי עם"
     }
   },
   "layout": {
@@ -228,8 +227,7 @@
     "general": {
       "all_collections": "כל הקולקציות",
       "all_products": "כל המוצרים",
-      "no_matches": "אין התאמה למוצר בקולקציה",
-      "shop_by_designer": ""
+      "no_matches": "אין התאמה למוצר בקולקציה"
     },
     "sorting": {
       "title": "מיין לפי",
@@ -239,8 +237,7 @@
       "price_descending": "מחיר, גבוה - נמוך",
       "date_descending": "תאריך, מהחדש לישן",
       "date_ascending": "תאריך, מהישן לחדש",
-      "best_selling": "הכי נמכרים",
-      "featured": ""
+      "best_selling": "הכי נמכרים"
     },
     "filtering": {
       "title": "מיון מהיר",
@@ -256,7 +253,7 @@
     "general": {
       "title": "סל קניות",
       "close_cart": "סגור",
-      "shipping_at_checkout": "משלוח חינם בקניה מעל 199 ש\"ח בלבד!",
+      "shipping_at_checkout": "משלוח חינם בקניה מעל 150 ש\"ח בלבד!",
       "empty": "הסל ריק",
       "product": "מוצר",
       "price": "מחיר",
@@ -296,11 +293,7 @@
       "social_title": "עקבי אחרינו"
     },
     "article": {
-      "posted_on_date_html": "פורסם בתאריך",
-      "tags": "",
-      "tagged": "",
-      "comments": "",
-      "read_more": ""
+      "posted_on_date_html": "פורסם בתאריך"
     }
   },
   "shopify": {

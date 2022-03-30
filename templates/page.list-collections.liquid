@@ -1,11 +1,3 @@
-{% style %}
-  @media only screen and (min-width: 729px) {
-    #collection-blocks .row {
-      display: flex;
-      justify-content: center;
-    }
-  }
-{% endstyle %}
 {% if settings.breadcrumb %}
 <div class="custombreadcrumb">
   <div class="row">
@@ -25,7 +17,7 @@
   </div>
 </div>
   <div class="section-title is-collection-sec"></div>
-<div class="{% comment %}{% if page.metafields.custom_fields["menu_on_right"] != blank %}desktop-8{% else %}desktop-12{% endif %}{% endcomment %}desktop-12 tablet-6 mobile-3" id="aside">
+<div class="{% if page.metafields.custom_fields["menu_on_right"] != blank %}desktop-8{% else %}desktop-12{% endif %} tablet-6 mobile-3" id="aside">
 <div id="collection-blocks" class="row123">  
     {% for link in linklists[page.handle].links %}
 
@@ -43,7 +35,7 @@
   </div>	
   
       <div class="clear"></div>
-    <div class="collection-grid-wrap is-fea-collection-owl listcollectionpages">
+    <div class="is-fea-collection-owl listcollectionpages">
 {% for product in collection.products | limit:27 %}
 {% assign isbanner = false %}
          {% for tag in product.tags %}
@@ -51,7 +43,7 @@
                   {% assign isbanner = true %}
               {% endif %}
             {% endfor %}
-          <div class="product {% comment %}{% if page.metafields.custom_fields["menu_on_right"] != blank %} desktop-4 {% cycle ' first', '', ' last' %} {% else %} desktop-3 {% cycle ' first' , '' , '', ' last' %} {% endif %} tablet-half mobile-half {% cycle ' first' , '' , '' , ' last' %}{% endcomment %} {% if isbanner == true %} custom-banner-product {% endif %}" id="prod-{{ product.id }}" data-alpha="{{ product.title }}" data-price="{{ product.price }}">
+          <div class="product {% if page.metafields.custom_fields["menu_on_right"] != blank %} desktop-4 {% cycle ' first', '', ' last' %} {% else %} desktop-3 {% cycle ' first' , '' , '', ' last' %} {% endif %} tablet-half mobile-half {% cycle ' first' , '' , '' , ' last' %} {% if isbanner == true %} custom-banner-product {% endif %}" id="prod-{{ product.id }}" data-alpha="{{ product.title }}" data-price="{{ product.price }}">
             {% if isbanner == true %}            
             {% include 'product-listing-new' %}
             {% else %}
@@ -65,13 +57,11 @@
   </div>
 </div>
 {% endif %}
-{% comment %}
-  {% if page.metafields.custom_fields["menu_on_right"] != blank %}
-    <div class="desktop-4 tablet-6 mobile-3" id="bside">
-      {% include 'page-list-sidebar' %}
-    </div>
+{% if page.metafields.custom_fields["menu_on_right"] != blank %}
+  <div class="desktop-4 tablet-6 mobile-3" id="bside">
+        {% include 'page-list-sidebar' %}
+      </div>
   {% endif %}
-{% endcomment %}
   <div class="clear"></div>
 </div>
 </div>

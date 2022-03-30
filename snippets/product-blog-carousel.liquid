@@ -40,7 +40,7 @@
             {% assign product_collection = collections[article.metafields.custom_fields["upsell_collection"]] %}
 
             <div class="blog-products-carousel">
-              {% for product in product_collection.products limit: 3 %}              
+              {% for product in product_collection.products limit: 3 %}
               {% include 'sca_freegift_price' with product %}
               <div class="lazyOwl desktop-4 tablet-2 mobile-half" data-alpha="{{ product.title }}" data-price="{{ sca_price }}">
                 <a href="{{ product.url | within: collection }}" title="{{ prod.title | escape }}">
@@ -94,7 +94,6 @@
 
                 </div>
               </div>
-             
               {% endfor %}
             </div>
           </div>

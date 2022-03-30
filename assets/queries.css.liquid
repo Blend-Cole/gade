@@ -624,7 +624,7 @@ div#footer_signup {
   }
 
   /* Force table to not be like tables anymore */
-  table,#shopping-cart thead,
+  table:not(.lion-history-table),#shopping-cart thead,
   #shopping-cart tbody,
   #shopping-cart th,
   #shopping-cart td,
@@ -639,7 +639,7 @@ div#footer_signup {
     left: -9999px;
   }
 
-  tr {
+  table:not(.lion-history-table)  tr{
     border: 1px solid #ccc;
     margin: 20px 0;
   }

@@ -5,11 +5,7 @@
   </button>
   <div class="content product-description">
     <p>{{ product.description }}</p>
-    <p>שימי לב: לפני השימוש במוצר, יש לעיין ברשימת המרכיבים המעודכנת וכן בהוראות השימוש והאזהרות אשר על גבי המוצר/ על אריזתו ולוודא התאמת המוצר לצרכיך.</p>
     <p>מק"ט : {{ product.variants.first.sku }}  </p>
-    {% if product.metafields.my_fields.law_prod_info_disc != blank %}
-    <p>{{ product.metafields.my_fields.law_prod_info_disc}}</p>
-    {% endif %}
   </div>
   
   {% if product.metafields.custom_fields.ingridiants != blank %}

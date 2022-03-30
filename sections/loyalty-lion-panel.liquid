@@ -1,0 +1,311 @@
+<div data-lion-account></div>
+<script>
+    
+</script>
+
+{% schema %}
+
+{
+  "name": "Rules",
+  "class": "ll-rules-section",
+  "settings": [
+    {
+        "type": "text",
+        "id": "header",
+        "label": "Header",
+        "default": "Earn Points"
+    },
+    {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "Subheading"
+    },
+    {
+        "type":      "select",
+        "id":        "order",
+        "label":     "Order",
+        "options": [
+            {
+                "value": "1",
+                "label": "1"
+            },
+            {
+                "value": "2",
+                "label": "2"
+            },
+            {
+                "value": "3",
+                "label": "3"
+            },
+            {
+                "value": "4",
+                "label": "4"
+            },
+            {
+                "value": "5",
+                "label": "5"
+            },
+            {
+                "value": "6",
+                "label": "6"
+            },
+            {
+                "value": "7",
+                "label": "7"
+            },
+            {
+                "value": "8",
+                "label": "8"
+            },
+            {
+                "value": "9",
+                "label": "9"
+            },
+            {
+                "value": "10",
+                "label": "10"
+            },
+            {
+                "value": "11",
+                "label": "11"
+            },
+            {
+                "value": "12",
+                "label": "12"
+            },
+            {
+                "value": "13",
+                "label": "13"
+            },
+            {
+                "value": "14",
+                "label": "14"
+            }
+        ],
+        "default":   "2"
+    },
+    {
+      "type": "header",
+      "content": "Visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "guest_vs",
+      "label": "Guest",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "user_vs",
+      "label": "Logged in",
+      "default": true
+    },
+    {
+        "type":      "select",
+        "id":        "row",
+        "label":     "Rules in the row",
+        "options": [
+            {
+                "value": "1",
+                "label": "1"
+            },
+            {
+                "value": "2",
+                "label": "2"
+            },
+            {
+                "value": "3",
+                "label": "3"
+            },
+            {
+                "value": "4",
+                "label": "4"
+            }
+        ],
+        "default":   "3"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+        "type": "color",
+        "id": "top_color",
+        "label": "Top color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "bottom_color",
+        "label": "Bottom color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "border_color",
+        "label": "Border color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "bbutton_color",
+        "label": "Button color",
+        "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+        "type": "custom",
+        "name": "Rule",
+        "settings": [
+            {
+                "type":      "select",
+                "id":        "title",
+                "label":     "Rule",
+                "options": [
+                    {
+                        "value": "purchase",
+                        "label": "Make a purchase"
+                    },
+                    {
+                        "value": "referral",
+                        "label": "Refer a friend"
+                    },
+                    {
+                        "value": "instagram",
+                        "label": "Instagram"
+                    },
+                    {
+                        "value": "facebook",
+                        "label": "Facebook"
+                    },
+                    {
+                        "value": "twitter",
+                        "label": "Twitter"
+                    },
+                    {
+                        "value": "birthday",
+                        "label": "Birthday"
+                    },
+                    {
+                        "value": "newsletter",
+                        "label": "Newsletter"
+                    },
+                    {
+                        "value": "signup",
+                        "label": "Create an account"
+                    },
+                    {
+                        "value": "review",
+                        "label": "Write a review"
+                    },
+                    {
+                        "value": "pageview",
+                        "label": "Visit a website"
+                    },
+                    {
+                        "value": "products",
+                        "label": "When try new products"
+                    }
+                ]
+            },
+            {
+              "type": "paragraph",
+              "content": "To remove rule you have to disable it in the app."
+            },
+            {
+                "type": "checkbox",
+                "id": "show_box",
+                "label": "Show rule",
+                "default": true
+            },
+            {
+              "type": "header",
+              "content": "Icon / Image"
+            },
+            {
+                "type": "checkbox",
+                "id": "bg_img",
+                "label": "Background image",
+                "default": false,
+                "info": "Image will have overlay with color below. Opacity 75%."
+            },
+            {
+                "type": "color",
+                "id": "bg_color",
+                "label": "Background color",
+                "default": "#ffffff"
+            },
+            {
+              "type": "image_picker",
+              "id": "icon",
+              "label": "Image/Icon"
+            },
+            {
+              "type": "header",
+              "content": "Title"
+            },
+            {
+                "type": "checkbox",
+                "id": "display_title",
+                "label": "Display title",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "rule_title",
+                "label": "Rule title",
+                "info": "Leave this field empty to use settings from Loyalty Lion app."
+            },
+            {
+              "type": "header",
+              "content": "Description"
+            },
+            {
+                "type": "checkbox",
+                "id": "display_desc",
+                "label": "Display description",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "desc",
+                "label": "Description",
+                "info": "Leave this field empty to use settings from Loyalty Lion app."
+            },
+            {
+              "type": "header",
+              "content": "Button"
+            },
+            {
+                "type":      "select",
+                "id":        "btn_shape",
+                "label":     "Button shape",
+                "options": [
+                    {
+                        "value": "pill",
+                        "label": "pill"
+                    },
+                    {
+                        "value": "square",
+                        "label": "squere"
+                    },
+                    {
+                        "value": "squircle",
+                        "label": "squircle"
+                    }
+                ],
+                "default":   "pill"
+            },
+            {
+                "type": "text",
+                "id": "btn_txt",
+                "label": "Button text",
+                "info": "Leave this field empty to use settings from Loyalty Lion app."
+            }
+        ]
+    }
+  ]
+}
+
+{% endschema %}

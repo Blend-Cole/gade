@@ -114,7 +114,7 @@
   .btn:hover { background-color: #3f4042; }
   .icon-svg--color-accent, .step__footer__previous-link:hover .previous-link__icon { color: #000; fill: #000;}
  /* .total-line--reduction  { display: none!important; }*/
-  #payment-gateway-subfields-17096835187, #payment-gateway-subfields-17096179827, #payment-gateway-subfields-65846378611 { display: none!important; }
+  #payment-gateway-subfields-17096835187, #payment-gateway-subfields-17096179827 { display: none!important; }
   label.radio__label__primary.content-box__emphasis { font-size: 20px; }
   .radio-wrapper.content-box__row.first { border-top:0; }
   .content-box__row:last-child .radio__label__primary, .content-box__row:last-child .radio__label__accessory { font-size: 16px; font-weight: bold; }
@@ -148,7 +148,7 @@
       //     })    
       //     show mobile order summery
       $('button.order-summary-toggle.order-summary-toggle--show').trigger("click");
-      $('.content-box__row[data-gateway-group="alternative"]').addClass('first');
+      $('.content-box__row[data-gateway-group="offsite"]').addClass('first');
       $('.content-box__row[data-gateway-group="express"]').addClass('last');
       $('.field__input.field__input--zip').addClass('zip-code');
       $(".last").insertAfter(".first");

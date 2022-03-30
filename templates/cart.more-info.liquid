@@ -1,4 +1,3 @@
-{% render 'dialogue-cart-top-snippet' %}
 {% layout none %}
 {% for item in cart.items %}
 {% include 'sca_freegift_price' with item %}
@@ -12,5 +11,4 @@
       </div>
     {% endif %}
   </div>
-{% endfor %}{% render 'dialogue-cart-snippet' %}
- 
+{% endfor %}

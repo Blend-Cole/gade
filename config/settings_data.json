@@ -1663,12 +1663,12 @@
             "settings": {
               "title": "טיפוח",
               "collection": "skin-care",
-              "main_nav_image": "shopify:\/\/shop_images\/seedology_300x361_cc2210c8-5abf-4607-9d41-797ceb913b2c.jpg",
-              "main_nav_image_url": "shopify:\/\/collections\/seedology",
-              "small_nav_image_1": "shopify:\/\/shop_images\/seedology_300x184_A.jpg",
-              "small_nav_image_1_url": "shopify:\/\/products\/seedology-multi-active-day-cream",
-              "small_nav_image_2": "shopify:\/\/shop_images\/seedology_300x184_B.jpg",
-              "small_nav_image_2_url": "shopify:\/\/products\/seedology-energizing-booster"
+              "main_nav_image": "shopify:\/\/shop_images\/skin-care-website-banners-01.png",
+              "main_nav_image_url": "",
+              "small_nav_image_1": "shopify:\/\/shop_images\/skin-care-website-banners-02.png",
+              "small_nav_image_1_url": "",
+              "small_nav_image_2": "shopify:\/\/shop_images\/skin-care-website-banners-03.png",
+              "small_nav_image_2_url": ""
             }
           },
           "1557938491033": {
@@ -1676,12 +1676,12 @@
             "settings": {
               "title": "איפור",
               "collection": "makeup",
-              "main_nav_image": "shopify:\/\/shop_images\/MAKEUP_300x361_c57264f1-ee39-4070-bbf1-19eccf84010e.jpg",
-              "main_nav_image_url": "shopify:\/\/pages\/foundation-finder",
-              "small_nav_image_1": "shopify:\/\/shop_images\/MAKEUP_300x184_A.jpg",
-              "small_nav_image_1_url": "shopify:\/\/collections\/makeup",
-              "small_nav_image_2": "shopify:\/\/shop_images\/MAKEUP_300x184_B.jpg",
-              "small_nav_image_2_url": "shopify:\/\/collections\/foundation"
+              "main_nav_image": "shopify:\/\/shop_images\/banners.jpg",
+              "main_nav_image_url": "",
+              "small_nav_image_1": "shopify:\/\/shop_images\/banners-01.jpg",
+              "small_nav_image_1_url": "",
+              "small_nav_image_2": "shopify:\/\/shop_images\/banners-02.jpg",
+              "small_nav_image_2_url": ""
             }
           },
           "1557937266763": {
@@ -1689,18 +1689,18 @@
             "settings": {
               "title": "בישום",
               "collection": "fragrance",
-              "main_nav_image": "shopify:\/\/shop_images\/PERFUME_300x361_7cf7ad3d-64cf-4c34-abc9-b9c04f0118b9.jpg",
-              "main_nav_image_url": "shopify:\/\/collections\/fragrance",
-              "small_nav_image_1": "shopify:\/\/shop_images\/PERFUME_300x184_A.jpg",
-              "small_nav_image_1_url": "shopify:\/\/collections\/icon-musk-oil",
-              "small_nav_image_2": "shopify:\/\/shop_images\/PERFUME_300x184_B.jpg",
-              "small_nav_image_2_url": "shopify:\/\/collections\/icon-vanilla-black"
+              "main_nav_image": "shopify:\/\/shop_images\/Perfume-banners-01.jpg",
+              "main_nav_image_url": "",
+              "small_nav_image_1": "shopify:\/\/shop_images\/Perfume-banners-02.jpg",
+              "small_nav_image_1_url": "",
+              "small_nav_image_2": "shopify:\/\/shop_images\/Perfume-banners-03.jpg",
+              "small_nav_image_2_url": ""
             }
           },
           "1568819327361": {
             "type": "mega_menu",
             "settings": {
-              "title": "מדריכי ביוטי",
+              "title": "ג'ייד סטורי",
               "collection": "gade-story",
               "main_nav_image": "shopify:\/\/shop_images\/ONLINE-ONLY-website-page-banners-01.jpg",
               "main_nav_image_url": "",
@@ -1722,11 +1722,11 @@
           "header_cover": false,
           "header_border": false,
           "show_announcement_text": true,
-          "announcement_text": "מבצע קונים יותר מקבלים יותר | קוד קופון GETMORE וגם שפתון מתנה בכל רכישה!",
+          "announcement_text": "קבלי ₪50 מתנה על כל קניה ב- ₪150 עם קוד קופון GIFT50 |  משלוח חינם בקניה מעל 150 ש\"ח",
           "announcement_text_size": 13,
-          "announcement_link": "",
+          "announcement_link": "shopify:\/\/pages\/all-sale",
           "sales_show": true,
-          "sales": "משלוח חינם בקניה מ- ₪199",
+          "sales": "חדש ! משלוח מהיום להיום",
           "sales_url": "shopify:\/\/pages\/standard-shipping-and-return-policy",
           "cart_position": "header",
           "cart_icon": "cart",
@@ -1776,46 +1776,27 @@
       "1478800373635": {
         "type": "slideshow",
         "blocks": {
-          "56f2b844-9bfc-4a95-9343-c234c86a494b": {
+          "b19ababd-2030-474f-9cf8-08d64f481528": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/ICON_PEARL_1920x580_004_1_a104a34d-502a-4519-b070-e9b69659a798.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/ICON_PEARL_640x780_1_1_098a229e-02b2-4d5e-b0a9-6774b7067e15.jpg",
+              "image": "shopify:\/\/shop_images\/50_GIFT_1920X578_1.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/50_GIFT_640X781_1.jpg",
               "heading": "",
               "subheading": "",
-              "slide_text_color": "rgba(0,0,0,0)",
-              "link": "shopify:\/\/products\/icon-pearl-eau-de-parfum-spray-50-ml",
+              "slide_text_color": "#000000",
+              "link": "shopify:\/\/pages\/all-sale",
               "button_text": "",
               "cta_color": "#ffffff",
               "cta_background": "#000000",
               "caption_horizontal": "left",
-              "caption_vertical": 5,
+              "caption_vertical": 50,
               "caption_background": "rgba(0,0,0,0)",
-              "caption_background_opacity": 0
-            }
-          },
-          "d4a31d61-508f-4f95-af87-0b2c6dd1b28e": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Banners_D_1920X580_91836200-263f-464a-b39d-8e2835041ee0.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/Banners_M_640X780_241a2b4d-e963-44f6-8bef-7750bd80d93b.jpg",
-              "heading": "",
-              "subheading": "",
-              "slide_text_color": "rgba(0,0,0,0)",
-              "link": "shopify:\/\/pages\/foundation-finder",
-              "button_text": "",
-              "cta_color": "rgba(0,0,0,0)",
-              "cta_background": "rgba(0,0,0,0)",
-              "caption_horizontal": "left",
-              "caption_vertical": 5,
-              "caption_background": "rgba(0,0,0,0)",
-              "caption_background_opacity": 0
+              "caption_background_opacity": 20
             }
           }
         },
         "block_order": [
-          "56f2b844-9bfc-4a95-9343-c234c86a494b",
-          "d4a31d61-508f-4f95-af87-0b2c6dd1b28e"
+          "b19ababd-2030-474f-9cf8-08d64f481528"
         ],
         "settings": {
           "slideshow": "content",
@@ -1840,7 +1821,7 @@
           "product_note": "",
           "realted_title": "במיוחד בשבילך",
           "show_custom_collection": true,
-          "custom_collection": "",
+          "custom_collection": "last-chance",
           "show_instagram": true,
           "blog-title": "הבלוג שלנו"
         }
@@ -2070,8 +2051,8 @@
           "subheading_color": "#ffffff",
           "button_text": "לרכישה",
           "button_link": "",
-          "button_text_color": "#ffffff",
-          "button_color": "#000000"
+          "button_text_color": "#fff",
+          "button_color": "#000"
         }
       },
       "featured-collection": {
@@ -2079,15 +2060,15 @@
         "settings": {
           "heading": "המועדפים שלי‎",
           "heading_collection1": "הנמכרים ביותר‎",
-          "heading_color": "#000000",
-          "background_color": "#ffffff",
+          "heading_color": "#000",
+          "background_color": "#fff",
           "collection": "",
           "homepage_product_layout": "carousel",
           "limit": 20,
           "grid": 4,
           "heading1": "מוצרים חדשים‎",
-          "heading_color1": "#000000",
-          "background_color1": "#ffffff",
+          "heading_color1": "#000",
+          "background_color1": "#fff",
           "collection1": "",
           "homepage_product_layout1": "grid",
           "limit1": 16,
@@ -2111,8 +2092,8 @@
           "subheading_color": "#ffffff",
           "button_text": "לרכישה",
           "button_link": "",
-          "button_text_color": "#ffffff",
-          "button_color": "#000000"
+          "button_text_color": "#fff",
+          "button_color": "#000"
         }
       },
       "featured-blog": {
@@ -2120,8 +2101,8 @@
         "settings": {
           "blog": "news",
           "heading": "Blog posts",
-          "heading_color": "#000000",
-          "background_color": "#ffffff",
+          "heading_color": "#000",
+          "background_color": "#fff",
           "post_limit": 2
         }
       },
@@ -2130,8 +2111,8 @@
         "settings": {
           "heading": "Follow us on Instagram",
           "instagram_access_token": "310786376.5ea0515.1bb91333d6694d1fb3767b54a07fed86",
-          "instagram_heading_color": "#000000",
-          "instagram_background_color": "#ffffff"
+          "instagram_heading_color": "#000",
+          "instagram_background_color": "#fff"
         }
       },
       "slideshow-1": {
@@ -2839,27 +2820,29 @@
         "type": "banner-cart",
         "settings": {
           "display": "none",
+          "image": "",
+          "image_mobile": "",
           "page_height": 400,
           "heading": "כותרת ראשית",
           "heading_font_size": 26,
           "heading_distance_top": 26,
           "heading_font_weight": "400",
-          "heading_color": "#000000",
+          "heading_color": "#000",
           "subheading": "כותרת משנית",
           "subheading_font_size": 16,
           "subheading_font_weight": "400",
-          "subheading_color": "#000000",
+          "subheading_color": "#000",
           "overlay_text": "קצת טקסט על מחיר טוב של איפור",
           "overlay_text_font_size": 16,
           "overlay_text_font_weight": "400",
-          "overlay_text_color": "#000000"
+          "overlay_text_color": "#000"
         }
       },
       "cart-collection": {
         "type": "cart-collection",
         "settings": {
           "heading": "הטבות מפנקות - במיוחד עבורך!",
-          "heading_color": "#000000",
+          "heading_color": "#000",
           "collection": "last-chance",
           "limit": 10
         }
@@ -2889,12 +2872,12 @@
           "1568905482449-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/buy_more_1920x580_1_4c3d9288-0d3c-4cb8-a9b0-4f4292e20c3b.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/buy_more_640x780_c1d7cc0e-977b-474b-b03b-d3d31a6601c9.jpg",
+              "image": "shopify:\/\/shop_images\/GLOW_FX_1920X470_a0902386-e440-4328-a5bf-fd38500c9d30.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/GLOW_FX_640X781_4fa97527-ff1f-42d9-a8b0-3f2d725fc623.jpg",
               "heading": "",
               "subheading": "",
               "slide_text_color": "#000000",
-              "link": "",
+              "link": "shopify:\/\/collections\/hydra-sublime",
               "button_text": "",
               "cta_color": "#ffffff",
               "cta_background": "#000000",
@@ -3015,7 +2998,7 @@
             "type": "image",
             "settings": {
               "icon": "shopify:\/\/shop_images\/truck-icon1222.png",
-              "text": "משלוח מהיר חינם בכל קנייה מעל 199 ₪"
+              "text": "משלוח מהיר חינם בכל קנייה מעל 150 ₪"
             }
           },
           "1592817672183": {
@@ -3095,10 +3078,494 @@
           "overlay_text_color": "#000000"
         }
       },
-      "Yotpo-cart-carousel": {
-        "type": "Yotpo-cart-carousel",
+      "loyalty-lion-login": {
+        "type": "loyalty-lion-login",
         "settings": {
-          "title": "Yotpo carousel"
+          "order": "1",
+          "bg_img": "shopify:\/\/shop_images\/Rectangle_5_2.png",
+          "program_header": "my",
+          "long_msg": "<p>ברוכה הבאה למועדוןן החברות שלנו את מוזמנת להרשם ולקבלאת ההטבות הכי שוות בג'ייד<\/p>",
+          "welcome_msg": "ברוך שובך,",
+          "points_msg": "<p>מספר הנקודות הכולל שלך:<\/p>",
+          "btn_shape": "squircle",
+          "register_text": "Sign Up",
+          "login_text": "Log In"
+        }
+      },
+      "loyalty-lion-rules": {
+        "type": "loyalty-lion-rules",
+        "blocks": {
+          "2f782008-b577-462b-ab7f-0799295b2626": {
+            "type": "custom",
+            "settings": {
+              "title": "purchase",
+              "show_box": true,
+              "width": "1",
+              "bg_img": true,
+              "bg_color": "#ffffff",
+              "icon": "shopify:\/\/shop_images\/315x612_6d441527-e7ad-4657-9007-c110b507f6b5.png",
+              "text_icon": "",
+              "display_title": true,
+              "rule_title": "",
+              "txt_color": "#0e2d5a",
+              "display_desc": true,
+              "desc": "",
+              "btn_shape": "pill",
+              "btn_color": "#0e2d5a",
+              "btn_txt": "Shop now",
+              "btn_link": ""
+            }
+          },
+          "2161b7d6-d838-433e-b524-32b881d9bc57": {
+            "type": "custom",
+            "settings": {
+              "title": "signup",
+              "show_box": true,
+              "width": "1",
+              "bg_img": false,
+              "bg_color": "#ffffff",
+              "icon": "shopify:\/\/shop_images\/user.png",
+              "text_icon": "",
+              "display_title": true,
+              "rule_title": "צור חשבון",
+              "txt_color": "#0e2d5a",
+              "display_desc": true,
+              "desc": "",
+              "btn_shape": "pill",
+              "btn_color": "#0e2d5a",
+              "btn_txt": "",
+              "btn_link": ""
+            }
+          },
+          "295fad63-00ea-47b1-85be-2afcc78e7853": {
+            "type": "custom",
+            "settings": {
+              "title": "newsletter-signup",
+              "show_box": true,
+              "width": "1",
+              "bg_img": false,
+              "bg_color": "#ffffff",
+              "icon": "shopify:\/\/shop_images\/newsletter.png",
+              "text_icon": "",
+              "display_title": true,
+              "rule_title": "",
+              "txt_color": "#0e2d5a",
+              "display_desc": true,
+              "desc": "",
+              "btn_shape": "pill",
+              "btn_color": "#0e2d5a",
+              "btn_txt": "",
+              "btn_link": ""
+            }
+          },
+          "c21db577-2e54-471b-a8bb-c492e1ebad53": {
+            "type": "custom",
+            "settings": {
+              "title": "facebook-like",
+              "show_box": true,
+              "width": "1",
+              "bg_img": false,
+              "bg_color": "#ffffff",
+              "icon": "shopify:\/\/shop_images\/facebook.png",
+              "text_icon": "",
+              "display_title": true,
+              "rule_title": "",
+              "txt_color": "#0e2d5a",
+              "display_desc": true,
+              "desc": "",
+              "btn_shape": "pill",
+              "btn_color": "#0e2d5a",
+              "btn_txt": "",
+              "btn_link": ""
+            }
+          },
+          "a498ef08-c118-4561-8746-258b61bbc3ed": {
+            "type": "custom",
+            "settings": {
+              "title": "referral",
+              "show_box": true,
+              "width": "1",
+              "bg_img": false,
+              "bg_color": "#ffffff",
+              "icon": "shopify:\/\/shop_images\/share.png",
+              "text_icon": "",
+              "display_title": true,
+              "rule_title": "לשתף עם חברים",
+              "txt_color": "#0e2d5a",
+              "display_desc": true,
+              "desc": "",
+              "btn_shape": "pill",
+              "btn_color": "#0e2d5a",
+              "btn_txt": "",
+              "btn_link": ""
+            }
+          },
+          "f18cb072-0792-4801-ab19-4366a6d3f5be": {
+            "type": "custom",
+            "settings": {
+              "title": "instagram-follow",
+              "show_box": true,
+              "width": "1",
+              "bg_img": false,
+              "bg_color": "#ffffff",
+              "icon": "shopify:\/\/shop_images\/instagram.png",
+              "text_icon": "",
+              "display_title": true,
+              "rule_title": "עקבו אחרינו באינסטגרם",
+              "txt_color": "#0e2d5a",
+              "display_desc": true,
+              "desc": "",
+              "btn_shape": "pill",
+              "btn_color": "#0e2d5a",
+              "btn_txt": "",
+              "btn_link": ""
+            }
+          },
+          "043e99fd-6e28-472c-95b5-06fa6bc22d67": {
+            "type": "custom",
+            "settings": {
+              "title": "birthday",
+              "show_box": true,
+              "width": "1",
+              "bg_img": true,
+              "bg_color": "#ffffff",
+              "icon": "shopify:\/\/shop_images\/315x612_aa42a102-fa5b-4ee4-9462-bdb798b57801.png",
+              "text_icon": "",
+              "display_title": true,
+              "rule_title": "יום הולדת שמח",
+              "txt_color": "#0e2d5a",
+              "display_desc": true,
+              "desc": "",
+              "btn_shape": "pill",
+              "btn_color": "#0e2d5a",
+              "btn_txt": "",
+              "btn_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "2f782008-b577-462b-ab7f-0799295b2626",
+          "2161b7d6-d838-433e-b524-32b881d9bc57",
+          "295fad63-00ea-47b1-85be-2afcc78e7853",
+          "c21db577-2e54-471b-a8bb-c492e1ebad53",
+          "a498ef08-c118-4561-8746-258b61bbc3ed",
+          "f18cb072-0792-4801-ab19-4366a6d3f5be",
+          "043e99fd-6e28-472c-95b5-06fa6bc22d67"
+        ],
+        "settings": {
+          "header": "איך לצבור נקודות",
+          "subheading": "<p>זהות מורבי אינם וחופש, וייוולד. למרות הצורך בכדורסל של חברת התעופה בקוטר האיחוד האירופי לתואר ראשון ללקוח. קריקטורה בהריון סמי.<\/p>",
+          "completed_text": "הפרס נאסף",
+          "birthday_text": "יום עד יום ההולדת שלך!",
+          "order": "2",
+          "guest_vs": true,
+          "user_vs": true,
+          "row": "3"
+        }
+      },
+      "loyalty-lion-rewards": {
+        "type": "loyalty-lion-rewards",
+        "blocks": {
+          "75840215-820a-4c22-81a4-340d18137407": {
+            "type": "custom",
+            "settings": {
+              "id": "91666",
+              "show_box": true,
+              "width": "1",
+              "bg_img": true,
+              "bg_color": "#ffffff",
+              "border_color": "#d8d8d8",
+              "icon": "shopify:\/\/shop_images\/4_28333299-bfa0-4051-805b-18b263583ab6.jpg",
+              "text_icon": "Text Icon",
+              "txt_color": "#0e2d5a",
+              "display_title": true,
+              "reward_title": "",
+              "display_desc": true,
+              "desc": "Price: $999 המאקרו של ביצועים, כיתת כדורגל. צילום xקxלxxיני, ארגון מחדש של סרטים.",
+              "btn_txt": ""
+            }
+          },
+          "9a206f1f-e8d7-4f8c-82f8-b2848aef3358": {
+            "type": "custom",
+            "settings": {
+              "id": "91665",
+              "show_box": true,
+              "width": "1",
+              "bg_img": true,
+              "bg_color": "#ffffff",
+              "border_color": "#d8d8d8",
+              "icon": "shopify:\/\/shop_images\/rect_1.png",
+              "text_icon": "",
+              "txt_color": "#0e2d5a",
+              "display_title": true,
+              "reward_title": "",
+              "display_desc": true,
+              "desc": "המאקרו של ביצועים, כיתת כדורגל. צילום קליני, ארגון מחדש של סרטים.",
+              "btn_txt": ""
+            }
+          },
+          "06dd8c1d-1fed-4097-a95f-2f336ff97eb0": {
+            "type": "custom",
+            "settings": {
+              "id": "91486",
+              "show_box": true,
+              "width": "1",
+              "bg_img": true,
+              "bg_color": "#ffffff",
+              "border_color": "#d8d8d8",
+              "icon": "shopify:\/\/shop_images\/rect_1.png",
+              "text_icon": "",
+              "txt_color": "#0e2d5a",
+              "display_title": true,
+              "reward_title": "",
+              "display_desc": true,
+              "desc": "המאקרו של ביצועים, כיתת כדורגל. צילום קליני, ארגון מחדש של סרטים.",
+              "btn_txt": ""
+            }
+          },
+          "afc42d98-0cbd-40e2-a94e-a0e2d3ef94df": {
+            "type": "custom",
+            "settings": {
+              "id": "91667",
+              "show_box": true,
+              "width": "1",
+              "bg_img": true,
+              "bg_color": "#ffffff",
+              "border_color": "#d8d8d8",
+              "icon": "shopify:\/\/shop_images\/rect_1.png",
+              "text_icon": "",
+              "txt_color": "#0e2d5a",
+              "display_title": true,
+              "reward_title": "",
+              "display_desc": true,
+              "desc": "המאקרו של ביצועים, כיתת כדורגל. צילום קליני, ארגון מחדש של סרטים.",
+              "btn_txt": ""
+            }
+          }
+        },
+        "block_order": [
+          "75840215-820a-4c22-81a4-340d18137407",
+          "9a206f1f-e8d7-4f8c-82f8-b2848aef3358",
+          "06dd8c1d-1fed-4097-a95f-2f336ff97eb0",
+          "afc42d98-0cbd-40e2-a94e-a0e2d3ef94df"
+        ],
+        "settings": {
+          "header": "תפוס את התגמולים שלך!",
+          "subheading": "<p>זהות מורבי אינם וחופש, וייוולד. למרות הצורך בכדורסל של חברת התעופה בקוטר האיחוד האירופי לתואר ראשון ללקוח. קריקטורה בהריון סמי.<\/p>",
+          "order": "2",
+          "guest_vs": true,
+          "user_vs": true,
+          "row": "3"
+        }
+      },
+      "loyalty-lion-history": {
+        "type": "loyalty-lion-history",
+        "settings": {
+          "header": "היסטוריית התגמולים שלך",
+          "subheading": "",
+          "order": "5",
+          "user_vs": true
+        }
+      },
+      "loyalty-lion-tiers": {
+        "type": "loyalty-lion-tiers",
+        "blocks": {
+          "7f84ebeb-9d3a-4764-a68f-097c333bc550": {
+            "type": "custom",
+            "settings": {
+              "bg_img": true,
+              "icon": "shopify:\/\/shop_images\/1_11347cf1-7352-44fb-a8d9-d8559fce3de6.jpg",
+              "display_title": true,
+              "reward_title": "GIRL",
+              "display_desc": true,
+              "desc": "",
+              "current": "",
+              "display_benifit": true,
+              "benifit": "",
+              "txt_color": "#ffffff"
+            }
+          },
+          "ad2ba72f-190b-46c7-a81a-b546ecf50fd5": {
+            "type": "custom",
+            "settings": {
+              "bg_img": true,
+              "icon": "shopify:\/\/shop_images\/seedology_300x361_cc2210c8-5abf-4607-9d41-797ceb913b2c.jpg",
+              "display_title": true,
+              "reward_title": "ICON",
+              "display_desc": true,
+              "desc": "",
+              "current": "",
+              "display_benifit": true,
+              "benifit": "",
+              "txt_color": "#ffffff"
+            }
+          },
+          "46b866ed-670d-48bf-be81-91e6f4b871f0": {
+            "type": "custom",
+            "settings": {
+              "bg_img": true,
+              "icon": "shopify:\/\/shop_images\/2_4.jpg",
+              "display_title": true,
+              "reward_title": "",
+              "display_desc": true,
+              "desc": "",
+              "current": "",
+              "display_benifit": true,
+              "benifit": "",
+              "txt_color": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "7f84ebeb-9d3a-4764-a68f-097c333bc550",
+          "ad2ba72f-190b-46c7-a81a-b546ecf50fd5",
+          "46b866ed-670d-48bf-be81-91e6f4b871f0"
+        ],
+        "settings": {
+          "header": "שכבות מועדון לקוחות",
+          "subheading": "<p>זהות מורבי אינם וחופש, וייוולד. למרות הצורך בכדורסל של חברת התעופה בקוטר האיחוד האירופי לתואר ראשון ללקוח. קריקטורה בהריון סמי.<\/p>",
+          "order": "3",
+          "guest_vs": true,
+          "user_vs": true,
+          "row": "3"
+        }
+      },
+      "loyalty-lion-text-only": {
+        "type": "loyalty-lion-text-only",
+        "settings": {
+          "header": "Heading just text",
+          "subheading": "Regurlar text",
+          "order": "4",
+          "guest_vs": true,
+          "user_vs": true
+        }
+      },
+      "loyalty-lion-text-with-image": {
+        "type": "loyalty-lion-text-with-image",
+        "settings": {
+          "header": "Header",
+          "subheading": "Text",
+          "order": "1",
+          "img_pos": "left",
+          "image_as": "shopify:\/\/shop_images\/Rectangle_5_2.png",
+          "guest_vs": true,
+          "user_vs": true
+        }
+      },
+      "loyalty-lion-text-with-background": {
+        "type": "loyalty-lion-text-with-background",
+        "settings": {
+          "header": "Text Header",
+          "subheading": "Text copty",
+          "order": "4",
+          "bg_color": "#ffffff",
+          "txt_color": "#000000",
+          "guest_vs": true,
+          "user_vs": true
+        }
+      },
+      "loyalty-lion-faq": {
+        "type": "loyalty-lion-faq",
+        "blocks": {
+          "e783e1a6-0cba-4058-9a34-3bd4bf7fe3da": {
+            "type": "custom",
+            "settings": {
+              "question": "יסמין סרט מכוער לכדור הארץ",
+              "answer": "<p><strong>אתה יכול להרוויח יותר תגמולים.<\/strong>עם זאת, זה מאוד dolor. זקנה היא כיום כלי רכב מדגיש את רשויות אכיפת החוק, עכשיו הגרון. למען האמת, תזונה או טעם המוני חדשניים מצוירים, נכס. At hendrerit est nulla arcu.<\/p>"
+            }
+          },
+          "61ef39eb-ef2f-40cc-a287-117699efadfe": {
+            "type": "custom",
+            "settings": {
+              "question": "בדיקות, אלמנט צלילה, אין קזינו",
+              "answer": "<p><strong>אתה יכול להרוויח יותר תגמולים.<\/strong>עם זאת, זה מאוד dolor. זקנה היא כיום כלי רכב מדגיש את רשויות אכיפת החוק, עכשיו הגרון. למען האמת, תזונה או טעם המוני חדשניים מצוירים, נכס. At hendrerit est nulla arcu.<\/p>"
+            }
+          },
+          "2ae8b0d9-9cdd-4d1c-9e42-965f8ea30cc5": {
+            "type": "custom",
+            "settings": {
+              "question": "או למשוך פלייסטיישן nibh",
+              "answer": "<p><strong>אתה יכול להרוויח יותר תגמולים.<\/strong>עם זאת, זה מאוד dolor. זקנה היא כיום כלי רכב מדגיש את רשויות אכיפת החוק, עכשיו הגרון. למען האמת, תזונה או טעם המוני חדשניים מצוירים, נכס. At hendrerit est nulla arcu.<\/p>"
+            }
+          },
+          "f1ce54c3-cc55-4ad5-a1cb-fab4faa848a9": {
+            "type": "custom",
+            "settings": {
+              "question": "כל תעמולת שנאה מאוריס",
+              "answer": "<p><strong>אתה יכול להרוויח יותר תגמולים.<\/strong>עם זאת, זה מאוד dolor. זקנה היא כיום כלי רכב מדגיש את רשויות אכיפת החוק, עכשיו הגרון. למען האמת, תזונה או טעם המוני חדשניים מצוירים, נכס. At hendrerit est nulla arcu.<\/p>"
+            }
+          },
+          "9502f0d6-024c-4d01-b04b-344ac347e8b6": {
+            "type": "custom",
+            "settings": {
+              "question": "מאקרו, FEMA כעת בהמתנה",
+              "answer": "<p><strong>אתה יכול להרוויח יותר תגמולים.<\/strong>עם זאת, זה מאוד dolor. זקנה היא כיום כלי רכב מדגיש את רשויות אכיפת החוק, עכשיו הגרון. למען האמת, תזונה או טעם המוני חדשניים מצוירים, נכס. At hendrerit est nulla arcu.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "e783e1a6-0cba-4058-9a34-3bd4bf7fe3da",
+          "61ef39eb-ef2f-40cc-a287-117699efadfe",
+          "2ae8b0d9-9cdd-4d1c-9e42-965f8ea30cc5",
+          "f1ce54c3-cc55-4ad5-a1cb-fab4faa848a9",
+          "9502f0d6-024c-4d01-b04b-344ac347e8b6"
+        ],
+        "settings": {
+          "header": "שאלות נפוצות",
+          "subheading": "זהות מורבי אינם וחופש, וייוולד. למרות הצורך בכדורסל של חברת התעופה בקוטר האיחוד האירופי לתואר ראשון ללקוח. קריקטורה בהריון סמי.",
+          "order": "4",
+          "guest_vs": true,
+          "user_vs": true
+        }
+      },
+      "loyalty-lion-benifits": {
+        "type": "loyalty-lion-benifits",
+        "blocks": {
+          "07012e46-fe49-4424-a94d-a9ab680677d1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/news_1.png",
+              "image_width": "33%",
+              "link": "",
+              "heading": "ראשית לדעת",
+              "subheading": "קבל עדכונים חמים על המוצרים החדשים שלנו במהירות האפשרית",
+              "heading_color": "#000000"
+            }
+          },
+          "0764e045-b96c-4a30-a893-b989aa7c7cd9": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/equal_1.png",
+              "image_width": "33%",
+              "link": "",
+              "heading": "יתרונות שווים",
+              "subheading": "תמיד יתייחסו לכל חבר במועדון באותה צורה כמו לאחרים.",
+              "heading_color": "#000000"
+            }
+          },
+          "bc42b4a1-f507-4586-bfc3-9b43d6e2affc": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/gift_1.png",
+              "image_width": "33%",
+              "link": "",
+              "heading": "מתנות בחינם",
+              "subheading": "אתה יכול לאסוף נקודות על ידי קניות בחנות שלנו (ועוד) ולהחליף אותן בתמורה",
+              "heading_color": "#000000"
+            }
+          }
+        },
+        "block_order": [
+          "07012e46-fe49-4424-a94d-a9ab680677d1",
+          "0764e045-b96c-4a30-a893-b989aa7c7cd9",
+          "bc42b4a1-f507-4586-bfc3-9b43d6e2affc"
+        ],
+        "settings": {
+          "header": "היתרונות של מועדון הלקוחות שלנו",
+          "subheading": "מועדון הלקוחות המקוון של ג'יד מפנק אותך על נאמנותך! הצטרפו בחינם וגילו מגוון מתנות והטבות בלעדיות",
+          "order": "2",
+          "guest_vs": true,
+          "user_vs": false
         }
       }
     },

@@ -45,6 +45,8 @@
   $( '#create-customer' ).on('submit', function(e) {
     if($( 'input[class^="accept-conditions"]:checked').length === 0) {
       $('#AcceptMarketingMessage').removeClass('hide').addClass('show');
+      // Remove saved data from sessionStorage from rewards page
+      sessionStorage.removeItem('backToRewards');
       e.preventDefault();
     }
   });

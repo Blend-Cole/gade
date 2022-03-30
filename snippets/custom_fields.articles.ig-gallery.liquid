@@ -5,11 +5,9 @@
 {% endcomment %}
 {% if article.metafields.custom_fields["ig-gallery"] != blank %}
   <div class="custom-field custom-field__ig-gallery custom-field__type--text">
-    {% comment %}
     <h3 class="custom-field--title">IG-Gallery</h3>
     <div class="custom-field--value">
       {{ article.metafields.custom_fields["ig-gallery"] }}
-      {% endcomment %}
     </div>
   </div>
 {% endif %}

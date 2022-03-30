@@ -1,0 +1,859 @@
+.items-1 {
+    .lion-rules-list,
+    .lion-rewards-list,
+    .lion-tier-overview  {
+        .lion-rule-item,
+        .lion-reward-item,
+        .lion-tier-box {
+            flex-basis: 100%;
+        }
+    }
+}
+.items-2 {
+    .lion-rules-list,
+    .lion-rewards-list,
+    .lion-tier-overview  {
+        .lion-rule-item,
+        .lion-reward-item,
+        .lion-tier-box {
+            flex-basis: 50%;
+        }
+    }
+}
+.items-3 {
+    .lion-rules-list,
+    .lion-rewards-list,
+    .lion-tier-overview  {
+        .lion-rule-item,
+        .lion-reward-item,
+        .lion-tier-box {
+            flex-basis: 33%;
+        }
+    }
+}
+.items-4 {
+    .lion-rules-list,
+    .lion-rewards-list,
+    .lion-tier-overview  {
+        .lion-rule-item,
+        .lion-reward-item,
+        .lion-tier-box {
+            flex-basis: 25%;
+        }
+    }
+}
+.loyalty-lion-sections {
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    //margin-bottom: 50px;
+    h2 {
+        position: relative;
+        font-size: 28px;
+        font-weight: 600;
+        @media only screen and (min-width: 768px) { 
+            &:before, &:after {
+                content: '\a0';
+                position: absolute;
+                top: 55%;
+                right: 0;
+                width: 28%;
+                height: 1px;
+                background-color: rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+            }
+            &:after {
+                left: 0;
+                right: unset;       
+            }             
+        }
+    }
+    .rules-subheading {
+        max-width: 484px;
+        margin: 8px auto 32px;   
+        padding: 0 10px;     
+    }
+     .rewards-subheading, .tiers-subheading {
+        max-width: 484px;
+        margin: 8px auto 32px;
+        padding: 0 10px;
+        @media only screen and (min-width: 768px) { 
+            margin-bottom: 40px;
+        }        
+    }
+    p, h2 { 
+        //direction: rtl;
+    }
+    @media only screen and (min-width: 768px) { 
+        //margin-bottom: 96px;
+    }
+}
+@media only screen and (max-width: 578px) {
+    .items-2 {
+        .lion-rules-list,
+        .lion-rewards-list,
+        .lion-tier-overview  {
+            .lion-rule-item,
+            .lion-reward-item,
+            .lion-tier-box {
+                flex-basis: 100%;
+            }
+        }
+    }
+    .items-3,
+    .items-4 {
+        .lion-rules-list,
+        .lion-rewards-list,
+        .lion-tier-overview  {
+            .lion-rule-item,
+            .lion-reward-item,
+            .lion-tier-box {
+                flex-basis: 100%;
+            }
+        }
+    }
+}
+.image-display {
+    display: flex;
+    &.image--top,
+    &.image--bottom {
+        flex-flow: column;
+    }
+    .text,
+    .image {
+        flex-basis: 50%;
+    }
+}
+.image--left {
+    .text {
+        order: 2;
+    }
+}
+.image--top {
+    .text {
+        order: 2;
+    }
+}
+
+
+/* ===========
+    HERE GOES STYLES FOR THE TIERS
+    ============== */
+.ll-tiers-section {
+    background: #FAFAFA;
+    padding: 50px 0;
+    margin-top: 50px;
+    .tiers-title, .items-1, .items-2, .items-3, .items-4 {
+        max-width: 988px;
+        margin: auto;
+    }
+    @media only screen and (min-width: 768px) {
+        padding: 95px 0;
+        margin-top: 95px;
+    }
+}
+
+
+/* ===========
+    HERE GOES STYLES FOR THE BENIFITS
+    ============== */
+.ll-benifits-section {
+    section { 
+        margin: 195px auto 50px;
+        .tiers-subheading {
+            margin-bottom: 45px;
+        }
+        .caption-wrapper {
+            margin-top: 15px;
+            margin-bottom: 30px;
+            .title {
+                font-size: 18px;
+                font-weight: 700;
+            }
+            .subtitle {
+                font-size: 14px;
+                font-weight: 400;
+                padding: 0 10px;
+            }            
+        } 
+        @media only screen and (min-width: 768px) {
+            margin: 200px auto 90px;
+            .caption-wrapper {
+                margin-bottom: 0;
+            }
+        }           
+    }
+}
+
+/* ===========
+    HERE GOES STYLES FOR THE TOP BANNER
+    ============== */
+// guest
+.loyalty-lion-customer-login {
+        display: flex;
+        align-items: center;
+        justify-content: center;      
+        position: absolute;
+        top: 100px;
+        width: 100%;
+        padding: 0 11px;
+    .loyalty-lion-text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;        
+        width: 430px;
+        min-height: 366px;
+        padding: 25px 72px 22px;
+        background: #FFF;
+        box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1); 
+        #customer {
+            width: 100%;
+        }
+        .logo {
+            margin: 10px 0 5px;
+        }     
+        h1.welcome_msg {
+        // message before name
+        font-family: 'Dawning of a New Day', cursive;
+        color: rgba(0, 0, 0, 0.9);
+        font-size: 56px;
+        line-height: 56px;
+        font-weight: 400;
+        transform: rotate(-12deg);      
+        }
+        .long-msg p {
+            font-size: 14px;
+            line-height: 14px;
+            font-weight: 400;            
+        }
+        .action_bottom {
+            margin-top: 9px;
+            text-align: center;
+            input {
+                margin: 0 0 5px;
+            }
+            .signup {
+                color :#E51F61;
+            }
+        }
+        .buttons {
+            .btn-pill {
+                border-radius: 25px;
+            }
+            .btn-square {
+                border-radius: 0px;
+            }
+            .btn-squircle {
+                border-radius: 6px;
+            }
+        }
+        @media only screen and (min-width: 768px) {
+            padding-bottom: 45px;
+        }         
+    }
+}
+
+// logged in
+.loyalty-lion-logged-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;      
+    position: absolute;
+    top: 100px;
+    width: 100%; 
+    .loyalty-lion-logged-top-text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;        
+        width: 430px;
+        height: 366px;
+        background: #FFF;
+        box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1);
+        h1.welcome_msg {
+            // message before name
+            color: rgba(0, 0, 0, 0.9);
+            font-size: 20px;
+            line-height: 20px;
+            font-weight: 600;
+        }
+        p.name {
+            // name and first letter of surname
+            font-family: 'Dawning of a New Day', cursive;
+            font-size: 56px;
+            line-height: 56px;
+            margin-bottom: 36px;
+        }
+        .points-msg {
+            // msg before points sumup
+            font-size: 14px;
+            color: #E51F61;
+            text-align: center;
+            .total-points {
+                // just points received from LL
+                color: #E51F61;
+                font-size: 70px;
+                font-weight: 700;
+                line-height: 100px;
+            }
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        width: calc(100%  - 40px);
+        left: 20px;
+    }    
+}
+/* ===========
+    HERE GOES STYLES FOR THE TILES (REWARDS AND RULES)
+    ============== */
+
+.ll-rules-section {
+    background: rgba(247, 227, 227, 0.3);
+    @media only screen and (min-width: 768px) {
+        padding-bottom: 100px;
+    }     
+}
+
+.lion-rules-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    max-width: 988px;
+    height: 988px;
+    margin: 0 auto;
+
+    .lion-rule-item.lion-rule-item--purchase {
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+    .lion-rule-item:nth-child(2) {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;   
+    } 
+    
+    .lion-rule-item:nth-child(3) {
+        grid-column-start: 3;
+        grid-column-end: 3;
+        grid-row-start: 3;
+        grid-row-end: 3; 
+    } 
+
+    .lion-rule-item.lion-rule-item--birthday {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 4;
+        grid-row-end: 2;
+    }     
+    
+    .lion-rule-item:nth-child(5) {
+        grid-column-start: 2;
+        grid-column-end: 2;
+        grid-row-start: 3;
+        grid-row-end: 3;
+    }     
+
+    .lion-rule-item:nth-child(6) {
+        grid-column-start: 2;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }       
+    
+    
+    .lion-rule-item:nth-child(7) {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;  
+    }
+    @media only screen and (max-width: 767px) {
+        display: block;
+        max-width: initial;
+        height: initial;
+    }    
+}
+
+
+// Rewards List
+.lion-rewards-list {
+    padding: 0;
+    flex-direction: row-reverse;
+    .lion-reward-item {
+        padding-bottom: 20px;
+        .lion-reward-item__content {
+            box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1);
+        }
+        .lion-reward-item__title, .lion-reward-item__meta,  .lion-reward-item__redeem-button {
+            margin: 0 12px 12px;
+            font-size: 14px;      
+        } 
+        .lion-reward-item__links {
+            display: none;
+        }
+        .lion-reward-item__title {
+            font-size: 20px;
+            line-height: 20px;
+            margin-top: 12px;
+        }
+        .lion-reward-item__meta .lion-reward-item__cost {
+            color: #E51F61;
+        }
+        .lion-reward-item__redeem-button {
+            font-size: 14px;
+            color: #FFF;
+            padding: 0;
+            height: 50px;
+            line-height: 50px;
+            font-size: 700;
+            margin: 0 12px 12px;
+            background: #000;
+            &.lion-reward-item__redeem-button--disabled {
+                opacity: 0.5
+            }
+            .lion-reward-item__fill {
+                background: transparent;
+            }
+        }
+        @media only screen and (max-width: 767px) { 
+            min-width: calc(100% - 40px);
+        }        
+    }
+    @media only screen and (max-width: 767px) { 
+        flex-wrap: nowrap;
+        white-space: normal;
+        overflow-x: auto;
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Hide scrollbar for IE, Edge and Firefox */
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */      
+    }     
+}
+
+
+/* ===========
+    HERE GOES STYLES FOR THE HISTORY
+    ============== */
+.ll-history-section {
+    background: rgba(247, 227, 227, 0.3);
+    .page-width {
+        padding-bottom: 50px;
+    }
+    .lion-history-table {
+        width: calc(100% - 20px);
+        margin: 25px auto 5px;
+        direction: rtl;
+        .lion-history-table__header-cell {
+            background: 0;
+        }
+        .lion-history-table__row-cell {
+            padding: 10px 0px 10px 0px;
+            text-align: right;
+        }
+        thead {
+            font-size: 20px;
+            text-transform: capitalize;
+            tr {
+                position: static;
+            }
+        }
+        tbody, .lion-history-table__bubble {
+            font-size: 14px;
+        }        
+    }
+    .show-history {
+        text-align: right;
+        padding-right: 10px;
+        margin-top: 20px;
+        color: #E51F61;
+        cursor: pointer;
+    }
+    @media only screen and (min-width: 769px) { 
+        .page-width {
+            padding-bottom: 95px;
+            .lion-history-table {
+                width: 100%;
+                margin: 25px 0 0;
+                tbody, .lion-history-table__bubble {
+                    font-size: 18px;
+                }
+                .lion-history-table__row:nth-child(even), .lion-history-table__header-cell  {
+                    border: 0;
+                    background: 0; 
+                    text-align: right;
+                }              
+            }            
+        }
+        .show-history {
+            text-align: left;
+            padding-left: 11%;
+        }
+    }
+    &.partial {
+        .lion-history-table__row:nth-child(n+4) {
+            display: none;
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) { 
+    .lion-history-table {
+        display: block;
+        // TODO:  Just while designing mobile
+        max-width: 400px !important;
+        margin: 0 auto !important;
+        thead {
+            display: none;
+        }
+        tbody, tr, td{
+            display: block;
+        }
+        tr.lion-history-table__row {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;            
+            height: 60px;    
+            overflow: hidden;
+            text-align: left;
+            border-top: 1px solid #e3e2de;
+            background: 0;
+            &.active-tab { 
+                height: auto;
+                td:nth-child(1){
+                    background: no-repeat left url("data:image/svg+xml,%3Csvg width='10' height='3' viewBox='0 0 10 3' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 1.5L-3.57628e-07 1.5' stroke='%23E51F61' stroke-width='1.5'/%3E%3C/svg%3E%0A");
+                }
+            }
+            td {
+                text-align:left;
+                text-transform: capitalize;
+                vertical-align: baseline;
+                font-size: 14px;
+                border-bottom: 0;
+                &:before {
+                    display: block;
+                    font-weight: 600;
+                }                
+                &:nth-child(1){
+                    width: 100%;
+                    font-size:16px;
+                    line-height: 40px;
+                    background: no-repeat center left url("data:image/svg+xml,%3Csvg width='10' height='11' viewBox='0 0 10 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 0.5V10.5' stroke='black' stroke-width='1.5'/%3E%3Cpath d='M10 5.5L-3.57628e-07 5.5' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E%0A");
+                }                
+                &:nth-child(2){
+                    display: block;
+                    order: 2;
+                    flex: 1;                                    
+                    &:before {
+                        content: 'סוּג';                        
+                    }                
+                }
+                &:nth-child(3){                                        
+                    order: 1;
+                    width: 100%;               
+                    &:before {
+                        content: 'פעילות';                        
+                    }                                                    
+                }
+                &:nth-child(4){ 
+                    order: 5;
+                    flex: 1;                    
+                    &:nth-child(4):before{
+                        content: 'נקודות';              
+                    }                                                                     
+                }
+                &:nth-child(5){
+                    order: 3; 
+                    flex: 1;                                       
+                    &:before {
+                        content: 'סטָטוּס';                        
+                    }                 
+                }
+                &:nth-child(6){
+                    order: 4;                    
+                }                
+                .lion-history-table__bubble {
+                    font-size: 14px;
+                    padding: 0;
+                }                
+            }            
+        }
+    } 
+}
+
+
+/*================ #LoyaltyLion Custom Template Additional Styles================*/
+
+.page-width {
+    max-width: 988px;
+    width: 988px;    
+    margin: 96px auto 0;
+    @media only screen and (max-width: 767px) { 
+        max-width: 100%;
+        margin-top: 50px;
+    }
+}
+
+// Tiers
+.lion-tier-overview {
+    flex-direction: row-reverse;
+    // Tier Box
+    .lion-tier-box {
+        position: relative;
+        min-height: 200px;
+        height: 200px;
+        text-align: right;
+        justify-content: flex-end; 
+        border: 0;
+        box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1);
+        .lion-tier-box__header {
+            padding-bottom: 0;
+            z-index: 1;
+            .lion-tier-box__accent:after { 
+                content: "GA-DE";
+                font-size: 14px;
+                font-weight: 600;
+            }
+            .lion-tier-box__title {
+                font-size: 24px;
+                line-height: 24px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+            .lion-tier-box__sub-title {
+                font-size: 12px;
+                line-height: 16px;
+                font-weight: 400;
+            }
+        }
+        .lion-tier-box__purchase-rule {
+            display: none;
+        } 
+        .lion-tier-benefits-list {
+            flex: initial;
+            text-align: right;
+            padding: 0 10px;
+            z-index: 1;
+            li {
+                margin-bottom: 0;
+                line-height: 12px;
+            }
+        }
+        .lion-tier-box__footer--current {
+            display: none;
+        }
+    }
+    @media only screen and (max-width: 767px) { 
+        flex-direction: column;
+    }    
+}
+
+
+.lion-rule-item--completed-forever {
+    opacity: 0.5;
+}
+
+// Rule Items
+.lion-rule-item--style-1{
+    .lion-rule-item__title {
+        font-size: 22px;
+        font-weight: 600;
+        padding: 0;
+        z-index: 1;
+    }
+    .lion-rule-item__points {
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+    .lion-rule-item__points, .lion-rule-item__button, .lion-rule-item__completed-forever:after {
+        font-size: 14px;
+        padding: 0;
+        z-index: 1;
+    }
+    .lion-rule-item__button, .lion-rule-item__completed-forever:after {
+        color: #E51F61;
+        background: 0;
+        white-space: nowrap;
+        z-index: 1;
+    }
+    .lion-rule-item__icon {
+        width: 65px;
+        height: 65px;
+        margin-bottom: 12px;
+    }
+    .lion-rule-item__completed-forever {
+        height: auto;
+    }
+}
+
+.bg-caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}  
+
+// Rule individual items
+.lion-rule-item--birthday, .lion-rule-item--purchase {
+    .lion-rule-item__content {
+        justify-content: flex-end !important;
+        .bg-caption {
+            width: 100%;
+            height: 90px;
+            background: #FFF;
+            z-index: 1;
+            .lion-rule-item__icon {
+                display: none;
+            }
+            .lion-rule-item__button {
+                .lion-rule-item__limit-reached {
+                    color: #E51F61;
+                }
+                // @media only screen and (max-width: 767px) { 
+                //     display: none;
+                // }
+            }
+        }        
+    }
+}
+
+.lion-rule-item--style-1 .lion-rule-item__content {
+    border-radius: 0;
+    border: 0;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.1);
+    @media only screen and (max-width: 767px) { 
+        height: 300px;
+        justify-content: center;
+    }    
+}
+
+/*================ #FAQ Accordions ================*/
+// Main accordion style
+*:focus,
+input:focus + label {
+  outline: none;
+  box-shadow: inset 0 0 0 2px lightBlue;
+}
+
+.faq-accordions {
+  margin: 0 auto 95px;
+  border-radius: 10px 10px 0 0;
+    @media only screen and (max-width: 767px) { 
+        padding: 10px;
+        margin-bottom: 50px;
+    }
+}
+
+.radiotab {
+  position: absolute;
+  opacity: 0;
+}
+
+.label {
+    flex: 1;
+    margin-bottom: 0px;
+    padding: 0 12px 6px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.9em;
+    color: var(--color-body-text);
+    border-bottom: solid 2px #e1e5ef;
+    text-align: center;
+}
+
+.radiotab:checked + .label {
+    background: 0;
+    color: #000;
+    border-bottom: solid 2px var(--color-small-button-text-border);
+}
+
+.panel {
+    display: none;
+    background: #fff;
+    order: 99;
+    margin-top: 16px;
+    width: 100%;
+    &.loyaltylion-faqs {
+        margin-top: 0;
+    }
+}
+
+.radiotab:checked + .label + .panel {
+    display: block;
+}
+
+// FAQs Tab
+.ll-faqs-section {
+    .loyaltylion-faqs {
+        width: 100%;
+        text-align: right;
+        direction: rtl;
+        details:last-child summary {
+            //border-bottom: 0;
+        }
+        details[open] summary {
+            background-image: url("data:image/svg+xml,%3Csvg width='10' height='3' viewBox='0 0 10 3' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 1.5L-3.57628e-07 1.5' stroke='%23E51F61' stroke-width='1.5'/%3E%3C/svg%3E%0A");
+            border-bottom: 0;
+            font-weight: 700;
+        }
+        summary {
+            padding: 20px 10px 20px 0;
+            background: no-repeat center left url("data:image/svg+xml,%3Csvg width='13' height='13' viewBox='0 0 13 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.88889 0V13H6.13889V0H6.88889ZM13 6.05932V6.77542H0V6.05932H13Z' fill='%23526287'%3E%3C/path%3E%3C/svg%3E");
+            border-bottom: 1px solid #e5e5e5;  
+        }
+    }
+    
+    details > summary {
+        list-style: none;
+      }
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+}
+/*================ END #FAQ Accordions ================*/
+
+/*================ #Floating Lablel ================*/ 
+.floating-label {
+    position: relative;
+    height: 55px;
+    input {
+        border: 0;
+        border-bottom: 1px solid #666666;
+        padding: 8px 0 0 0;
+        height: inherit;
+    }
+    label {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        transform: translateY(20px);
+        color: #555555;
+        text-transform: uppercase;
+    }
+    input:focus {
+        box-shadow: none;
+    } 
+    input:focus + label, input:-webkit-autofill + label, input:placeholder-shown + label {
+        transform: translateY(0);
+    }
+}
+/*================ END #Floating Lablel ================*/ 
+
+/*================ #Popup ================*/ 
+.lion-action-button, #loyaltylion .lion-action-button {
+    background:#000;
+}
+#loyaltylion .lion-modal__title {
+    padding-right:55px;
+}
+/*================ END #Popup ================*/ 

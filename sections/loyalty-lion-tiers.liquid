@@ -1,0 +1,335 @@
+{% assign settings_ = section.settings %}
+{% if customer and settings_.user_vs %}
+    {% assign if_customer = true %}
+{% else %}
+    {% assign if_customer = false %}
+{% endif %}
+
+{% assign if_g = settings_.guest_vs %}
+{% if customer %}
+    {% if if_g and customer and settings_.user_vs %}
+        {% assign if_g = true %}
+    {% elsif if_g and customer and settings_.user_vs == false %}
+        {% assign if_g = false %}
+    {% endif %}
+{% endif %}
+
+{% if if_g or if_customer %}
+    <style>
+    .ll-tiers-section {
+        order: {{ settings_.order }};
+    }
+    {% for block in section.blocks %}
+    .lion-tier-overview .lion-tier-box--{{ forloop.index0 }}:before {
+        content: "";
+        background: no-repeat top right url({{ 'number_' | append: forloop.index | append: '.svg' | asset_url }});
+        z-index: 1;
+        position:absolute;
+        height: 100%;
+        width: 100%;        
+    }
+
+        {% if block.settings.icon %}
+            {% if block.settings.bg_img %}
+                .lion-tier-overview .lion-tier-box--{{ forloop.index0 }} { position: relative;}
+                .lion-tier-overview .lion-tier-box--{{ forloop.index0 }}:after { 
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 40.97%, rgba(0, 0, 0, 0.4) 100%), url({{ block.settings.icon |  img_url: '420x' }}) !important; 
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 0;
+                }
+                .lion-tier-overview .lion-tier-box--{{ forloop.index0 }} * { 
+                    color: {{block.settings.txt_color}};
+                }
+            {% else %}
+                .lion-tier-overview .lion-tier-box--{{ forloop.index0 }}:before { 
+                    content: '';
+                    width: 100px;
+                    height: 100px;
+                    margin: 0px auto 5px;
+                    background-image: url({{ block.settings.icon |  img_url: '100x' }}) !important; 
+                }
+            {% endif %}
+        {% endif %}
+        {% if  block.settings.display_title == false %}
+            .lion-tier-overview .lion-tier-box--{{ forloop.index0 }}  .lion-tier-box__header { display: none;}
+        {% endif %}
+        {% if block.settings.display_desc == false %}
+            .lion-tier-overview .lion-tier-box--{{ forloop.index0 }}  .lion-tier-box__purchase-rule { display: none;}
+        {% endif %}
+
+
+        {% if block.settings.reward_title != '' %}
+            .lion-tier-overview .lion-tier-box.lion-tier-box--{{forloop.index0}} .lion-tier-box__title {
+                visibility: hidden;
+                position: relative;
+            }
+            .lion-tier-overview .lion-tier-box.lion-tier-box--{{forloop.index0}} .lion-tier-box__title:after {
+                content: {{block.settings.reward_title|json}};
+                visibility: initial;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+            }
+        {% endif %}
+        
+
+        {% if block.settings.display_desc == false %}
+            .lion-tier-overview .lion-tier-box.lion-tier-box--{{forloop.index0}} .lion-tier-box__sub-title { display: none;}
+            {% endif %}
+        {% if block.settings.desc != '' %}
+        .lion-tier-overview .lion-tier-box.lion-tier-box--{{forloop.index0}} .lion-tier-box__sub-title {
+                visibility: hidden;
+                position: relative;
+            }
+            .lion-tier-overview .lion-tier-box.lion-tier-box--{{forloop.index0}} .lion-tier-box__sub-title:after {
+                content: {{block.settings.desc|json}};
+                visibility: initial;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+            }
+        {% endif %}
+        
+        {% if block.settings.benifit != '' %}
+        .lion-tier-overview .lion-tier-box.lion-tier-box--{{forloop.index0}} .lion-tier-box__benefit.lion-tier-benefits-list__item {
+                visibility: hidden;
+                position: relative;
+            }
+            
+            .lion-tier-overview .lion-tier-box.lion-tier-box--{{forloop.index0}} .lion-tier-box__benefit.lion-tier-benefits-list__item:after {
+                content: {{block.settings.benifit|json}};
+                visibility: initial;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+            }
+        {% endif %}           
+    {% endfor %}
+    
+    </style>
+    <h2 class="tiers-title">{{ settings_.header }}</h2>
+    {% if settings_.subheading != '' %}<div class="tiers-subheading">{{ settings_.subheading }}</div>{% endif %}
+    <div class="items-{{ settings_.row }}" data-lion-tier-overview></div>
+
+{% endif %}
+
+{% schema %}
+
+{
+  "name": "Tiers",
+  "class": "ll-tiers-section",
+  "settings": [
+    {
+        "type": "text",
+        "id": "header",
+        "label": "Header",
+        "default": "Claim rewards"
+    },
+    {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "Subheading"
+    },
+    {
+        "type":      "select",
+        "id":        "order",
+        "label":     "Order",
+        "options": [
+            {
+                "value": "1",
+                "label": "1"
+            },
+            {
+                "value": "2",
+                "label": "2"
+            },
+            {
+                "value": "3",
+                "label": "3"
+            },
+            {
+                "value": "4",
+                "label": "4"
+            },
+            {
+                "value": "5",
+                "label": "5"
+            },
+            {
+                "value": "6",
+                "label": "6"
+            },
+            {
+                "value": "7",
+                "label": "7"
+            },
+            {
+                "value": "8",
+                "label": "8"
+            },
+            {
+                "value": "9",
+                "label": "9"
+            },
+            {
+                "value": "10",
+                "label": "10"
+            },
+            {
+                "value": "11",
+                "label": "11"
+            },
+            {
+                "value": "12",
+                "label": "12"
+            },
+            {
+                "value": "13",
+                "label": "13"
+            },
+            {
+                "value": "14",
+                "label": "14"
+            }
+        ],
+        "default":   "5"
+    },
+    {
+      "type": "header",
+      "content": "Visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "guest_vs",
+      "label": "Guest",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "user_vs",
+      "label": "Logged in",
+      "default": true
+    },
+    {
+        "type":      "select",
+        "id":        "row",
+        "label":     "Tiers in the row",
+        "options": [
+            {
+                "value": "1",
+                "label": "1"
+            },
+            {
+                "value": "2",
+                "label": "2"
+            },
+            {
+                "value": "3",
+                "label": "3"
+            },
+            {
+                "value": "4",
+                "label": "4"
+            }
+        ],
+        "default":   "4"
+    }
+  ],
+  "blocks": [
+    {
+        "type": "custom",
+        "name": "Tier",
+        "settings": [
+            {
+              "type": "header",
+              "content": "Icon / Image"
+            },
+            {
+                "type": "checkbox",
+                "id": "bg_img",
+                "label": "Background image",
+                "default": false,
+                "info": "Image will take take the full size of the container"
+            },
+            {
+              "type": "image_picker",
+              "id": "icon",
+              "label": "Image/Icon"
+            },
+            {
+              "type": "header",
+              "content": "Title"
+            },
+            {
+                "type": "checkbox",
+                "id": "display_title",
+                "label": "Display title",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "reward_title",
+                "label": "Tier title",
+                "info": "Leave this field empty to use settings from Loyalty Lion app."
+            },
+            {
+              "type": "header",
+              "content": "Description"
+            },
+            {
+                "type": "checkbox",
+                "id": "display_desc",
+                "label": "Display description",
+                "default": true
+            },
+            {
+                "type": "text",
+                "id": "desc",
+                "label": "Description",
+                "info": "Leave this field empty to use settings from Loyalty Lion app."
+            },
+            {
+                "type": "text",
+                "id": "current",
+                "label": "Current tier text",
+                "info": "Leave this field empty to use 'Start here' settings from Loyalty Lion app."
+            },            
+            {
+                "type": "header",
+                "content": "Benifit"
+              },
+              {
+                  "type": "checkbox",
+                  "id": "display_benifit",
+                  "label": "Display benifit",
+                  "default": true
+              },
+              {
+                  "type": "text",
+                  "id": "benifit",
+                  "label": "Benifit",
+                  "info": "Leave this field empty to use settings from Loyalty Lion app."
+              },
+              {
+                "type": "color",
+                "id": "txt_color",
+                "label": "Text color",
+                "default": "#000000"
+            }                                  
+        ]
+    }
+  ]
+}
+
+{% endschema %}

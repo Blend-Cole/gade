@@ -16,14 +16,6 @@
           <a href="/pages/contact-us">צור קשר</a>
         </div>
       </div>
-      <div class="parent-header-search">
-        <div id="mobilesearch" class="nav-srch">
-          <form action="/search" method="get">
-            <i class="fa fa-search"></i>
-            <input type="text" name="q" id="q" placeholder="מה את מחפשת היום?">
-          </form>
-        </div>
-      </div>
       {% for link in linklists[section.settings.main_nav].links %}
       <li>
         {% if link.links != blank %}
@@ -113,6 +105,14 @@
           
         {% endif %}
       {% endfor %}
+      <div class="parent-header-search">
+        <div id="mobilesearch" class="nav-srch">
+          <form action="/search" method="get">
+            <i class="fa fa-search"></i>
+            <input type="text" name="q" id="q">
+          </form>
+        </div>
+      </div>
     </ul>
   </nav>
 </div>
