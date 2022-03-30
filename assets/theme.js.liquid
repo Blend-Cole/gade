@@ -2118,28 +2118,6 @@ log = function() {
     return Function.prototype.bind.apply(console.log, args);
 }
 
-$(document).ready(function(){
-    // Toggle order history item
-    $('body').on('click', '.lion-history-table__row', function(){
-      $(this).toggleClass('active-tab')
-    });
-
-    // Reveal the hidden history items
-    $('.show-history').on('click', function() {
-      $('.ll-history-section').removeClass('partial');
-      $(this).hide();
-  });
-
-    // Redirect back to rewards if just come from there
-    $('.js-signup').on('click', function() {
-      sessionStorage.setItem('backToRewards', true);
-    });
-
-    if(sessionStorage.getItem('backToRewards')) {
-      $('#create_customer [name="return_to"]').val('/pages/rewards');
-    }
-})
-
 theme.ProductRecommendations = (function() {
   function ProductRecommendations(container) {
     var $container = (this.$container = $(container));

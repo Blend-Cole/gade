@@ -1,6 +1,6 @@
 <header class="scrollheader" data-section-id="{{ section.id }}">
   <div class="topbar{% if section.settings.full_width_header %} gridlock-fluid{% endif %}">
-    <div class="row" dir="rtl">
+    <div class="row laa-mobile-hide" dir="rtl">
       <div class="{% if section.settings.cart_position == 'announcement-bar' %} desktop-6 tablet-6{% else %} desktop-12 tablet-6{% endif %} mobile-3" id="banner-message">
         {% if section.settings.announcement_link %}
           <a href="{{ section.settings.announcement_link }}">
@@ -178,7 +178,8 @@
    {% include 'poloriz-widget' %}
 </header>
 <div id="phantom"{% if section.settings.header_cover and template == 'index' %} class="ignore-this"{% endif %}></div>
-<div class="mobilesearchbox">
+<!-- 'hide_on_mobile' (theme.liquid) - Look Around Apps -->
+<div class="mobilesearchbox laa-mobile-hide">
   <div id="mobilesearch" class="nav-srch">
     <form action="/search" method="get">
       <i class="fa fa-search"></i>

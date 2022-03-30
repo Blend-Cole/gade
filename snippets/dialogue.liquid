@@ -1,0 +1,110 @@
+
+    {%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+    {%- assign pageUrl = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last |
+   replace:'\/','/' | 
+   replace:'%20',' ' | 
+   replace:'\u0026','&' -%}
+
+
+<script>
+  // if(localStorage.getItem('dialogue_shopify') == undefined)
+   {
+      let info = {}
+      let now = new Date();
+      now.setDate(now.getDate() + 7);
+      info['store_id'] = 413
+      info['uid'] = 531
+
+      info['expires'] = now.toISOString();
+      info['user_agent'] = navigator.userAgent;
+      localStorage.setItem('dialogue_shopify',JSON.stringify(info));
+
+  }
+</script>
+<script type="text/javascript"  async="" src="https://cdn.nowdialogue.com/prod/build/bundle.js?t=1"></script>
+<script>
+window.DialogueShopify = window.DialogueShopify === undefined ? {} : DialogueShopify;{% assign t = template | prepend: '/' | append: '.' %}
+{% if t contains '/product.' %}DialogueShopify.page_info = { page_type: "product", id: {{ product.id }}};
+{% elsif t contains '/collection.' %}DialogueShopify.page_info = { page_type: "collection", id: {{ collection.id }} };
+{% elsif t contains '/cart.' %}DialogueShopify.page_info = { page_type: "Cart", id: null };
+  {% elsif t contains '/search.' %}DialogueShopify.page_info = { page_type: "search", query: {{ search.terms  }} };
+{% elsif t contains '/404.' %}DialogueShopify.page_info = { page_type: "o404", id: null };
+{% elsif checkout.id != blank and checkout.order_id == blank %}DialogueShopify.PageInfo = { Type: "checkout", id: null };
+{% endif %}{% if customer %}DialogueShopify.UserInfo = { id: "{{ customer.id }}", email: "{{ customer.email }}", mobile: "{{ customer.phone }}", name: "{{ customer.first_name }}", last: "{{ customer.last_name }}" };
+{% endif %}
+DialogueShopify.StoreInfo = { Theme: "{{ theme.name | escape }}" };
+                                                        
+                                                        
+let cart_obj = []
+
+                                                        
+{% assign cart_product_ids = "" %}
+{% if checkout.id != blank and checkout.order_id == blank %}
+	{% for item in checkout.line_items %}
+                          
+		{% assign cart_product_ids = cart_product_ids | append: ',' | append: item.product.id %}
+	{% endfor %}
+{% else %}
+                                                        
+	{% for item in cart.items %}
+      cart_obj.push({'quantity': {{ item.quantity  }} ,'sku': {{ item.variant.id }} , 'group': {{ item.product.id }} , 'price': {{ item.product.price | money_without_currency  }} })        
+
+    {% endfor %}
+{% endif %}
+
+             
+     DialogueShopify.cart = {'items':cart_obj, 'total':"{{ cart.total_price | money_without_currency  }}" };
+
+</script>
+
+<script>
+ 
+!function() {
+fetch('https://dashboard.nowdialogue.com/api/merchant/{{ settings.dialogue_info.uid }}/store/{{ settings.dialogue_info.store_id }}/master-script?v=1&hoster='+encodeURIComponent(window.location.href))
+ .then(response =>
+      {
+      if (!response.ok) {
+			 let err = new Error("HTTP status code: " + response.status)
+             err.response = response
+             err.status = response.status
+             throw err
+		}
+      else return response.json()
+      }
+      )
+  .then(text => {
+    
+    let DialogueInterval1 = setInterval(() => {
+        
+        if (window.DialogueAI != undefined ){   
+          clearInterval(DialogueInterval1);
+
+          DialogueAI.master_requested = true;
+          DialogueAI.startTimeTracking();
+
+      	    DialogueAI.getShopifyCartToken().then(function(e){
+              let info = JSON.parse(localStorage.getItem('dialogue_shopify'))
+              info['token'] = e;
+              localStorage.setItem('dialogue_shopify',JSON.stringify(info));
+          	});
+      
+            let websiteBodyInterval1 = setInterval(() => {
+                    if (document.body) {
+                        clearInterval(websiteBodyInterval1);
+                        const range = document.createRange();
+                        const fragment = range.createContextualFragment(text);
+                        document.body.appendChild(fragment);
+                    }
+                }, 10);
+              setTimeout(() => {clearInterval(websiteBodyInterval1)}, 8000)
+		}
+      }, 10);
+      setTimeout(() => {clearInterval(DialogueInterval1)}, 8000)
+    
+  }).catch(function() {
+//         console.log("Dialogue Isn't Install");
+    });
+
+}();
+  
+</script>

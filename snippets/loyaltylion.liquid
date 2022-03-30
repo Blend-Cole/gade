@@ -24,37 +24,4 @@
       loyaltylion.init({ token: "{{ shop.metafields.loyaltylion.token }}" });
     {% endif %}
   {% endif %}
-  // loyaltylion.configure({
-  //   disableBundledCSS: true,
-  //   disableBundledFonts: true,
-  // })
-
-  {% if template contains 'loyaltylion' %}
-    document.addEventListener('DOMContentLoaded', function (event) {
-      var load_html = function (num){
-        if ($('.lion-rule-item').length == 0 && num < 20) {
-          setTimeout(function () {
-            load_html(num + 1)
-          }, 500) 
-        } else {
-          var panel_html = $('[data-lion-account]').html();
-          var all_rules = $('[data-lion-rules-list]').html();
-          var all_rewards = $('[data-lion-rewards-list]').html();
-          var claimed_rewards = $('[data-lion-claimed-rewards-list]').html();
-          var full_history = $('[data-lion-history-table]').html();
-          var all_tiers = $('[data-lion-tier-overview]').html();
-          $(document)
-            .on('shopify:section:load', function(e){
-              $('[data-lion-account]').html(panel_html);
-              $('[data-lion-rules-list]').html(all_rules);
-              $('[data-lion-rewards-list]').html(all_rewards);
-              $('[data-lion-claimed-rewards-list]').html(claimed_rewards);
-              $('[data-lion-history-table]').html(full_history);
-              $('[data-lion-tier-overview]').html(all_tiers);
-            });
-        }
-      }
-      load_html(0);
-    });
-  {% endif %}
 </script>

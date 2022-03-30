@@ -351,12 +351,10 @@ var ajaxCart = (function(module, $) {
     data = {
       items: items,
       note: cart.note,
-      totalPrice: Shopify.formatMoney(cart.total_price, settings.moneyFormat),
-      priceWithoutCurrency: cart.total_price
+      totalPrice: Shopify.formatMoney(cart.total_price, settings.moneyFormat)
     }
 
     $cartContainer.append(template(data));
-    window.loyaltylion.ui.refresh();
 
     cartCallback(cart);
     
@@ -526,7 +524,7 @@ var ajaxCart = (function(module, $) {
     // Reprint cart on short timeout so you don't see the content being removed
     setTimeout(function() {
       ShopifyAPI.getCart(buildCart);
-    }, 150);
+    }, 150)
   };
 
   createQtySelectors = function() {
