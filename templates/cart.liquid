@@ -143,6 +143,7 @@
       <!-- Betanet Epost -->
       <div class="under-cart desktop-9 tablet-6 mobile-3"> 
         <h4 class="subtotal">{{ 'cart.general.subtotal' | t }} <span class="money">{{ cart.total_price | money }}</span></h4>
+        <p class="cartPoints"><strong>{{settings.cart_loyalty_text}}: <span data-lion-points-for="{{ cart.total_price }}"></span></strong></p>
         <label class="button" for="checkout"   tabindex="0">{{ 'cart.general.checkout' | t }}</label>
         <a class="back-to-shop" href="/">חזרה לרכישה באתר</a>       
       </div>

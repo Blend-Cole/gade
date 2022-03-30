@@ -529,6 +529,12 @@
             "label": "No"
           }
         ]
+      },
+      {
+        "type": "text",
+        "id": "cart_loyalty_text",
+        "label": "Loyalty text",
+        "default": "כלל הנקודות"
       }
     ]
   },
