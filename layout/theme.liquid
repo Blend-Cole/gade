@@ -38,7 +38,7 @@
   {{ 'stylesheet.css' | asset_url | stylesheet_tag }}
   {{ 'queries.css' | asset_url | stylesheet_tag }}
   {{ 'boaideas.css' | asset_url | stylesheet_tag }}
-  
+  {{ 'loyaltylion.min.css' | asset_url | stylesheet_tag }} 
   <!-- Look Around Apps -->
   {{ 'custom.css' | asset_url | stylesheet_tag }}
 
@@ -203,7 +203,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="shifter-page {% if settings.ajax_cart_method == 'drawer' %} is-moved-by-drawer{% endif %}" id="PageContainer">
     {% section 'header' %}
     <div class="page-wrap">
-      {% if template == 'index' or template contains 'article' or template contains 'collection' or template contains 'blog' or template contains 'list-collections' or template contains 'page.collection1' or template contains 'page.collection2' %}
+      {% if template == 'index' or template contains 'article' or template contains 'collection' or template contains 'blog' or template contains 'list-collections' or template contains 'page.collection1' or template contains 'page.collection2' or template contains 'rewards' %}
       {{ content_for_layout }}
       {% else %}
       <div id="content" class="row">
