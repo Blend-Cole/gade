@@ -1842,7 +1842,8 @@
           "show_custom_collection": true,
           "custom_collection": "",
           "show_instagram": true,
-          "blog-title": "הבלוג שלנו"
+          "blog-title": "הבלוג שלנו",
+          "product_points_text": "<p>Text to show unless customer<\/p>"
         }
       },
       "blog-template": {
@@ -3590,7 +3591,7 @@
           "guest_vs": true,
           "user_vs": false
         }
-      }      
+      }
     },
     "content_for_index": [
       "1560169711966",
