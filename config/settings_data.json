@@ -1722,7 +1722,7 @@
           "header_cover": false,
           "header_border": false,
           "show_announcement_text": true,
-          "announcement_text": "מבצע קונים יותר מקבלים יותר | קוד קופון GETMORE וגם שפתון מתנה בכל רכישה!",
+          "announcement_text": "הטבה בלעדית לחג! 1+1 על כל בשמי אייקון *ללא כפל מבצעים, הזול מביניהם",
           "announcement_text_size": 13,
           "announcement_link": "",
           "sales_show": true,
@@ -1776,18 +1776,18 @@
       "1478800373635": {
         "type": "slideshow",
         "blocks": {
-          "56f2b844-9bfc-4a95-9343-c234c86a494b": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/ICON_PEARL_1920x580_004_1_a104a34d-502a-4519-b070-e9b69659a798.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/ICON_PEARL_640x780_1_1_098a229e-02b2-4d5e-b0a9-6774b7067e15.jpg",
-              "heading": "",
-              "subheading": "",
-              "slide_text_color": "rgba(0,0,0,0)",
-              "link": "shopify:\/\/products\/icon-pearl-eau-de-parfum-spray-50-ml",
-              "button_text": "",
-              "cta_color": "#ffffff",
-              "cta_background": "#000000",
+          "e1f1e56a-0998-4013-b5f4-a6e4fe4a11c4": {	
+            "type": "image",	
+            "settings": {	
+              "image": "shopify:\/\/shop_images\/HR_042022-WEB-SITE_BANNER-H_3_1.jpg",	
+              "mobile_image": "shopify:\/\/shop_images\/HR_042022-WEB-SITE_BANNER-640-780-2_1.jpg",	
+              "heading": "Add a title to your image",	
+              "subheading": "Tell your brand's story through images",	
+              "slide_text_color": "rgba(0,0,0,0)",	
+              "link": "shopify:\/\/pages\/all-sale",	
+              "button_text": "Add a button",	
+              "cta_color": "rgba(0,0,0,0)",	
+              "cta_background": "rgba(0,0,0,0)",
               "caption_horizontal": "left",
               "caption_vertical": 5,
               "caption_background": "rgba(0,0,0,0)",
@@ -1814,7 +1814,7 @@
           }
         },
         "block_order": [
-          "56f2b844-9bfc-4a95-9343-c234c86a494b",
+          "e1f1e56a-0998-4013-b5f4-a6e4fe4a11c4",
           "d4a31d61-508f-4f95-af87-0b2c6dd1b28e"
         ],
         "settings": {
@@ -2890,8 +2890,8 @@
           "1568905482449-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/buy_more_1920x580_1_4c3d9288-0d3c-4cb8-a9b0-4f4292e20c3b.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/buy_more_640x780_c1d7cc0e-977b-474b-b03b-d3d31a6601c9.jpg",
+              "image": "shopify:\/\/shop_images\/spring_sale_1920X580_ee7f17ca-1eee-4987-b958-2f33b0c091b0.jpg",	
+              "mobile_image": "shopify:\/\/shop_images\/spring_sale_640X780_40018bae-3682-4e44-8c21-0501da7e8065.jpg",
               "heading": "",
               "subheading": "",
               "slide_text_color": "#000000",
@@ -2900,7 +2900,7 @@
               "cta_color": "#ffffff",
               "cta_background": "#000000",
               "caption_horizontal": "right",
-              "caption_vertical": 50,
+              "caption_vertical": 5,
               "caption_background": "rgba(0,0,0,0)",
               "caption_background_opacity": 0
             }
