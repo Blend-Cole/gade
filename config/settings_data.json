@@ -1722,7 +1722,7 @@
           "header_cover": false,
           "header_border": false,
           "show_announcement_text": true,
-          "announcement_text": "הטבה בלעדית לחג! 1+1 על כל בשמי אייקון *ללא כפל מבצעים, הזול מביניהם",
+          "announcement_text": "2+1 מתנה על כל המוצרים באתר! קוד קופון SPRINGSALE *ללא כפל מבצעים וקופונים",
           "announcement_text_size": 13,
           "announcement_link": "",
           "sales_show": true,
@@ -1776,17 +1776,17 @@
       "1478800373635": {
         "type": "slideshow",
         "blocks": {
-          "e1f1e56a-0998-4013-b5f4-a6e4fe4a11c4": {	
-            "type": "image",	
-            "settings": {	
-              "image": "shopify:\/\/shop_images\/HR_042022-WEB-SITE_BANNER-H_3_1.jpg",	
-              "mobile_image": "shopify:\/\/shop_images\/HR_042022-WEB-SITE_BANNER-640-780-2_1.jpg",	
-              "heading": "Add a title to your image",	
-              "subheading": "Tell your brand's story through images",	
-              "slide_text_color": "rgba(0,0,0,0)",	
-              "link": "shopify:\/\/pages\/all-sale",	
-              "button_text": "Add a button",	
-              "cta_color": "rgba(0,0,0,0)",	
+          "e1f1e56a-0998-4013-b5f4-a6e4fe4a11c4": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/golden_brush_1920x580_1.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/golden_brush_640x780_f4bc44af-31b6-4b2f-a862-a0719813802f.jpg",
+              "heading": "",
+              "subheading": "",
+              "slide_text_color": "rgba(0,0,0,0)",
+              "link": "",
+              "button_text": "",
+              "cta_color": "rgba(0,0,0,0)",
               "cta_background": "rgba(0,0,0,0)",
               "caption_horizontal": "left",
               "caption_vertical": 5,
@@ -2890,7 +2890,7 @@
           "1568905482449-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/spring_sale_1920X580_ee7f17ca-1eee-4987-b958-2f33b0c091b0.jpg",	
+              "image": "shopify:\/\/shop_images\/spring_sale_1920X580_ee7f17ca-1eee-4987-b958-2f33b0c091b0.jpg",
               "mobile_image": "shopify:\/\/shop_images\/spring_sale_640X780_40018bae-3682-4e44-8c21-0501da7e8065.jpg",
               "heading": "",
               "subheading": "",

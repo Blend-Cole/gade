@@ -21,7 +21,7 @@
 
   }
 </script>
-<script type="text/javascript"  async="" src="https://cdn.nowdialogue.com/prod/build/bundle.js?t=1"></script>
+<script type="text/javascript"  async="" src="https://cdn.nowdialogue.com/prod/build/bundle.js?t=2"></script>
 <script>
 window.DialogueShopify = window.DialogueShopify === undefined ? {} : DialogueShopify;{% assign t = template | prepend: '/' | append: '.' %}
 {% if t contains '/product.' %}DialogueShopify.page_info = { page_type: "product", id: {{ product.id }}};
@@ -60,6 +60,8 @@ let cart_obj = []
 <script>
  
 !function() {
+DialogueAI.getStoreSettings().then(function(){})
+
 fetch('https://dashboard.nowdialogue.com/api/merchant/{{ settings.dialogue_info.uid }}/store/{{ settings.dialogue_info.store_id }}/master-script?v=1&hoster='+encodeURIComponent(window.location.href))
  .then(response =>
       {
