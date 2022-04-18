@@ -1776,7 +1776,7 @@
       "1478800373635": {
         "type": "slideshow",
         "blocks": {
-          "a1b77e66-bc38-4de3-a21d-12437fb24835": {
+          "136bcd95-331e-4f80-8c94-ccd1ea59d75e": {
             "type": "image",
             "settings": {
               "image": "shopify:\/\/shop_images\/SITE_1920X580-WEBSITE-SERUM-CREAM-SEEDOLOGY_1.jpg",
@@ -1808,25 +1808,7 @@
               "cta_background": "#000000",
               "caption_horizontal": "left",
               "caption_vertical": 50,
-              "caption_background": "rgba(0,0,0,0)",
-              "caption_background_opacity": 0
-            }
-          },
-          "47467f24-b9b2-433d-805f-00bd7a89b952": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/SITE_1920X580-WEBSITE-SERUM-CREAM-GOLDPREMIUM_1.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-WEBSITE-SERUM-CREAM-GOLDPREMIUM.jpg",
-              "heading": "",
-              "subheading": "",
-              "slide_text_color": "#000000",
-              "link": "shopify:\/\/pages\/all-sale",
-              "button_text": "",
-              "cta_color": "#ffffff",
-              "cta_background": "#000000",
-              "caption_horizontal": "left",
-              "caption_vertical": 50,
-              "caption_background": "rgba(0,0,0,0)",
+              "caption_background": "transparent",
               "caption_background_opacity": 0
             }
           },
@@ -1865,32 +1847,13 @@
               "caption_background": "rgba(0,0,0,0)",
               "caption_background_opacity": 0
             }
-          },
-          "ef3c6b56-cb21-4765-8446-fc153401730e": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/SITE_1920X580-WEBSITE-SERUM-CREAM-GOLDPREMIUM_1.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-WEBSITE-SERUM-CREAM-GOLDPREMIUM.jpg",
-              "heading": "",
-              "subheading": "",
-              "slide_text_color": "#000000",
-              "link": "shopify:\/\/pages\/all-sale",
-              "button_text": "",
-              "cta_color": "#ffffff",
-              "cta_background": "#000000",
-              "caption_horizontal": "left",
-              "caption_vertical": 50,
-              "caption_background": "transparent",
-              "caption_background_opacity": 0
-            }
           }
         },
         "block_order": [
           "136bcd95-331e-4f80-8c94-ccd1ea59d75e",
           "ef3c6b56-cb21-4765-8446-fc153401730e",
           "e1f1e56a-0998-4013-b5f4-a6e4fe4a11c4",
-          "d4a31d61-508f-4f95-af87-0b2c6dd1b28e",
-          "ef3c6b56-cb21-4765-8446-fc153401730e"
+          "d4a31d61-508f-4f95-af87-0b2c6dd1b28e"
         ],
         "settings": {
           "slideshow": "content",
