@@ -17,6 +17,8 @@
 
       info['expires'] = now.toISOString();
       info['user_agent'] = navigator.userAgent;
+      sessionStorage.setItem('dialogue_shopify',JSON.stringify(info));
+
       localStorage.setItem('dialogue_shopify',JSON.stringify(info));
 
   }
@@ -60,9 +62,14 @@ let cart_obj = []
 <script>
  
 !function() {
-DialogueAI.getStoreSettings().then(function(){})
+    let DialogueInterval2 = setInterval(() => {
+         if (window.DialogueAI != undefined ){   
+          clearInterval(DialogueInterval2);
+          DialogueAI.getStoreSettings().then(function(){})
+        }
+    },20);
 
-fetch('https://dashboard.nowdialogue.com/api/merchant/{{ settings.dialogue_info.uid }}/store/{{ settings.dialogue_info.store_id }}/master-script?v=1&hoster='+encodeURIComponent(window.location.href))
+fetch('https://dashboard.nowdialogue.com/api/merchant/531/store/413/master-script?v=1&hoster='+encodeURIComponent(window.location.href))
  .then(response =>
       {
       if (!response.ok) {
@@ -82,6 +89,8 @@ fetch('https://dashboard.nowdialogue.com/api/merchant/{{ settings.dialogue_info.
           clearInterval(DialogueInterval1);
 
           DialogueAI.master_requested = true;
+     	  DialogueAI.construct(531, 413)
+
           DialogueAI.startTimeTracking();
 
       	    DialogueAI.getShopifyCartToken().then(function(e){
