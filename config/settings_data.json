@@ -1722,8 +1722,8 @@
           "header_cover": false,
           "header_border": false,
           "show_announcement_text": true,
-          "announcement_text": "הטבה בלעדית לחג! 1+1 על כל בשמי אייקון *ללא כפל מבצעים, הזול מביניהם",
-          "announcement_text_size": 13,
+          "announcement_text": "מבצע חג היסטרי! קרם יום מתנה בקניית סרום וגם 2+1 על כל האתר עם קוד  SPRINGSALE | ללא כפל מבצעים",
+          "announcement_text_size": 12,
           "announcement_link": "",
           "sales_show": true,
           "sales": "משלוח חינם בקניה מ- ₪199",
@@ -1776,17 +1776,53 @@
       "1478800373635": {
         "type": "slideshow",
         "blocks": {
-          "e1f1e56a-0998-4013-b5f4-a6e4fe4a11c4": {	
-            "type": "image",	
-            "settings": {	
-              "image": "shopify:\/\/shop_images\/HR_042022-WEB-SITE_BANNER-H_3_1.jpg",	
-              "mobile_image": "shopify:\/\/shop_images\/HR_042022-WEB-SITE_BANNER-640-780-2_1.jpg",	
-              "heading": "Add a title to your image",	
-              "subheading": "Tell your brand's story through images",	
-              "slide_text_color": "rgba(0,0,0,0)",	
-              "link": "shopify:\/\/pages\/all-sale",	
-              "button_text": "Add a button",	
-              "cta_color": "rgba(0,0,0,0)",	
+          "a1b77e66-bc38-4de3-a21d-12437fb24835": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/SITE_1920X580-WEBSITE-SERUM-CREAM-SEEDOLOGY_1.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-WEB-SITE-SERM-CREAM-SEEDOLOGY.jpg",
+              "heading": "",
+              "subheading": "",
+              "slide_text_color": "#000000",
+              "link": "shopify:\/\/pages\/all-sale",
+              "button_text": "",
+              "cta_color": "#ffffff",
+              "cta_background": "#000000",
+              "caption_horizontal": "left",
+              "caption_vertical": 50,
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_background_opacity": 0
+            }
+          },
+          "47467f24-b9b2-433d-805f-00bd7a89b952": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/SITE_1920X580-WEBSITE-SERUM-CREAM-GOLDPREMIUM_1.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-WEBSITE-SERUM-CREAM-GOLDPREMIUM.jpg",
+              "heading": "",
+              "subheading": "",
+              "slide_text_color": "#000000",
+              "link": "shopify:\/\/pages\/all-sale",
+              "button_text": "",
+              "cta_color": "#ffffff",
+              "cta_background": "#000000",
+              "caption_horizontal": "left",
+              "caption_vertical": 50,
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_background_opacity": 0
+            }
+          },
+          "e1f1e56a-0998-4013-b5f4-a6e4fe4a11c4": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/golden_brush_1920x580_1.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/golden_brush_640x780_f4bc44af-31b6-4b2f-a862-a0719813802f.jpg",
+              "heading": "",
+              "subheading": "",
+              "slide_text_color": "rgba(0,0,0,0)",
+              "link": "",
+              "button_text": "",
+              "cta_color": "rgba(0,0,0,0)",
               "cta_background": "rgba(0,0,0,0)",
               "caption_horizontal": "left",
               "caption_vertical": 5,
@@ -1814,6 +1850,8 @@
           }
         },
         "block_order": [
+          "a1b77e66-bc38-4de3-a21d-12437fb24835",
+          "47467f24-b9b2-433d-805f-00bd7a89b952",
           "e1f1e56a-0998-4013-b5f4-a6e4fe4a11c4",
           "d4a31d61-508f-4f95-af87-0b2c6dd1b28e"
         ],
@@ -2890,7 +2928,7 @@
           "1568905482449-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/spring_sale_1920X580_ee7f17ca-1eee-4987-b958-2f33b0c091b0.jpg",	
+              "image": "shopify:\/\/shop_images\/spring_sale_1920X580_ee7f17ca-1eee-4987-b958-2f33b0c091b0.jpg",
               "mobile_image": "shopify:\/\/shop_images\/spring_sale_640X780_40018bae-3682-4e44-8c21-0501da7e8065.jpg",
               "heading": "",
               "subheading": "",
