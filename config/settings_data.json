@@ -1776,6 +1776,24 @@
       "1478800373635": {
         "type": "slideshow",
         "blocks": {
+          "7f7089e9-c3d2-4010-9aec-1cb1a1eebbaf": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/SITE_AQUA-JOLT_1920X580_b47764bc-695e-4e09-b205-f96f26b36975.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/SITE_AQUA-JOLT_640X780_fddc388d-ca10-4573-bb2e-0bea13fdb527.jpg",
+              "heading": "",
+              "subheading": "",
+              "slide_text_color": "#000000",
+              "link": "shopify:\/\/collections\/aqua-jolt",
+              "button_text": "",
+              "cta_color": "#ffffff",
+              "cta_background": "#000000",
+              "caption_horizontal": "left",
+              "caption_vertical": 50,
+              "caption_background": "transparent",
+              "caption_background_opacity": 0
+            }
+          },
           "e1f1e56a-0998-4013-b5f4-a6e4fe4a11c4": {
             "type": "image",
             "settings": {
@@ -1814,6 +1832,7 @@
           }
         },
         "block_order": [
+          "7f7089e9-c3d2-4010-9aec-1cb1a1eebbaf",
           "e1f1e56a-0998-4013-b5f4-a6e4fe4a11c4",
           "d4a31d61-508f-4f95-af87-0b2c6dd1b28e"
         ],
