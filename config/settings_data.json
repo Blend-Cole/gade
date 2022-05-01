@@ -1722,7 +1722,7 @@
           "header_cover": false,
           "header_border": false,
           "show_announcement_text": true,
-          "announcement_text": "2+1 על כל האתר עם קוד SPRINGSALE | ללא כפל מבצעים",
+          "announcement_text": "25% הנחה על כל האתר עם קוד קופון SPECIAL25 | ללא כפל מבצעים",
           "announcement_text_size": 12,
           "announcement_link": "",
           "sales_show": true,
@@ -1794,24 +1794,6 @@
               "caption_background_opacity": 0
             }
           },
-          "e1f1e56a-0998-4013-b5f4-a6e4fe4a11c4": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/golden_brush_1920x580_1.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/golden_brush_640x780_f4bc44af-31b6-4b2f-a862-a0719813802f.jpg",
-              "heading": "",
-              "subheading": "",
-              "slide_text_color": "rgba(0,0,0,0)",
-              "link": "",
-              "button_text": "",
-              "cta_color": "rgba(0,0,0,0)",
-              "cta_background": "rgba(0,0,0,0)",
-              "caption_horizontal": "left",
-              "caption_vertical": 5,
-              "caption_background": "rgba(0,0,0,0)",
-              "caption_background_opacity": 0
-            }
-          },
           "d4a31d61-508f-4f95-af87-0b2c6dd1b28e": {
             "type": "image",
             "settings": {
@@ -1833,7 +1815,6 @@
         },
         "block_order": [
           "7f7089e9-c3d2-4010-9aec-1cb1a1eebbaf",
-          "e1f1e56a-0998-4013-b5f4-a6e4fe4a11c4",
           "d4a31d61-508f-4f95-af87-0b2c6dd1b28e"
         ],
         "settings": {
@@ -2909,8 +2890,8 @@
           "1568905482449-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/spring_sale_1920X580_ee7f17ca-1eee-4987-b958-2f33b0c091b0.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/spring_sale_640X780_40018bae-3682-4e44-8c21-0501da7e8065.jpg",
+              "image": "shopify:\/\/shop_images\/25_OFF.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/25_OFF_MOBILE.jpg",
               "heading": "",
               "subheading": "",
               "slide_text_color": "#000000",
