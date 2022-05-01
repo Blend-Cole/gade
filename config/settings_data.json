@@ -1722,7 +1722,7 @@
           "header_cover": false,
           "header_border": false,
           "show_announcement_text": true,
-          "announcement_text": "25% הנחה על כל האתר עם קוד קופון SPECIAL25 | ללא כפל מבצעים",
+          "announcement_text": "כל האתר ב-25% הנחה | קוד קופון: SPECIAL25 | ללא כפל מבצעים",
           "announcement_text_size": 12,
           "announcement_link": "",
           "sales_show": true,
@@ -1790,7 +1790,7 @@
               "cta_background": "#000000",
               "caption_horizontal": "left",
               "caption_vertical": 50,
-              "caption_background": "transparent",
+              "caption_background": "rgba(0,0,0,0)",
               "caption_background_opacity": 0
             }
           },
