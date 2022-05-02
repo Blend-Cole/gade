@@ -1779,12 +1779,12 @@
           "7f7089e9-c3d2-4010-9aec-1cb1a1eebbaf": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/SITE_AQUA-JOLT_1920X580_b47764bc-695e-4e09-b205-f96f26b36975.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/SITE_AQUA-JOLT_640X780_fddc388d-ca10-4573-bb2e-0bea13fdb527.jpg",
+              "image": "shopify:\/\/shop_images\/SITE_1920X580-WEB-SITE-052022.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-WEB-SITE-052022.jpg",
               "heading": "",
               "subheading": "",
               "slide_text_color": "#000000",
-              "link": "shopify:\/\/collections\/aqua-jolt",
+              "link": "",
               "button_text": "",
               "cta_color": "#ffffff",
               "cta_background": "#000000",
@@ -2890,12 +2890,12 @@
           "1568905482449-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/SITE_1920X580-WEB-SITE-052022.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-WEB-SITE-052022.jpg",
+              "image": "shopify:\/\/shop_images\/SITE_AQUA-JOLT_1920X580_b47764bc-695e-4e09-b205-f96f26b36975.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/SITE_AQUA-JOLT_640X780_fddc388d-ca10-4573-bb2e-0bea13fdb527.jpg",
               "heading": "",
               "subheading": "",
               "slide_text_color": "#000000",
-              "link": "",
+              "link": "shopify:\/\/collections\/aqua-jolt",
               "button_text": "",
               "cta_color": "#ffffff",
               "cta_background": "#000000",
