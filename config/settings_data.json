@@ -1794,6 +1794,24 @@
               "caption_background_opacity": 0
             }
           },
+          "8aa6605d-6918-4026-9d0e-1c59ba2e406c": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/SITE_1920X580-GLOW-FX-NIGHT-CREAM.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-GLOW-FX-NIGHT-CREAM.jpg",
+              "heading": "",
+              "subheading": "",
+              "slide_text_color": "#000000",
+              "link": "shopify:\/\/products\/glow-fx-night-cream",
+              "button_text": "",
+              "cta_color": "#ffffff",
+              "cta_background": "#000000",
+              "caption_horizontal": "left",
+              "caption_vertical": 50,
+              "caption_background": "transparent",
+              "caption_background_opacity": 0
+            }
+          },
           "d4a31d61-508f-4f95-af87-0b2c6dd1b28e": {
             "type": "image",
             "disabled": true,
@@ -1812,30 +1830,12 @@
               "caption_background": "rgba(0,0,0,0)",
               "caption_background_opacity": 0
             }
-          },
-          "8aa6605d-6918-4026-9d0e-1c59ba2e406c": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/SITE_1920X580-GLOW-FX-NIGHT-CREAM.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-GLOW-FX-NIGHT-CREAM.jpg",
-              "heading": "",
-              "subheading": "",
-              "slide_text_color": "#000000",
-              "link": "shopify:\/\/products\/glow-fx-night-cream",
-              "button_text": "",
-              "cta_color": "#ffffff",
-              "cta_background": "#000000",
-              "caption_horizontal": "left",
-              "caption_vertical": 50,
-              "caption_background": "transparent",
-              "caption_background_opacity": 0
-            }
           }
         },
         "block_order": [
           "7f7089e9-c3d2-4010-9aec-1cb1a1eebbaf",
-          "d4a31d61-508f-4f95-af87-0b2c6dd1b28e",
-          "8aa6605d-6918-4026-9d0e-1c59ba2e406c"
+          "8aa6605d-6918-4026-9d0e-1c59ba2e406c",
+          "d4a31d61-508f-4f95-af87-0b2c6dd1b28e"
         ],
         "settings": {
           "slideshow": "content",
