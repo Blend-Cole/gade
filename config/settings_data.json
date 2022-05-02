@@ -1796,6 +1796,7 @@
           },
           "d4a31d61-508f-4f95-af87-0b2c6dd1b28e": {
             "type": "image",
+            "disabled": true,
             "settings": {
               "image": "shopify:\/\/shop_images\/Banners_D_1920X580_91836200-263f-464a-b39d-8e2835041ee0.jpg",
               "mobile_image": "shopify:\/\/shop_images\/Banners_M_640X780_241a2b4d-e963-44f6-8bef-7750bd80d93b.jpg",
@@ -1811,11 +1812,30 @@
               "caption_background": "rgba(0,0,0,0)",
               "caption_background_opacity": 0
             }
+          },
+          "8aa6605d-6918-4026-9d0e-1c59ba2e406c": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/SITE_1920X580-GLOW-FX-NIGHT-CREAM.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-GLOW-FX-NIGHT-CREAM.jpg",
+              "heading": "",
+              "subheading": "",
+              "slide_text_color": "#000000",
+              "link": "shopify:\/\/products\/glow-fx-night-cream",
+              "button_text": "",
+              "cta_color": "#ffffff",
+              "cta_background": "#000000",
+              "caption_horizontal": "left",
+              "caption_vertical": 50,
+              "caption_background": "transparent",
+              "caption_background_opacity": 0
+            }
           }
         },
         "block_order": [
           "7f7089e9-c3d2-4010-9aec-1cb1a1eebbaf",
-          "d4a31d61-508f-4f95-af87-0b2c6dd1b28e"
+          "d4a31d61-508f-4f95-af87-0b2c6dd1b28e",
+          "8aa6605d-6918-4026-9d0e-1c59ba2e406c"
         ],
         "settings": {
           "slideshow": "content",
