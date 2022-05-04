@@ -1722,7 +1722,7 @@
           "header_cover": false,
           "header_border": false,
           "show_announcement_text": true,
-          "announcement_text": "כל האתר ב-25% הנחה | קוד קופון: SPECIAL25 | ללא כפל מבצעים",
+          "announcement_text": "משלוח חינם בכל הזמנה! וגם  25% הנחה עם קוד קופון SPECIAL25",
           "announcement_text_size": 12,
           "announcement_link": "",
           "sales_show": true,
@@ -1779,8 +1779,8 @@
           "7f7089e9-c3d2-4010-9aec-1cb1a1eebbaf": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/SITE_1920X580-WEB-SITE-052022.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-WEB-SITE-052022.jpg",
+              "image": "shopify:\/\/shop_images\/Independence_1920x580_89c828a5-3515-4150-9e99-da98af04a3bb.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/Independence_640x780_95843104-4551-4fb3-b717-5b61a1638aa3.jpg",
               "heading": "",
               "subheading": "",
               "slide_text_color": "#000000",
@@ -1808,7 +1808,7 @@
               "cta_background": "#000000",
               "caption_horizontal": "left",
               "caption_vertical": 50,
-              "caption_background": "transparent",
+              "caption_background": "rgba(0,0,0,0)",
               "caption_background_opacity": 0
             }
           },
