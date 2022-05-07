@@ -192,7 +192,17 @@
 
 <body class="gridlock shifter-left shifter-enabled {{ template }} {% if template contains 'about' %} about{% endif %} {{ page.title | handleize }}">
   <!--- Poloriz widget --->
-  <poloriz-stories widget-id="4dc02fa0-4acb-11ec-b836-afb10dead4ff" mode="2"></poloriz-stories>
+  
+  {% if template.name == "index" %} 
+
+<poloriz-stories widget-id="4dc02fa0-4acb-11ec-b836-afb10dead4ff" mode="2"></poloriz-stories>
+
+{% else %}
+
+<poloriz-stories widget-id="4a92f8e0-c92d-11ec-ab1e-5bf58e161aef" mode="2"></poloriz-stories>
+
+{% endif %}
+  
   <!--- End of Poloriz widget --->
   <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGRJ9TJ"
