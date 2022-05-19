@@ -1722,7 +1722,7 @@
           "header_cover": false,
           "header_border": false,
           "show_announcement_text": true,
-          "announcement_text": "מוצרי העיניים ב-30% הנחה ללא קוד קופון | אין כפל מבצעים",
+          "announcement_text": "לזמן מוגבל: כל מוצרי העיניים ב-30% הנחה ללא קוד קופון",
           "announcement_text_size": 12,
           "announcement_link": "",
           "sales_show": true,
@@ -2907,6 +2907,24 @@
       "1568905482449": {
         "type": "slideshow-1",
         "blocks": {
+          "d68ce789-d8bc-4dea-b531-93d093838504": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/SITE_1920X580-WEB-SITE-052022.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-WEB-SITE-052022.jpg",
+              "heading": "",
+              "subheading": "",
+              "slide_text_color": "#000000",
+              "link": "",
+              "button_text": "",
+              "cta_color": "#ffffff",
+              "cta_background": "#000000",
+              "caption_horizontal": "left",
+              "caption_vertical": 50,
+              "caption_background": "transparent",
+              "caption_background_opacity": 0
+            }
+          },
           "1568905482449-0": {
             "type": "image",
             "settings": {
@@ -2927,6 +2945,7 @@
           }
         },
         "block_order": [
+          "d68ce789-d8bc-4dea-b531-93d093838504",
           "1568905482449-0"
         ],
         "settings": {
