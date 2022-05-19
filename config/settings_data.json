@@ -1722,7 +1722,7 @@
           "header_cover": false,
           "header_border": false,
           "show_announcement_text": true,
-          "announcement_text": "25% הנחה באתר עם קוד: SPECIAL25 | ללא כפל מבצעים",
+          "announcement_text": "מוצרי העיניים ב-30% הנחה ללא קוד קופון | אין כפל מבצעים",
           "announcement_text_size": 12,
           "announcement_link": "",
           "sales_show": true,
@@ -1779,8 +1779,8 @@
           "7f7089e9-c3d2-4010-9aec-1cb1a1eebbaf": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/SITE_1920X580-WEB-SITE-052022.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-WEB-SITE-052022.jpg",
+              "image": "shopify:\/\/shop_images\/SITE_1920X580-EYES30-190522_ed928a95-8649-44cb-ad5e-a58817af2343.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-EYES30-190522.jpg",
               "heading": "",
               "subheading": "",
               "slide_text_color": "#000000",
