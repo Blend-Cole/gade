@@ -1779,12 +1779,12 @@
           "7f7089e9-c3d2-4010-9aec-1cb1a1eebbaf": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/SITE_1920X580-WEB-SITE-052022.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-WEB-SITE-052022.jpg",
+              "image": "shopify:\/\/shop_images\/BRUSH_GIFT_1920X580_0dbd1fa4-6b92-4aa4-ac22-b8cbac087790.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/BRUSH_GIFT_640X780_c4d506e5-f3c9-47e9-83ea-6a7d394288d0.jpg",
               "heading": "",
               "subheading": "",
               "slide_text_color": "#000000",
-              "link": "",
+              "link": "shopify:\/\/collections\/foundation",
               "button_text": "",
               "cta_color": "#ffffff",
               "cta_background": "#000000",
@@ -2909,7 +2909,6 @@
         "blocks": {
           "d68ce789-d8bc-4dea-b531-93d093838504": {
             "type": "image",
-            "disabled": true,
             "settings": {
               "image": "shopify:\/\/shop_images\/SITE_1920X580-WEB-SITE-052022.jpg",
               "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-WEB-SITE-052022.jpg",
