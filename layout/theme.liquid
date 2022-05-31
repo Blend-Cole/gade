@@ -190,6 +190,7 @@
     <!-- poloriz head end -->
     <!-- Poloriz Widgets --> 
  {% if content_for_header contains 'hellorichsnippets.helloshopowner.com' %}{% render 'hso-home-page-rich-snippets' %}{% endif %} 
+ {% if content_for_header contains 'hellorichsnippets.helloshopowner.com' %}{% render 'hso-product-page-rich-snippets' %}{% endif %} 
  </head>
 
 <body class="gridlock shifter-left shifter-enabled {{ template }} {% if template contains 'about' %} about{% endif %} {{ page.title | handleize }}">
