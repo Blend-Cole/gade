@@ -2910,12 +2910,12 @@
           "1568905482449-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/SITE_1920X580-CANVAS-BAG-062022.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-CANVAS-BAG-062022.jpg",
+              "image": "shopify:\/\/shop_images\/SITE_1920X580-CANVAS-BAG-062022_1.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-CANVAS-BAG-062022_1.jpg",
               "heading": "",
               "subheading": "",
               "slide_text_color": "#000000",
-              "link": "shopify:\/\/pages\/all-sale",
+              "link": "",
               "button_text": "",
               "cta_color": "#ffffff",
               "cta_background": "#000000",
