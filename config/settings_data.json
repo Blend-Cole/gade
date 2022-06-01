@@ -2907,6 +2907,24 @@
       "1568905482449": {
         "type": "slideshow-1",
         "blocks": {
+          "1568905482449-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/SITE_1920X580-CANVAS-BAG-062022.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-CANVAS-BAG-062022.jpg",
+              "heading": "",
+              "subheading": "",
+              "slide_text_color": "#000000",
+              "link": "shopify:\/\/collections\/aqua-jolt",
+              "button_text": "",
+              "cta_color": "#ffffff",
+              "cta_background": "#000000",
+              "caption_horizontal": "right",
+              "caption_vertical": 5,
+              "caption_background": "rgba(0,0,0,0)",
+              "caption_background_opacity": 0
+            }
+          },
           "d68ce789-d8bc-4dea-b531-93d093838504": {
             "type": "image",
             "settings": {
@@ -2924,30 +2942,11 @@
               "caption_background": "rgba(0,0,0,0)",
               "caption_background_opacity": 0
             }
-          },
-          "1568905482449-0": {
-            "type": "image",
-            "disabled": true,
-            "settings": {
-              "image": "shopify:\/\/shop_images\/SITE_AQUA-JOLT_1920X580_b47764bc-695e-4e09-b205-f96f26b36975.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/SITE_AQUA-JOLT_640X780_fddc388d-ca10-4573-bb2e-0bea13fdb527.jpg",
-              "heading": "",
-              "subheading": "",
-              "slide_text_color": "#000000",
-              "link": "shopify:\/\/collections\/aqua-jolt",
-              "button_text": "",
-              "cta_color": "#ffffff",
-              "cta_background": "#000000",
-              "caption_horizontal": "right",
-              "caption_vertical": 5,
-              "caption_background": "rgba(0,0,0,0)",
-              "caption_background_opacity": 0
-            }
           }
         },
         "block_order": [
-          "d68ce789-d8bc-4dea-b531-93d093838504",
-          "1568905482449-0"
+          "1568905482449-0",
+          "d68ce789-d8bc-4dea-b531-93d093838504"
         ],
         "settings": {
           "slideshow": "content",
