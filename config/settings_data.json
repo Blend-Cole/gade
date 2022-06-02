@@ -1722,7 +1722,7 @@
           "header_cover": false,
           "header_border": false,
           "show_announcement_text": true,
-          "announcement_text": "עונת הקיץ החלה! 20% הנחה על האתר | קוד קופון  TAKE20",
+          "announcement_text": "הטבה חגיגית: קני קרם פנים וקבלי קרם עיניים במתנה!",
           "announcement_text_size": 12,
           "announcement_link": "",
           "sales_show": true,
@@ -1776,15 +1776,15 @@
       "1478800373635": {
         "type": "slideshow",
         "blocks": {
-          "7f7089e9-c3d2-4010-9aec-1cb1a1eebbaf": {
+          "8aa6605d-6918-4026-9d0e-1c59ba2e406c": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/SITE_1920X580-JUNE-TAKE20.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-JUNE-TAKE20.jpg",
+              "image": "shopify:\/\/shop_images\/SITE_1920X580-SHAVUOTH-2022.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-SHAVUOTH-2022.jpg",
               "heading": "",
               "subheading": "",
               "slide_text_color": "#000000",
-              "link": "",
+              "link": "shopify:\/\/collections\/skin-care",
               "button_text": "",
               "cta_color": "#ffffff",
               "cta_background": "#000000",
@@ -1794,15 +1794,15 @@
               "caption_background_opacity": 0
             }
           },
-          "8aa6605d-6918-4026-9d0e-1c59ba2e406c": {
+          "7f7089e9-c3d2-4010-9aec-1cb1a1eebbaf": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/SITE_1920X580-GLOW-FX-NIGHT-CREAM.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-GLOW-FX-NIGHT-CREAM.jpg",
+              "image": "shopify:\/\/shop_images\/SITE_1920X580-JUNE-TAKE20.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/SITE_640X780-JUNE-TAKE20.jpg",
               "heading": "",
               "subheading": "",
               "slide_text_color": "#000000",
-              "link": "shopify:\/\/products\/glow-fx-night-cream",
+              "link": "",
               "button_text": "",
               "cta_color": "#ffffff",
               "cta_background": "#000000",
@@ -1833,8 +1833,8 @@
           }
         },
         "block_order": [
-          "7f7089e9-c3d2-4010-9aec-1cb1a1eebbaf",
           "8aa6605d-6918-4026-9d0e-1c59ba2e406c",
+          "7f7089e9-c3d2-4010-9aec-1cb1a1eebbaf",
           "d4a31d61-508f-4f95-af87-0b2c6dd1b28e"
         ],
         "settings": {
